@@ -1,0 +1,6 @@
+Test2 {
+Main = "hello" separator stuff* separator "goodbye" separator stuff* separator*
+stuff = ~separator any
+separator = ";"
+}
+
