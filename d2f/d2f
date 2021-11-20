@@ -1,0 +1,12 @@
+# #!/bin/bash
+# # convert a .drawio diagram into a factbase
+
+pfr helloworld.drawio drawio.ohm drawio.glue support.js \
+    | pfr - diagram.ohm diagram.glue  support.js \
+    | pfr - styleexpander.ohm styleexpander.glue  support.js \
+    | pfr - factbase.ohm factbase.glue  support.js \
+    | sed -E -e 's/</\n</g' \
+    | sort \
+    | sed -E -e '/^[ \t]*$/d'
+
+

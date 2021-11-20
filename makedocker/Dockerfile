@@ -20,23 +20,24 @@ RUN echo "tzdata tzdata/Areas select America" > /tmp/preseed.txt ; \
 RUN   apt-get update && \
       apt-get install -y swi-prolog
 
+
+## app environment
+
+ENV DOCKERHOME=${HOME}
+
 #RUN   apt-get install -y emacs && \
 #      apt-get install -y snapd && \
 #      snap install drawio
 RUN   apt-get install -y emacs
 
-RUN mkdir /app && \
-    cd /app && \
-    git clone https://github.com/guitarvydas/vsh.git && \
-    git clone https://github.com/guitarvydas/d2f.git && \
-    git clone https://github.com/guitarvydas/pfr.git && \
-    git clone https://github.com/guitarvydas/appbin.git
+RUN cd ${DOCKERHOME} && \
+    git clone https://github.com/guitarvydas/app.git && \
 
-RUN cd /app && \
+RUN cd ${HOME}/app && \
     npm install atob \
     npm install pako \
     npm install ohm-js
-    
-ENV PATH="/app/appbin:${PATH}"
+
+ENV PATH="${DOCKERHOME}/app/bin:${PATH}"
 
 ENTRYPOINT ["/bin/bash"]
