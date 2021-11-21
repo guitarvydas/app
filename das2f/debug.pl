@@ -3,6 +3,20 @@
 
 
 debug1:-
+    debug1a.
+
+debug1a:-
+    % from common.pl but using vfb.pl instead of fb.pl
+    consult(vfb),
+    consult(shapes),
+    consult(values),
+    bagof([Cell],
+	  (
+              fact(cell,Cell,_)
+	  ) ,Bag),
+    json_write(user_output,Bag,[width(64)]),
+    nl.
+debug1b:-
     % from common.pl but using vfb.pl instead of fb.pl
     consult(vfb),
     consult(shapes),
