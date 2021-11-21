@@ -11,9 +11,7 @@ exports.decodeMxDiagram = (encoded) => {
 }    
 
 function inline_decodeMxDiagram (encoded) {
-    fs.writeFileSync ('_raw2.raw', encoded, null);
     var data = atob (encoded);
-    //fs.writeFileSync ('_raw2.raw', data, 'UTF-8');
     var inf = pako.inflateRaw (
 	Uint8Array.from (data, c=>c.charCodeAt (0)), {to: 'string'})
     var str = decodeURIComponent (inf);

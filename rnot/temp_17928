@@ -1,0 +1,16 @@
+from mercylog import R, V, and_, db
+fb = [ R.parent("abe", "bob"),
+R.parent("abby", "bob"),
+R.parent("bob", "carl"),
+R.parent("bob", "connor"),
+R.parent("beatrice", "carl"),
+R.man("abe"),
+R.man("bob"),
+R.woman("abby"),
+R.woman("beatrice"),
+R.father(V.X, V.Y) << and_(R.man(V.X),R.parent(V.X, V.Y)),
+R.father(V.X, V.Y),
+] 
+ds = db() 
+result = ds(fb) 
+print(result.df()) 

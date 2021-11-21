@@ -22,25 +22,30 @@ inferBB(S):-
 
 inferColor(X):-
     fact(fillColor,X,"#d5e8d4"),
-    assertz(fact(color,X,"green")).
+    assertz(fact(color,X,"green")),!.
 inferColor(X):-
     fact(fillColor,X,"#fff2cc"),
-    assertz(fact(color,X,"yellow")).
+    assertz(fact(color,X,"yellow")),!.
 inferColor(X):-
     fact(fillColor,X, "#f8cecc"),
-    assertz(fact(color,X,"red")).
+    assertz(fact(color,X,"red")),!.
 inferColor(X):-
     fact(fillColor,X,"#9673A6"),
-    assertz(fact(color,X,"purple")).
+    assertz(fact(color,X,"purple")),!.
 inferColor(X):-
+    fact(vertex,X,1),
+    fact(fillColor,X,_),
+    assertz(fact(color,X,"-")).
+inferColor(X):-
+    fact(vertex,X,1),
     \+fact(fillColor,X,_),
-    assertz(fact(color,X,"")).
+    assertz(fact(color,X,"-")).
 
 
 inferLayer1:-
     bagof(X,inferKind(X),_),
     bagof(X,inferBB(X),_),
-    bagof(X,inferColor(X),_).
+    bagof(X,(fact(vertex,X,1),inferColor(X)),_).
 
 displayLayer1:-
     forall(fact(kind,X,K),format("fact(kind,~w,~w).~n",[X,K])),

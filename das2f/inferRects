@@ -1,3 +1,0 @@
-swipl -q \
-      -g 'consult(common).' \
-      -g 'consult(rects).' -g 'emitRects.'

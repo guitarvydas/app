@@ -34,7 +34,7 @@ Layer 0 (Facts after d2f):
 - x
 - y
 
-Layer 1 - new facts appended to fb.pl
+Layer 1 - normalization - new facts appended to fb.pl
 
 (kinds)
 - fact(kind,X,"ellipse")

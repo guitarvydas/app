@@ -1,0 +1,27 @@
+temp=temp_${RANDOM}
+set -e
+trap 'catch' ERR
+trap 'cleanup' EXIT
+
+catch () {
+    echo '*** FATAL ERROR in run.bash ***'
+    rm -f $temp
+    exit 1
+}
+cleanup () {
+    rm -f $temp
+    exit 1
+}
+
+while true
+do
+    swipl -g 'consult(common).' \
+          -g 'consult(debug).' \
+	  -g 'debug1.' \
+	  -g 'halt.' >$temp
+    #    read -p 'again?...'
+    clear
+    cat $temp
+    sleep 1
+    rm $temp
+done

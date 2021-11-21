@@ -146,3 +146,46 @@ fact(y, cell_13, 490).
 fact(y, cell_6, 170).
 fact(y, cell_7, 220).
 fact(y, cell_8, 265).
+fact(kind,cell_10,ellipse).
+fact(kind,cell_12,ellipse).
+fact(kind,cell_9,edge).
+fact(kind,cell_11,rectangle).
+fact(kind,cell_13,rectangle).
+fact(kind,cell_6,rectangle).
+fact(kind,cell_7,rectangle).
+fact(kind,cell_8,rectangle).
+fact(bbL,cell_10,470).
+fact(bbL,cell_11,265).
+fact(bbL,cell_12,245).
+fact(bbL,cell_13,295).
+fact(bbL,cell_6,170).
+fact(bbL,cell_7,255).
+fact(bbL,cell_8,285).
+fact(bbT,cell_10,290).
+fact(bbT,cell_11,450).
+fact(bbT,cell_12,507.5).
+fact(bbT,cell_13,490).
+fact(bbT,cell_6,170).
+fact(bbT,cell_7,220).
+fact(bbT,cell_8,265).
+fact(bbR,cell_10,510).
+fact(bbR,cell_11,510).
+fact(bbR,cell_12,285).
+fact(bbR,cell_13,470).
+fact(bbR,cell_6,630).
+fact(bbR,cell_7,490).
+fact(bbR,cell_8,450).
+fact(bbB,cell_10,330).
+fact(bbB,cell_11,600).
+fact(bbB,cell_12,547.5).
+fact(bbB,cell_13,565).
+fact(bbB,cell_6,650).
+fact(bbB,cell_7,390).
+fact(bbB,cell_8,345).
+fact(color,cell_10,yellow).
+fact(color,cell_11,-).
+fact(color,cell_12,green).
+fact(color,cell_13,red).
+fact(color,cell_6,-).
+fact(color,cell_7,-).
+fact(color,cell_8,red).

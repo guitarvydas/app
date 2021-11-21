@@ -1,0 +1,16 @@
+temp=temp_${RANDOM}
+
+trap 'cleanup' ERR
+trap 'cleanup' EXIT
+
+cleanup() {
+    rm -f $temp
+}
+
+while true
+do
+    ${HOME}/app/bin/pfr test.rnot rnot.ohm rnot.glue support.js >$temp
+    clear
+    cat $temp
+    sleep 1
+done
