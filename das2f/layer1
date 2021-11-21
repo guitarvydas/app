@@ -1,0 +1,9 @@
+#!/bin/bash
+# input from fb.pl
+# output augments fb.pl
+swipl -q \
+      -g 'consult(common).' \
+      -g 'consult(layer1).' \
+      -g 'common.' \
+      -g 'makeLayer1.' \
+      -g 'halt.' 
