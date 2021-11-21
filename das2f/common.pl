@@ -3,6 +3,9 @@
 
 common:-
     consult(fb),
-    consult(shapes).
+    consult(shapes),
+    consult(onSameDiagram),
+    consult(inside),
+    consult(names).
 
 

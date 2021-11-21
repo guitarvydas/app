@@ -49,3 +49,5 @@ Layer 1 - normalization - new facts appended to fb.pl
 
 (fill colors)
 - fact(color,X,"...") ("red", "yellow", "purple", "green", "")
+
+Layer2 - containment

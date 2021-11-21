@@ -4,8 +4,7 @@ trap 'catch' ERR
 trap 'cleanup' EXIT
 
 catch () {
-    echo '*** FATAL ERROR in view1 ***'
-    echo "(cleaning up $temp)"
+    echo '*** FATAL ERROR in view0 ***'
     rm -f $temp
     exit 1
 }
@@ -17,11 +16,8 @@ cleanup () {
 
 while true
 do
-    swipl -g 'consult(debug).' \
-	  -g 'debug1.' \
-	  -g 'halt.' >$temp
-    #    read -p 'again?...'
+    ./run.bash
     clear
-    cat $temp
-    sleep 2
+    tail vfb.pl
+    sleep 1
 done

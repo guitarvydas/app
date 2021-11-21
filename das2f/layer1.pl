@@ -45,9 +45,12 @@ inferColor(X):-
 inferLayer1:-
     bagof(X,inferKind(X),_),
     bagof(X,inferBB(X),_),
-    bagof(X,(fact(vertex,X,1),inferColor(X)),_).
+    bagof(X,
+	  (fact(vertex,X,1),inferColor(X)),
+	  _),
+    bagof(X,inferName(X),_).
 
-displayLayer1:-
+displayLayer1Facts:-
     forall(fact(kind,X,K),format("fact(kind,~w,~w).~n",[X,K])),
     forall(fact(bbL,X,K),format("fact(bbL,~w,~w).~n",[X,K])),
     forall(fact(bbT,X,K),format("fact(bbT,~w,~w).~n",[X,K])),
@@ -56,8 +59,9 @@ displayLayer1:-
     forall(fact(color,X,K),format("fact(color,~w,~w).~n",[X,K])).
 
 makeLayer1:-
+    consult(names),
     inferLayer1,
-    displayLayer1.
+    displayLayer1Facts.
 
 
     

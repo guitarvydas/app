@@ -5,9 +5,9 @@ temp=_temp_${RANDOM}
 temp2=_temp_${RANDOM}
 swipl -q \
       -g 'consult(common).' \
-      -g 'consult(layer1).' \
+      -g 'consult(layer2).' \
       -g 'common.' \
-      -g 'makeLayer1.' \
+      -g 'makeLayer2.' \
       -g 'halt.' \
       > $temp
 cat fb.pl $temp >$temp2

@@ -1,0 +1,21 @@
+set -e
+trap 'catch' ERR
+trap 'cleanup' EXIT
+
+catch () {
+    echo '*** FATAL ERROR in run0h ***'
+    exit 1
+}
+cleanup () {
+    echo '(cleaning up)'
+    exit 1
+}
+
+while true
+do
+    echo '*** running ***'
+    ./run.bash
+    clear
+    mv fb.pl vfb.pl
+    sleep 2
+done
