@@ -12,3 +12,4 @@ rnot - Rajiv's Notation
 
 N.B. view0/1a/1b use VIM as the editor, change those scripts if you want another editor
 
+Acknowledgements: Example taken from [Rajiv Abraham's article](https://rabraham.github.io/myblog/markdown/2021/10/29/dsl-datalog-ohm-glue.html) 
