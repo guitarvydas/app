@@ -1,4 +1,4 @@
-temp=temp_${RANDOM}
+temp=_temp_${RANDOM}
 
 trap 'cleanup' ERR
 trap 'cleanup' EXIT

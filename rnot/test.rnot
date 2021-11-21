@@ -1,4 +1,4 @@
-parent(abe, bob).
+parent(q, bob).
 parent(abby, bob).
 parent(bob, carl).
 parent(bob, connor).
