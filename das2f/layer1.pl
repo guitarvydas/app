@@ -56,12 +56,12 @@ inferLayer1:-
     bagof(X,inferName(X),_).
 
 displayLayer1Facts:-
-    forall(fact(kind,X,K),format("fact(kind,~w,~w).~n",[X,K])),
-    forall(fact(bbL,X,K),format("fact(bbL,~w,~w).~n",[X,K])),
-    forall(fact(bbT,X,K),format("fact(bbT,~w,~w).~n",[X,K])),
-    forall(fact(bbR,X,K),format("fact(bbR,~w,~w).~n",[X,K])),
-    forall(fact(bbB,X,K),format("fact(bbB,~w,~w).~n",[X,K])),
-    forall(fact(color,X,K),format("fact(color,~w,~w).~n",[X,K])).
+    forall(fact(kind,X,K),format("fact(kind,~w,~q).~n",[X,K])),
+    forall(fact(bbL,X,K),format("fact(bbL,~w,~q).~n",[X,K])),
+    forall(fact(bbT,X,K),format("fact(bbT,~w,~q).~n",[X,K])),
+    forall(fact(bbR,X,K),format("fact(bbR,~w,~q).~n",[X,K])),
+    forall(fact(bbB,X,K),format("fact(bbB,~w,~q).~n",[X,K])),
+    forall(fact(color,X,K),format("fact(color,~w,~q).~n",[X,K])).
 
 makeLayer1:-
     consult(names),

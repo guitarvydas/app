@@ -3,24 +3,8 @@
 
 
 debug1:-
-    debug1a.
+    debug1b.
 
-debug1a:-
-    % from common.pl but using vfb.pl instead of fb.pl
-    consult(vfb),
-    consult(shapes),
-    consult(values),
-    consult(names),
-    consult(layer1),
-    inferLayer1,
-    bagof([Cell,Kind,Clr],
-	  (
-              fact(cell,Cell,_),
-	      fact(kind,Cell,Kind),
-	      (fact(color,V,Clr) ; \+fact(color,V,_),Clr = "?")
-	  ) ,Bag),
-    json_write(user_output,Bag,[width(64)]),
-    nl.
 debug1b:-
     % from common.pl but using vfb.pl instead of fb.pl
     consult(vfb),
@@ -29,17 +13,27 @@ debug1b:-
     consult(names),
     consult(layer1),
     inferLayer1,
-    bagof([V,Syn,Kind, L,T,R,B,Clr,Val],
+    setof([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
 	  (
-	      fact(vertex,V,1),
-	      (fact(color,V,Clr) ; \+fact(color,V,_),Clr = "?"),
-	      fact(bbL,V,L),
-	      fact(bbT,V,T),
-	      fact(bbR,V,R),
-	      fact(bbB,V,B),
-	      Syn = "_",
-	      fact(kind,V,Kind),
-	      Val = "_"
+	      ( fact(kind,V,"edge"),
+		Kind = "edge",
+		Val  = "-",
+		L = "-", T = "-", R = "-", B = "-", Clr = "-", Syn = "-",
+		Name = "-"
+	      )
+	      ;
+	      (
+		  fact(vertex,V,1),
+		  (fact(color,V,Clr) ; \+fact(color,V,_),Clr = "?"),
+		  fact(bbL,V,L),
+		  fact(bbT,V,T),
+		  fact(bbR,V,R),
+		  fact(bbB,V,B),
+		  fact(kind,V,Kind),
+		  Val = "_",
+		  fact(synonym,V,Syn),
+		  nameof(V,Name)
+	      )
 	  ) ,Bag),
     json_write(user_output,Bag,[width(256)]),
     nl.
@@ -49,7 +43,7 @@ debug2b:-
     consult(vfb),
     consult(shapes),
     consult(names),
-    bagof([contains, Parent, Child, ParentID, ChildID],
+    setof([contains, Parent, Child, ParentID, ChildID],
 	  (
 	      (
 		  fact(contains,ParentID,ChildID),
@@ -70,7 +64,7 @@ debug2a:-
     consult(vfb),
     consult(shapes),
     consult(names),
-    bagof([name, ID, Name],
+    setof([name, ID, Name],
 	  fact(name,ID,Name)
 	  ,Bag),
     json_write(user_output,Bag),
@@ -81,7 +75,7 @@ debug2z:-
     consult(vfb),
     consult(shapes),
     consult(names),
-    bagof([F,ID,O],
+    setof([F,ID,O],
 	  (
 	      ( ID = cell_13,fact(synonym,ID,Syn),fact(F,Syn,O) )
 	  ;
