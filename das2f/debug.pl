@@ -10,9 +10,14 @@ debug1a:-
     consult(vfb),
     consult(shapes),
     consult(values),
-    bagof([Cell],
+    consult(names),
+    consult(layer1),
+    inferLayer1,
+    bagof([Cell,Kind,Clr],
 	  (
-              fact(cell,Cell,_)
+              fact(cell,Cell,_),
+	      fact(kind,Cell,Kind),
+	      (fact(color,V,Clr) ; \+fact(color,V,_),Clr = "?")
 	  ) ,Bag),
     json_write(user_output,Bag,[width(64)]),
     nl.
@@ -21,6 +26,9 @@ debug1b:-
     consult(vfb),
     consult(shapes),
     consult(values),
+    consult(names),
+    consult(layer1),
+    inferLayer1,
     bagof([V,Syn,Kind, L,T,R,B,Clr,Val],
 	  (
 	      fact(vertex,V,1),
