@@ -6,11 +6,11 @@ d2f helloworld >fb.pl
 # Future: we might be able to rewrite this script to use a pipeline instead of intermediate files (e.g. fb.pl)
 
 
-# Layer 1. Infer low-hanging fruit information.
+# # Layer 1. Infer low-hanging fruit information.
 ./layer1 #<fb.pl >fb.pl
 
-# # Layer 2. Names
-./layer2 #<fb.pl >fb.pl
-# # Layer 3. Containment relationships.
-# ./containment #<fb.pl >fb.pl
+# # # Layer 2. Names
+# #./layer2 #<fb.pl >fb.pl
+# # # Layer 3. Containment relationships.
+# # ./containment #<fb.pl >fb.pl
 

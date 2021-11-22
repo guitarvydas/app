@@ -11,9 +11,7 @@ debug1b:-
     consult(shapes),
     consult(values),
     consult(names),
-    consult(layer1),
-    inferLayer1,
-    setof([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
+    bag([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
 	  (
 	      ( fact(kind,V,"edge"),
 		Kind = "edge",
@@ -24,13 +22,14 @@ debug1b:-
 	      ;
 	      (
 		  fact(vertex,V,1),
-		  (fact(color,V,Clr) ; \+fact(color,V,_),Clr = "?"),
+		  fact(color,V,Clr),
 		  fact(bbL,V,L),
 		  fact(bbT,V,T),
 		  fact(bbR,V,R),
 		  fact(bbB,V,B),
 		  fact(kind,V,Kind),
-		  Val = "_",
+		  Val = "...",
+		  %fact(value,V,Long),sub_string(Long,_,10,_,_),
 		  fact(synonym,V,Syn),
 		  nameof(V,Name)
 	      )
@@ -43,7 +42,7 @@ debug2b:-
     consult(vfb),
     consult(shapes),
     consult(names),
-    setof([contains, Parent, Child, ParentID, ChildID],
+    bag([contains, Parent, Child, ParentID, ChildID],
 	  (
 	      (
 		  fact(contains,ParentID,ChildID),
@@ -64,7 +63,7 @@ debug2a:-
     consult(vfb),
     consult(shapes),
     consult(names),
-    setof([name, ID, Name],
+    bag([name, ID, Name],
 	  fact(name,ID,Name)
 	  ,Bag),
     json_write(user_output,Bag),
@@ -75,7 +74,7 @@ debug2z:-
     consult(vfb),
     consult(shapes),
     consult(names),
-    setof([F,ID,O],
+    bag([F,ID,O],
 	  (
 	      ( ID = cell_13,fact(synonym,ID,Syn),fact(F,Syn,O) )
 	  ;

@@ -6,6 +6,7 @@ inferKind(X):-
 inferKind(X):-
     fact(vertex,X,1),
     \+fact(kind,X,"ellipse"),
+    \+fact(kind,X,"edge"),
     assertz(fact(kind,X,"rectangle")).
 
 inferBB(S):-
@@ -56,7 +57,7 @@ inferLayer1:-
     bagof(X,inferName(X),_).
 
 displayLayer1Facts:-
-    forall(fact(kind,X,K),format("fact(kind,~w,~q).~n",[X,K])),
+    forall(fact(kind,X,K),format("fact(vkind,~w,~q).~n",[X,K])),
     forall(fact(bbL,X,K),format("fact(bbL,~w,~q).~n",[X,K])),
     forall(fact(bbT,X,K),format("fact(bbT,~w,~q).~n",[X,K])),
     forall(fact(bbR,X,K),format("fact(bbR,~w,~q).~n",[X,K])),
