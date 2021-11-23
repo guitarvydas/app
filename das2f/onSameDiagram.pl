@@ -3,6 +3,6 @@ onSameDiagram(A,B):-
     diagramContains(D,B).
     
 diagramContains(D,X):-
-    diagram(D,_),
+    diagram_fact(diagram,D,_),
     transitivecontains(D,X).
 

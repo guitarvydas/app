@@ -2,7 +2,7 @@ inferLayer2:-
     bagof(X,inferName(X),_).
 
 generateLayer2Facts:-
-    forall(fact(name,X,K),format("fact(name,~w,~q).~n",[X,K])).
+    forall(das_fact(name,X,K),format("das_fact(name,~w,~q).~n",[X,K])).
 
 makeLayer2:-
     consult(names),

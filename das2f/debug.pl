@@ -1,4 +1,3 @@
-:- dynamic fact/3.
 :- use_module(library(http/json)).
 
 
@@ -13,7 +12,7 @@ debug1b:-
     consult(names),
     bag([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
 	  (
-	      ( fact(kind,V,"edge"),
+	      ( das_fact(kind,V,"edge"),
 		Kind = "edge",
 		Val  = "-",
 		L = "-", T = "-", R = "-", B = "-", Clr = "-", Syn = "-",
@@ -21,16 +20,16 @@ debug1b:-
 	      )
 	      ;
 	      (
-		  fact(vertex,V,1),
-		  fact(color,V,Clr),
-		  fact(bbL,V,L),
-		  fact(bbT,V,T),
-		  fact(bbR,V,R),
-		  fact(bbB,V,B),
-		  fact(kind,V,Kind),
+		  diagram_fact(vertex,V,1),
+		  diagram_fact(color,V,Clr),
+		  das_fact(bbL,V,L),
+		  das_fact(bbT,V,T),
+		  das_fact(bbR,V,R),
+		  das_fact(bbB,V,B),
+		  das_fact(kind,V,Kind),
 		  Val = "...",
 		  %fact(value,V,Long),sub_string(Long,_,10,_,_),
-		  fact(synonym,V,Syn),
+		  diagram_fact(synonym,V,Syn),
 		  nameof(V,Name)
 	      )
 	  ) ,Bag),
@@ -45,13 +44,13 @@ debug2b:-
     bag([contains, Parent, Child, ParentID, ChildID],
 	  (
 	      (
-		  fact(contains,ParentID,ChildID),
+		  das_fact(contains,ParentID,ChildID),
 		  nameof(ParentID,Parent),
 		  Child = "?1"
 	      )
 	  ;
 	      (
-		  fact(contains,ParentID,ChildID),
+		  das_fact(contains,ParentID,ChildID),
 		  Parent = "?2",
 		  Child = "?2"
               )
@@ -64,7 +63,7 @@ debug2a:-
     consult(shapes),
     consult(names),
     bag([name, ID, Name],
-	  fact(name,ID,Name)
+	  das_fact(name,ID,Name)
 	  ,Bag),
     json_write(user_output,Bag),
     nl.
@@ -76,9 +75,9 @@ debug2z:-
     consult(names),
     bag([F,ID,O],
 	  (
-	      ( ID = cell_13,fact(synonym,ID,Syn),fact(F,Syn,O) )
+	      ( ID = cell_13,diagram_fact(synonym,ID,Syn),diagram_fact(F,Syn,O) )
 	  ;
-	      ( ID = cell_13,                     fact(F,ID,O) )
+	      ( ID = cell_13,                     diagram_fact(F,ID,O) )
 	  ;
 	      ( ID = "-", F = "-", O = "-")
 	  )

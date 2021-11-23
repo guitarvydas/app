@@ -1,6 +1,6 @@
-isellipse(X):-fact(kind,X,"ellipse").
-istext(X):-fact(kind,X,"text").
-isrect(X):-fact(kind,X,"rect").
-isedge(X):-fact(kind,X,"edge").
+isellipse(X):-diagram_fact(kind,X,"ellipse").
+istext(X):-diagram_fact(kind,X,"text").
+isrect(X):-diagram_fact(kind,X,"rect").
+isedge(X):-diagram_fact(kind,X,"edge").
 
 	      
