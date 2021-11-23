@@ -10,7 +10,7 @@ debug1b:-
     consult(shapes),
     consult(values),
     consult(names),
-    bag([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
+    bagof([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
 	  (
 	      ( das_fact(kind,V,"edge"),
 		Kind = "edge",
@@ -20,17 +20,20 @@ debug1b:-
 	      )
 	      ;
 	      (
-		  diagram_fact(vertex,V,1),
-		  diagram_fact(color,V,Clr),
-		  das_fact(bbL,V,L),
-		  das_fact(bbT,V,T),
-		  das_fact(bbR,V,R),
-		  das_fact(bbB,V,B),
-		  das_fact(kind,V,Kind),
-		  Val = "...",
-		  %fact(value,V,Long),sub_string(Long,_,10,_,_),
-		  diagram_fact(synonym,V,Syn),
-		  nameof(V,Name)
+		  diagram_fact(vertex,V,1)
+	          %,Name="?"
+		  %,Clr="?"
+		  ,Val="?"
+		  ,das_fact(color,V,Clr)
+		  ,das_fact(bbL,V,L)
+		  ,das_fact(bbT,V,T)
+		  ,das_fact(bbR,V,R)
+		  ,das_fact(bbB,V,B)
+		  ,das_fact(kind,V,Kind)
+		  %% Val = "...",
+		  %% %fact(value,V,Long),sub_string(Long,_,10,_,_),
+		  ,diagram_fact(synonym,V,Syn)
+		  ,nameof(V,Name)
 	      )
 	  ) ,Bag),
     json_write(user_output,Bag,[width(256)]),
@@ -41,7 +44,7 @@ debug2b:-
     consult(vfb),
     consult(shapes),
     consult(names),
-    bag([contains, Parent, Child, ParentID, ChildID],
+    bagof([contains, Parent, Child, ParentID, ChildID],
 	  (
 	      (
 		  das_fact(contains,ParentID,ChildID),
@@ -62,7 +65,7 @@ debug2a:-
     consult(vfb),
     consult(shapes),
     consult(names),
-    bag([name, ID, Name],
+    bagof([name, ID, Name],
 	  das_fact(name,ID,Name)
 	  ,Bag),
     json_write(user_output,Bag),
@@ -73,7 +76,7 @@ debug2z:-
     consult(vfb),
     consult(shapes),
     consult(names),
-    bag([F,ID,O],
+    bagof([F,ID,O],
 	  (
 	      ( ID = cell_13,diagram_fact(synonym,ID,Syn),diagram_fact(F,Syn,O) )
 	  ;
