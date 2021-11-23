@@ -1,0 +1,15 @@
+qd {
+  main = ws* query display
+  query = "#" ws+ "query" ws+ line+
+  display = "#" ws+ "display" ws+ formals newline rewrite ws*
+  formals = "(" ident+ ")"
+  rewrite = ws* "[[" rewritechar+ "]]"
+  line = ~"#" notNewline* newline
+  ws = " " | newline | "\t"
+  notNewline = ~newline any
+  newline = "\n"
+  ident = idfirst idrest* ws*
+  idfirst = letter | "_"
+  idrest = alnum | "_"
+  rewritechar = ~"]]" any
+}
