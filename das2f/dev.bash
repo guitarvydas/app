@@ -1,2 +1,1 @@
-./layer1
-swipl -g 'consult(fb).' -g 'consult(common).' -g 'common.'
+pfr qd_1.md qd.ohm qd.glue support.js

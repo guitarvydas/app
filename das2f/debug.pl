@@ -21,22 +21,21 @@ debug1b:-
 	      ;
 	      (
 		  diagram_fact(vertex,V,1)
-	          %,Name="?"
-		  %,Clr="?"
-		  ,Val="?"
+		  %,Val="-"
 		  ,das_fact(color,V,Clr)
 		  ,das_fact(bbL,V,L)
 		  ,das_fact(bbT,V,T)
 		  ,das_fact(bbR,V,R)
 		  ,das_fact(bbB,V,B)
 		  ,das_fact(kind,V,Kind)
-		  %% Val = "...",
-		  %% %fact(value,V,Long),sub_string(Long,_,10,_,_),
+		  %,diagram_fact(value,V,Long),sub_string(Long,0,1,_,Val)
+		  ,diagram_fact(value,V,Val)
 		  ,diagram_fact(synonym,V,Syn)
 		  ,nameof(V,Name)
+	          ,format("~q ~w ~w (~w,~w,~w,~w) ~w ~w ~s~n",[Name, Kind, Clr, L,T,R,B, V,Syn,Val])
 	      )
-	  ) ,Bag),
-    json_write(user_output,Bag,[width(256)]),
+	  ) ,_),
+    %json_write(user_output,Bag,[width(256)]),
     nl.
 
 debug2b:-
