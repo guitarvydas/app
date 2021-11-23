@@ -63,6 +63,7 @@ displayLayer1Facts:-
     forall(das_fact(bbT,X,K),format("das_fact(bbT,~w,~q).~n",[X,K])),
     forall(das_fact(bbR,X,K),format("das_fact(bbR,~w,~q).~n",[X,K])),
     forall(das_fact(bbB,X,K),format("das_fact(bbB,~w,~q).~n",[X,K])),
+    forall(das_fact(name,X,K),format("das_fact(name,~w,~q).~n",[X,K])),
     forall(das_fact(color,X,K),format("das_fact(color,~w,~q).~n",[X,K])).
 
 makeLayer1:-
