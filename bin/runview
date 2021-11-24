@@ -1,0 +1,7 @@
+# make a watch (debug) view from $1.md and run it (once)
+bashtemp=_bash_${RANDOM}
+qddir=${HOME}/app/qd
+pfr $1.md ${qddir}/qd.ohm ${qddir}/qd.glue ${qddir}/support.js >$bashtemp
+chmod a+x $bashtemp
+./$bashtemp
+rm $bashtemp

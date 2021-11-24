@@ -1,8 +1,6 @@
 while true
 do
-    pfr qd_1.md qd.ohm qd.glue support.js >qd.bash
-    chmod a+x qd.bash
-    ./qd.bash
+    runview view_1
     sleep 1
 done
 	
