@@ -3,13 +3,18 @@
 # output augments fb.pl
 temp=_temp_${RANDOM}
 temp2=_temp_${RANDOM}
+layer=layer_${RANDOM}
+
+cat layer1.pl >$layer.pl
+
 swipl -q \
-      -g 'consult(common).' \
-      -g 'consult(layer1).' \
-      -g 'common.' \
-      -g 'makeLayer1.' \
-      -g 'halt.' \
+      -g "consult(common)." \
+      -g "consult(${layer})." \
+      -g "common." \
+      -g "layer1." \
+      -g "halt." \
       > $temp
 cat fb.pl $temp >$temp2
 mv $temp2 fb.pl
 rm $temp
+rm $layer.pl

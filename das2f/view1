@@ -1,6 +1,6 @@
 while true
 do
-    runview view_1
+    querydisplay view_1
     sleep 1
 done
 	
