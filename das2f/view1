@@ -1,3 +1,10 @@
+trap 'cleanup' ERR
+trap 'cleanup' EXIT
+
+cleanup () {
+    exit 1
+}
+
 while true
 do
     querydisplay view_1

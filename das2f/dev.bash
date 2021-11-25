@@ -1,1 +1,5 @@
-pfr qd_1.md qd.ohm qd.glue support.js
+pushd ../querydisplay >/dev/null
+./run.bash
+popd >/dev/null
+./run.bash
+querydisplay view_2

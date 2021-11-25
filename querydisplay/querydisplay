@@ -1,7 +1,20 @@
 # make a watch (debug) view from $1.md and run it (once)
 bashtemp=_bash_${RANDOM}
+
+rmtemp(){
+	rm -f $bashtemp
+}
+
+trap 'fatal' ERR
+fatal () {
+    echo '$$ fatal querydisplay $$'
+    rmtemp
+    exit 1
+}
+
 qddir=${HOME}/app/querydisplay
 pfr $1.md ${qddir}/qd.ohm ${qddir}/qd.glue ${qddir}/support.js >$bashtemp
 chmod a+x $bashtemp
 ./$bashtemp
-rm $bashtemp
+
+rmtemp

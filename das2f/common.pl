@@ -5,6 +5,7 @@ common:-
     consult(shapes),
     consult(onSameDiagram),
     consult(inside),
-    consult(names).
+    consult(names),
+    consult(ports).
 
 

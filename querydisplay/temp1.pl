@@ -1,5 +1,7 @@
-* query
-    % from common.pl but using vfb.pl instead of fb.pl
+:- use_module(library(http/json)).
+
+qd:-
+% from common.pl but using vfb.pl instead of fb.pl
     consult(vfb),
     consult(shapes),
     consult(values),
@@ -27,8 +29,7 @@
 		  ,diagram_fact(synonym,V,Syn)
 		  ,nameof(V,Name)
 	      )
-	  ) ,_),
-	  json_write(user_output,Bag).
-* display
-  (Name Kind Color Left Top Right Bottom VertexID Synonym Value)
-  [[${Name} ${Kind} ${Color} [${Left}${Top}${Right}${Bottom}] ${VertexID) ${Synonym} ${Value.substring(0,9)}]]
+	  ) ,Bag),
+	  json_write(user_output,Bag)
+
+.

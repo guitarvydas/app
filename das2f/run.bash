@@ -7,10 +7,16 @@ d2f helloworld >fb.pl
 
 
 # Layer 1. Infer low-hanging fruit information.
+echo '** layer 1 **'
 ./layer1 #<fb.pl >fb.pl
 
 # # Layer 2. Names, port directions
-#./layer2 #<fb.pl >fb.pl
+echo '** layer 2 **'
+./layer2 #<fb.pl >fb.pl
+cp fb.pl vfb.pl
+
+# Design Rule - all ports (ellipses) must have a direction
+##
 
 # # # Layer 3. Containment relationships.
 # # ./containment #<fb.pl >fb.pl
