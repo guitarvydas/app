@@ -7,7 +7,6 @@ cleanup () {
 
 while true
 do
-    querydisplay view_1
+    querydisplay view1
     sleep 1
 done
-	

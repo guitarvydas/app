@@ -30,9 +30,13 @@ portHasDirection(X):-
 portHasDirection(X):-
     das_fact(pervasiveoutputport,X,_).
 
+checkPortHasDirection(X):-
+    \+ portHasDirection(X),
+    format("FATAL: port ~w does not have a direction~n",[X]).
+
 inferPortDirections:-
     bagof(X,(diagram_fact(kind,X,"ellipse"),inferPort(X)),_).
 
-%% designRulePortsHaveDirection:-
-%%     forall(diagram_fact(kind,X,"ellipse"),
-%% 	   checkHasDirection(X)).
+designRulePortsHaveDirection:-
+    forall(diagram_fact(kind,X,"ellipse"),
+	   checkPortHasDirection(X)).

@@ -1,5 +1,3 @@
-pushd ../querydisplay >/dev/null
-./run.bash
-popd >/dev/null
+../make.bash
 ./run.bash
 querydisplay view_2

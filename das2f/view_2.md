@@ -1,6 +1,6 @@
 # query
     % from common.pl but using vfb.pl instead of fb.pl
-    consult(vfb),
+    consult(fb),
     consult(shapes),
     consult(values),
     consult(names),
@@ -17,3 +17,11 @@
 # display
   (Name Direction)
   [[${Name} ${Direction}]]
+
+~~
+cat >view2 <<'~~~'
+while true
+do
+    querydisplay view_2
+   sleep 1
+done

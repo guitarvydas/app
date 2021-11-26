@@ -1,10 +1,3 @@
-#!/bin/bash
-# input from fb.pl
-# output augments fb.pl
-temp=_temp_${RANDOM}
-temp2=_temp_${RANDOM}
-
-cat >i_layer2.pl <<'~~~'
 
 inferLayer2:-
     inferPortDirections.
@@ -22,15 +15,3 @@ layer2:-
 
 designRuleLayer2:-
     designRulePortsHaveDirection.
-~~~
-
-swipl -q \
-      -g "consult(common)." \
-      -g "consult(i_layer2)." \
-      -g "common." \
-      -g "layer2." \
-      -g "halt." \
-      > $temp
-cat fb.pl $temp >$temp2
-mv $temp2 fb.pl
-rm -f $temp

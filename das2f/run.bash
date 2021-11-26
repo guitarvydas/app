@@ -13,11 +13,12 @@ echo '** layer 1 **'
 # # Layer 2. Names, port directions
 echo '** layer 2 **'
 ./layer2 #<fb.pl >fb.pl
-cp fb.pl vfb.pl
 
 # Design Rule - all ports (ellipses) must have a direction
-##
+echo '** design rule for layer 2 **'
+./design_rule_layer2
 
-# # # Layer 3. Containment relationships.
-# # ./containment #<fb.pl >fb.pl
+# # # # Layer 3. Containment relationships.
+echo '** layer 3 **'
+./layer3 #<fb.pl >fb.pl
 

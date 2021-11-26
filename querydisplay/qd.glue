@@ -1,17 +1,24 @@
 main [@ws query display] = [[
-buffer=_buffer_\${RANDOM}
+buffer=_buffer_$1_\${RANDOM}
 trap 'cleanup' ERR
-trap 'cleanup' EXIT
 
-cleanup () {
+cleanup() {
     rm -f $buffer
 }
+lockForReading() {
+  echo '' # noop
+}
+unlock() {
+  echo '' # noop
+}
+  
+lockForReading fb.pl
 ${query}
+unlock fb.pl
 ${display}
 swipl -g 'consult(temp1)' -g 'qd.' -g 'halt.' | node temp2.js >$buffer
 clear
-cat $buffer
-rm -f $buffer
+cleanup
 ]]
 
 query [ksharp @ws1 kquery @ws2 @line]
