@@ -1,5 +1,5 @@
 while true
 do
-    querydisplay view2
+    querydisplay view3
    sleep 1
 done

@@ -1,12 +1,3 @@
-#!/bin/bash
-# input from fb.pl
-# output augments fb.pl
-temp=_temp_${RANDOM}
-temp2=_temp_${RANDOM}
-
-#cat layer1.pl >i_layer.pl
-# SWIPL code for layer 1
-cat >i_layer1.pl <<'~~~'
 inferKind(X):-
     diagram_fact(kind,X,"ellipse"),
     assertz(das_fact(kind,X,"ellipse")).
@@ -78,16 +69,3 @@ displayLayer1Facts:-
 layer1:-
     inferLayer1,
     displayLayer1Facts.
-~~~
-# end SWIPL code for layer 1
-
-swipl -q \
-      -g "consult(common)." \
-      -g "consult(i_layer1)." \
-      -g "common." \
-      -g "layer1." \
-      -g "halt." \
-      > $temp
-cat fb.pl $temp >$temp2
-mv $temp2 fb.pl
-rm $temp

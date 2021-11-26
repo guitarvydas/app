@@ -1,7 +1,5 @@
-:- use_module(library(http/json)).
-
-qd:-
-% from common.pl but using vfb.pl instead of fb.pl
+# query
+    % from common.pl but using vfb.pl instead of fb.pl
     consult(fb),
     consult(shapes),
     consult(values),
@@ -16,5 +14,7 @@ qd:-
       ),	
 	  Bag),
 	  json_write(user_output,Bag)
+# display
+  (Name Direction)
+  [[${Name} ${Direction}]]
 
-.

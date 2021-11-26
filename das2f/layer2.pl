@@ -13,6 +13,8 @@ layer2:-
     inferLayer2,
     displayLayer2Facts.
 
+designRuleLayer2:-
+    designRulePortsHaveDirection.
 
 
 

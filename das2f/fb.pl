@@ -196,3 +196,13 @@ das_fact(color,cell_13,"red").
 das_fact(color,cell_6,"-").
 das_fact(color,cell_7,"-").
 das_fact(color,cell_8,"red").
+das_fact(direction,cell_10,output).
+das_fact(direction,cell_12,input).
+das_fact(inputport,cell_12,"-").
+das_fact(outputport,cell_10,"-").
+das_fact(direct_contains,diagram_1,mxGraphModel_2).
+das_fact(direct_contains,mxGraphModel_2,root_3).
+das_fact(direct_contains,root_3,cell_4).
+das_fact(direct_contains,root_3,cell_5).
+das_fact(direct_contains,root_3,cell_6).
+das_fact(direct_contains,root_3,cell_9).

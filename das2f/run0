@@ -11,11 +11,21 @@ cleanup () {
     exit 1
 }
 
+lockForWriting() {
+  echo '' # noop
+}
+unlock(){
+  echo '' # noop
+}
+
+appdir=${HOME}/app
+${appdir}/make.bash
 while true
 do
     echo '*** running ***'
+    lockForWriting fb.pl
     ./run.bash
+    unlock fb.pl
     clear
-    mv fb.pl vfb.pl
     sleep 2
 done
