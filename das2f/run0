@@ -3,7 +3,7 @@ trap 'catch' ERR
 trap 'cleanup' EXIT
 
 catch () {
-    echo '*** FATAL ERROR in run0h ***'
+    echo '*** FATAL ERROR in run0 ***'
     exit 1
 }
 cleanup () {
@@ -11,21 +11,12 @@ cleanup () {
     exit 1
 }
 
-lockForWriting() {
-  echo '' # noop
-}
-unlock(){
-  echo '' # noop
-}
-
-appdir=${HOME}/app
-${appdir}/make.bash
+./generate.bash
 while true
 do
     echo '*** running ***'
-    lockForWriting fb.pl
-    ./run.bash
-    unlock fb.pl
+    ./run-fb-pipeline.bash
+    broadcast-updated fb.pl
     clear
     sleep 2
 done

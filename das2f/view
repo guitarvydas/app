@@ -1,10 +1,6 @@
 cat >view1.md <<'~~~'
 # query
-    % from common.pl but using vfb.pl instead of fb.pl
-    consult(vfb),
-    consult(shapes),
-    consult(values),
-    consult(names),
+    consult(common),
     bagof([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
 	  (
 	      ( das_fact(kind,V,"edge"),
@@ -43,16 +39,18 @@ cleanup () {
     exit 1
 }
 
-while true
+(while read val ; do echo "receiver 1 /${val}/" ; done) </dev/fd/3
+(while true
 do
+    read baton
     querydisplay view1
-    sleep 1
-done
+done) </dev/fd/3
 ~~~
+chmod a+x view1
 
 cat >view2.md <<'~~~'
 # query
-    % from common.pl but using vfb.pl instead of fb.pl
+    % from common.pl but using fb.pl instead of fb.pl
     consult(fb),
     consult(shapes),
     consult(values),
@@ -79,15 +77,11 @@ do
    sleep 1
 done
 ~~~
+chmod a+x view2
 
 cat >view3.md <<'~~~'
 # query
-    % from common.pl but using vfb.pl instead of fb.pl
-    consult(fb),
-    consult(shapes),
-    consult(values),
-    consult(names),
-    consult(ports),
+    consult(common),
     bagof([Name, Direction],
 	  (
 		  diagram_fact(vertex,V,1),
@@ -109,4 +103,5 @@ do
    sleep 1
 done
 ~~~
+chmod a+x view3
 

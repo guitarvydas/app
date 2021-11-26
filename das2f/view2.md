@@ -1,5 +1,5 @@
 # query
-    % from common.pl but using vfb.pl instead of fb.pl
+    % from common.pl but using fb.pl instead of fb.pl
     consult(fb),
     consult(shapes),
     consult(values),

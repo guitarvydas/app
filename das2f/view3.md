@@ -1,10 +1,5 @@
 # query
-    % from common.pl but using vfb.pl instead of fb.pl
-    consult(fb),
-    consult(shapes),
-    consult(values),
-    consult(names),
-    consult(ports),
+    consult(common),
     bagof([Name, Direction],
 	  (
 		  diagram_fact(vertex,V,1),

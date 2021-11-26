@@ -1,9 +1,5 @@
 # query
-    % from common.pl but using vfb.pl instead of fb.pl
-    consult(vfb),
-    consult(shapes),
-    consult(values),
-    consult(names),
+    consult(common),
     bagof([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
 	  (
 	      ( das_fact(kind,V,"edge"),
