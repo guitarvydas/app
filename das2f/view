@@ -31,22 +31,16 @@ cat >view1.md <<'~~~'
   [[${Name} ${Kind} ${Color} [${Left},${Top},${Right},${Bottom}] ${VertexID} ${Synonym} "${Value.substring(0,9)}..."]]
 ~~~
 
-cat >view1 <<'~~~'
+cat >view1.bash <<'~~~'
 trap 'cleanup' ERR
 trap 'cleanup' EXIT
 
 cleanup () {
     exit 1
 }
-
-(while read val ; do echo "receiver 1 /${val}/" ; done) </dev/fd/3
-(while true
-do
-    read baton
-    querydisplay view1
-done) </dev/fd/3
+querydisplay view1
 ~~~
-chmod a+x view1
+chmod a+x view1-bash
 
 cat >view2.md <<'~~~'
 # query
@@ -71,11 +65,7 @@ cat >view2.md <<'~~~'
 
 ~~~
 cat >view2 <<'~~~'
-while true
-do
-    querydisplay view2
-   sleep 1
-done
+querydisplay view2
 ~~~
 chmod a+x view2
 
@@ -97,11 +87,7 @@ cat >view3.md <<'~~~'
 
 ~~~
 cat >view3 <<'~~~'
-while true
-do
-    querydisplay view3
-   sleep 1
-done
+querydisplay view3
 ~~~
 chmod a+x view3
 

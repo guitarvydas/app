@@ -4,9 +4,4 @@ trap 'cleanup' EXIT
 cleanup () {
     exit 1
 }
-
-while true
-do
-    querydisplay view1
-    sleep 1
-done
+querydisplay view1

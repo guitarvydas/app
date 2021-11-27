@@ -1,31 +1,11 @@
 # make a watch (debug) view from $1.md and run it (once)
 # usage: querydisplay name
-bashtemp=_$1_${RANDOM}
-
-rmtemp(){
-	rm -f $bashtemp
-}
-
 trap 'fatal' ERR
 fatal () {
     echo '$$ fatal querydisplay $$'
-    rmtemp
     exit 1
 }
 
-lockForReading() {
-  echo '' # noop
-}
-unlock(){
-  echo '' # noop
-}
-
 qddir=${HOME}/app/querydisplay
-lockForReading fb.pl
-echo $bashtemp
-pfr $1.md ${qddir}/qd.ohm ${qddir}/qd.glue ${qddir}/support.js >$bashtemp
-unlock fb.pl
-chmod a+x $bashtemp
-./$bashtemp $1
-
-rmtemp
+echo ${target}
+pfr $1.md ${qddir}/qd.ohm ${qddir}/qd.glue ${qddir}/support.js
