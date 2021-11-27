@@ -1,4 +1,5 @@
-# query
+# view1
+## query
     consult(common),
     bagof([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
 	  (
@@ -25,6 +26,6 @@
 	      )
 	  ) ,Bag),
 	  json_write(user_output,Bag)
-# display
+## display
   (Name Kind Color Left Top Right Bottom VertexID Synonym Value)
   [[${Name} ${Kind} ${Color} [${Left},${Top},${Right},${Bottom}] ${VertexID} ${Synonym} "${Value.substring(0,9)}..."]]

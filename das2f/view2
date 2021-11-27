@@ -1,5 +1,1 @@
-while true
-do
-    querydisplay view2
-   sleep 1
-done
+querydisplay view2

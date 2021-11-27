@@ -1,40 +1,30 @@
-main [@ws query display] = [[
-buffer=_buffer_$1_\${RANDOM}
-trap 'cleanup' ERR
-
-cleanup() {
-    rm -f $buffer
-}
-lockForReading() {
-  echo '' # noop
-}
-unlock() {
-  echo '' # noop
-}
-  
-lockForReading fb.pl
+main [@ws name query display]
+  = [[
+cat >${name}.pl <<'~~~'
 ${query}
-unlock fb.pl
+~~~
+cat >${name}.js <<'~~~'
 ${display}
-swipl -g 'consult(temp1)' -g 'qd.' -g 'halt.' | node temp2.js >$buffer
-clear
-cleanup
+~~~
+
+swipl -g "consult(${name})." -g 'qd.' -g 'halt.' | node ${name}.js
 ]]
 
-query [ksharp @ws1 kquery @ws2 @line]
-  = [[cat >temp1.pl <<'~~~'
-:- use_module(library(http/json)).
+name [ksharp @ws ident @nnl nl] = [[${ident}]]
 
-qd:-
-${line}
-.
-~~~
+
+query [ksharp @ws1 kquery @ws2 nl @lines]
+= [[
+    :- use_module(library(http/json)).
+
+    qd:-
+    ${lines}
+    .
 ]]
 
 display [ksharp @ws1 kdisplay @ws2 formals nl rewrite @ws4]
   = {{ support.resetParameterList (); }}
-[[
-cat >temp2.js <<'~~~'
+    [[
 const fs = require ('fs');
 var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
@@ -42,8 +32,9 @@ parameters.forEach (param => {
   ${support.constructParameters ()}
   console.log(\`${rewrite}\`);
 });
-~~~
 ]]
+
+
 
 formals [klpar @ids krpar] = [[${klpar}${ids}${krpar}]]
 rewrite [@ws kll @rewritechars krr] = [[${rewritechars}]]
@@ -51,6 +42,7 @@ line [@cs nl] = [[${cs}${nl}]]
 ws [c] = [[${c}]]
 notNewline [c] = [[${c}]]
 newline [c] = [[${c}]]
+topident [c @cs @ws] = [[${support.pushParameter (c, cs)}]]
 ident [c @cs @ws] = [[${support.pushParameter (c, cs)} ]]
 idfirst [c] = [[${c}]]
 idrest [c] = [[${c}]]
