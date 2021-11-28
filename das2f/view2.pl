@@ -1,6 +1,8 @@
-# view2
-## query
-    % from common.pl but using fb.pl instead of fb.pl
+
+    :- use_module(library(http/json)).
+
+    qd:-
+        % from common.pl but using fb.pl instead of fb.pl
     consult(fb),
     consult(shapes),
     consult(values),
@@ -15,7 +17,6 @@
       ),	
 	  Bag),
 	  json_write(user_output,Bag)
-## display
-  (Name Direction)
-  [[${Name} ${Direction}]]
+
+    .
 

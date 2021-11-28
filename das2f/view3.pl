@@ -1,6 +1,8 @@
-# view3
-## query
-    consult(fb),
+
+    :- use_module(library(http/json)).
+
+    qd:-
+        consult(fb),
     consult(shapes),
     consult(values),
     consult(names),
@@ -13,7 +15,6 @@
       ),	
 	  Bag),
 	  json_write(user_output,Bag)
-## display
-  (Parent Child)
-  [[${Parent} direct-contains ${Child}]]
+
+    .
 
