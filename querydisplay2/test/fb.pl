@@ -88,4 +88,3 @@ das_fact(contains,root_3,cell_7).
 das_fact(contains,root_3,cell_8).
 das_fact(contains,cell_6,cell_7).
 das_fact(contains,cell_6,cell_8).
-das_fact(contains,cell_7,cell_8).

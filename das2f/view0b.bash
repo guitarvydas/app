@@ -1,6 +1,6 @@
 
 
-cat >view0.pl <<'~~~'
+cat >view0b.pl <<'~~~'
 
     :- use_module(library(http/json)).
 
@@ -21,7 +21,7 @@ cat >view0.pl <<'~~~'
     .
 
 ~~~
-cat >view0.js <<'~~~'
+cat >view0b.js <<'~~~'
 
 const fs = require ('fs');
 var rawText = fs.readFileSync ('/dev/fd/0');
@@ -35,5 +35,5 @@ var Object = param [2];
 
 ~~~
 
-swipl -g "consult(view0)." -g 'qd.' -g 'halt.' | node view0.js
+swipl -g "consult(view0b)." -g 'qd.' -g 'halt.' | node view0b.js
 

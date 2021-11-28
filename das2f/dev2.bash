@@ -1,1 +1,1 @@
-./watcher './view0b.bash' 'baton'
+./watcher './view0c.bash' 'baton'
