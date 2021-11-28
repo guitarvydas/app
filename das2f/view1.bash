@@ -6,6 +6,7 @@ cat >view1.pl <<'~~~'
 
     qd:-
         consult(common),
+    common,
     bagof([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
 	  (
 	      ( das_fact(kind,V,"edge"),
@@ -30,7 +31,7 @@ cat >view1.pl <<'~~~'
 		  ,nameof(V,Name)
 	      )
 	  ) ,Bag),
-	  json_write(user_output,Bag)
+	  json_write(user_output,Bag,[width(128)])
 
     .
 

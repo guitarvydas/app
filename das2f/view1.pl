@@ -1,6 +1,8 @@
-# view1
-## query
-    consult(common),
+
+    :- use_module(library(http/json)).
+
+    qd:-
+        consult(common),
     common,
     bagof([Name, Kind, Clr, L,T,R,B, V,Syn,Val],
 	  (
@@ -27,6 +29,6 @@
 	      )
 	  ) ,Bag),
 	  json_write(user_output,Bag,[width(128)])
-## display
-  (Name Kind Color Left Top Right Bottom VertexID Synonym Value)
-  [[${Name} ${Kind} ${Color} [${Left},${Top},${Right},${Bottom}] ${VertexID} ${Synonym} "${Value.substring(0,9)}..."]]
+
+    .
+
