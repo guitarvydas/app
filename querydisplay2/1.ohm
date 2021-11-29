@@ -1,0 +1,14 @@
+qd {
+ Main = line line
+
+ parameters = sharp sharp ws* "parameters" line+
+ 
+ line = ~"#" notNewline* nl
+
+ nl = "\n"
+ sharp = "#"
+ nleof = nl | end  
+ ws = " " | "\t"
+
+ notNewline = ~nl
+}

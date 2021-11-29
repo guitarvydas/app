@@ -1,6 +1,8 @@
-# view0b
-## query
-    consult(fb),
+
+    :- use_module(library(http/json)).
+
+    qd:-
+        consult(fb),
     bagof(
 	  [Relation,Subject,Object],
 	  (
@@ -12,7 +14,6 @@
 	  ),
 	      Bag),
 	  json_write(user_output,Bag,[width(128)])
-## display
-	(Relation Subject Object)
-    [[das_fact: ${Relation} ${Subject} ${Object}]]
-	
+
+    .
+

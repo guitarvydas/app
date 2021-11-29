@@ -4,7 +4,7 @@ echo '** factbase pipeline **' 1>&2
 
 # Layer 0. Convert helloword.drawio into factbase format using d2f.
 echo '** layer 0 (helloworld.drawio --> fb.pl) **'
-d2f helloworld >fb.pl
+d2f debug >fb.pl
 
 # We will store the factbase in a file called fb.pl
 # We will augment fb.pl in each step along the way.
@@ -23,6 +23,10 @@ echo '** layer 2 **' 1>&2
 echo '** design rule for layer 2 **'
 ./design_rule_layer2  1>&2
 
-# # # # Layer 3. Containment relationships.
+# Layer 3. Rectangle Containment relationships.
 echo '** layer 3 **'
 ./layer3 1>&2 #<<>>fb.pl
+
+# Layer 4. Rectangle contains Port.
+echo '** layer 4 **'
+./layer4 1>&2 #<<>>fb.pl
