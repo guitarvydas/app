@@ -4,43 +4,14 @@
 temp=_temp_${RANDOM}
 temp2=_temp_${RANDOM}
 
-### SWIPL for layer3
-cat >i_layer3.pl <<'~~~'
-
-
-
-
-inferLayer3:-
-    bagof([X,Y],contains(X,Y),ContainsBag),
-    assertFactsLayer3(ContainsBag).
-
-displayLayer3Facts:-
-    forall(das_fact(contains,X,K),format("das_fact(contains,~w,~q).~n",[X,K])).
-
-layer3:-
-    inferLayer3,
-    displayLayer3Facts.
-
-assertFactsLayer3([]).
-assertFactsLayer3([[Parent,Child]|RestDirectContains]):-
-    assertz(das_fact(contains,Parent,Child)),
-    assertFactsLayer3(RestDirectContains).
-
-
-~~~
-### end SWIPL for layer3
-
-# run SWIPL on the above code...
-swipl -q \
-      -g "consult(common)." \
-      -g "consult(contains)." \
-      -g "consult(i_layer3)." \
-      -g "common." \
-      -g "layer3." \
-      -g "halt." \
-      > $temp
-
 ### move result into fb.pl (without overwrite problems)
-cat fb.pl $temp >$temp2
-mv $temp2 fb.pl
-rm -f $temp
+temp=temp_${RANDOM}
+
+./layer3-body >${temp}
+
+./appendToFb ${temp}
+# cat $temp
+# cat fb.pl $temp >$temp2
+# mv $temp2 fb.pl
+
+rm -f ${temp}
