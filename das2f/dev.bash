@@ -24,23 +24,17 @@ querydisplay view3 >view3.bash
 chmod a+x view3.bash
 echo '-- view3.bash generated --'
 
-querydisplay2 contains_port >layer4_query.bash
-chmod a+x layer4_query.bash
-echo '-- layer4_query.bash generated --'
-
 querydisplay2 layer3 >layer3_query.bash
 chmod a+x layer3_query.bash
 echo '-- layer3_query.bash generated --'
 
-# echo '** running **'
-# # echo '  *** building fb.pl  ***'
-# # ./run-fb-pipeline.bash
-# # echo '  *** viewing fb.pl  ***'
-# # ./view1.bash
+querydisplay2 contains_port >layer4_query.bash
+chmod a+x layer4_query.bash
+echo '-- layer4_query.bash generated --'
 
-# echo '** running again as network **'
-# ./nshell './run-fb-pipeline.bash' './view0.bash' 'true' 'true' 'true'
-
+querydisplay2 indirect_contains >layer5_query.bash
+chmod a+x layer5_query.bash
+echo '-- layer5_query.bash generated --'
 
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}
