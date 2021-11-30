@@ -36,5 +36,9 @@ querydisplay2 indirect_contains >layer5_query.bash
 chmod a+x layer5_query.bash
 echo '-- layer5_query.bash generated --'
 
+setquerydisplay direct_contains >layer6_query.bash
+chmod a+x layer6_query.bash
+echo '-- layer6_query.bash generated --'
+
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}

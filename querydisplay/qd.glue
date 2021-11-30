@@ -8,6 +8,8 @@ ${display}
 ~~~
 
 swipl -g "consult(${name})." -g 'qd.' -g 'halt.' | node ${name}.js
+rm -f \${temp}.pl
+rm -f \${temp}.js
 ]]
 
 name [ksharp @ws ident @nnl nl] = [[${ident}]]

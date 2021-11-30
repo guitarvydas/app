@@ -2,16 +2,12 @@ Main [Name Parameters Imports Query Display]
 = [[
 temp=temp\${RANDOM}
 ${Name}
-${Parameters}
 cat >\${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ${Imports.trim ()}
-query_helper(${support.formatParameters ()}):-
-${Query.trim ()}
-true.
 query:-
-bagof([${support.formatParameters ()}],query_helper(${support.formatParameters ()}),Bag),
-json_write(user_output,Bag,[width(128)]).
+${Query.trim ()}
+json_write(user_output,Set,[width(128)]).
 ~~~
 cat >\${temp}.js <<'~~~'
 const fs = require ('fs');
@@ -23,12 +19,12 @@ parameters.forEach (p => {
 });
 ~~~
 swipl -g "consult(\${temp})." -g 'query.' -g 'halt.' | node \${temp}.js
-rm -f \${temp}.pl
-rm -f \${temp}.js
+rm -f \${temp}.pl 1>&2
+rm -f \${temp}.js 1>&2
 ]]
 
 Name [ksharp line] =    [[# ${line}]]
-    
+
 Parameters [ksharp1 ksharp2 kparameters @lines]
   = {{ support.clearParameters (); }} [[]]
 

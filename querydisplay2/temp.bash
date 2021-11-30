@@ -1,7 +1,7 @@
 
 
 temp=temp${RANDOM}
-# layer 3
+# contains port
 
 
 cat >${temp}.pl <<'~~~'
@@ -12,12 +12,13 @@ cat >${temp}.pl <<'~~~'
 ?- consult(inside).
 ?- consult(names).
 ?- consult(ports).
-?- consult(contains).
-query_helper(Parent,Child):-
-contains(Parent,Child),
+query_helper(R,E):-
+isrect(R),
+isEllipse(E),
+contains_port(R,E),
 true.
 query:-
-bagof([Parent,Child],query_helper(Parent,Child),Bag),
+bagof([R,E],query_helper(R,E),Bag),
 json_write(user_output,Bag,[width(128)]).
 ~~~
 cat >${temp}.js <<'~~~'
@@ -25,9 +26,9 @@ const fs = require ('fs');
 var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
-  var Parent = p [0];
-var Child = p [1];
-  console.log(`das_fact(contains,${Parent},${Child}).`);
+  var R = p [0];
+var E = p [1];
+  console.log(`das_fact(contains,${R},${E}).`);
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

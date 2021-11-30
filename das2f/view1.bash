@@ -58,4 +58,6 @@ var Value = param [9];
 ~~~
 
 swipl -g "consult(view1)." -g 'qd.' -g 'halt.' | node view1.js
+rm -f ${temp}.pl
+rm -f ${temp}.js
 

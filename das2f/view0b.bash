@@ -36,4 +36,6 @@ var Object = param [2];
 ~~~
 
 swipl -g "consult(view0b)." -g 'qd.' -g 'halt.' | node view0b.js
+rm -f ${temp}.pl
+rm -f ${temp}.js
 
