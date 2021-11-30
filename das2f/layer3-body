@@ -1,3 +1,5 @@
+### SWIPL for layer3
+cat >i_layer3.pl <<'~~~'
 
 
 
@@ -18,4 +20,16 @@ assertFactsLayer3([[Parent,Child]|RestDirectContains]):-
     assertz(das_fact(contains,Parent,Child)),
     assertFactsLayer3(RestDirectContains).
 
+
+~~~
+### end SWIPL for layer3
+
+# run SWIPL on the above code...
+swipl -q \
+      -g "consult(common)." \
+      -g "consult(contains)." \
+      -g "consult(i_layer3)." \
+      -g "common." \
+      -g "layer3." \
+      -g "halt."
 
