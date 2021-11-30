@@ -24,7 +24,7 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var R = p [0];
 var E = p [1];
-  console.log(`das_fact(contains,${R},${E}).`);
+  console.log(`das_fact(direct_contains,${R},${E}).`);
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
