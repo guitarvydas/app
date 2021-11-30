@@ -28,6 +28,10 @@ querydisplay2 contains_port >layer4_query.bash
 chmod a+x layer4_query.bash
 echo '-- layer4_query.bash generated --'
 
+querydisplay2 layer3 >layer3_query.bash
+chmod a+x layer4_query.bash
+echo '-- layer3_query.bash generated --'
+
 # echo '** running **'
 # # echo '  *** building fb.pl  ***'
 # # ./run-fb-pipeline.bash

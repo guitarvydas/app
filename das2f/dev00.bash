@@ -1,3 +1,5 @@
+./dev.bash
+
 # run the inference pipeline once and leave result in fb.pl
 # usage: run-fb-pipeline.bash pipe
 
@@ -24,10 +26,35 @@ echo '** layer 2 **' 1>&2
 echo '** design rule for layer 2 **'
 ./design_rule_layer2  1>&2
 
+
+##########
 # Layer 3. Rectangle Containment relationships.
 echo '** layer 3 **'
-./layer3 1>&2 #<<>>fb.pl
+# input from fb.pl
+# output augments fb.pl
+temp=_temp_${RANDOM}
+temp2=_temp_${RANDOM}
 
-# Layer 4. Rectangle contains Port.
-echo '** layer 4 **'
-./layer4 1>&2 #<<>>fb.pl
+### move result into fb.pl (without overwrite problems)
+temp=temp_${RANDOM}
+
+./layer3-body >layer3.temp
+# cp layer3.temp ${temp}
+
+# ./appendToFb ${temp}
+# # cat $temp
+# # cat fb.pl $temp >$temp2
+# # mv $temp2 fb.pl
+
+# rm -f ${temp}
+
+# ##########
+
+# # Layer 4. Rectangle contains Port.
+# echo '** layer 4 **'
+# ./layer4 1>&2 #<<>>fb.pl
+
+echo
+echo stopping in layer3 - generate facts but new facts not added to fb.pl
+echo
+cat layer3.temp
