@@ -99,3 +99,10 @@ das_fact(indirect_contains,root_3,cell_7).
 das_fact(indirect_contains,root_3,cell_8).
 das_fact(indirect_contains,root_3,cell_8).
 das_fact(indirect_contains,cell_6,cell_8).
+das_fact(contains,cell_6,cell_7).
+das_fact(contains,cell_7,cell_8).
+das_fact(contains,diagram_1,mxGraphModel_2).
+das_fact(contains,mxGraphModel_2,root_3).
+das_fact(contains,root_3,cell_4).
+das_fact(contains,root_3,cell_5).
+das_fact(contains,root_3,cell_6).

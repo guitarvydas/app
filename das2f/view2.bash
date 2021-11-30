@@ -38,4 +38,6 @@ var Direction = param [1];
 ~~~
 
 swipl -g "consult(view2)." -g 'qd.' -g 'halt.' | node view2.js
+rm -f ${temp}.pl
+rm -f ${temp}.js
 

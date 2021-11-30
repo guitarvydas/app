@@ -34,3 +34,7 @@ echo '** layer 4 **'
 # Layer 5. indirect containment
 echo '** layer 5 **'
 ./layer5 1>&2 #<<>>fb.pl
+
+# Layer 6. direct containment
+echo '** layer 6 **'
+./layer6 1>&2 #<<>>fb.pl

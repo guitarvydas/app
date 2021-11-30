@@ -36,4 +36,6 @@ var Child = param [1];
 ~~~
 
 swipl -g "consult(view3)." -g 'qd.' -g 'halt.' | node view3.js
+rm -f ${temp}.pl
+rm -f ${temp}.js
 
