@@ -7,7 +7,9 @@ temp2=_temp_${RANDOM}
 ### move result into fb.pl (without overwrite problems)
 temp=temp_${RANDOM}
 
-./layer3-body >${temp}
+# old ./layer3-body >${temp}
+# new
+./layer3_query.bash >${temp}
 
 ./appendToFb ${temp}
 # cat $temp

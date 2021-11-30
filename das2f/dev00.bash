@@ -58,3 +58,9 @@ echo
 echo stopping in layer3 - generate facts but new facts not added to fb.pl
 echo
 cat layer3.temp
+
+
+echo
+echo running generated layer3
+echo
+./layer3_query.bash

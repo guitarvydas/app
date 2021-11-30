@@ -7,6 +7,12 @@ temp=temp${RANDOM}
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ?- consult(fb).
+?- consult(shapes).
+?- consult(onSameDiagram).
+?- consult(inside).
+?- consult(names).
+?- consult(ports).
+?- consult(contains).
 query_helper(Parent,Child):-
 contains(Parent,Child),
 true.
@@ -21,7 +27,7 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Parent = p [0];
 var Child = p [1];
-  console.log(`das_fact(contains,Parent,Child)`);
+  console.log(`das_fact(contains,${Parent},${Child}).`);
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
