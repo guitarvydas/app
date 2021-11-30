@@ -6,3 +6,6 @@ chmod a+x ${app}/bin/querydisplay
 
 cp ${app}/querydisplay2/querydisplay2 ${app}/bin
 chmod a+x ${app}/bin/querydisplay2
+
+cp ${app}/setquerydisplay/setquerydisplay ${app}/bin
+chmod a+x ${app}/bin/setquerydisplay
