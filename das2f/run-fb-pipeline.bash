@@ -30,3 +30,7 @@ echo '** layer 3 **'
 # Layer 4. Rectangle contains Port.
 echo '** layer 4 **'
 ./layer4 1>&2 #<<>>fb.pl
+
+# Layer 5. indirect containment
+echo '** layer 5 **'
+./layer5 1>&2 #<<>>fb.pl
