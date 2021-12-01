@@ -6,15 +6,11 @@ sourceof(Edge, [SourceName, SourcePort]):-
 
 sourceidof(Edge, SourceID):-
     diagram_fact(source,Edge, SourceLongID),
-    diagram_fact(synonym,SourceID,SourceLongID),
-    !.
-
+    diagram_fact(synonym,SourceID,SourceLongID).
 sourceidof(Edge, Source):-
     diagram_fact(source, Edge, Source),
-    \+ diagram_fact(synonym,SourceID,SourceLongID),
-    !.
-
-sourceidof(Edge,_):-format(user_error,"FATAL no source for connection ~w~n",[Edge]).
+    \+ diagram_fact(synonym,Source,_).
+% sourceidof(Edge,_):-format(user_error,"FATAL no source for connection ~w~n",[Edge]).
 
 
 targetof(Edge, [TargetName, TargetPort]):-
@@ -25,15 +21,11 @@ targetof(Edge, [TargetName, TargetPort]):-
 
 targetidof(Edge, Target):-
     diagram_fact(target, Edge, TargetLongID),
-    diagram_fact(synonym,Target,TargetLongID),
-    !.
-
+    diagram_fact(synonym,Target,TargetLongID).
 targetidof(Edge, Target):-
     diagram_fact(target, Edge, Target),
-    \+ diagram_fact(synonym,Target,TargetLongID),
-    !.
-
-targetidof(Edge,_):-format(user_error,"FATAL no target for connection ~w~n",[Edge]).
+    \+ diagram_fact(synonym,Target,_).
+% targetidof(Edge,_):-format(user_error,"FATAL no target for connection ~w~n",[Edge]).
 
 
 connectionsof(R,Connections):-
