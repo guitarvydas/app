@@ -14,5 +14,5 @@
 	setof([C,D],das_fact(indirect_contains,C,D),Indirect)
 	subtract(All,Indirect,Set)
 ## display
-das_fact(contains,${R},${E}).
+das_fact(direct_contains,${R},${E}).
   
