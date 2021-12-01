@@ -50,3 +50,5 @@ echo '-- layer7_query.bash generated --'
 
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}
+
+./dev0.bash
