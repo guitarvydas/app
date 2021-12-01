@@ -1,21 +1,39 @@
-sourceof(Edge, Source):-
+sourceof(Edge, [SourceName, SourcePort]):-
+    sourceidof(Edge,PortID),
+    das_fact(direct_contains,Parent,PortID),
+    nameof(PortID,SourcePort),
+    nameof(Parent,SourceName).
+
+sourceidof(Edge, SourceID):-
     diagram_fact(source,Edge, SourceLongID),
-    diagram_fact(synonym,Source,SourceLongID),
+    diagram_fact(synonym,SourceID,SourceLongID),
     !.
-sourceof(Edge, Source):-
+
+sourceidof(Edge, Source):-
     diagram_fact(source, Edge, Source),
+    \+ diagram_fact(synonym,SourceID,SourceLongID),
     !.
-sourceof(Edge,_):-format(user_error,"FATAL no source for connection ~w~n",[Edge]).
+
+sourceidof(Edge,_):-format(user_error,"FATAL no source for connection ~w~n",[Edge]).
 
 
-targetof(Edge, Target):-
+targetof(Edge, [TargetName, TargetPort]):-
+    targetidof(Edge,PortID),
+    das_fact(direct_contains,Parent,PortID),
+    nameof(PortID,TargetPort),
+    nameof(Parent,TargetName).
+
+targetidof(Edge, Target):-
     diagram_fact(target, Edge, TargetLongID),
     diagram_fact(synonym,Target,TargetLongID),
     !.
-targetof(Edge, Target):-
+
+targetidof(Edge, Target):-
     diagram_fact(target, Edge, Target),
+    \+ diagram_fact(synonym,Target,TargetLongID),
     !.
-targetof(Edge,_):-format(user_error,"FATAL no target for connection ~w~n",[Edge]).
+
+targetidof(Edge,_):-format(user_error,"FATAL no target for connection ~w~n",[Edge]).
 
 
 connectionsof(R,Connections):-
