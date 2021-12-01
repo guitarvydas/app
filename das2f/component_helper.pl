@@ -37,12 +37,12 @@ outputof(R,Out):-
 children(R,Children):-bagof(Child,childof(R,Child),Children),!.
 children(_,[]).
 
-childof(R,ChildID):-
+childof(R,Child):-
     isrect(R),
     isrect(ChildID),
     das_fact(direct_contains,R,ChildID),
-    iscomponent(ChildID).
-%    nameof(ChildID,Child).
+    iscomponent(ChildID),
+    nameof(ChildID,Child).
 
 iscomponent(X):-
     isrect(X),

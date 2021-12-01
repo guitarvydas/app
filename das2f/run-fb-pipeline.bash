@@ -41,6 +41,6 @@ echo '** layer 5 **'
 echo '** layer 6 **'
 ./layer6 1>&2 #<<>>fb.pl
 
-# Layer 7. Components - bring it all home
-echo '** layer 7 **'
-./layer7 1>&2 #<<>>fb.pl
+# Layer Final. Components - bring it all home
+echo '** layer final **'
+./layerfinal 1>&2 #<<>>fb.pl
