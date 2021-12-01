@@ -9,15 +9,16 @@ cat >${temp}.pl <<'~~~'
 ?- consult(fb).
 ?- consult(shapes).
 ?- consult(component_helper).
-query_helper(Name,Inputs):-
+query_helper(Component):-
 isrect(R),
 das_fact(name,R,Name),
-( hasport(R) ; hasnoparent(R) ),
-( hasport(R), inputs(R,Inputs) ; Inputs = [] ),
-json_write(user_error,[Name, Inputs],[width(128)]),
+( hasport(R) ; (\+ hasport(R), hasnoparent(R), Inputs = []) ),
+( (hasport(R), inputs(R,Inputs)) ; (\+ hasport(R), Inputs = []) ),
+Component = component{name:Name,inputs:Inputs},
+json_write(user_error,[Component],[width(128)]),
 true.
 query:-
-bagof([Name,Inputs],query_helper(Name,Inputs),Bag),
+bagof([Component],query_helper(Component),Bag),
 json_write(user_output,Bag,[width(128)]).
 ~~~
 cat >${temp}.js <<'~~~'
@@ -25,9 +26,8 @@ const fs = require ('fs');
 var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
-  var Name = p [0];
-var Inputs = p [1];
-  console.log(`component_fact(name,\"${Name}\").\ncomponent_fact(inputs,\"${Name}\",${Inputs}).`);
+  var Component = p [0];
+  console.log(`component_fact(component,\"${Component}\",\"\").`);
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

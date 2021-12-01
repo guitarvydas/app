@@ -1,7 +1,6 @@
 # component
 ## parameters
-  Name
-  Inputs
+  Component
 ## imports
   fb
   shapes
@@ -9,9 +8,10 @@
 ## query
   isrect(R)
   das_fact(name,R,Name)
-  ( hasport(R) ; hasnoparent(R) )
-  ( hasport(R), inputs(R,Inputs) ; Inputs = [] )
-  json_write(user_error,[Name, Inputs],[width(128)])
+  ( hasport(R) ; (\+ hasport(R), hasnoparent(R), Inputs = []) )
+  ( (hasport(R), inputs(R,Inputs)) ; (\+ hasport(R), Inputs = []) )
+  Component = component{name:Name,inputs:Inputs}
+  json_write(user_error,[Component],[width(128)])
 ## display
-component_fact(name,\"${Name}\").\ncomponent_fact(inputs,\"${Name}\",${Inputs}).
+component_fact(component,\"${Component}\",\"\").
 

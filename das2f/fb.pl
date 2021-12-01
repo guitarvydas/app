@@ -264,11 +264,4 @@ das_fact(direct_contains,mxGraphModel_2,root_3).
 das_fact(direct_contains,root_3,cell_4).
 das_fact(direct_contains,root_3,cell_5).
 das_fact(direct_contains,root_3,cell_6).
-component_fact(name,"world").
-component_fact(inputs,"world",in).
-component_fact(name,"world").
-component_fact(inputs,"world",).
-component_fact(name,"helloworld").
-component_fact(inputs,"helloworld",).
-component_fact(name,"hello").
-component_fact(inputs,"hello",).
+component_fact(component,"[object Object]","").
