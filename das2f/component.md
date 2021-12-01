@@ -8,9 +8,10 @@
 ## query
   isrect(R)
   das_fact(name,R,Name)
-  ( hasport(R) ; (\+ hasport(R), hasnoparent(R), Inputs = []) )
+  ( hasport(R) ; (\+ hasport(R), hasnoparent(R), Inputs = [], Outputs = []) )
   ( (hasport(R), inputs(R,Inputs)) ; (\+ hasport(R), Inputs = []) )
-  Component = component{name:Name,inputs:Inputs}
+  Outputs = [x]
+  Component = component{name:Name,inputs:Inputs,outputs:Outputs}
   json_write(user_error,[Component],[width(128)])
 ## display
 component_fact(component,\"${Component}\",\"\").
