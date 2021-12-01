@@ -16,3 +16,15 @@ targetof(Edge, Target):-
     diagram_fact(target, Edge, Target),
     !.
 targetof(Edge,_):-format(user_error,"FATAL no target for connection ~w~n",[Edge]).
+
+
+connectionsof(R,Connections):-
+    bagof([Source,Target],connection(R,Source,Target),Connections),
+    !.
+connectionsof(_,[]).
+
+connection(R,Source,Target):-
+    das_fact(connection,R,ID),
+    das_fact(source,ID,Source),
+    das_fact(target,ID,Target).
+    

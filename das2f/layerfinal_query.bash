@@ -10,6 +10,7 @@ cat >${temp}.pl <<'~~~'
 ?- consult(shapes).
 ?- consult(component_helper).
 ?- consult(code).
+?- consult(connection).
 query_helper(Component):-
 isrect(RID),
 das_fact(name,RID,Name),
@@ -17,7 +18,8 @@ das_fact(name,RID,Name),
 ( (hasport(RID), inputs(RID,Inputs), outputs(RID,Outputs)) ; fail ),
 children(RID,Children),
 codeof(RID,Code),
-Component = component{id:RID, name:Name, inputs:Inputs, outputs:Outputs, children:Children, synccode:Code},
+connectionsof(RID,Connections),
+Component = component{id:RID, name:Name, inputs:Inputs, outputs:Outputs, children:Children, connections:Connections, synccode:Code},
 json_write(user_error,[Component],[width(128)]),
 true.
 query:-

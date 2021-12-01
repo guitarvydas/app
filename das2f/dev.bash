@@ -32,10 +32,6 @@ querydisplay2 contains_port >layer4_query.bash
 chmod a+x layer4_query.bash
 echo '-- layer4_query.bash generated --'
 
-querydisplay2 contains_edge >layer4b_query.bash
-chmod a+x layer4b_query.bash
-echo '-- layer4b_query.bash generated --'
-
 querydisplay2 indirect_contains >layer5_query.bash
 chmod a+x layer5_query.bash
 echo '-- layer5_query.bash generated --'
@@ -43,6 +39,10 @@ echo '-- layer5_query.bash generated --'
 setquerydisplay direct_contains >layer6_query.bash
 chmod a+x layer6_query.bash
 echo '-- layer6_query.bash generated --'
+
+querydisplay2 contains_edge >layeredgecontainment_query.bash
+chmod a+x layeredgecontainment_query.bash
+echo '-- layeredgecontainment_query.bash generated --'
 
 querydisplay2 synccode >layersynccode_query.bash
 chmod a+x layersynccode_query.bash

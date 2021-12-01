@@ -31,7 +31,7 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Parent = p [0];
 var Edge = p [1];
-  console.log(`das_fact(direct_contains,${Rect},${Edge}).`);
+  console.log(`das_fact(direct_contains,${Parent},${Edge}).`);
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

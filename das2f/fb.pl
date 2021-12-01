@@ -222,8 +222,6 @@ das_fact(contains,cell_6,cell_8).
 das_fact(contains,cell_7,cell_8).
 das_fact(contains,cell_11,cell_12).
 das_fact(contains,cell_7,cell_10).
-das_fact(contains,cell_6,cell_9).
-das_fact(contains,cell_7,cell_9).
 das_fact(indirect_contains,diagram_1,root_3).
 das_fact(indirect_contains,mxGraphModel_2,cell_10).
 das_fact(indirect_contains,mxGraphModel_2,cell_11).
@@ -243,30 +241,31 @@ das_fact(indirect_contains,root_3,cell_12).
 das_fact(indirect_contains,root_3,cell_13).
 das_fact(indirect_contains,root_3,cell_7).
 das_fact(indirect_contains,root_3,cell_8).
-das_fact(indirect_contains,root_3,cell_9).
 das_fact(indirect_contains,root_3,cell_8).
 das_fact(indirect_contains,root_3,cell_10).
-das_fact(indirect_contains,root_3,cell_9).
 das_fact(indirect_contains,cell_6,cell_13).
 das_fact(indirect_contains,cell_6,cell_12).
 das_fact(indirect_contains,cell_6,cell_8).
 das_fact(indirect_contains,cell_6,cell_10).
-das_fact(indirect_contains,cell_6,cell_9).
 das_fact(direct_contains,cell_11,cell_12).
 das_fact(direct_contains,cell_11,cell_13).
 das_fact(direct_contains,cell_6,cell_11).
 das_fact(direct_contains,cell_6,cell_7).
 das_fact(direct_contains,cell_7,cell_10).
 das_fact(direct_contains,cell_7,cell_8).
-das_fact(direct_contains,cell_7,cell_9).
 das_fact(direct_contains,diagram_1,mxGraphModel_2).
 das_fact(direct_contains,mxGraphModel_2,root_3).
 das_fact(direct_contains,root_3,cell_4).
 das_fact(direct_contains,root_3,cell_5).
 das_fact(direct_contains,root_3,cell_6).
+das_fact(direct_contains,root_3,cell_9).
+das_fact(direct_contains,cell_6,cell_9).
 das_fact(codebox,cell_13,"&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;read &amp;lt;/dev/fd/3&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;echo world&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;# no output&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;br&gt;&lt;/p&gt;").
 das_fact(codebox,cell_8,"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
-das_fact(connection, cell_7, cell_9).
+das_fact(connection, root_3, cell_9).
+das_fact(source, cell_9, cell_10).
+das_fact(target, cell_9, cell_12).
+das_fact(connection, cell_6, cell_9).
 das_fact(source, cell_9, cell_10).
 das_fact(target, cell_9, cell_12).
 component_fact(component,"[object Object]","").

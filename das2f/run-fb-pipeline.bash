@@ -30,8 +30,6 @@ echo '** layer 3 **'
 # Layer 4. Rectangle contains Port.
 echo '** layer 4 **'
 ./layer4 1>&2 #<<>>fb.pl
-echo '** layer 4b **'
-./layer4b 1>&2 #<<>>fb.pl
 
 # Layer 5. indirect containment
 echo '** layer 5 **'
@@ -40,6 +38,10 @@ echo '** layer 5 **'
 # Layer 6. direct containment
 echo '** layer 6 **'
 ./layer6 1>&2 #<<>>fb.pl
+
+# Layer edge containment
+echo '** layer edge containment **'
+./layeredgecontainment 1>&2 #<<>>fb.pl
 
 # Layer Synccode.
 echo '** layer synccode **'
