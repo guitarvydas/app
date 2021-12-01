@@ -1,6 +1,6 @@
 # contains edge
 ## parameters
-  Parent
+  Rect
   Edge
 ## imports
     fb
@@ -10,10 +10,11 @@
     names
     ports
 ## query
+    isrect(Rect)
     isedge(Edge)
-    das_fact(source,Edge,SourceLongID)
-	das_fact(synonym,Source,SourceLongID)
-	contains(Parent,Source)
+    diagram_fact(source,Edge,SourceLongID)
+	diagram_fact(synonym,Source,SourceLongID)
+	das_fact(contains,Rect,Source)
 ## display
-das_fact(contains,${Parent},${Edge}).
+das_fact(contains,${Rect},${Edge}).
   
