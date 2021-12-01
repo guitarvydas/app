@@ -264,6 +264,8 @@ das_fact(direct_contains,mxGraphModel_2,root_3).
 das_fact(direct_contains,root_3,cell_4).
 das_fact(direct_contains,root_3,cell_5).
 das_fact(direct_contains,root_3,cell_6).
+component_fact(codebox,cell_13,"&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;read &amp;lt;/dev/fd/3&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;echo world&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;# no output&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;br&gt;&lt;/p&gt;").
+component_fact(codebox,cell_8,"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
 component_fact(component,"[object Object]","").
 component_fact(component,"[object Object]","").
 component_fact(component,"[object Object]","").

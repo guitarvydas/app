@@ -14,3 +14,7 @@ connectionOf(C,connection{name:ConnectionName,source:pair{component:SourceName,p
     getname(TargetParent,TargetName),
     gensym(x,ConnectionName).
     
+
+
+need synccode
+need connections

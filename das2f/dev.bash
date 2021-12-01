@@ -44,6 +44,10 @@ setquerydisplay direct_contains >layer6_query.bash
 chmod a+x layer6_query.bash
 echo '-- layer6_query.bash generated --'
 
+querydisplay2 synccode >layersynccode_query.bash
+chmod a+x layersynccode_query.bash
+echo '-- layersynccode_query.bash generated --'
+
 querydisplay2 component >layerfinal_query.bash
 chmod a+x layerfinal_query.bash
 echo '-- layerfinal_query.bash generated --'

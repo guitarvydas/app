@@ -41,6 +41,10 @@ echo '** layer 5 **'
 echo '** layer 6 **'
 ./layer6 1>&2 #<<>>fb.pl
 
+# Layer Synccode. Components - bring it all home
+echo '** layer synccode **'
+./layersynccode 1>&2 #<<>>fb.pl
+
 # Layer Final. Components - bring it all home
 echo '** layer final **'
 ./layerfinal 1>&2 #<<>>fb.pl
