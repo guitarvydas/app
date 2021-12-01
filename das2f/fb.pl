@@ -265,3 +265,5 @@ das_fact(direct_contains,root_3,cell_4).
 das_fact(direct_contains,root_3,cell_5).
 das_fact(direct_contains,root_3,cell_6).
 component_fact(component,"[object Object]","").
+component_fact(component,"[object Object]","").
+component_fact(component,"[object Object]","").
