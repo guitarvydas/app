@@ -11,5 +11,4 @@
   das_fact(color,Codebox,"red")
   valueof(Codebox,Code)
 ## display
-component_fact(codebox,${Codebox},\"${Code}\").
-
+das_fact(codebox,${Codebox},\"${Code}\").

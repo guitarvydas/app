@@ -9,13 +9,15 @@ cat >${temp}.pl <<'~~~'
 ?- consult(fb).
 ?- consult(shapes).
 ?- consult(component_helper).
+?- consult(code).
 query_helper(Component):-
-isrect(R),
-das_fact(name,R,Name),
-( hasport(R) ; (\+ hasport(R), hasnoparent(R), Inputs = [], Outputs = []) ),
-( (hasport(R), inputs(R,Inputs), outputs(R,Outputs)) ; fail ),
-children(R,Children),
-Component = component{id:R, name:Name, inputs:Inputs, outputs:Outputs, children:Children},
+isrect(RID),
+das_fact(name,RID,Name),
+( hasport(RID) ; (\+ hasport(RID), hasnoparent(RID), Inputs = [], Outputs = []) ),
+( (hasport(RID), inputs(RID,Inputs), outputs(RID,Outputs)) ; fail ),
+children(RID,Children),
+codeof(RID,Code),
+Component = component{id:RID, name:Name, inputs:Inputs, outputs:Outputs, children:Children, code:Code},
 json_write(user_error,[Component],[width(128)]),
 true.
 query:-

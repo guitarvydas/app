@@ -25,7 +25,7 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Codebox = p [0];
 var Code = p [1];
-  console.log(`component_fact(codebox,${Codebox},\"${Code}\").`);
+  console.log(`das_fact(codebox,${Codebox},\"${Code}\").`);
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
