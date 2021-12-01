@@ -264,3 +264,6 @@ das_fact(direct_contains,mxGraphModel_2,root_3).
 das_fact(direct_contains,root_3,cell_4).
 das_fact(direct_contains,root_3,cell_5).
 das_fact(direct_contains,root_3,cell_6).
+component_fact("world").
+component_fact("helloworld").
+component_fact("hello").

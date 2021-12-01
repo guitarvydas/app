@@ -10,4 +10,4 @@
   das_fact(name,R,Name)
   ( hasport(R) ; hasnoparent(R) )
 ## display
-[[component: ${Name}]]
+component_fact(\"${Name}\").
