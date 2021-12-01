@@ -40,3 +40,7 @@ echo '** layer 5 **'
 # Layer 6. direct containment
 echo '** layer 6 **'
 ./layer6 1>&2 #<<>>fb.pl
+
+# Layer 7. Components - bring it all home
+echo '** layer 7 **'
+./layer7 1>&2 #<<>>fb.pl

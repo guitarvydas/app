@@ -44,5 +44,9 @@ setquerydisplay direct_contains >layer6_query.bash
 chmod a+x layer6_query.bash
 echo '-- layer6_query.bash generated --'
 
+querydisplay2 component >layer7_query.bash
+chmod a+x layer7_query.bash
+echo '-- layer7_query.bash generated --'
+
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}
