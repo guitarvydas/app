@@ -48,6 +48,10 @@ querydisplay2 synccode >layersynccode_query.bash
 chmod a+x layersynccode_query.bash
 echo '-- layersynccode_query.bash generated --'
 
+querydisplay2 connection >layerconnection_query.bash
+chmod a+x layerconnection_query.bash
+echo '-- layerconnection_query.bash generated --'
+
 querydisplay2 component >layerfinal_query.bash
 chmod a+x layerfinal_query.bash
 echo '-- layerfinal_query.bash generated --'

@@ -17,7 +17,7 @@ das_fact(name,RID,Name),
 ( (hasport(RID), inputs(RID,Inputs), outputs(RID,Outputs)) ; fail ),
 children(RID,Children),
 codeof(RID,Code),
-Component = component{id:RID, name:Name, inputs:Inputs, outputs:Outputs, children:Children, code:Code},
+Component = component{id:RID, name:Name, inputs:Inputs, outputs:Outputs, children:Children, synccode:Code},
 json_write(user_error,[Component],[width(128)]),
 true.
 query:-
