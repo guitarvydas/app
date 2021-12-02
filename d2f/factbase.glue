@@ -12,6 +12,7 @@ ${support.popContext ()}
            {{ support.pushGensymContext ("mxGraphModel_"); }}
 	   [[
 diagram_fact(contains, ${support.getParentID ()}, ${support.getID ()}).
+diagram_fact(mxGraphModel, ${support.getID ()}, ${support.getID ()}).
 ${rootcontent}
 ${support.popContext ()}
            ]]
@@ -20,6 +21,7 @@ ${support.popContext ()}
            {{ support.pushGensymContext ("root_"); }}
 	   [[
 diagram_fact(contains, ${support.getParentID ()}, ${support.getID ()}).
+diagram_fact(root, ${support.getID ()}, ${support.getID ()}).
 ${cells}
 ${support.popContext ()}
            ]]
