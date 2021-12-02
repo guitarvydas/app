@@ -47,7 +47,7 @@ echo '** layer edge containment **'
 echo '** layer synccode **'
 ./layersynccode 1>&2 #<<>>fb.pl
 
-# Layer Connection.
+# Layer Connections.
 echo '** layer connections **'
 ./layerconnection 1>&2 #<<>>fb.pl
 

@@ -11,7 +11,6 @@ ${support.popContext ()}
    DiagramContent[kopen @as kgt rootcontent kclose] =
            {{ support.pushGensymContext ("mxGraphModel_"); }}
 	   [[
-diagram_fact(contains, ${support.getParentID ()}, ${support.getID ()}).
 diagram_fact(mxGraphModel, ${support.getID ()}, ${support.getID ()}).
 ${rootcontent}
 ${support.popContext ()}
@@ -20,7 +19,6 @@ ${support.popContext ()}
     RootContent [kopen @cells kclose] =
            {{ support.pushGensymContext ("root_"); }}
 	   [[
-diagram_fact(contains, ${support.getParentID ()}, ${support.getID ()}).
 diagram_fact(root, ${support.getID ()}, ${support.getID ()}).
 ${cells}
 ${support.popContext ()}
@@ -29,7 +27,6 @@ ${support.popContext ()}
      Cell_withContent [kopen @as kgt @cellcontent kclose] =
               {{ support.pushGensymContext ("cell_"); }}
               [[
-diagram_fact(contains, ${support.getParentID ()}, ${support.getID ()}).
 diagram_fact(cell, ${support.getID ()}, "").
 ${support.generateAttributes ()}
 ${cellcontent}
@@ -40,7 +37,6 @@ ${support.popContext ()}
      Cell_withoutContent [kopen @as kclose] =
               {{ support.pushGensymContext ("cell_"); }}
               [[
-diagram_fact(contains, ${support.getParentID ()}, ${support.getID ()}).
 diagram_fact(cell, ${support.getID ()}, "").
 ${support.generateAttributes ()}
 ${support.generateSynonym ()}
