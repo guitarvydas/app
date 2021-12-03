@@ -1,35 +1,64 @@
 const fs = require ('fs');
 
-function old_main () {
-    let re = /(.*)~~~(.*)/m;
-    var allchars = fs.readFileSync ('/dev/fd/0', 'utf-8');
-    console.log (`ALL:${allchars}\n\n`);
-    var m = allchars.match (re);
-//    var front = allchars.substring (0, index);
-    var front = m?.[1];
-//    var restBeginningWithRE = allchars.substring (front.length);
-//    var index2 = restBeginningWithRE.match (re2);
-    var rest = m?.[2];
-    console.log (`WHOLE:${m?.[0]}\n\n`);
-    console.log (`FRONT:${front}\n\n`);
-    console.log (`REST:${rest}\n\n`);
+// separators are based on lines
+// #+ allows lines to be used in .md files (easily), e.g.
+// ###~~~
+
+let reBeginSeparator = /#+~~~/;
+let reEndSeparator = /#+~~~/;
+
+function splitOnSeparators (s) {
+    // s = front + beginSep + middle + endSep + rest
+    // if there is nothing to expand (i.e. no beginSep), s = front
+    // return 3 parts, excluding beginSep and endSep
+
+    var frontMatch = s.match (reBeginSeparator);
+    if (frontMatch) {
+        // s contains a begin separator : front + beginSep + middle + endSep + rest
+	var indexEndFront = frontMatch.index;
+	var front = s.substring (0, indexEndFront);
+
+	// combined = middle + endSep + rest
+	var combined = s.substring (indexEndFront + frontMatch.length);
+	var middleMatch = combined.match (reEndSeparator);
+
+	var middle = combined.substring (0, middleMatch.index);
+	var rest = combined.substring (middleMatch.index + middleMatch.length);
+	
+	return { front, middle, rest };
+    } else {
+	// there is no middle nor rest (no beginSep)
+	front = s;
+	middle = '';
+	rest = ''
+	return { front, middle, rest }; // should be { s, '', '' }, but node.js balks
+    }
 }
 
-function old_old_main () {
-    let re = /#+~~~/;
-    var allchars = fs.readFileSync ('/dev/fd/0', 'utf-8');
-    console.log (`ALL:${allchars}\n\n`);
-    var m = allchars.match (re);
-    console.log(m);
+function expandAll (s) {
+    var {front, middle, rest} = splitOnSeparators (s);
+    if (middle === '') {
+	return front;
+    } else {
+	var expandedText = expand (middle);
+	return front + expandAll (expandedText + rest);
+    }
 }
 
 function main () {
-    let re = /#+~~~/;
     var allchars = fs.readFileSync ('/dev/fd/0', 'utf-8');
-    console.log (`ALL:${allchars}\n\n`);
-    var m = allchars.match (re);
-    console.log(m);
-    console.log(`index=${m.index} m[0]=${m[0]} len=${m[0].length}\n\n`);
+    console.error (`ALL:${allchars}\n\n`);
+    var expanded = expandAll (allchars);
+    emit (expanded);
+}
+
+
+function expand (s) {
+    return s; // stub out for debug
+}
+
+function emit (s) {
+    console.log (s);
 }
 
 main ();
