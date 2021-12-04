@@ -153,6 +153,16 @@ das_fact(name, cell_13, "&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; fo
 das_fact(name, cell_6, "helloworld").
 das_fact(name, cell_7, "hello").
 das_fact(name, cell_8, "&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
+das_fact(color,cell_10,"yellow").
+das_fact(color,cell_11,"-").
+das_fact(color,cell_12,"green").
+das_fact(color,cell_13,"red").
+das_fact(color,cell_4,"-").
+das_fact(color,cell_5,"-").
+das_fact(color,cell_6,"-").
+das_fact(color,cell_7,"-").
+das_fact(color,cell_8,"red").
+das_fact(color,cell_9,"-").
 das_fact(bbL,cell_10,470).
 das_fact(bbL,cell_11,305).
 das_fact(bbL,cell_12,285).
@@ -181,13 +191,6 @@ das_fact(bbB,cell_13,565).
 das_fact(bbB,cell_6,650).
 das_fact(bbB,cell_7,390).
 das_fact(bbB,cell_8,345).
-das_fact(color,cell_10,"yellow").
-das_fact(color,cell_11,"-").
-das_fact(color,cell_12,"green").
-das_fact(color,cell_13,"red").
-das_fact(color,cell_6,"-").
-das_fact(color,cell_7,"-").
-das_fact(color,cell_8,"red").
 das_fact(direction,cell_10,output).
 das_fact(direction,cell_12,input).
 das_fact(inputport,cell_12,"-").

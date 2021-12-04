@@ -63,6 +63,11 @@ querydisplay2 preprocessed_layerkind >layerkind_query.bash
 chmod a+x layerkind_query.bash
 echo '-- layerkind_query.bash generated --'
 
+pre forall.ohm forall.glue <layercolor.md >preprocessed_layercolor.md
+querydisplay2 preprocessed_layercolor >layercolor_query.bash
+chmod a+x layercolor_query.bash
+echo '-- layercolor_query.bash generated --'
+
 querydisplay2 layername >layername_query.bash
 chmod a+x layername_query.bash
 echo '-- layername_query.bash generated --'

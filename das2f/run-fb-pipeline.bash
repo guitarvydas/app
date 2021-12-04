@@ -15,6 +15,8 @@ d2f helloworld >fb.pl
 echo '** layer 1 **' 1>&2
 ./layerkind 1>&2 # <<>>fb.pl
 ./layername 1>&2 # <<>>fb.pl
+./layercolor 1>&2 # <<>>fb.pl
+
 ./layer1  1>&2 #<<>>fb.pl
 
 # # Layer 2. Names, port directions
@@ -29,9 +31,9 @@ echo '** design rule for layer 2 **'
 echo '** layer 3 **'
 ./layer3 1>&2 #<<>>fb.pl
 
-
 echo '*** early exit'
 exit 0
+
 
 # Layer 4. Rectangle contains Port.
 echo '** layer 4 **'
