@@ -6,11 +6,6 @@ kind(X,Kind):-
     ;   diagram_fact(edge,X,_)         -> Kind = "edge"
     ;   diagram_fact(root,X,_)         -> Kind = "root"
     ;
-      (
-        \+ diagram_fact(kind,X,"ellipse"), 
-	\+ diagram_fact(edge,X,_), 
-	\+ diagram_fact(root,X,_), 
 	Kind = "rectangle"
-      )
     ).
 

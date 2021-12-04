@@ -1,10 +1,4 @@
-//'use strict'
-
-const fs = require ('fs');
-
-let reBeginSeparator = /#+~~~\n/;
-let reEndSeparator = /#+~~~\n/;
-
+'use strict'
 
 var viewGeneratedCode = false;
 var tracing = false;
@@ -284,11 +278,12 @@ function _ruleExit (ruleName) {
     _scope.pop ();
 }
 
+var fs = require ('fs');
 
 function execTranspiler (source, grammar, semantics, errorMessage) {
     // first pass - transpile glue code to javascript
     try {
-	let generatedSCNSemantics = transpiler (semantics, glueGrammar, "_glue", glueSemantics, "in glue specification " + errorMessage);
+	let generatedSCNSemantics = transpiler (semantics, glueGrammar, "_glue", glueSemantics, "in action (glue) specification " + errorMessage);
     _ruleInit();
 	try {
 	    if (viewGeneratedCode) {
@@ -319,66 +314,33 @@ function internal_stranspile (sourceString, grammarFileName, glueFileName, error
     return returnString;
 }
 
-function expand (s, grammarFileName, glueFileName, message) {
-    var result = internal_stranspile (s, grammarFileName, glueFileName, message);
-    return result;
-}
-
-
-
-
-
-
-// separators are based on lines
-// #+ allows lines to be used in .md files (easily), e.g.
-// ###~~~
-
-function splitOnSeparators (s) {
-    // s = front + beginSep + middle + endSep + rest
-    // if there is nothing to expand (i.e. no beginSep), s = front
-    // return 3 parts, excluding beginSep and endSep
-
-    var frontMatch = s.match (reBeginSeparator);
-    if (frontMatch) {
-        // s contains a begin separator : front + beginSep + middle + endSep + rest
-        var matchLength = frontMatch [0].length;
-    	var indexEndFront = frontMatch.index;   
-	    var front = s.substring (0, indexEndFront);
-
-	var combined = s.substring (indexEndFront + matchLength);
-	// combined = middle + endSep + rest
-	var middleMatch = combined.match (reEndSeparator);
-
-	var middle = combined.substring (0, middleMatch.index);
-	var rest = combined.substring (middleMatch.index + middleMatch[0].length);
-	
-	return { front, middle, rest };
-    } else {
-	// there is no middle nor rest (no beginSep)
-	front = s;
-	middle = '';
-	rest = ''
-	return { front, middle, rest }; // should be { s, '', '' }, but node.js balks
+function ftranspile (sourceFileName, grammarFileName, glueFileName, errorMessage) {
+    try {
+	var source;
+	if (sourceFileName === "-") {
+	    source = fs.readFileSync ('/dev/fd/0', 'utf-8');
+	    // source = fs.readFileSync ('/dev/stdin', 'utf-8');
+	} else {
+	    source = fs.readFileSync (sourceFileName, 'utf-8');
+	}
+	return internal_stranspile (source, grammarFileName, glueFileName, errorMessage);
     }
-}
-
-function expandAll (s, grammarFileName, glueFileName, message) {
-    
-    var {front, middle, rest} = splitOnSeparators (s);
-    if (middle === '') {
-	return front;
-    } else {
-	var expandedText = expand (middle, grammarFileName, glueFileName, message);
-	return front + expandAll (expandedText + rest, grammarFileName, glueFileName, message);
+    catch (err) {
+	process.stderr.write (err.toString ());
+	process.stderr.write ('\n');
+	return '';
     }
-}
+}    
+exports.ftranspile = ftranspile;
 
-function pre (allchars) {
+
+
+function expand () {
     var args = process.argv;
     var grammarFileName = args[2];
-    var glueFileName = args[3];
+    var actionFileName = args[3];
     var supportFileName = args[4];
-    support = require (supportFileName);
+    var support = require (supportFileName);
     if (args.length >= 6) {
 	var traceFlag = args[5];
 	if (traceFlag === 't') {
@@ -386,49 +348,8 @@ function pre (allchars) {
 	    traceDepth = 0;
 	}
     }
-    var expanded = expandAll (allchars, grammarFileName, glueFileName, 'parsing input');
-    return expanded;
-}
-
-function main () {
-    var allchars = fs.readFileSync ('/dev/fd/0', 'utf-8');
-    var result = pre (allchars);
-    emit (result);
-}
-
-function xxx () {
-    var allchars = `
-# layer kind
-## parameters
-  Parent
-  Child
-## imports
-  fb
-  shapes
-  onSameDiagram
-  inside
-  names
-  ports
-  contains
-##~~~
-## forall X as diagram_fact(cell,X,_)
-  cond Kind
-      diagram_fact(kind,X,"ellipse") "ellipse"
-      diagram_fact(edge,X,1)         "edge"
-      diagram_fact(root,X,1)         "root"
-     else                            "rectangle"
-
-##~~~
-## display
-  das_fact(kind,\${Vertex},\${Kind}).
-`;
-    var result = pre (allchars);
-    emit (result);
-}
-
-function emit (s) {
-    console.log (s);
+    var result = ftranspile ("-", grammarFileName, actionFileName, 'parse');
+    console.log (result);
 }
 
 main ();
-
