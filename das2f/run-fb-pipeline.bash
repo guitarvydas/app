@@ -16,8 +16,7 @@ echo '** layer 1 **' 1>&2
 ./layerkind 1>&2 # <<>>fb.pl
 ./layername 1>&2 # <<>>fb.pl
 ./layercolor 1>&2 # <<>>fb.pl
-
-./layer1  1>&2 #<<>>fb.pl
+./layerboundingbox 1>&2 # <<>>fb.pl
 
 # # Layer 2. Names, port directions
 echo '** layer 2 **' 1>&2

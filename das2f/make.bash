@@ -72,6 +72,10 @@ querydisplay2 layername >layername_query.bash
 chmod a+x layername_query.bash
 echo '-- layername_query.bash generated --'
 
+querydisplay2 layerboundingbox >layerboundingbox_query.bash
+chmod a+x layerboundingbox_query.bash
+echo '-- layerboundingbox_query.bash generated --'
+
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}
 
