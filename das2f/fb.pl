@@ -164,33 +164,33 @@ das_fact(color,cell_7,"-").
 das_fact(color,cell_8,"red").
 das_fact(color,cell_9,"-").
 das_fact(bbL,cell_10,470).
-das_fact(bbT,cell_10,290).
-das_fact(bbR,cell_10,510).
-das_fact(bbB,cell_10,330).
+  das_fact(bbT,cell_10,290).
+  das_fact(bbR,cell_10,510).
+  das_fact(bbB,cell_10,330).
 das_fact(bbL,cell_11,305).
-das_fact(bbT,cell_11,450).
-das_fact(bbR,cell_11,550).
-das_fact(bbB,cell_11,600).
+  das_fact(bbT,cell_11,450).
+  das_fact(bbR,cell_11,550).
+  das_fact(bbB,cell_11,600).
 das_fact(bbL,cell_12,285).
-das_fact(bbT,cell_12,507.5).
-das_fact(bbR,cell_12,325).
-das_fact(bbB,cell_12,547.5).
+  das_fact(bbT,cell_12,507.5).
+  das_fact(bbR,cell_12,325).
+  das_fact(bbB,cell_12,547.5).
 das_fact(bbL,cell_13,335).
-das_fact(bbT,cell_13,490).
-das_fact(bbR,cell_13,510).
-das_fact(bbB,cell_13,565).
+  das_fact(bbT,cell_13,490).
+  das_fact(bbR,cell_13,510).
+  das_fact(bbB,cell_13,565).
 das_fact(bbL,cell_6,170).
-das_fact(bbT,cell_6,170).
-das_fact(bbR,cell_6,630).
-das_fact(bbB,cell_6,650).
+  das_fact(bbT,cell_6,170).
+  das_fact(bbR,cell_6,630).
+  das_fact(bbB,cell_6,650).
 das_fact(bbL,cell_7,255).
-das_fact(bbT,cell_7,220).
-das_fact(bbR,cell_7,490).
-das_fact(bbB,cell_7,390).
+  das_fact(bbT,cell_7,220).
+  das_fact(bbR,cell_7,490).
+  das_fact(bbB,cell_7,390).
 das_fact(bbL,cell_8,285).
-das_fact(bbT,cell_8,265).
-das_fact(bbR,cell_8,450).
-das_fact(bbB,cell_8,345).
+  das_fact(bbT,cell_8,265).
+  das_fact(bbR,cell_8,450).
+  das_fact(bbB,cell_8,345).
 das_fact(direction,cell_10,output).
 das_fact(direction,cell_12,input).
 das_fact(inputport,cell_12,"-").

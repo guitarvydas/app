@@ -1,4 +1,4 @@
-# layer 3
+# layer bounding boxes
 ## parameters
   ID
   X
@@ -21,4 +21,7 @@
     Right is X+W
     Bottom is Y+H
 ## display
-  das_fact(bbL,${ID},${X}).\ndas_fact(bbT,${ID},${Y}).\ndas_fact(bbR,${ID},${Right}).\ndas_fact(bbB,${ID},${Bottom}).
+  das_fact(bbL,${ID},${X}).
+  das_fact(bbT,${ID},${Y}).
+  das_fact(bbR,${ID},${Right}).
+  das_fact(bbB,${ID},${Bottom}).
