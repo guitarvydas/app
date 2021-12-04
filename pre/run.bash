@@ -1,4 +1,4 @@
 # example only - use "pre" for production
 app=${HOME}/app
 ${app}/make.bash
-pre in.txt
+pre forall.ohm forall.glue <in.txt

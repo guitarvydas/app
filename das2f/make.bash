@@ -28,7 +28,10 @@ echo '-- view3.bash generated --'
 
 # queries
 
-pre layerkind.md forall.ohm forall.glue forallsupport.js
+pre layerkind.md >preprocessed_layerkind.md
+querydisplay2 preprocessed_layerkind >layerkind_query.bash
+chmod a+x layerkind_query.bash
+echo '-- layerkind_query.bash generated --'
 
 querydisplay2 layer3 >layer3_query.bash
 chmod a+x layer3_query.bash
@@ -65,4 +68,3 @@ echo '-- layerfinal_query.bash generated --'
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}
 
-./dev0.bash
