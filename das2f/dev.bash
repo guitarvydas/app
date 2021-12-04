@@ -6,4 +6,5 @@
 # echo '-- layerkind_query.bash generated --'
 
 ./make.bash
-# ./dev0.bash
+# ./run-fb-pipeline.bash
+# # ./dev0.bash

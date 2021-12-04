@@ -13,7 +13,7 @@ d2f helloworld >fb.pl
 
 # Layer 1. Infer low-hanging fruit information.
 echo '** layer 1 **' 1>&2
-./layerkind 2>&2 # <<>>fb.pl
+./layerkind 1>&2 # <<>>fb.pl
 echo '*** early exit'
 exit 0
 ./layer1  1>&2 #<<>>fb.pl
