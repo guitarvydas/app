@@ -1,7 +1,7 @@
 # layer kind
 ## parameters
-  Parent
-  Child
+  X
+  Kind
 ## imports
   fb
   shapes
@@ -19,4 +19,4 @@
      else                            "rectangle"
 ##~~~
 ## display
-  das_fact(kind,${Vertex},${Kind}).
+  das_fact(kind,${X},${Kind}).

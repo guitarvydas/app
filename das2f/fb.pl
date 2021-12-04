@@ -346,3 +346,28 @@ diagram_fact(y, cell_31, 160).
 diagram_fact(y, cell_6, 170).
 diagram_fact(y, cell_7, 220).
 diagram_fact(y, cell_8, 265).
+das_fact(kind,cell_10,ellipse).
+das_fact(kind,cell_11,rectangle).
+das_fact(kind,cell_12,ellipse).
+das_fact(kind,cell_13,rectangle).
+das_fact(kind,cell_17,rectangle).
+das_fact(kind,cell_18,rectangle).
+das_fact(kind,cell_19,rectangle).
+das_fact(kind,cell_20,rectangle).
+das_fact(kind,cell_21,rectangle).
+das_fact(kind,cell_22,rectangle).
+das_fact(kind,cell_23,rectangle).
+das_fact(kind,cell_24,rectangle).
+das_fact(kind,cell_25,rectangle).
+das_fact(kind,cell_26,rectangle).
+das_fact(kind,cell_27,rectangle).
+das_fact(kind,cell_28,rectangle).
+das_fact(kind,cell_29,rectangle).
+das_fact(kind,cell_30,rectangle).
+das_fact(kind,cell_31,rectangle).
+das_fact(kind,cell_4,rectangle).
+das_fact(kind,cell_5,rectangle).
+das_fact(kind,cell_6,rectangle).
+das_fact(kind,cell_7,rectangle).
+das_fact(kind,cell_8,rectangle).
+das_fact(kind,cell_9,edge).
