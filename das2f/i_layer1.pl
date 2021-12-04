@@ -1,15 +1,3 @@
-inferKind(X):-
-    diagram_fact(kind,X,"ellipse"),
-    assertz(das_fact(kind,X,"ellipse")).
-inferKind(X):-
-    diagram_fact(edge,X,1),
-    assertz(das_fact(kind,X,"edge")).
-inferKind(X):-
-    diagram_fact(vertex,X,1),
-    \+diagram_fact(kind,X,"ellipse"),
-    \+diagram_fact(kind,X,"edge"),
-    assertz(das_fact(kind,X,"rectangle")).
-
 inferBB(S):-
     diagram_fact(x,S,X),
     diagram_fact(y,S,Y),
@@ -50,7 +38,6 @@ hasColor(X):-
 
 
 inferLayer1:-
-    bagof(X,inferKind(X),_),
     bagof(X,inferBB(X),_),
     bagof(X,
 	  (diagram_fact(vertex,X,1),inferColor(X)),

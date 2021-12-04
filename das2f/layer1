@@ -47,7 +47,6 @@ hasColor(X):-
 
 
 inferLayer1:-
-    bagof(X,inferKind(X),_),
     bagof(X,inferBB(X),_),
     bagof(X,
 	  (diagram_fact(vertex,X,1),inferColor(X)),
