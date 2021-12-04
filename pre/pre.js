@@ -2,8 +2,8 @@
 
 const fs = require ('fs');
 
-let reBeginSeparator = /#+~~~\n/;
-let reEndSeparator = /#+~~~\n/;
+var reTrigger = /#+~~~\n/;
+const reEnd = /#+/;
 
 
 var viewGeneratedCode = false;
@@ -333,24 +333,27 @@ function expand (s, grammarFileName, glueFileName, message) {
 // #+ allows lines to be used in .md files (easily), e.g.
 // ###~~~
 
-function splitOnSeparators (s) {
+function splitOnSeparators (trigger, s) {
     // s = front + beginSep + middle + endSep + rest
     // if there is nothing to expand (i.e. no beginSep), s = front
     // return 3 parts, excluding beginSep and endSep
 
-    var frontMatch = s.match (reBeginSeparator);
+    var frontMatch = s.match (trigger);
+    console.log (trigger);
+    console.log (frontMatch);
     if (frontMatch) {
         // s contains a begin separator : front + beginSep + middle + endSep + rest
         var matchLength = frontMatch [0].length;
     	var indexEndFront = frontMatch.index;   
-	    var front = s.substring (0, indexEndFront);
+	var front = s.substring (0, indexEndFront);
 
+	var matchedString = s.substring (indexEndFront, indexEndFront + matchLength);
 	var combined = s.substring (indexEndFront + matchLength);
 	// combined = middle + endSep + rest
-	var middleMatch = combined.match (reEndSeparator);
+	var middleMatch = combined.match (reEnd);
 
-	var middle = combined.substring (0, middleMatch.index);
-	var rest = combined.substring (middleMatch.index + middleMatch[0].length);
+	var middle = matchedString + combined.substring (0, middleMatch.index);
+	var rest = combined.substring (middleMatch.index);
 	
 	return { front, middle, rest };
     } else {
@@ -362,9 +365,17 @@ function splitOnSeparators (s) {
     }
 }
 
-function expandAll (s, grammarFileName, glueFileName, message) {
+function expandAll (s, trigger, grammarFileName, glueFileName, message) {
     
-    var {front, middle, rest} = splitOnSeparators (s);
+    var {front, middle, rest} = splitOnSeparators (trigger, s);
+
+    console.log (`front ${front.length}:`);
+    console.log (front);
+    console.log (`middle ${middle.length}:`);
+    console.log (middle);
+    console.log (`rest ${rest.length}:`);
+    console.log (rest);
+
     if (middle === '') {
 	return front;
     } else {
@@ -375,18 +386,20 @@ function expandAll (s, grammarFileName, glueFileName, message) {
 
 function pre (allchars) {
     var args = process.argv;
-    var grammarFileName = args[2];
-    var glueFileName = args[3];
-    var supportFileName = args[4];
+    var reTrigger = new RegExp (args[2]);
+    var grammarFileName = args[3];
+    var glueFileName = args[4];
+    var supportFileName = args[5];
+
     support = require (supportFileName);
-    if (args.length >= 6) {
-	var traceFlag = args[5];
+    if (args.length >= 7) {
+	var traceFlag = args[6];
 	if (traceFlag === 't') {
 	    tracing = true;
 	    traceDepth = 0;
 	}
     }
-    var expanded = expandAll (allchars, grammarFileName, glueFileName, 'parsing input');
+    var expanded = expandAll (allchars, reTrigger, grammarFileName, glueFileName, 'parsing input');
     return expanded;
 }
 
@@ -396,7 +409,7 @@ function main () {
     emit (result);
 }
 
-function xxx () {
+function debug () {
     var allchars = `
 # layer kind
 ## parameters
@@ -410,15 +423,13 @@ function xxx () {
   names
   ports
   contains
-##~~~
 ## forall X as diagram_fact(cell,X,_)
-  cond Kind
+  Kind = cond
       diagram_fact(kind,X,"ellipse") "ellipse"
       diagram_fact(edge,X,1)         "edge"
       diagram_fact(root,X,1)         "root"
      else                            "rectangle"
 
-##~~~
 ## display
   das_fact(kind,\${Vertex},\${Kind}).
 `;
@@ -430,5 +441,5 @@ function emit (s) {
     console.log (s);
 }
 
-main ();
+debug ();
 

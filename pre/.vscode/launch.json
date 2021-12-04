@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "program": "${file}",
-            "args": ["forall.ohm", "forall.glue", "/Users/tarvydas/app/pre/support.js"]
+            "args": ["#+ forall ", "forall.ohm", "forall.glue", "/Users/tarvydas/app/pre/support.js"]
         }
     ]
 }

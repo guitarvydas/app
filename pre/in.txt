@@ -10,14 +10,11 @@
   names
   ports
   contains
-##~~~
 ## forall X as diagram_fact(cell,X,_)
     Kind = cond
       diagram_fact1(kind,X,"ellipse") "ellipse"
       diagram_fact2(edge,X,1)         "edge"
       diagram_fact3(root,X,1)         "root"
      else                            "rectangle"
-
-##~~~
 ## display
   das_fact(kind,${Vertex},${Kind}).
