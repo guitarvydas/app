@@ -28,11 +28,6 @@ echo '-- view3.bash generated --'
 
 # queries
 
-pre layerkind.md >preprocessed_layerkind.md
-querydisplay2 preprocessed_layerkind >layerkind_query.bash
-chmod a+x layerkind_query.bash
-echo '-- layerkind_query.bash generated --'
-
 querydisplay2 layer3 >layer3_query.bash
 chmod a+x layer3_query.bash
 echo '-- layer3_query.bash generated --'
@@ -64,6 +59,11 @@ echo '-- layerconnection_query.bash generated --'
 querydisplay2 component >layerfinal_query.bash
 chmod a+x layerfinal_query.bash
 echo '-- layerfinal_query.bash generated --'
+
+pre forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
+querydisplay2 preprocessed_layerkind >layerkind_query.bash
+chmod a+x layerkind_query.bash
+echo '-- layerkind_query.bash generated --'
 
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}
