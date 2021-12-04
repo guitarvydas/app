@@ -50,16 +50,13 @@ inferLayer1:-
     bagof(X,inferBB(X),_),
     bagof(X,
 	  (diagram_fact(vertex,X,1),inferColor(X)),
-	  _),
-    bagof(X,inferName(X),_).
+	  _).
 
 displayLayer1Facts:-
-    forall(das_fact(kind,X,K),format("das_fact(kind,~w,~q).~n",[X,K])),
     forall(das_fact(bbL,X,K),format("das_fact(bbL,~w,~q).~n",[X,K])),
     forall(das_fact(bbT,X,K),format("das_fact(bbT,~w,~q).~n",[X,K])),
     forall(das_fact(bbR,X,K),format("das_fact(bbR,~w,~q).~n",[X,K])),
     forall(das_fact(bbB,X,K),format("das_fact(bbB,~w,~q).~n",[X,K])),
-    forall(das_fact(name,X,K),format("das_fact(name,~w,~q).~n",[X,K])),
     forall(das_fact(color,X,K),format("das_fact(color,~w,~q).~n",[X,K])).
 
 layer1:-
