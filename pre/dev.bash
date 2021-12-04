@@ -17,6 +17,6 @@ cdir=`pwd`
 echo forall
 node pre.js '#+ forall ' forall.ohm forall.glue ${cdir}/support.js <in.txt >temp
 echo design rule
-node pre.js '#+ design rule ' designrule.ohm designrule.glue ${cdir}/support.js <temp
+node pre.js '#+ design rule' designrule.ohm designrule.glue ${cdir}/support.js <temp
 
 
