@@ -63,6 +63,10 @@ querydisplay2 preprocessed_layerkind >layerkind_query.bash
 chmod a+x layerkind_query.bash
 echo '-- layerkind_query.bash generated --'
 
+querydisplay2 layername >layername_query.bash
+chmod a+x layername_query.bash
+echo '-- layername_query.bash generated --'
+
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}
 

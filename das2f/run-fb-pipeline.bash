@@ -14,6 +14,7 @@ d2f helloworld >fb.pl
 # Layer 1. Infer low-hanging fruit information.
 echo '** layer 1 **' 1>&2
 ./layerkind 1>&2 # <<>>fb.pl
+./layername 1>&2 # <<>>fb.pl
 ./layer1  1>&2 #<<>>fb.pl
 
 # # Layer 2. Names, port directions
