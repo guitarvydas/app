@@ -339,8 +339,6 @@ function splitOnSeparators (trigger, s) {
     // return 3 parts, excluding beginSep and endSep
 
     var frontMatch = s.match (trigger);
-    console.log (trigger);
-    console.log (frontMatch);
     if (frontMatch) {
         // s contains a begin separator : front + beginSep + middle + endSep + rest
         var matchLength = frontMatch [0].length;
@@ -368,13 +366,6 @@ function splitOnSeparators (trigger, s) {
 function expandAll (s, trigger, grammarFileName, glueFileName, message) {
     
     var {front, middle, rest} = splitOnSeparators (trigger, s);
-
-    console.log (`front ${front.length}:`);
-    console.log (front);
-    console.log (`middle ${middle.length}:`);
-    console.log (middle);
-    console.log (`rest ${rest.length}:`);
-    console.log (rest);
 
     if (middle === '') {
 	return front;
@@ -441,5 +432,5 @@ function emit (s) {
     console.log (s);
 }
 
-debug ();
+main ();
 

@@ -6,5 +6,10 @@ cdir=`pwd`
 # pre '"/^#+ forall .*$/"' forall.ohm forall.glue <in.txt
 
 ## pre2 (with trigger RE)
-# node junk.js '/^#+ forall .*$/' forall.ohm forall.glue ${cdir}/support.js <in.txt
-node pre.js '#+ forall ' forall.ohm forall.glue $cdir/support.js <in.txt
+## node junk.js '/^#+ forall .*$/' forall.ohm forall.glue ${cdir}/support.js <in.txt
+# node pre.js '#+ forall ' forall.ohm forall.glue $cdir/support.js <in.txt
+# negative case:: node pre.js '#+ xyz ' forall.ohm forall.glue $cdir/support.js <in.txt
+
+app=${HOME}/app
+${app}/make.bash
+pre '#+ forall ' forall.ohm forall.glue $cdir/support.js <in.txt

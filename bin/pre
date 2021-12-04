@@ -1,4 +1,4 @@
 #!/bin/bash
 predir=${HOME}/app/pre
-node ${predir}/pre.js $1 $2 ${predir}/support.js
+node ${predir}/pre.js "$1" "$2" "$3" ${predir}/support.js
 
