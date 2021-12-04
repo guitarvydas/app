@@ -1,4 +1,4 @@
-Main [@sharps kforall ident kas predicate @ws @nl kcond ident2 @CondClauses CondElse]
+Main [@sharps kforall ident kas predicate @ws @nl ident2 keq kcond @CondClauses CondElse]
   = {{ support.pushIdent (_ident2._glue ()); }}
     [[${sharps} query\n${predicate}\n(\n${CondClauses}\n${CondElse}\n)\n]]
 

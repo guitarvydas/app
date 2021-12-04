@@ -1,0 +1,4 @@
+#!/bin/bash
+cdir=`pwd`
+node pre.js forall.ohm forall.glue $cdir/support.js <$1
+

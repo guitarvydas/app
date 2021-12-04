@@ -61,35 +61,6 @@ diagram_fact(cell, cell_6, "").
 diagram_fact(cell, cell_7, "").
 diagram_fact(cell, cell_8, "").
 diagram_fact(cell, cell_9, "").
-diagram_fact(contains, diagram_1, mxGraphModel_2).
-diagram_fact(contains, diagram_14, mxGraphModel_15).
-diagram_fact(contains, mxGraphModel_15, root_16).
-diagram_fact(contains, mxGraphModel_2, root_3).
-diagram_fact(contains, root_16, cell_17).
-diagram_fact(contains, root_16, cell_18).
-diagram_fact(contains, root_16, cell_19).
-diagram_fact(contains, root_16, cell_20).
-diagram_fact(contains, root_16, cell_21).
-diagram_fact(contains, root_16, cell_22).
-diagram_fact(contains, root_16, cell_23).
-diagram_fact(contains, root_16, cell_24).
-diagram_fact(contains, root_16, cell_25).
-diagram_fact(contains, root_16, cell_26).
-diagram_fact(contains, root_16, cell_27).
-diagram_fact(contains, root_16, cell_28).
-diagram_fact(contains, root_16, cell_29).
-diagram_fact(contains, root_16, cell_30).
-diagram_fact(contains, root_16, cell_31).
-diagram_fact(contains, root_3, cell_10).
-diagram_fact(contains, root_3, cell_11).
-diagram_fact(contains, root_3, cell_12).
-diagram_fact(contains, root_3, cell_13).
-diagram_fact(contains, root_3, cell_4).
-diagram_fact(contains, root_3, cell_5).
-diagram_fact(contains, root_3, cell_6).
-diagram_fact(contains, root_3, cell_7).
-diagram_fact(contains, root_3, cell_8).
-diagram_fact(contains, root_3, cell_9).
 diagram_fact(diagram, diagram_1, "").
 diagram_fact(diagram, diagram_14, "").
 diagram_fact(edge, cell_9, 1).
@@ -516,35 +487,6 @@ das_fact(direction,cell_10,output).
 das_fact(direction,cell_12,input).
 das_fact(inputport,cell_12,"-").
 das_fact(outputport,cell_10,"-").
-das_fact(contains,diagram_1,mxGraphModel_2).
-das_fact(contains,diagram_14,mxGraphModel_15).
-das_fact(contains,mxGraphModel_15,root_16).
-das_fact(contains,mxGraphModel_2,root_3).
-das_fact(contains,root_16,cell_17).
-das_fact(contains,root_16,cell_18).
-das_fact(contains,root_16,cell_19).
-das_fact(contains,root_16,cell_20).
-das_fact(contains,root_16,cell_21).
-das_fact(contains,root_16,cell_22).
-das_fact(contains,root_16,cell_23).
-das_fact(contains,root_16,cell_24).
-das_fact(contains,root_16,cell_25).
-das_fact(contains,root_16,cell_26).
-das_fact(contains,root_16,cell_27).
-das_fact(contains,root_16,cell_28).
-das_fact(contains,root_16,cell_29).
-das_fact(contains,root_16,cell_30).
-das_fact(contains,root_16,cell_31).
-das_fact(contains,root_3,cell_10).
-das_fact(contains,root_3,cell_11).
-das_fact(contains,root_3,cell_12).
-das_fact(contains,root_3,cell_13).
-das_fact(contains,root_3,cell_4).
-das_fact(contains,root_3,cell_5).
-das_fact(contains,root_3,cell_6).
-das_fact(contains,root_3,cell_7).
-das_fact(contains,root_3,cell_8).
-das_fact(contains,root_3,cell_9).
 das_fact(contains,cell_20,cell_10).
 das_fact(contains,cell_21,cell_10).
 das_fact(contains,cell_6,cell_10).
@@ -586,84 +528,9 @@ das_fact(contains,cell_20,cell_8).
 das_fact(contains,cell_21,cell_8).
 das_fact(contains,cell_6,cell_8).
 das_fact(contains,cell_7,cell_8).
-das_fact(contains,cell_11,cell_12).
-das_fact(contains,cell_7,cell_10).
-das_fact(indirect_contains,diagram_1,root_3).
-das_fact(indirect_contains,diagram_14,root_16).
-das_fact(indirect_contains,mxGraphModel_15,cell_17).
-das_fact(indirect_contains,mxGraphModel_15,cell_18).
-das_fact(indirect_contains,mxGraphModel_15,cell_19).
-das_fact(indirect_contains,mxGraphModel_15,cell_20).
-das_fact(indirect_contains,mxGraphModel_15,cell_21).
-das_fact(indirect_contains,mxGraphModel_15,cell_22).
-das_fact(indirect_contains,mxGraphModel_15,cell_23).
-das_fact(indirect_contains,mxGraphModel_15,cell_24).
-das_fact(indirect_contains,mxGraphModel_15,cell_25).
-das_fact(indirect_contains,mxGraphModel_15,cell_26).
-das_fact(indirect_contains,mxGraphModel_15,cell_27).
-das_fact(indirect_contains,mxGraphModel_15,cell_28).
-das_fact(indirect_contains,mxGraphModel_15,cell_29).
-das_fact(indirect_contains,mxGraphModel_15,cell_30).
-das_fact(indirect_contains,mxGraphModel_15,cell_31).
-das_fact(indirect_contains,mxGraphModel_2,cell_10).
-das_fact(indirect_contains,mxGraphModel_2,cell_11).
-das_fact(indirect_contains,mxGraphModel_2,cell_12).
-das_fact(indirect_contains,mxGraphModel_2,cell_13).
-das_fact(indirect_contains,mxGraphModel_2,cell_4).
-das_fact(indirect_contains,mxGraphModel_2,cell_5).
-das_fact(indirect_contains,mxGraphModel_2,cell_6).
-das_fact(indirect_contains,mxGraphModel_2,cell_7).
-das_fact(indirect_contains,mxGraphModel_2,cell_8).
-das_fact(indirect_contains,mxGraphModel_2,cell_9).
-das_fact(indirect_contains,root_16,cell_10).
-das_fact(indirect_contains,root_16,cell_11).
-das_fact(indirect_contains,root_16,cell_12).
-das_fact(indirect_contains,root_16,cell_13).
-das_fact(indirect_contains,root_16,cell_21).
-das_fact(indirect_contains,root_16,cell_22).
-das_fact(indirect_contains,root_16,cell_23).
-das_fact(indirect_contains,root_16,cell_24).
-das_fact(indirect_contains,root_16,cell_25).
-das_fact(indirect_contains,root_16,cell_26).
-das_fact(indirect_contains,root_16,cell_27).
-das_fact(indirect_contains,root_16,cell_28).
-das_fact(indirect_contains,root_16,cell_29).
-das_fact(indirect_contains,root_16,cell_30).
-das_fact(indirect_contains,root_16,cell_31).
-das_fact(indirect_contains,root_16,cell_7).
-das_fact(indirect_contains,root_16,cell_8).
-das_fact(indirect_contains,root_16,cell_10).
-das_fact(indirect_contains,root_16,cell_11).
-das_fact(indirect_contains,root_16,cell_12).
-das_fact(indirect_contains,root_16,cell_13).
-das_fact(indirect_contains,root_16,cell_22).
-das_fact(indirect_contains,root_16,cell_23).
-das_fact(indirect_contains,root_16,cell_24).
-das_fact(indirect_contains,root_16,cell_25).
-das_fact(indirect_contains,root_16,cell_26).
-das_fact(indirect_contains,root_16,cell_27).
-das_fact(indirect_contains,root_16,cell_28).
-das_fact(indirect_contains,root_16,cell_29).
-das_fact(indirect_contains,root_16,cell_30).
-das_fact(indirect_contains,root_16,cell_31).
-das_fact(indirect_contains,root_16,cell_7).
-das_fact(indirect_contains,root_16,cell_8).
-das_fact(indirect_contains,root_3,cell_13).
-das_fact(indirect_contains,root_3,cell_12).
-das_fact(indirect_contains,root_3,cell_10).
-das_fact(indirect_contains,root_3,cell_11).
-das_fact(indirect_contains,root_3,cell_12).
-das_fact(indirect_contains,root_3,cell_13).
-das_fact(indirect_contains,root_3,cell_7).
-das_fact(indirect_contains,root_3,cell_8).
-das_fact(indirect_contains,root_3,cell_8).
-das_fact(indirect_contains,root_3,cell_10).
 das_fact(indirect_contains,cell_20,cell_13).
-das_fact(indirect_contains,cell_20,cell_12).
 das_fact(indirect_contains,cell_21,cell_13).
-das_fact(indirect_contains,cell_21,cell_12).
 das_fact(indirect_contains,cell_6,cell_13).
-das_fact(indirect_contains,cell_6,cell_12).
 das_fact(indirect_contains,cell_20,cell_10).
 das_fact(indirect_contains,cell_20,cell_11).
 das_fact(indirect_contains,cell_20,cell_12).
@@ -681,15 +548,13 @@ das_fact(indirect_contains,cell_20,cell_31).
 das_fact(indirect_contains,cell_20,cell_7).
 das_fact(indirect_contains,cell_20,cell_8).
 das_fact(indirect_contains,cell_20,cell_8).
-das_fact(indirect_contains,cell_20,cell_10).
 das_fact(indirect_contains,cell_21,cell_8).
-das_fact(indirect_contains,cell_21,cell_10).
 das_fact(indirect_contains,cell_6,cell_8).
-das_fact(indirect_contains,cell_6,cell_10).
-das_fact(direct_contains,cell_11,cell_12).
 das_fact(direct_contains,cell_11,cell_13).
 das_fact(direct_contains,cell_20,cell_21).
+das_fact(direct_contains,cell_21,cell_10).
 das_fact(direct_contains,cell_21,cell_11).
+das_fact(direct_contains,cell_21,cell_12).
 das_fact(direct_contains,cell_21,cell_22).
 das_fact(direct_contains,cell_21,cell_23).
 das_fact(direct_contains,cell_21,cell_24).
@@ -701,39 +566,28 @@ das_fact(direct_contains,cell_21,cell_29).
 das_fact(direct_contains,cell_21,cell_30).
 das_fact(direct_contains,cell_21,cell_31).
 das_fact(direct_contains,cell_21,cell_7).
+das_fact(direct_contains,cell_6,cell_10).
 das_fact(direct_contains,cell_6,cell_11).
+das_fact(direct_contains,cell_6,cell_12).
 das_fact(direct_contains,cell_6,cell_7).
-das_fact(direct_contains,cell_7,cell_10).
 das_fact(direct_contains,cell_7,cell_8).
-das_fact(direct_contains,diagram_1,mxGraphModel_2).
-das_fact(direct_contains,diagram_14,mxGraphModel_15).
-das_fact(direct_contains,mxGraphModel_15,root_16).
-das_fact(direct_contains,mxGraphModel_2,root_3).
-das_fact(direct_contains,root_16,cell_17).
-das_fact(direct_contains,root_16,cell_18).
-das_fact(direct_contains,root_16,cell_19).
-das_fact(direct_contains,root_16,cell_20).
-das_fact(direct_contains,root_3,cell_4).
-das_fact(direct_contains,root_3,cell_5).
-das_fact(direct_contains,root_3,cell_6).
-das_fact(direct_contains,root_3,cell_9).
-das_fact(direct_contains,cell_21,cell_9).
-das_fact(direct_contains,cell_6,cell_9).
+das_fact(direct_contains,cell_20,cell_9).
 das_fact(codebox,cell_13,"&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;read &amp;lt;/dev/fd/3&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;echo world&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;# no output&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;br&gt;&lt;/p&gt;").
 das_fact(codebox,cell_24,"mxCell id=... parent=1 value=&amp;lt;code&amp;gt;").
 das_fact(codebox,cell_29,"mxCell id=... parent=1 value=&amp;lt;code&amp;gt;").
 das_fact(codebox,cell_8,"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
-das_fact(connection, root_3, cell_9).
-das_fact(source, cell_9, [hello,out]).
-das_fact(target, cell_9, [world,in]).
-das_fact(connection, cell_21, cell_9).
-das_fact(source, cell_9, [hello,out]).
-das_fact(target, cell_9, [world,in]).
-das_fact(connection, cell_6, cell_9).
-das_fact(source, cell_9, [hello,out]).
-das_fact(target, cell_9, [world,in]).
-component_fact(component,"[object Object]","").
-component_fact(component,"[object Object]","").
+das_fact(connection, cell_20, cell_9).
+das_fact(source, cell_9, [root id=1,out]).
+das_fact(target, cell_9, [root id=1,in]).
+das_fact(connection, cell_20, cell_9).
+das_fact(source, cell_9, [root id=1,out]).
+das_fact(target, cell_9, [helloworld,in]).
+das_fact(connection, cell_20, cell_9).
+das_fact(source, cell_9, [helloworld,out]).
+das_fact(target, cell_9, [root id=1,in]).
+das_fact(connection, cell_20, cell_9).
+das_fact(source, cell_9, [helloworld,out]).
+das_fact(target, cell_9, [helloworld,in]).
 component_fact(component,"[object Object]","").
 component_fact(component,"[object Object]","").
 component_fact(component,"[object Object]","").

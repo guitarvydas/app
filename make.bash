@@ -26,3 +26,8 @@ chmod a+x ${app}/bin/querydisplay2
 
 cp ${app}/setquerydisplay/setquerydisplay ${app}/bin
 chmod a+x ${app}/bin/setquerydisplay
+
+# pre
+cp ${app}/pre/pre ${app}/bin
+chmod a+x ${app}/bin/pre
+

@@ -28,6 +28,8 @@ echo '-- view3.bash generated --'
 
 # queries
 
+pre layerkind.md forall.ohm forall.glue forallsupport.js
+
 querydisplay2 layer3 >layer3_query.bash
 chmod a+x layer3_query.bash
 echo '-- layer3_query.bash generated --'

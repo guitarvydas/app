@@ -7,18 +7,6 @@ temp2=_temp_${RANDOM}
 #cat layer1.pl >i_layer.pl
 # SWIPL code for layer 1
 cat >i_layer1.pl <<'~~~'
-inferKind(X):-
-    diagram_fact(kind,X,"ellipse"),
-    assertz(das_fact(kind,X,"ellipse")).
-inferKind(X):-
-    diagram_fact(edge,X,1),
-    assertz(das_fact(kind,X,"edge")).
-inferKind(X):-
-    diagram_fact(vertex,X,1),
-    \+diagram_fact(kind,X,"ellipse"),
-    \+diagram_fact(kind,X,"edge"),
-    assertz(das_fact(kind,X,"rectangle")).
-
 inferBB(S):-
     diagram_fact(x,S,X),
     diagram_fact(y,S,Y),

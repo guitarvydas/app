@@ -1,5 +1,5 @@
 forall {
-  Main = sharp+ "forall" ident "as" predicate ws* nl* "cond" ident CondClause+ CondElse
+  Main = sharp+ "forall" ident "as" predicate ws* nl* ident "=" "cond" CondClause+ CondElse
 
   predicate = ident "(" actuals ")" ws*
   CondClause = guard value
