@@ -1,4 +1,4 @@
-Main [@sharps kdesign krule Predicate s] = [[${sharps}${kdesign}${krule}${Predicate}${s}]]
+Main [@sharps kdesign krule Predicate s] = [[${sharps} ${kdesign ${krule} ${Predicate}${s}]]
 
 Predicate_rulecall [ident klpar actuals krpar] = [[niy.${ident}${klpar}${actuals}${krpar}]]
 Predicate_eqstring [ident keq s] = [[(${ident} = ${s}, abort)]]
