@@ -64,15 +64,6 @@ echo '** layer connections **'
 ./layerconnection 1>&2 #<<>>fb.pl
 
 
-
-
-echo '*** early exit'
-exit 0
-
-
-
-
-
 # Layer Final. Components - bring it all home
 echo '** layer final **'
 ./layerfinal 1>&2 #<<>>fb.pl

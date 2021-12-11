@@ -219,3 +219,6 @@ das_fact(codebox,cell_8,"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt
 das_fact(connection, cell_6, cell_9).
 das_fact(source, cell_9, [hello,out]).
 das_fact(target, cell_9, [world,in]).
+component_fact(component,"[object Object]","").
+component_fact(component,"[object Object]","").
+component_fact(component,"[object Object]","").
