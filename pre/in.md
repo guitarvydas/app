@@ -15,8 +15,8 @@
       diagram_fact(color, ID, "purple") pervasiveoutput
       else                              "?"
 ## design rule
-  Direction = "?"
-  "all ports must have a direction ; port ${ID} has no direction"
+  Direction is "?"
+  all ports must have a direction ; port ${ID} has no direction
 ## display
   das_fact(direction,${ID},${Direction}).
 
