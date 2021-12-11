@@ -191,3 +191,13 @@ das_fact(bbL,cell_8,285).
   das_fact(bbT,cell_8,265).
   das_fact(bbR,cell_8,450).
   das_fact(bbB,cell_8,345).
+das_fact(direction,cell_10,output).
+das_fact(direction,cell_12,input).
+das_fact(contains,cell_6,cell_10).
+das_fact(contains,cell_6,cell_11).
+das_fact(contains,cell_6,cell_12).
+das_fact(contains,cell_11,cell_13).
+das_fact(contains,cell_6,cell_13).
+das_fact(contains,cell_6,cell_7).
+das_fact(contains,cell_6,cell_8).
+das_fact(contains,cell_7,cell_8).

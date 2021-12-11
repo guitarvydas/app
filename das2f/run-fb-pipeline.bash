@@ -35,12 +35,13 @@ then
     exit 1
 fi
 
-echo '*** early exit'
-exit 0
-
 # Layer 3. Rectangle Containment relationships.
 echo '** layer 3 **'
 ./layer3 1>&2 #<<>>fb.pl
+
+echo '*** early exit'
+exit 0
+
 
 # Layer 4. Rectangle contains Port.
 echo '** layer 4 **'

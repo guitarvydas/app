@@ -41,4 +41,4 @@
 # echo '-- layerdirection_query.bash generated --'
 
 ./make.bash
-# ./run-fb-pipeline.bash
+./run-fb-pipeline.bash
