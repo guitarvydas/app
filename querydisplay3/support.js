@@ -23,3 +23,21 @@ exports.formatJSParameters = function () {
     return result.join ('\n');
 }
 
+
+var conddisplayStack = []; // { predicate, then-lines-as-string }
+
+exports.formatConditionalDisplays = function () {
+    console.error (conddisplayStack);
+    var result = ''
+    conddisplayStack.forEach (cond => {
+	result = `${result}\nif (${cond.predicate}) { console.log (\`${cond.then}\`);}`;
+    });
+    return result;
+}
+
+exports.pushConditionalDisplay = function (predicateString, thenString) {
+    conddisplayStack.push ({predicate: predicateString.trim (), then: thenString.trim ()});
+    return "";
+}
+
+    

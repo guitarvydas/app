@@ -5,17 +5,17 @@ qd3 {
  Parameters = sharp sharp "parameters" parameter+
  Imports = sharp sharp "imports" import+
  Query = sharp sharp "query" query+
- Display
-   = CondClause sharp sharp "display" display -- conditional
-   |            sharp sharp "display" display -- unconditional
-
- CondClause = sharp sharp "cond" Test message
+ Display = DisplayClause+
+ DisplayClause
+   = sharp sharp "cond" predicate display -- conditional
+   | sharp sharp "display" display -- unconditional
 
  Test = ident "is" string
 
    parameter = line
    import = line
    query = line
+   predicate = line
    display = line+
    message = line+
 

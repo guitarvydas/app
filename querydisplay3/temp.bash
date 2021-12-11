@@ -25,8 +25,9 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var ID = p [0];
 var Direction = p [1];
-  if (Direction === "?") { console.error (`Design Rule Failure: all ports must have a direction ; port ${ID} has no direction
-`); } else { console.log (`das_fact(direction,${ID},${Direction}).`); });
+  
+if (${Direction} === "?") { console.log (`all ports must have a direction ; port ${ID} has no direction`);}
+if (true) { console.log (`das_fact(direction,${ID},${Direction}).`);});
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

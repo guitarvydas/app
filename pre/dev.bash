@@ -14,8 +14,8 @@ cdir=`pwd`
 # ${app}/make.bash
 # pre '#+ forall ' forall.ohm forall.glue $cdir/support.js <in.md
 
-# echo forall
-# node pre.js '#+ forall ' forall.ohm forall.glue ${cdir}/support.js <in.md >temp
+echo forall
+node pre.js '#+ forall ' forall.ohm forall.glue ${cdir}/support.js <in.md >temp
 echo design rule
 node pre.js '#+ design rule' designrule.ohm designrule.glue ${cdir}/support.js <temp
 

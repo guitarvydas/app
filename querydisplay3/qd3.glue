@@ -19,7 +19,7 @@ var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   ${support.formatJSParameters ()}
-  ${Display});
+  ${support.formatConditionalDisplays ()});
 });
 ~~~
 swipl -g "consult(\${temp})." -g 'query.' -g 'halt.' | node \${temp}.js
@@ -35,17 +35,17 @@ Parameters [ksharp1 ksharp2 kparameters @lines]
 Imports [ksharp1 ksharp2 kimports @lines] = [[${lines}]]
   
 Query [ksharp1 ksharp2 kquery @lines] = [[${lines}]]
-  
-Display_conditional [CondClause ksharp1 ksharp2 kdisplay line]
-  = [[${CondClause} else { console.log (\`${line.trim ()}\`); }]]
-Display_unconditional [ksharp1 ksharp2 kdisplay line]
-  = [[console.log (\`${line.trim ()}\`);]]
 
-CondClause[ksharp1 ksharp2 kcond Test message]
-  = [[if (${Test}) { console.error (\`Design Rule Failure: ${message}\`); }]]
+Display [@DisplayClauses] = [[${DisplayClauses}]]
+DisplayClause_conditional [ksharp1 ksharp2   kcond    predicate display]
+  = [[${support.pushConditionalDisplay (predicate, display)}]]
+DisplayClause_unconditional [ksharp1 ksharp2 kdisplay           display]
+  = [[${support.pushConditionalDisplay ("true", display)}]]
+
 
 Test [ident kis s] = [[${ident} === \"${s}\"]]
 
+predicate [line] = [[${line}]]
 parameter [line] = [[${support.pushParameter (line)}]]
 import [line] = [[?- consult(${line.trim()}).\n]]
 query [line] = [[${line.trim()},\n]]

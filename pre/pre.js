@@ -6,7 +6,7 @@ var reTrigger = /#+~~~\n/;
 const reEnd = /#+/;
 
 
-var viewGeneratedCode = true;
+var viewGeneratedCode = false;
 var tracing = false;
 var traceDepth;
 
