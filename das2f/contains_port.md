@@ -11,9 +11,9 @@
     ports
     contains_port
 ## query
-    isrect(R)
-    isellipse(E)
-    contains_port(R,E)
+    das_fact(kind,R,rectangle)
+    das_fact(kind,E,ellipse)
+    containsport(R,E)
 ## display
 das_fact(contains,${R},${E}).
   

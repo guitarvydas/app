@@ -9,7 +9,7 @@ temp=temp_${RANDOM}
 
 # old ./layer3-body >${temp}
 # new
-./layer3_query.bash >${temp}
+./layername_query.bash >${temp}
 
 ./appendToFb ${temp}
 # cat $temp

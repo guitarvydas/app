@@ -13,8 +13,8 @@ cat >${temp}.pl <<'~~~'
 ?- consult(names).
 ?- consult(ports).
 query_helper(Parent,Edge):-
-isrect(Rect),
-isedge(Edge),
+das_fact(kind,Parent,rectangle),
+das_fact(kind,Edge,edge),
 diagram_fact(source,Edge,SourceLongID),
 diagram_fact(synonym,Source,SourceLongID),
 das_fact(direct_contains,Rect,Source),
@@ -31,7 +31,8 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Parent = p [0];
 var Edge = p [1];
-  console.log(`das_fact(direct_contains,${Parent},${Edge}).`);
+  
+if (true) { console.log (`das_fact(direct_contains,${Parent},${Edge}).`);};
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

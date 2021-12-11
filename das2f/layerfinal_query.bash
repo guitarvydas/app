@@ -12,7 +12,7 @@ cat >${temp}.pl <<'~~~'
 ?- consult(code).
 ?- consult(connection).
 query_helper(Component):-
-isrect(RID),
+das_fact(kind,RID,rectangle),
 das_fact(name,RID,Name),
 ( hasport(RID) ; (\+ hasport(RID), hasnoparent(RID), Inputs = [], Outputs = []) ),
 ( (hasport(RID), inputs(RID,Inputs), outputs(RID,Outputs)) ; fail ),
@@ -32,7 +32,8 @@ var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Component = p [0];
-  console.log(`component_fact(component,\"${Component}\",\"\").`);
+  
+if (true) { console.log (`component_fact(component,\"${Component}\",\"\").`);};
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

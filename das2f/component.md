@@ -8,7 +8,7 @@
   code
   connection
 ## query
-  isrect(RID)
+  das_fact(kind,RID,rectangle)
   das_fact(name,RID,Name)
   ( hasport(RID) ; (\+ hasport(RID), hasnoparent(RID), Inputs = [], Outputs = []) )
   ( (hasport(RID), inputs(RID,Inputs), outputs(RID,Outputs)) ; fail )

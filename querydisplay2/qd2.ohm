@@ -10,7 +10,7 @@ qd {
    parameter = line
    import = line
    query = line
-   display = line
+   display = line+
 
    line = ~sharp notNL* nl
 

@@ -41,7 +41,7 @@ Display [ksharp1 ksharp2 kdisplay line] = [[${line}]]
 parameter [line] = [[${support.pushParameter (line)}]]
 import [line] = [[?- consult(${line.trim()}).\n]]
 query [line] = [[${line.trim()},\n]]
-display [line] = [[${line}]]
+display [@lines] = [[${lines}]]
 
 line [@cs nl] = [[${cs}${nl}]]
 

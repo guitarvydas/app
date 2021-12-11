@@ -165,6 +165,11 @@ function ohm_parse (grammar, text, errorMessage) {
 	// console.error ("/" + text + "/");
 	// or ... console.error (text);
 	var pos = cst._rightmostFailurePosition;
+	console.error ("---");
+	console.error (text.substring (0, pos));
+	console.error ("---");
+	console.error (text.substring (pos));
+	console.error ("---");
 	throw ("FAIL: at position " + pos.toString () + " " + errorMessage);
     }
 }

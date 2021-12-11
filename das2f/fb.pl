@@ -20,18 +20,6 @@ diagram_fact(cell, cell_6, "").
 diagram_fact(cell, cell_7, "").
 diagram_fact(cell, cell_8, "").
 diagram_fact(cell, cell_9, "").
-diagram_fact(contains, diagram_1, mxGraphModel_2).
-diagram_fact(contains, mxGraphModel_2, root_3).
-diagram_fact(contains, root_3, cell_10).
-diagram_fact(contains, root_3, cell_11).
-diagram_fact(contains, root_3, cell_12).
-diagram_fact(contains, root_3, cell_13).
-diagram_fact(contains, root_3, cell_4).
-diagram_fact(contains, root_3, cell_5).
-diagram_fact(contains, root_3, cell_6).
-diagram_fact(contains, root_3, cell_7).
-diagram_fact(contains, root_3, cell_8).
-diagram_fact(contains, root_3, cell_9).
 diagram_fact(diagram, diagram_1, "").
 diagram_fact(edge, cell_9, 1).
 diagram_fact(edgeStyle, cell_9, "orthogonalEdgeStyle").
@@ -65,6 +53,7 @@ diagram_fact(html, cell_9, 1).
 diagram_fact(jettySize, cell_9, "auto").
 diagram_fact(kind, cell_10, "ellipse").
 diagram_fact(kind, cell_12, "ellipse").
+diagram_fact(mxGraphModel, mxGraphModel_2, mxGraphModel_2).
 diagram_fact(name, diagram_1, "Page-1").
 diagram_fact(orthogonalLoop, cell_9, 1).
 diagram_fact(parent, cell_10, id_1).
@@ -77,6 +66,7 @@ diagram_fact(parent, cell_7, id_1).
 diagram_fact(parent, cell_8, id_1).
 diagram_fact(parent, cell_9, id_1).
 diagram_fact(relative, cell_9, 1).
+diagram_fact(root, root_3, root_3).
 diagram_fact(rounded, cell_11, 1).
 diagram_fact(rounded, cell_13, 0).
 diagram_fact(rounded, cell_6, 1).
@@ -146,72 +136,63 @@ diagram_fact(y, cell_13, 490).
 diagram_fact(y, cell_6, 170).
 diagram_fact(y, cell_7, 220).
 diagram_fact(y, cell_8, 265).
-das_fact(kind,cell_10,"ellipse").
-das_fact(kind,cell_12,"ellipse").
-das_fact(kind,cell_9,"edge").
-das_fact(kind,cell_11,"rectangle").
-das_fact(kind,cell_13,"rectangle").
-das_fact(kind,cell_6,"rectangle").
-das_fact(kind,cell_7,"rectangle").
-das_fact(kind,cell_8,"rectangle").
-das_fact(bbL,cell_10,470).
-das_fact(bbL,cell_11,305).
-das_fact(bbL,cell_12,285).
-das_fact(bbL,cell_13,335).
-das_fact(bbL,cell_6,170).
-das_fact(bbL,cell_7,255).
-das_fact(bbL,cell_8,285).
-das_fact(bbT,cell_10,290).
-das_fact(bbT,cell_11,450).
-das_fact(bbT,cell_12,507.5).
-das_fact(bbT,cell_13,490).
-das_fact(bbT,cell_6,170).
-das_fact(bbT,cell_7,220).
-das_fact(bbT,cell_8,265).
-das_fact(bbR,cell_10,510).
-das_fact(bbR,cell_11,550).
-das_fact(bbR,cell_12,325).
-das_fact(bbR,cell_13,510).
-das_fact(bbR,cell_6,630).
-das_fact(bbR,cell_7,490).
-das_fact(bbR,cell_8,450).
-das_fact(bbB,cell_10,330).
-das_fact(bbB,cell_11,600).
-das_fact(bbB,cell_12,547.5).
-das_fact(bbB,cell_13,565).
-das_fact(bbB,cell_6,650).
-das_fact(bbB,cell_7,390).
-das_fact(bbB,cell_8,345).
-das_fact(name,cell_10,"out").
-das_fact(name,cell_11,"world").
-das_fact(name,cell_12,"in").
-das_fact(name,cell_13,"&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;read &amp;lt;/dev/fd/3&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;echo world&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;# no output&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;br&gt;&lt;/p&gt;").
-das_fact(name,cell_6,"helloworld").
-das_fact(name,cell_7,"hello").
-das_fact(name,cell_8,"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
+das_fact(kind,cell_10,ellipse).
+das_fact(kind,cell_11,rectangle).
+das_fact(kind,cell_12,ellipse).
+das_fact(kind,cell_13,rectangle).
+das_fact(kind,cell_4,rectangle).
+das_fact(kind,cell_5,rectangle).
+das_fact(kind,cell_6,rectangle).
+das_fact(kind,cell_7,rectangle).
+das_fact(kind,cell_8,rectangle).
+das_fact(kind,cell_9,edge).
+das_fact(name, cell_10, "out").
+das_fact(name, cell_11, "world").
+das_fact(name, cell_12, "in").
+das_fact(name, cell_13, "&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;read &amp;lt;/dev/fd/3&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;echo world&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;# no output&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;br&gt;&lt;/p&gt;").
+das_fact(name, cell_6, "helloworld").
+das_fact(name, cell_7, "hello").
+das_fact(name, cell_8, "&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
 das_fact(color,cell_10,"yellow").
 das_fact(color,cell_11,"-").
 das_fact(color,cell_12,"green").
 das_fact(color,cell_13,"red").
+das_fact(color,cell_4,"-").
+das_fact(color,cell_5,"-").
 das_fact(color,cell_6,"-").
 das_fact(color,cell_7,"-").
 das_fact(color,cell_8,"red").
+das_fact(color,cell_9,"-").
+das_fact(bbL,cell_10,470).
+  das_fact(bbT,cell_10,290).
+  das_fact(bbR,cell_10,510).
+  das_fact(bbB,cell_10,330).
+das_fact(bbL,cell_11,305).
+  das_fact(bbT,cell_11,450).
+  das_fact(bbR,cell_11,550).
+  das_fact(bbB,cell_11,600).
+das_fact(bbL,cell_12,285).
+  das_fact(bbT,cell_12,507.5).
+  das_fact(bbR,cell_12,325).
+  das_fact(bbB,cell_12,547.5).
+das_fact(bbL,cell_13,335).
+  das_fact(bbT,cell_13,490).
+  das_fact(bbR,cell_13,510).
+  das_fact(bbB,cell_13,565).
+das_fact(bbL,cell_6,170).
+  das_fact(bbT,cell_6,170).
+  das_fact(bbR,cell_6,630).
+  das_fact(bbB,cell_6,650).
+das_fact(bbL,cell_7,255).
+  das_fact(bbT,cell_7,220).
+  das_fact(bbR,cell_7,490).
+  das_fact(bbB,cell_7,390).
+das_fact(bbL,cell_8,285).
+  das_fact(bbT,cell_8,265).
+  das_fact(bbR,cell_8,450).
+  das_fact(bbB,cell_8,345).
 das_fact(direction,cell_10,output).
 das_fact(direction,cell_12,input).
-das_fact(inputport,cell_12,"-").
-das_fact(outputport,cell_10,"-").
-das_fact(contains,diagram_1,mxGraphModel_2).
-das_fact(contains,mxGraphModel_2,root_3).
-das_fact(contains,root_3,cell_10).
-das_fact(contains,root_3,cell_11).
-das_fact(contains,root_3,cell_12).
-das_fact(contains,root_3,cell_13).
-das_fact(contains,root_3,cell_4).
-das_fact(contains,root_3,cell_5).
-das_fact(contains,root_3,cell_6).
-das_fact(contains,root_3,cell_7).
-das_fact(contains,root_3,cell_8).
-das_fact(contains,root_3,cell_9).
 das_fact(contains,cell_6,cell_10).
 das_fact(contains,cell_6,cell_11).
 das_fact(contains,cell_6,cell_12).
@@ -222,27 +203,6 @@ das_fact(contains,cell_6,cell_8).
 das_fact(contains,cell_7,cell_8).
 das_fact(contains,cell_11,cell_12).
 das_fact(contains,cell_7,cell_10).
-das_fact(indirect_contains,diagram_1,root_3).
-das_fact(indirect_contains,mxGraphModel_2,cell_10).
-das_fact(indirect_contains,mxGraphModel_2,cell_11).
-das_fact(indirect_contains,mxGraphModel_2,cell_12).
-das_fact(indirect_contains,mxGraphModel_2,cell_13).
-das_fact(indirect_contains,mxGraphModel_2,cell_4).
-das_fact(indirect_contains,mxGraphModel_2,cell_5).
-das_fact(indirect_contains,mxGraphModel_2,cell_6).
-das_fact(indirect_contains,mxGraphModel_2,cell_7).
-das_fact(indirect_contains,mxGraphModel_2,cell_8).
-das_fact(indirect_contains,mxGraphModel_2,cell_9).
-das_fact(indirect_contains,root_3,cell_13).
-das_fact(indirect_contains,root_3,cell_12).
-das_fact(indirect_contains,root_3,cell_10).
-das_fact(indirect_contains,root_3,cell_11).
-das_fact(indirect_contains,root_3,cell_12).
-das_fact(indirect_contains,root_3,cell_13).
-das_fact(indirect_contains,root_3,cell_7).
-das_fact(indirect_contains,root_3,cell_8).
-das_fact(indirect_contains,root_3,cell_8).
-das_fact(indirect_contains,root_3,cell_10).
 das_fact(indirect_contains,cell_6,cell_13).
 das_fact(indirect_contains,cell_6,cell_12).
 das_fact(indirect_contains,cell_6,cell_8).
@@ -253,18 +213,9 @@ das_fact(direct_contains,cell_6,cell_11).
 das_fact(direct_contains,cell_6,cell_7).
 das_fact(direct_contains,cell_7,cell_10).
 das_fact(direct_contains,cell_7,cell_8).
-das_fact(direct_contains,diagram_1,mxGraphModel_2).
-das_fact(direct_contains,mxGraphModel_2,root_3).
-das_fact(direct_contains,root_3,cell_4).
-das_fact(direct_contains,root_3,cell_5).
-das_fact(direct_contains,root_3,cell_6).
-das_fact(direct_contains,root_3,cell_9).
 das_fact(direct_contains,cell_6,cell_9).
 das_fact(codebox,cell_13,"&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;read &amp;lt;/dev/fd/3&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;echo world&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;# no output&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;br&gt;&lt;/p&gt;").
 das_fact(codebox,cell_8,"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
-das_fact(connection, root_3, cell_9).
-das_fact(source, cell_9, [hello,out]).
-das_fact(target, cell_9, [world,in]).
 das_fact(connection, cell_6, cell_9).
 das_fact(source, cell_9, [hello,out]).
 das_fact(target, cell_9, [world,in]).

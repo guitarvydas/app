@@ -1,9 +1,4 @@
 % a rectangle "contains" a port if that port intersects one boundary of the rect
-contains_port(R,E):-
-    isrect(R),
-    isellipse(E),
-    onSameDiagram(R,E),
-    containsport(R,E).
 
 containsport(R,C):-
     rightsideinsideBB(C,R).

@@ -1,7 +1,7 @@
 
 
 temp=temp${RANDOM}
-# contains edge
+# layer bounding boxes
 
 
 cat >${temp}.pl <<'~~~'
@@ -12,16 +12,17 @@ cat >${temp}.pl <<'~~~'
 ?- consult(inside).
 ?- consult(names).
 ?- consult(ports).
-query_helper(Parent,Edge):-
-isrect(Rect),
-isedge(Edge),
-diagram_fact(source,Edge,SourceLongID),
-diagram_fact(synonym,Source,SourceLongID),
-das_fact(direct_contains,Rect,Source),
-das_fact(direct_contains,Parent,Rect),
+?- consult(contains).
+query_helper(ID,X,Y,Right,Bottom):-
+diagram_fact(x,ID,X),
+diagram_fact(y,ID,Y),
+diagram_fact(width,ID,W),
+diagram_fact(height,ID,H),
+Right is X+W,
+Bottom is Y+H,
 true.
 query:-
-bagof([Parent,Edge],query_helper(Parent,Edge),Bag),
+bagof([ID,X,Y,Right,Bottom],query_helper(ID,X,Y,Right,Bottom),Bag),
 json_write(user_output,Bag,[width(128)]).
 ~~~
 cat >${temp}.js <<'~~~'
@@ -29,9 +30,16 @@ const fs = require ('fs');
 var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
-  var Parent = p [0];
-var Edge = p [1];
-  console.log(`das_fact(direct_contains,${Rect},${Edge}).`);
+  var ID = p [0];
+var X = p [1];
+var Y = p [2];
+var Right = p [3];
+var Bottom = p [4];
+  
+if (true) { console.log (`das_fact(bbL,${ID},${X}).
+  das_fact(bbT,${ID},${Y}).
+  das_fact(bbR,${ID},${Right}).
+  das_fact(bbB,${ID},${Bottom}).`);};
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

@@ -10,7 +10,7 @@ cat >${temp}.pl <<'~~~'
 ?- consult(shapes).
 ?- consult(values).
 query_helper(Codebox,Code):-
-isrect(Codebox),
+das_fact(kind,Codebox,rectangle),
 das_fact(color,Codebox,"red"),
 valueof(Codebox,Code),
 true.
@@ -25,7 +25,8 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Codebox = p [0];
 var Code = p [1];
-  console.log(`das_fact(codebox,${Codebox},\"${Code}\").`);
+  
+if (true) { console.log (`das_fact(codebox,${Codebox},\"${Code}\").`);};
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
