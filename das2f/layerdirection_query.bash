@@ -26,7 +26,7 @@ parameters.forEach (p => {
   var ID = p [0];
 var Direction = p [1];
   
-if (Direction === "?") { console.log (`all ports must have a direction ; port ${ID} has no direction`);}
+if (Direction === "?") { console.log (`FATAL: all ports must have a direction ; port ${ID} has no direction`);}
 else if (true) { console.log (`das_fact(direction,${ID},${Direction}).`);};
 });
 ~~~

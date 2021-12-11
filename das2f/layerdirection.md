@@ -12,6 +12,6 @@ diagram_fact(kind,ID,"ellipse")
 (diagram_fact(color, ID, "green")  -> Direction = input;diagram_fact(color, ID, "yellow")  -> Direction = output;diagram_fact(color, ID, "red")  -> Direction = pervasiveinput;diagram_fact(color, ID, "purple")  -> Direction = pervasiveoutput; Direction = "?")
 ## cond design rule
   Direction === "?" 
-  all ports must have a direction ; port ${ID} has no direction
+  FATAL: all ports must have a direction ; port ${ID} has no direction
 ## display
   das_fact(direction,${ID},${Direction}).

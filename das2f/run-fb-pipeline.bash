@@ -27,6 +27,14 @@ echo '** layer 2 **' 1>&2
 # echo '** design rule for layer 2 **'
 # ./design_rule_layer2  1>&2
 
+#./check-errors.bash
+grep FATAL <fb.pl
+if grep -q FATAL <fb.pl
+then
+    echo quitting
+    exit 1
+fi
+
 # Layer 3. Rectangle Containment relationships.
 echo '** layer 3 **'
 ./layer3 1>&2 #<<>>fb.pl
