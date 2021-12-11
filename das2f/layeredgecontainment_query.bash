@@ -13,8 +13,8 @@ cat >${temp}.pl <<'~~~'
 ?- consult(names).
 ?- consult(ports).
 query_helper(Parent,Edge):-
-isrect(Rect),
-isedge(Edge),
+das_fact(kind,Parent,rectangle),
+das_fact(kind,Edge,edge),
 diagram_fact(source,Edge,SourceLongID),
 diagram_fact(synonym,Source,SourceLongID),
 das_fact(direct_contains,Rect,Source),

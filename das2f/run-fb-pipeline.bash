@@ -51,15 +51,16 @@ echo '** layer 5 - indirect containment **'
 echo '** layer 6 - direct containment **'
 ./layer6 1>&2 #<<>>fb.pl
 
+# Layer edge containment
+echo '** layer edge containment **'
+./layeredgecontainment 1>&2 #<<>>fb.pl
+
+
 
 echo '*** early exit'
 exit 0
 
 
-
-# Layer edge containment
-echo '** layer edge containment **'
-./layeredgecontainment 1>&2 #<<>>fb.pl
 
 # Layer Synccode.
 echo '** layer synccode **'

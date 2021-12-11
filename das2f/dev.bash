@@ -40,5 +40,12 @@
 # chmod a+x layerdirection_query.bash
 # echo '-- layerdirection_query.bash generated --'
 
+# ./make.bash
+# #./run-fb-pipeline.bash
+
+# # Layer edge containment
+# echo '** layer edge containment **'
+# ./layeredgecontainment 1>&2 #<<>>fb.pl
+
 ./make.bash
 ./run-fb-pipeline.bash
