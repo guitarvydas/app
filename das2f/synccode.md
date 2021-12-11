@@ -7,7 +7,7 @@
   shapes
   values
 ## query
-  isrect(Codebox)
+  das_fact(kind,Codebox,rectangle)
   das_fact(color,Codebox,"red")
   valueof(Codebox,Code)
 ## display

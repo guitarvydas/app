@@ -55,13 +55,6 @@ echo '** layer 6 - direct containment **'
 echo '** layer edge containment **'
 ./layeredgecontainment 1>&2 #<<>>fb.pl
 
-
-
-echo '*** early exit'
-exit 0
-
-
-
 # Layer Synccode.
 echo '** layer synccode **'
 ./layersynccode 1>&2 #<<>>fb.pl
@@ -69,6 +62,16 @@ echo '** layer synccode **'
 # Layer Connections.
 echo '** layer connections **'
 ./layerconnection 1>&2 #<<>>fb.pl
+
+
+
+
+echo '*** early exit'
+exit 0
+
+
+
+
 
 # Layer Final. Components - bring it all home
 echo '** layer final **'

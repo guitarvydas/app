@@ -10,7 +10,7 @@ cat >${temp}.pl <<'~~~'
 ?- consult(shapes).
 ?- consult(values).
 query_helper(Codebox,Code):-
-isrect(Codebox),
+das_fact(kind,Codebox,rectangle),
 das_fact(color,Codebox,"red"),
 valueof(Codebox,Code),
 true.
