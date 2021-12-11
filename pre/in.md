@@ -14,7 +14,7 @@
       diagram_fact(color, ID, "red")    pervasiveinput
       diagram_fact(color, ID, "purple") pervasiveoutput
       else                              "?"
-## design rule
+## cond design rule
   ${Direction} === "?"
   all ports must have a direction ; port ${ID} has no direction
 ## display

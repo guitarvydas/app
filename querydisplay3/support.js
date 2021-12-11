@@ -27,7 +27,6 @@ exports.formatJSParameters = function () {
 var conddisplayStack = []; // { predicate, then-lines-as-string }
 
 exports.formatConditionalDisplays = function () {
-    console.error (conddisplayStack);
     var result = '';
     var elseif = 'if';
     conddisplayStack.forEach (cond => {

@@ -136,16 +136,6 @@ diagram_fact(y, cell_13, 490).
 diagram_fact(y, cell_6, 170).
 diagram_fact(y, cell_7, 220).
 diagram_fact(y, cell_8, 265).
-das_fact(kind,cell_10,ellipse).
-das_fact(kind,cell_11,rectangle).
-das_fact(kind,cell_12,ellipse).
-das_fact(kind,cell_13,rectangle).
-das_fact(kind,cell_4,rectangle).
-das_fact(kind,cell_5,rectangle).
-das_fact(kind,cell_6,rectangle).
-das_fact(kind,cell_7,rectangle).
-das_fact(kind,cell_8,rectangle).
-das_fact(kind,cell_9,edge).
 das_fact(name, cell_10, "out").
 das_fact(name, cell_11, "world").
 das_fact(name, cell_12, "in").
@@ -153,16 +143,6 @@ das_fact(name, cell_13, "&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; fo
 das_fact(name, cell_6, "helloworld").
 das_fact(name, cell_7, "hello").
 das_fact(name, cell_8, "&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
-das_fact(color,cell_10,"yellow").
-das_fact(color,cell_11,"-").
-das_fact(color,cell_12,"green").
-das_fact(color,cell_13,"red").
-das_fact(color,cell_4,"-").
-das_fact(color,cell_5,"-").
-das_fact(color,cell_6,"-").
-das_fact(color,cell_7,"-").
-das_fact(color,cell_8,"red").
-das_fact(color,cell_9,"-").
 das_fact(bbL,cell_10,470).
   das_fact(bbT,cell_10,290).
   das_fact(bbR,cell_10,510).
@@ -191,10 +171,8 @@ das_fact(bbL,cell_8,285).
   das_fact(bbT,cell_8,265).
   das_fact(bbR,cell_8,450).
   das_fact(bbB,cell_8,345).
-das_fact(direction,cell_10,output).
-das_fact(direction,cell_12,input).
-das_fact(inputport,cell_12,"-").
-das_fact(outputport,cell_10,"-").
+all ports must have a direction ; port cell_10 has no direction
+all ports must have a direction ; port cell_12 has no direction
 das_fact(contains,cell_6,cell_10).
 das_fact(contains,cell_6,cell_11).
 das_fact(contains,cell_6,cell_12).

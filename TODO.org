@@ -1,0 +1,4 @@
+* working on pre dev.bash
+** probably modified pre to accept a regex for start 
+
+

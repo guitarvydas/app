@@ -10,9 +10,14 @@
   names
   ports
   contains
-## query
-diagram_fact(cell,X,_) 
-(diagram_fact(kind,X,"ellipse")  -> Kind = "ellipse";diagram_fact(edge,X,1)  -> Kind = "edge";diagram_fact(root,X,1)  -> Kind = "root"; Kind = "rectangle")
+##~~~
+## forall X as diagram_fact(cell,X,_)
+    Kind = cond
+      diagram_fact(kind,X,"ellipse") "ellipse"
+      diagram_fact(edge,X,1)         "edge"
+      diagram_fact(root,X,1)         "root"
+     else                            "rectangle"
+##~~~
 ## display
   das_fact(kind,${X},${Kind}).
 

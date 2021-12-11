@@ -19,7 +19,7 @@ var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   ${support.formatJSParameters ()}
-  ${support.formatConditionalDisplays ()});
+  ${support.formatConditionalDisplays ()};
 });
 ~~~
 swipl -g "consult(\${temp})." -g 'query.' -g 'halt.' | node \${temp}.js
