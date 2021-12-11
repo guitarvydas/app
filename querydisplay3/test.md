@@ -13,5 +13,10 @@ diagram_fact(kind,ID,"ellipse")
 ## cond
   ${Direction} === "?" 
   all ports must have a direction ; port ${ID} has no direction
+## cond
+  ${Direction} === "?2" 
+  all ports must have a direction ; port ${ID} has no direction
 ## display
   das_fact(direction,${ID},${Direction}).
+## display
+  das_fact2(direction,${ID},${Direction}).
