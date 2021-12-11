@@ -203,3 +203,7 @@ das_fact(contains,cell_6,cell_8).
 das_fact(contains,cell_7,cell_8).
 das_fact(contains,cell_11,cell_12).
 das_fact(contains,cell_7,cell_10).
+das_fact(indirect_contains,cell_6,cell_13).
+das_fact(indirect_contains,cell_6,cell_12).
+das_fact(indirect_contains,cell_6,cell_8).
+das_fact(indirect_contains,cell_6,cell_10).
