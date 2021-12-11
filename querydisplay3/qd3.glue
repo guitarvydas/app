@@ -37,9 +37,9 @@ Imports [ksharp1 ksharp2 kimports @lines] = [[${lines}]]
 Query [ksharp1 ksharp2 kquery @lines] = [[${lines}]]
 
 Display [@DisplayClauses] = [[${DisplayClauses}]]
-DisplayClause_conditional [ksharp1 ksharp2   kcond    predicate display]
+DisplayClause_conditional [ksharp1 ksharp2   condKW    predicate display]
   = [[${support.pushConditionalDisplay (predicate, display)}]]
-DisplayClause_unconditional [ksharp1 ksharp2 kdisplay           display]
+DisplayClause_unconditional [ksharp1 ksharp2 displayKW           display]
   = [[${support.pushConditionalDisplay ("true", display)}]]
 
 
@@ -52,6 +52,13 @@ query [line] = [[${line.trim()},\n]]
 display [@lines] = [[${lines}]]
 message [@lines] = [[${lines}]]
 
+condKW_withcomment [kcond @ws commentToEOL] = [[${kcond}${ws}${commentToEOL}]]
+condKW_nocomment [kcond nl] = [[${kcond}${nl}]]
+
+displayKW_withcomment [kdisplay @ws commentToEOL] = [[${kdisplay}${ws}${commentToEOL}]]
+displayKW_nocomment [kdisplay nl] = [[${kdisplay}${nl}]]
+
+commentToEOL [line nl] = [[${line}${nl}]]
 line [@cs nl] = [[${cs}${nl}]]
 
 nl [c] = [[${c}]]
@@ -64,3 +71,5 @@ restChar [c] = [[${c}]]
 string [dq @notDQ dq2] = [[${notDQ}]]
 dq [c] = [[${c}]]
 notDQ [c] = [[${c}]]
+
+ws [c] = [[${c}]]

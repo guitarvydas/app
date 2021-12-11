@@ -10,13 +10,13 @@
 ## query
 diagram_fact(kind,ID,"ellipse") 
 (diagram_fact(color, ID, "green")  -> Direction = input;diagram_fact(color, ID, "yellow")  -> Direction = output;diagram_fact(color, ID, "red")  -> Direction = pervasiveinput;diagram_fact(color, ID, "purple")  -> Direction = pervasiveoutput; Direction = "?")
-## cond
+## cond comment 1
   ${Direction} === "?" 
   all ports must have a direction ; port ${ID} has no direction
-## cond
+## cond comment 2
   ${Direction} === "?2" 
   all ports must have a direction ; port ${ID} has no direction
-## display
+## display comment 3
   das_fact(direction,${ID},${Direction}).
-## display
+## display comment 4
   das_fact2(direction,${ID},${Direction}).

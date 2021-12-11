@@ -7,8 +7,8 @@ qd3 {
  Query = sharp sharp "query" query+
  Display = DisplayClause+
  DisplayClause
-   = sharp sharp "cond" predicate display -- conditional
-   | sharp sharp "display" display -- unconditional
+   = sharp sharp condKW predicate display -- conditional
+   | sharp sharp displayKW display -- unconditional
 
  Test = ident "is" string
 
@@ -21,6 +21,14 @@ qd3 {
 
    line = ~sharp notNL* nl
 
+   condKW = "cond" ws+ commentToEOL -- withcomment
+          | "cond" nl               -- nocomment
+   displayKW = "display" ws+ commentToEOL -- withcomment
+             | "display" nl               -- nocomment
+
+
+   commentToEOL = ~sharp notNL* nl
+
     nl = "\n"
     sharp = "#"
     notNL = ~nl any
@@ -31,4 +39,6 @@ qd3 {
     string = dq notDQ* dq
     dq = "\""
     notDQ = ~dq any
+    ws = " " | "\t"
 }
+
