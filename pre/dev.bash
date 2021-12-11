@@ -16,7 +16,7 @@ cdir=`pwd`
 
 echo forall
 #node pre.js '#+ forall ' forall.ohm forall.glue ${cdir}/support.js <in.md >temp
-pre '#+ forall ' forall.ohm forall.glue ${cdir}/support.js <in.md >temp
+pre '#+ forall ' '#+' forall.ohm forall.glue ${cdir}/support.js <in.md >temp
 
 # deprecated, use "cond design rule" instead using querydisplay3
 # echo design rule

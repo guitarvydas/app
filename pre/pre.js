@@ -2,8 +2,10 @@
 
 const fs = require ('fs');
 
-var reTrigger = /#+~~~\n/;
-const reEnd = /#+/;
+// var reTrigger = /#+~~~\n/;
+var reTrigger;
+var reEnd;
+// const reEnd = /\n#+/;
 
 
 var viewGeneratedCode = false;
@@ -171,6 +173,11 @@ function ohm_parse (grammar, text, errorMessage) {
 	// console.error ("/" + text + "/");
 	// or ... console.error (text);
 	var pos = cst._rightmostFailurePosition;
+	console.error ("---");
+	console.error (text.substring (0, pos));
+	console.error ("---");
+	console.error (text.substring (pos));
+	console.error ("---");
 	throw ("FAIL: at position " + pos.toString () + " " + errorMessage);
     }
 }
@@ -348,7 +355,7 @@ function splitOnSeparators (trigger, s) {
 	var matchedString = s.substring (indexEndFront, indexEndFront + matchLength);
 	var combined = s.substring (indexEndFront + matchLength);
 	// combined = middle + endSep + rest
-	var middleMatch = combined.match (reEnd);
+	var middleMatch = combined.match (reEnd) + "\n";
 
 	var middle = matchedString + combined.substring (0, middleMatch.index);
 	var rest = combined.substring (middleMatch.index);
@@ -378,9 +385,10 @@ function expandAll (s, trigger, grammarFileName, glueFileName, message) {
 function pre (allchars) {
     var args = process.argv;
     var reTrigger = new RegExp (args[2]);
-    var grammarFileName = args[3];
-    var glueFileName = args[4];
-    var supportFileName = args[5];
+    var reEnd = new RegExp (args[3]);
+    var grammarFileName = args[4];
+    var glueFileName = args[5];
+    var supportFileName = args[6];
 
     support = require (supportFileName);
     if (args.length >= 7) {
