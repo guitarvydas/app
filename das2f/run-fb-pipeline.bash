@@ -36,8 +36,8 @@ then
 fi
 
 # Layer 3. Rectangle Containment relationships.
-echo '** layer 3 **'
-./layer3 1>&2 #<<>>fb.pl
+echo '** layer all contains **'
+./layerallcontains 1>&2 #<<>>fb.pl
 
 echo '*** early exit'
 exit 0

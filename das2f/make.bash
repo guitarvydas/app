@@ -26,9 +26,9 @@ echo '-- view3.bash generated --'
 
 # queries
 
-querydisplay3 layer3 >layer3_query.bash
-chmod a+x layer3_query.bash
-echo '-- layer3_query.bash generated --'
+querydisplay3 layerallcontains >layerallcontains_query.bash
+chmod a+x layerallcontains_query.bash
+echo '-- layerallcontains_query.bash generated --'
 
 querydisplay3 contains_port >layer4_query.bash
 chmod a+x layer4_query.bash
