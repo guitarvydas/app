@@ -47,15 +47,15 @@ echo '** layer 4 **'
 echo '** layer 5 - indirect containment **'
 ./layer5 1>&2 #<<>>fb.pl
 
+# Layer 6. direct containment
+echo '** layer 6 - direct containment **'
+./layer6 1>&2 #<<>>fb.pl
+
+
 echo '*** early exit'
 exit 0
 
 
-
-
-# Layer 6. direct containment
-echo '** layer 6 **'
-./layer6 1>&2 #<<>>fb.pl
 
 # Layer edge containment
 echo '** layer edge containment **'
