@@ -76,7 +76,8 @@ querydisplay3 layerboundingbox >layerboundingbox_query.bash
 chmod a+x layerboundingbox_query.bash
 echo '-- layerboundingbox_query.bash generated --'
 
-querydisplay3 layerdirection >layerdirection_query.bash
+pre  "#+ forall " "#+ " forall.ohm forall.glue <layerdirection.md >preprocessed_layerdirection.md
+querydisplay3 preprocessed_layerdirection >layerdirection_query.bash
 chmod a+x layerdirection_query.bash
 echo '-- layerdirection_query.bash generated --'
 

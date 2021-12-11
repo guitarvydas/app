@@ -12,7 +12,7 @@ cat >${temp}.pl <<'~~~'
 ?- consult(inside).
 query_helper(ID,Direction):-
 diagram_fact(kind,ID,"ellipse"),
-(diagram_fact(color, ID, "green")  -> Direction = input;diagram_fact(color, ID, "yellow")  -> Direction = output;diagram_fact(color, ID, "red")  -> Direction = pervasiveinput;diagram_fact(color, ID, "purple")  -> Direction = pervasiveoutput; Direction = "?"),
+(das_fact(color, ID, "green")  -> Direction = input;das_fact(color, ID, "yellow")  -> Direction = output;das_fact(color, ID, "red")  -> Direction = pervasiveinput;das_fact(color, ID, "purple")  -> Direction = pervasiveoutput; Direction = "?"),
 true.
 query:-
 bagof([ID,Direction],query_helper(ID,Direction),Bag),

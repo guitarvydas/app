@@ -7,9 +7,13 @@
   shapes
   onSameDiagram
   inside
-## query
-diagram_fact(kind,ID,"ellipse") 
-(diagram_fact(color, ID, "green")  -> Direction = input;diagram_fact(color, ID, "yellow")  -> Direction = output;diagram_fact(color, ID, "red")  -> Direction = pervasiveinput;diagram_fact(color, ID, "purple")  -> Direction = pervasiveoutput; Direction = "?")
+## forall ID as diagram_fact(kind,ID,"ellipse")
+    Direction = cond
+      das_fact(color, ID, "green")  input
+      das_fact(color, ID, "yellow") output
+      das_fact(color, ID, "red")    pervasiveinput
+      das_fact(color, ID, "purple") pervasiveoutput
+      else                          "?"
 ## cond design rule
   Direction === "?" 
   FATAL: all ports must have a direction ; port ${ID} has no direction

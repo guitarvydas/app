@@ -30,5 +30,15 @@
 # chmod a+x layercolor_query.bash
 # echo '-- layercolor_query.bash generated --'
 
+# ./make.bash
+# ./run-fb-pipeline.bash
+
+# echo pre
+# pre  "#+ forall " "#+ " forall.ohm forall.glue <layerdirection.md >preprocessed_layerdirection.md
+# echo qd3
+# querydisplay3 preprocessed_layerdirection >layerdirection_query.bash
+# chmod a+x layerdirection_query.bash
+# echo '-- layerdirection_query.bash generated --'
+
 ./make.bash
-./run-fb-pipeline.bash
+# ./run-fb-pipeline.bash

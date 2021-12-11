@@ -191,5 +191,3 @@ das_fact(bbL,cell_8,285).
   das_fact(bbT,cell_8,265).
   das_fact(bbR,cell_8,450).
   das_fact(bbB,cell_8,345).
-FATAL: all ports must have a direction ; port cell_10 has no direction
-FATAL: all ports must have a direction ; port cell_12 has no direction
