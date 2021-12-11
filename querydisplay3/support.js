@@ -28,9 +28,11 @@ var conddisplayStack = []; // { predicate, then-lines-as-string }
 
 exports.formatConditionalDisplays = function () {
     console.error (conddisplayStack);
-    var result = ''
+    var result = '';
+    var elseif = 'if';
     conddisplayStack.forEach (cond => {
-	result = `${result}\nif (${cond.predicate}) { console.log (\`${cond.then}\`);}`;
+	result = `${result}\n${elseif} (${cond.predicate}) { console.log (\`${cond.then}\`);}`;
+	elseif = 'else if';
     });
     return result;
 }

@@ -27,7 +27,7 @@ parameters.forEach (p => {
 var Direction = p [1];
   
 if (${Direction} === "?") { console.log (`all ports must have a direction ; port ${ID} has no direction`);}
-if (true) { console.log (`das_fact(direction,${ID},${Direction}).`);});
+else if (true) { console.log (`das_fact(direction,${ID},${Direction}).`);});
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
