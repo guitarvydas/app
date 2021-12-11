@@ -32,7 +32,8 @@ var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Component = p [0];
-  console.log(`component_fact(component,\"${Component}\",\"\").`);
+  
+if (true) { console.log (`component_fact(component,\"${Component}\",\"\").`);};
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

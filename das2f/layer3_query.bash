@@ -27,7 +27,8 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Parent = p [0];
 var Child = p [1];
-  console.log(`das_fact(contains,${Parent},${Child}).`);
+  
+if (true) { console.log (`das_fact(contains,${Parent},${Child}).`);};
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

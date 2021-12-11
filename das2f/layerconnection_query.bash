@@ -35,7 +35,8 @@ parameters.forEach (p => {
 var Edge = p [1];
 var Source = p [2];
 var Target = p [3];
-  console.log(`das_fact(connection, ${Parent}, ${Edge}).\ndas_fact(source, ${Edge}, [${Source}]).\ndas_fact(target, ${Edge}, [${Target}]).`);
+  
+if (true) { console.log (`das_fact(connection, ${Parent}, ${Edge}).\ndas_fact(source, ${Edge}, [${Source}]).\ndas_fact(target, ${Edge}, [${Target}]).`);};
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js

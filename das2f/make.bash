@@ -26,15 +26,15 @@ echo '-- view3.bash generated --'
 
 # queries
 
-querydisplay2 layer3 >layer3_query.bash
+querydisplay3 layer3 >layer3_query.bash
 chmod a+x layer3_query.bash
 echo '-- layer3_query.bash generated --'
 
-querydisplay2 contains_port >layer4_query.bash
+querydisplay3 contains_port >layer4_query.bash
 chmod a+x layer4_query.bash
 echo '-- layer4_query.bash generated --'
 
-querydisplay2 indirect_contains >layer5_query.bash
+querydisplay3 indirect_contains >layer5_query.bash
 chmod a+x layer5_query.bash
 echo '-- layer5_query.bash generated --'
 
@@ -42,19 +42,19 @@ setquerydisplay direct_contains >layer6_query.bash
 chmod a+x layer6_query.bash
 echo '-- layer6_query.bash generated --'
 
-querydisplay2 contains_edge >layeredgecontainment_query.bash
+querydisplay3 contains_edge >layeredgecontainment_query.bash
 chmod a+x layeredgecontainment_query.bash
 echo '-- layeredgecontainment_query.bash generated --'
 
-querydisplay2 synccode >layersynccode_query.bash
+querydisplay3 synccode >layersynccode_query.bash
 chmod a+x layersynccode_query.bash
 echo '-- layersynccode_query.bash generated --'
 
-querydisplay2 connection >layerconnection_query.bash
+querydisplay3 connection >layerconnection_query.bash
 chmod a+x layerconnection_query.bash
 echo '-- layerconnection_query.bash generated --'
 
-querydisplay2 component >layerfinal_query.bash
+querydisplay3 component >layerfinal_query.bash
 chmod a+x layerfinal_query.bash
 echo '-- layerfinal_query.bash generated --'
 
@@ -68,11 +68,11 @@ querydisplay3 preprocessed_layercolor >layercolor_query.bash
 chmod a+x layercolor_query.bash
 echo '-- layercolor_query.bash generated --'
 
-querydisplay2 layername >layername_query.bash
+querydisplay3 layername >layername_query.bash
 chmod a+x layername_query.bash
 echo '-- layername_query.bash generated --'
 
-querydisplay2 layerboundingbox >layerboundingbox_query.bash
+querydisplay3 layerboundingbox >layerboundingbox_query.bash
 chmod a+x layerboundingbox_query.bash
 echo '-- layerboundingbox_query.bash generated --'
 

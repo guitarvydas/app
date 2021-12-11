@@ -28,7 +28,8 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var ID = p [0];
 var Name = p [1];
-  console.log(`das_fact(name, ${ID}, \"${Name}\").`);
+  
+if (true) { console.log (`das_fact(name, ${ID}, \"${Name}\").`);};
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
