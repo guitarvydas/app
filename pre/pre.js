@@ -2,10 +2,8 @@
 
 const fs = require ('fs');
 
-// var reTrigger = /#+~~~\n/;
 var reTrigger;
 var reEnd;
-// const reEnd = /\n#+/;
 
 
 var viewGeneratedCode = false;
@@ -336,16 +334,12 @@ function expand (s, grammarFileName, glueFileName, message) {
 
 
 
-// separators are based on lines
-// #+ allows lines to be used in .md files (easily), e.g.
-// ###~~~
-
-function splitOnSeparators (trigger, s) {
+function splitOnSeparators (triggerSep, endSep, s) {
     // s = front + beginSep + middle + endSep + rest
     // if there is nothing to expand (i.e. no beginSep), s = front
     // return 3 parts, excluding beginSep and endSep
 
-    var frontMatch = s.match (trigger);
+    var frontMatch = s.match (triggerSep);
     if (frontMatch) {
         // s contains a begin separator : front + beginSep + middle + endSep + rest
         var matchLength = frontMatch [0].length;
@@ -355,7 +349,7 @@ function splitOnSeparators (trigger, s) {
 	var matchedString = s.substring (indexEndFront, indexEndFront + matchLength);
 	var combined = s.substring (indexEndFront + matchLength);
 	// combined = middle + endSep + rest
-	var middleMatch = combined.match (reEnd) + "\n";
+	var middleMatch = combined.match (endSep);
 
 	var middle = matchedString + combined.substring (0, middleMatch.index);
 	var rest = combined.substring (middleMatch.index);
@@ -370,15 +364,15 @@ function splitOnSeparators (trigger, s) {
     }
 }
 
-function expandAll (s, trigger, grammarFileName, glueFileName, message) {
+function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message) {
     
-    var {front, middle, rest} = splitOnSeparators (trigger, s);
+    var {front, middle, rest} = splitOnSeparators (triggerRE, endRE, s);
 
     if (middle === '') {
 	return front;
     } else {
 	var expandedText = expand (middle, grammarFileName, glueFileName, message);
-	return front + expandAll (expandedText + rest, grammarFileName, glueFileName, message);
+	return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
     }
 }
 
@@ -391,14 +385,14 @@ function pre (allchars) {
     var supportFileName = args[6];
 
     support = require (supportFileName);
-    if (args.length >= 7) {
-	var traceFlag = args[6];
+    if (args.length >= 8) {
+	var traceFlag = args[7];
 	if (traceFlag === 't') {
 	    tracing = true;
 	    traceDepth = 0;
 	}
     }
-    var expanded = expandAll (allchars, reTrigger, grammarFileName, glueFileName, 'parsing input');
+    var expanded = expandAll (allchars, reTrigger, reEnd, grammarFileName, glueFileName, 'parsing input');
     return expanded;
 }
 

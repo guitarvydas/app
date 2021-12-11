@@ -58,9 +58,9 @@ querydisplay2 component >layerfinal_query.bash
 chmod a+x layerfinal_query.bash
 echo '-- layerfinal_query.bash generated --'
 
-echo new version for kind 1
-pre "#+ forall" forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
-echo new version for kind 2
+echo new version kind 1
+pre '#+ forall' '#+' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
+echo new version kind 2
 querydisplay3 preprocessed_layerkind >layerkind_query.bash
 chmod a+x layerkind_query.bash
 echo '-- layerkind_query.bash generated --'
