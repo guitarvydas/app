@@ -14,9 +14,9 @@ cat >${temp}.pl <<'~~~'
 ?- consult(ports).
 ?- consult(contains_port).
 query_helper(R,E):-
-isrect(R),
-isellipse(E),
-contains_port(R,E),
+das_fact(kind,R,rectangle),
+das_fact(kind,E,ellipse),
+containsport(R,E),
 true.
 query:-
 bagof([R,E],query_helper(R,E),Bag),

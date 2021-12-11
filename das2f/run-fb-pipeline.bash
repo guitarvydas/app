@@ -39,13 +39,13 @@ fi
 echo '** layer all contains **'
 ./layerallcontains 1>&2 #<<>>fb.pl
 
-echo '*** early exit'
-exit 0
-
-
 # Layer 4. Rectangle contains Port.
 echo '** layer 4 **'
 ./layer4 1>&2 #<<>>fb.pl
+
+echo '*** early exit'
+exit 0
+
 
 
 
