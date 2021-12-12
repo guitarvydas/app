@@ -34,3 +34,6 @@ chmod a+x ${app}/bin/querydisplay3
 cp ${app}/pre/pre ${app}/bin
 chmod a+x ${app}/bin/pre
 
+# das2f
+cp ${app}/das2f/das2f ${app}/bin
+chmod a+x ${app}/bin/das2f
