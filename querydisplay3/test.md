@@ -20,3 +20,5 @@ diagram_fact(kind,ID,"ellipse")
   das_fact(direction,${ID},${Direction}).
 ## display comment 4
   das_fact2(direction,${ID},${Direction}).
+## json comment 5
+

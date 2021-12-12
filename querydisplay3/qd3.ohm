@@ -9,6 +9,7 @@ qd3 {
  DisplayClause
    = sharp sharp condKW predicate display -- conditional
    | sharp sharp displayKW display -- unconditional
+   | sharp sharp jsonKW            -- json
 
  Test = ident "is" string
 
@@ -25,6 +26,8 @@ qd3 {
           | "cond" nl               -- nocomment
    displayKW = "display" ws+ commentToEOL -- withcomment
              | "display" nl               -- nocomment
+   jsonKW = "json"    ws+ commentToEOL    -- withcomment
+          | "json" nl                     -- nocomment
 
 
    commentToEOL = ~sharp notNL* nl

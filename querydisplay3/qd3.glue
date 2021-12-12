@@ -41,6 +41,8 @@ DisplayClause_conditional [ksharp1 ksharp2   condKW    predicate display]
   = [[${support.pushConditionalDisplay (predicate, display)}]]
 DisplayClause_unconditional [ksharp1 ksharp2 displayKW           display]
   = [[${support.pushConditionalDisplay ("true", display)}]]
+DisplayClause_json             [ksharp1 ksharp2 jsonKW                  ]
+  = [[${support.pushConditionalDisplay ("true", "console.log(rawText)")}]]
 
 
 Test [ident kis s] = [[${ident} === \"${s}\"]]
@@ -57,6 +59,8 @@ condKW_nocomment [kcond nl] = [[${kcond}${nl}]]
 
 displayKW_withcomment [kdisplay @ws commentToEOL] = [[${kdisplay}${ws}${commentToEOL}]]
 displayKW_nocomment [kdisplay nl] = [[${kdisplay}${nl}]]
+jsonKW_withcomment [kjson @ws commentToEOL] = [[${kjson}${ws}${commentToEOL}]]
+jsonKW_nocomment [kjson nl] = [[${kjson}${nl}]]
 
 commentToEOL [line nl] = [[${line}${nl}]]
 line [@cs nl] = [[${cs}${nl}]]
