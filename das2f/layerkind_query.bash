@@ -6,7 +6,7 @@ temp=temp${RANDOM}
 
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
-?- consult(fb).
+:- consult(fb).
 ?- consult(shapes).
 ?- consult(onSameDiagram).
 ?- consult(inside).

@@ -3,7 +3,6 @@
   Parent
   Child
 ## imports
-    fb
     shapes
     onSameDiagram
     inside

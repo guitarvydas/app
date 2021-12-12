@@ -5,6 +5,7 @@ ${Name}
 ${Parameters}
 cat >\${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
+:- consult(fb).
 ${Imports.trim ()}
 query_helper(${support.formatParameters ()}):-
 ${Query.trim ()}

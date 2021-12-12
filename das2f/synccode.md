@@ -3,7 +3,6 @@
   Codebox
   Code
 ## imports
-  fb
   shapes
   values
 ## query

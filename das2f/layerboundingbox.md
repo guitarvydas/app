@@ -6,7 +6,6 @@
   Right
   Bottom
 ## imports
-  fb
     shapes
     onSameDiagram
     inside
