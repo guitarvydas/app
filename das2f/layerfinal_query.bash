@@ -32,9 +32,10 @@ var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Component = p [0];
-  
-if (true) { console.log (`console.log(rawText)`);};
+  ;
 });
+  
+if (true) { console.log (`${rawText}`);}
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
 rm -f ${temp}.pl

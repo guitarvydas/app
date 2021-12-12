@@ -1,4 +1,6 @@
 #!/bin/bash
+echo deprecated - do not use this
+exit 1
 # input from fb.pl
 # output augments fb.pl
 

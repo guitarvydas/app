@@ -30,6 +30,7 @@ var Child = p [1];
   
 if (true) { console.log (`das_fact(contains,${Parent},${Child}).`);};
 });
+  
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
 rm -f ${temp}.pl

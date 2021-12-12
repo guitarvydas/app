@@ -29,6 +29,7 @@ var Direction = p [1];
 if (Direction === "?") { console.log (`FATAL: all ports must have a direction ; port ${ID} has no direction`);}
 else if (true) { console.log (`das_fact(direction,${ID},${Direction}).`);};
 });
+  
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
 rm -f ${temp}.pl

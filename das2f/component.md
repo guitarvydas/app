@@ -18,5 +18,3 @@
   Component = component{id:RID, name:Name, inputs:Inputs, outputs:Outputs, children:Children, connections:Connections, synccode:Code}
   json_write(user_error,[Component],[width(128)])
 ## json
-
-

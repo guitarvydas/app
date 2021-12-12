@@ -41,6 +41,7 @@ if (true) { console.log (`das_fact(bbL,${ID},${X}).
   das_fact(bbR,${ID},${Right}).
   das_fact(bbB,${ID},${Bottom}).`);};
 });
+  
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
 rm -f ${temp}.pl

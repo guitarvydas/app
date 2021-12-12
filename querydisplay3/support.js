@@ -41,4 +41,22 @@ exports.pushConditionalDisplay = function (predicateString, thenString) {
     return "";
 }
 
-    
+
+var finaldisplayStack = []; // { predicate, then-lines-as-string }
+
+exports.formatFinalDisplays = function () {
+    var result = '';
+    var elseif = 'if';
+    finaldisplayStack.forEach (cond => {
+	result = `${result}\n${elseif} (${cond.predicate}) { console.log (\`${cond.then}\`);}`;
+	elseif = 'else if';
+    });
+    return result;
+}
+
+exports.pushFinalDisplay = function (predicateString, thenString) {
+    finaldisplayStack.push ({predicate: predicateString.trim (), then: thenString.trim ()});
+    return "";
+}
+
+

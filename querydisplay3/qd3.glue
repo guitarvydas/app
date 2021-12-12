@@ -21,6 +21,7 @@ parameters.forEach (p => {
   ${support.formatJSParameters ()}
   ${support.formatConditionalDisplays ()};
 });
+  ${support.formatFinalDisplays ()}
 ~~~
 swipl -g "consult(\${temp})." -g 'query.' -g 'halt.' | node \${temp}.js
 rm -f \${temp}.pl
@@ -42,7 +43,7 @@ DisplayClause_conditional [ksharp1 ksharp2   condKW    predicate display]
 DisplayClause_unconditional [ksharp1 ksharp2 displayKW           display]
   = [[${support.pushConditionalDisplay ("true", display)}]]
 DisplayClause_json             [ksharp1 ksharp2 jsonKW                  ]
-  = [[${support.pushConditionalDisplay ("true", "console.log(rawText)")}]]
+  = [[${support.pushFinalDisplay ("true", "\${rawText}")}]]
 
 
 Test [ident kis s] = [[${ident} === \"${s}\"]]

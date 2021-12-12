@@ -3,7 +3,7 @@
 echo '** factbase pipeline **' 1>&2
 
 # Layer 0. Convert helloword.drawio into factbase format using d2f.
-echo '** layer 0 (helloworld.drawio --> fb.pl) **'
+echo '** layer 0 (helloworld.drawio --> fb.pl) **' 1>&2
 d2f helloworld >fb.pl
 
 # We will store the factbase in a file called fb.pl
@@ -36,34 +36,35 @@ then
 fi
 
 # Layer 3. Rectangle Containment relationships.
-echo '** layer all contains **'
+echo '** layer all contains **'  1>&2
 ./layerallcontains 1>&2 #<<>>fb.pl
 
 # Layer 4. Rectangle contains Port.
-echo '** layer 4 **'
+echo '** layer 4 **' 1>&2
 ./layer4 1>&2 #<<>>fb.pl
 
 # Layer 5. indirect containment
-echo '** layer 5 - indirect containment **'
+echo '** layer 5 - indirect containment **' 1>&2
 ./layer5 1>&2 #<<>>fb.pl
 
 # Layer 6. direct containment
-echo '** layer 6 - direct containment **'
+echo '** layer 6 - direct containment **' 1>&2
 ./layer6 1>&2 #<<>>fb.pl
 
 # Layer edge containment
-echo '** layer edge containment **'
+echo '** layer edge containment **' 1>&2
 ./layeredgecontainment 1>&2 #<<>>fb.pl
 
 # Layer Synccode.
-echo '** layer synccode **'
+echo '** layer synccode **' 1>&2
 ./layersynccode 1>&2 #<<>>fb.pl
 
 # Layer Connections.
-echo '** layer connections **'
+echo '** layer connections **' 1>&2
 ./layerconnection 1>&2 #<<>>fb.pl
 
 
 # Layer Final. Components - bring it all home
-echo '** layer final **'
-./layerfinal 1>&2 #<<>>fb.pl
+echo '** layer final **' 1>&2
+./layerfinal_query.bash
+
