@@ -29,7 +29,7 @@ targetidof(Edge, Target):-
 
 
 connectionsof(R,Connections):-
-    bagof([Source,Target],connection(R,Source,Target),Connections),
+    bagof(json([source=Source,target=Target]),connection(R,Source,Target),Connections),
     !.
 connectionsof(_,[]).
 
