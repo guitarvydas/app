@@ -5,7 +5,7 @@
 temp=temp_${RANDOM}
 temp2=temp2_${RANDOM}
 
-./layeredgecontainment_query.bash >$temp
+$1/layeredgecontainment_query.bash >$temp
 
 ### move result into fb.pl (without overwrite problems)
 cat fb.pl $temp >$temp2
