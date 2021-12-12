@@ -1,9 +1,10 @@
 ../make.bash
 cwd=`pwd`
-(cd ../das2f ; ./run.bash)
+#(cd ../das2f ; ./run.bash)
 cd ${cwd}
 cp ../das2f/fb.pl .
 cp ../das2f/connection.pl .
+cp ../das2f/component_helper.pl .
 
 
 querydisplay3 component >layerfinal_query.bash
