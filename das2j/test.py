@@ -20,8 +20,12 @@ for componentArray in data:
     print (component["outputs"], end="\n")
     print ("children: ", end="")
     print (component["children"], end="\n")
-    print ("connections: ", end="")
-    for conn in component["connections"]:
-      print (conn, end="")
+    if (0 == len(component["connections"])):
+      print ("connections: []", end="\n")
+    else:
+      print ("connections: ", end="\n")
+      for conn in component["connections"]:
+        print ("  ", end="")
+        print (conn, end="\n")
     print ("\n")
   
