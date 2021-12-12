@@ -54,10 +54,6 @@ querydisplay3 connection >layerconnection_query.bash
 chmod a+x layerconnection_query.bash
 echo '-- layerconnection_query.bash generated --' 1>&2
 
-querydisplay3 component >layerfinal_query.bash
-chmod a+x layerfinal_query.bash
-echo '-- layerfinal_query.bash generated --' 1>&2
-
 pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
 querydisplay3 preprocessed_layerkind >layerkind_query.bash
 chmod a+x layerkind_query.bash

@@ -62,9 +62,3 @@ echo '** layer synccode **' 1>&2
 # Layer Connections.
 echo '** layer connections **' 1>&2
 ./layerconnection 1>&2 #<<>>fb.pl
-
-
-# Layer Final. Components - bring it all home
-echo '** layer final **' 1>&2
-./layerfinal_query.bash
-
