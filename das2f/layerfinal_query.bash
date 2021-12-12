@@ -33,7 +33,7 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Component = p [0];
   
-if (true) { console.log (`component_fact(component,\"${Component}\",\"\").`);};
+if (true) { console.log (`das_fact(kind,${JSON.stringify(Component)},component).`);};
 });
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
