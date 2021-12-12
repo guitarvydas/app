@@ -1,27 +1,7 @@
-temp=_temp_${RANDOM}
-set -e
-trap 'catch' ERR
+trap 'cleanup' ERR
 trap 'cleanup' EXIT
 
-catch () {
-    echo '*** FATAL ERROR in view1 ***'
-    echo "(cleaning up $temp)"
-    rm -f $temp
-    exit 1
-}
 cleanup () {
-    echo "(cleaning up $temp)"
-    rm -f $temp
     exit 1
 }
-
-while true
-do
-    swipl -g 'consult(debug).' \
-	  -g 'debug1.' \
-	  -g 'halt.' >$temp
-    #    read -p 'again?...'
-    clear
-    cat $temp
-    sleep 2
-done
+querydisplay view1

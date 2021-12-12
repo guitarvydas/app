@@ -111,7 +111,7 @@ exports.generateSynonym = () => {
     if (synid === '') {
 	return '';
     } else {
-	return `fact(synonym, ${id}, ${synid}).\n`;
+	return `diagram_fact(synonym, ${id}, ${synid}).\n`;
     }
 }
 
@@ -140,7 +140,7 @@ exports.generateAttributes = () => {
     context.attributes.forEach (a => {
 	let name = a.name;
 	let v = a.value;
-	s = s + `\nfact(${name}, ${id}, ${v}).`;
+	s = s + `\ndiagram_fact(${name}, ${id}, ${v}).`;
     });
     return s;
 }

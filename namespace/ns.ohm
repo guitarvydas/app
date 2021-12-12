@@ -1,0 +1,9 @@
+namespaces {
+  main = ident ":" ident main* -- withNamespace
+         | stuff*              -- withoutNamespace
+  stuff = ~":" any
+  ident = firstChar restChar*
+  firstChar = letter | "_"
+  restChar = alnum | firstChar
+}
+
