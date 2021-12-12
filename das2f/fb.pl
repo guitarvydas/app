@@ -218,4 +218,4 @@ das_fact(codebox,cell_13,"&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; f
 das_fact(codebox,cell_8,"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
 das_fact(connection, cell_6, cell_9).
 das_fact(source, cell_9, source{component:hello,port:out}).
-das_fact(source, cell_9, target{component:world,port:in}).
+das_fact(target, cell_9, target{component:world,port:in}).

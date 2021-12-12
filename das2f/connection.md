@@ -17,5 +17,5 @@
 ## display
 das_fact(connection, ${Parent}, ${Edge}).
 das_fact(source, ${Edge}, source{component:${Source.component},port:${Source.port}}).
-das_fact(source, ${Edge}, target{component:${Target.component},port:${Target.port}}).
+das_fact(target, ${Edge}, target{component:${Target.component},port:${Target.port}}).
 

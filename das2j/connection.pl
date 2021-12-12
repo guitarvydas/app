@@ -33,7 +33,7 @@ connectionsof(R,Connections):-
     !.
 connectionsof(_,[]).
 
-connection(R,connection{source:Source,target:Target},""):-
+connection(R,Source,Target):-
     das_fact(connection,R,ID),
     das_fact(source,ID,Source),
     das_fact(target,ID,Target).
