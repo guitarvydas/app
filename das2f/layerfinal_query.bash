@@ -20,7 +20,6 @@ children(RID,Children),
 codeof(RID,Code),
 connectionsof(RID,Connections),
 Component = component{id:RID, name:Name, inputs:Inputs, outputs:Outputs, children:Children, connections:Connections, synccode:Code},
-json_write(user_error,[Component],[width(128)]),
 true.
 query:-
 bagof([Component],query_helper(Component),Bag),

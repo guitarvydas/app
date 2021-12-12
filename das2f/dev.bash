@@ -48,4 +48,5 @@
 # ./layeredgecontainment 1>&2 #<<>>fb.pl
 
 ./make.bash
-./run-fb-pipeline.bash
+./run-fb-pipeline.bash >out.json
+

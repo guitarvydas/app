@@ -1,3 +1,0 @@
-[ {"children": [], "id":"cell_11", "inputs": ["in" ], "name":"world", "outputs": []} ]
-[ {"children": ["world", "hello" ], "id":"cell_6", "inputs": [], "name":"helloworld", "outputs": []} ]
-[ {"children": [], "id":"cell_7", "inputs": [], "name":"hello", "outputs": ["out" ]} ]
