@@ -37,3 +37,6 @@ chmod a+x ${app}/bin/pre
 # das2f
 cp ${app}/das2f/das2f ${app}/bin
 chmod a+x ${app}/bin/das2f
+# das2j
+cp ${app}/das2j/das2j ${app}/bin
+chmod a+x ${app}/bin/das2j

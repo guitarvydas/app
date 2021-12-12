@@ -1,21 +1,15 @@
-../make.bash
-cwd=`pwd`
-#(cd ../das2f ; ./run.bash)
-cd ${cwd}
-cp ../das2f/fb.pl .
-cp ../das2f/connection.pl .
-cp ../das2f/component_helper.pl .
+#!/bin/bash
+# this is only an example
+# use das2j instead
 
+set -x
 
-querydisplay3 component >layerfinal_query.bash
-chmod a+x layerfinal_query.bash
-echo '-- layerfinal_query.bash generated --' 1>&2
+./build.bash
 
-
-
-# Layer Final. Components - bring it all home
-echo '** layer final **' 1>&2
-./layerfinal_query.bash >out.json
+# # Layer Final. Components - bring it all home
+# echo '** layer final **' 1>&2
+# ./layerfinal_query.bash >out.json
+das2j helloworld >out.json
 
 python3 test.py
 

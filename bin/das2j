@@ -1,0 +1,5 @@
+#!/bin/bash
+set -x
+das2f $1
+./layerfinal_query.bash
+

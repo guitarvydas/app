@@ -1,4 +1,5 @@
 # usage: run-fb-pipeline.bash pipe
+das2fdir=${HOME}/app/das2f
 
 echo '** factbase pipeline **' 1>&2
 
@@ -13,15 +14,15 @@ d2f $1 >fb.pl
 
 # Layer 1. Infer low-hanging fruit information.
 echo '** layer 1 **' 1>&2
-./layerkind 1>&2 # <<>>fb.pl
-./layername 1>&2 # <<>>fb.pl
-./layercolor 1>&2 # <<>>fb.pl
-./layerboundingbox 1>&2 # <<>>fb.pl
+${das2fdir}/layerkind ${das2fdir} 1>&2 # <<>>fb.pl
+${das2fdir}/layername 1>&2 # <<>>fb.pl
+${das2fdir}/layercolor 1>&2 # <<>>fb.pl
+${das2fdir}/layerboundingbox 1>&2 # <<>>fb.pl
 
 # # Layer 2. Names, port directions
 echo '** layer 2 **' 1>&2
-./layerdirection 1>&2 # <<>>fb.pl
-#./layer2  1>&2 #<<>>fb.pl
+${das2fdir}/layerdirection 1>&2 # <<>>fb.pl
+#${das2fdir}/layer2  1>&2 #<<>>fb.pl
 
 # # Design Rule - all ports (ellipses) must have a direction
 # echo '** design rule for layer 2 **'
@@ -37,28 +38,28 @@ fi
 
 # Layer 3. Rectangle Containment relationships.
 echo '** layer all contains **'  1>&2
-./layerallcontains 1>&2 #<<>>fb.pl
+${das2fdir}/layerallcontains 1>&2 #<<>>fb.pl
 
 # Layer 4. Rectangle contains Port.
 echo '** layer 4 **' 1>&2
-./layer4 1>&2 #<<>>fb.pl
+${das2fdir}/layer4 1>&2 #<<>>fb.pl
 
 # Layer 5. indirect containment
 echo '** layer 5 - indirect containment **' 1>&2
-./layer5 1>&2 #<<>>fb.pl
+${das2fdir}/layer5 1>&2 #<<>>fb.pl
 
 # Layer 6. direct containment
 echo '** layer 6 - direct containment **' 1>&2
-./layer6 1>&2 #<<>>fb.pl
+${das2fdir}/layer6 1>&2 #<<>>fb.pl
 
 # Layer edge containment
 echo '** layer edge containment **' 1>&2
-./layeredgecontainment 1>&2 #<<>>fb.pl
+${das2fdir}/layeredgecontainment 1>&2 #<<>>fb.pl
 
 # Layer Synccode.
 echo '** layer synccode **' 1>&2
-./layersynccode 1>&2 #<<>>fb.pl
+${das2fdir}/layersynccode 1>&2 #<<>>fb.pl
 
 # Layer Connections.
 echo '** layer connections **' 1>&2
-./layerconnection 1>&2 #<<>>fb.pl
+${das2fdir}/layerconnection 1>&2 #<<>>fb.pl
