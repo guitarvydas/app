@@ -1,4 +1,4 @@
-sourceof(Edge, json([component=SourceName,port=SourcePort])):-
+sourceof(Edge, source{component:SourceName,port:SourcePort}):-
     sourceidof(Edge,PortID),
     das_fact(direct_contains,Parent,PortID),
     nameof(PortID,SourcePort),
@@ -13,7 +13,7 @@ sourceidof(Edge, Source):-
 % sourceidof(Edge,_):-format(user_error,"FATAL no source for connection ~w~n",[Edge]).
 
 
-targetof(Edge, json([component=TargetName,port=TargetPort])):-
+targetof(Edge, target{component:TargetName,port:TargetPort}):-
     targetidof(Edge,PortID),
     das_fact(direct_contains,Parent,PortID),
     nameof(PortID,TargetPort),

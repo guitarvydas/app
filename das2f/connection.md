@@ -14,7 +14,8 @@
   sourceof(Edge,Source)
   targetof(Edge,Target)
   das_fact(direct_contains,Parent,Edge)
-  json_write(user_error,Target)
 ## display
-das_fact(connection, ${Parent}, ${Edge}).\ndas_fact(source, ${Edge}, ${JSON.stringify(Source)}).\ndas_fact(target, ${Edge}, ${JSON.stringify (Target)}).
+das_fact(connection, ${Parent}, ${Edge}).
+das_fact(source, ${Edge}, source${JSON.stringify(Source)}).
+das_fact(target, ${Edge}, target${JSON.stringify (Target)}).
 
