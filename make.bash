@@ -4,6 +4,8 @@ app=${HOME}/app
 # pfr and pf
 cp ${app}/pfr/pfr ${app}/bin
 chmod a+x ${app}/bin/pfr
+cp ${app}/pfr/parse.js ${app}/bin/npfr
+chmod a+x ${app}/bin/npfr
 
 cp ${app}/pfr/pf ${app}/bin
 chmod a+x ${app}/bin/pf

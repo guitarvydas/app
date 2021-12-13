@@ -51,7 +51,18 @@
 # ./run-fb-pipeline.bash >out.json
 
 cwd=`pwd`
+das2fdir=$cwd
+
+# pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
+# querydisplay3 preprocessed_layerkind >layerkind_query.bash
+# chmod a+x layerkind_query.bash
+# echo '-- layerkind_query.bash generated --' 1>&2
+# ./layerkind $cwd
+
+../make.bash
+# Layer 3. Rectangle Containment relationships.
 querydisplay3 layerallcontains >layerallcontains_query.bash
 chmod a+x layerallcontains_query.bash
 echo '-- layerallcontains_query.bash generated --' 1>&2
-./layerallcontains $cwd
+echo '** layer all contains **'  1>&2
+${das2fdir}/layerallcontains ${das2fdir} 1>&2 #<<>>fb.pl

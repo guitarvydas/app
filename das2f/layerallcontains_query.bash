@@ -6,13 +6,13 @@ temp=temp${RANDOM}
 
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
-:- consult(fb).
-?- consult('/Users/tarvydas/app/das2f/shapes.pl').
-?- consult('/Users/tarvydas/app/das2f/onSameDiagram.pl').
-?- consult('/Users/tarvydas/app/das2f/inside.pl').
-?- consult('/Users/tarvydas/app/das2f/names.pl').
-?- consult('/Users/tarvydas/app/das2f/ports.pl').
-?- consult('/Users/tarvydas/app/das2f/contains.pl').
+?- consult(fb).
+?- consult("~/app/das2f/shapes.pl").
+?- consult("~/app/das2f/onSameDiagram.pl").
+?- consult("~/app/das2f/inside.pl").
+?- consult("~/app/das2f/names.pl").
+?- consult("~/app/das2f/ports.pl").
+?- consult("~/app/das2f/contains.pl").
 query_helper(Parent,Child):-
 contains(Parent,Child),
 true.
@@ -33,6 +33,6 @@ if (true) { console.log (`das_fact(contains,${Parent},${Child}).`);};
   
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
-rm -f ${temp}.pl
-rm -f ${temp}.js
+# rm -f ${temp}.pl
+# rm -f ${temp}.js
 

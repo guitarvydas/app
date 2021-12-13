@@ -6,12 +6,12 @@ temp=temp${RANDOM}
 
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
-:- consult(fb).
-?- consult(shapes).
-?- consult(onSameDiagram).
-?- consult(inside).
-?- consult(names).
-?- consult(ports).
+?- consult(fb).
+?- consult("shapes").
+?- consult("onSameDiagram").
+?- consult("inside").
+?- consult("names").
+?- consult("ports").
 query_helper(Parent,Edge):-
 das_fact(kind,Parent,rectangle),
 das_fact(kind,Edge,edge),
@@ -37,6 +37,6 @@ if (true) { console.log (`das_fact(direct_contains,${Parent},${Edge}).`);};
   
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
-rm -f ${temp}.pl
-rm -f ${temp}.js
+# rm -f ${temp}.pl
+# rm -f ${temp}.js
 

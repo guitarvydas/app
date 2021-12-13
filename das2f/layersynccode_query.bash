@@ -6,9 +6,9 @@ temp=temp${RANDOM}
 
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
-:- consult(fb).
-?- consult(shapes).
-?- consult(values).
+?- consult(fb).
+?- consult("shapes").
+?- consult("values").
 query_helper(Codebox,Code):-
 das_fact(kind,Codebox,rectangle),
 das_fact(color,Codebox,"red"),
@@ -31,6 +31,6 @@ if (true) { console.log (`das_fact(codebox,${Codebox},\"${Code}\").`);};
   
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
-rm -f ${temp}.pl
-rm -f ${temp}.js
+# rm -f ${temp}.pl
+# rm -f ${temp}.js
 

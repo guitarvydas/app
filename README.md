@@ -3,9 +3,19 @@ applications
 structure:
 
 ${HOME}/app/bin
-${HOME}/app/makedocker
 ${HOME}/app/pfr
 ${HOME}/app/node_modules
+${HOME}/app/pfr
+${HOME}/app/querydisplay3
+${HOME}/app/setquerydisplay
+${HOME}/app/pre
+${HOME}/app/d2f
+${HOME}/app/das2f
+${HOME}/app/das2j
+${HOME}/app/rnot
+${HOME}/app/makedocker
+
+
 
 - bin - is where all script roots are found ("bin" used to mean "binary", I use "bin" to mean a "bin" (container thing))
 
@@ -16,6 +26,12 @@ ${HOME}/app/node_modules
 tools
 - pfr
 - pf
+- querydisplay3
+- setquerydisplay
+- pre
+- das2j
+- das2j
+
 
 usage:
 - put ${HOME}/bin/bin on your PATH

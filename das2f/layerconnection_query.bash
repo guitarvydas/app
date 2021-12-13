@@ -6,10 +6,10 @@ temp=temp${RANDOM}
 
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
-:- consult(fb).
-?- consult(shapes).
-?- consult(names).
-?- consult(connection).
+?- consult(fb).
+?- consult("shapes").
+?- consult("names").
+?- consult("connection").
 query_helper(Parent,Edge,Source,Target):-
 das_fact(kind,Edge,edge),
 sourceof(Edge,Source),
@@ -37,6 +37,6 @@ das_fact(target, ${Edge}, target{component:${Target.component},port:${Target.por
   
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
-rm -f ${temp}.pl
-rm -f ${temp}.js
+# rm -f ${temp}.pl
+# rm -f ${temp}.js
 

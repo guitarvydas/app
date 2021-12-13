@@ -5,7 +5,7 @@ ${Name}
 ${Parameters}
 cat >\${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
-:- consult(fb).
+?- consult(fb).
 ${Imports.trim ()}
 query_helper(${support.formatParameters ()}):-
 ${Query.trim ()}
@@ -25,8 +25,8 @@ parameters.forEach (p => {
   ${support.formatFinalDisplays ()}
 ~~~
 swipl -g "consult(\${temp})." -g 'query.' -g 'halt.' | node \${temp}.js
-rm -f \${temp}.pl
-rm -f \${temp}.js
+# rm -f \${temp}.pl
+# rm -f \${temp}.js
 ]]
 
 Name [ksharp line] =    [[# ${line}]]
@@ -51,7 +51,7 @@ Test [ident kis s] = [[${ident} === \"${s}\"]]
 
 predicate [line] = [[${line}]]
 parameter [line] = [[${support.pushParameter (line)}]]
-import [line] = [[?- consult(${line.trim()}).\n]]
+import [line] = [[?- consult(\"${PREFIX}${line.trim()}\").\n]]
 query [line] = [[${line.trim()},\n]]
 display [@lines] = [[${lines}]]
 message [@lines] = [[${lines}]]

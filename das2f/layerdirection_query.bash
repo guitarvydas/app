@@ -6,11 +6,11 @@ temp=temp${RANDOM}
 
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
-:- consult(fb).
 ?- consult(fb).
-?- consult(shapes).
-?- consult(onSameDiagram).
-?- consult(inside).
+?- consult("fb").
+?- consult("shapes").
+?- consult("onSameDiagram").
+?- consult("inside").
 query_helper(ID,Direction):-
 diagram_fact(kind,ID,"ellipse"),
 (das_fact(color, ID, "green")  -> Direction = input;das_fact(color, ID, "yellow")  -> Direction = output;das_fact(color, ID, "red")  -> Direction = pervasiveinput;das_fact(color, ID, "purple")  -> Direction = pervasiveoutput; Direction = "?"),
@@ -33,6 +33,6 @@ else if (true) { console.log (`das_fact(direction,${ID},${Direction}).`);};
   
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
-rm -f ${temp}.pl
-rm -f ${temp}.js
+# rm -f ${temp}.pl
+# rm -f ${temp}.js
 

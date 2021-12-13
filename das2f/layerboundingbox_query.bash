@@ -6,13 +6,13 @@ temp=temp${RANDOM}
 
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
-:- consult(fb).
-?- consult(shapes).
-?- consult(onSameDiagram).
-?- consult(inside).
-?- consult(names).
-?- consult(ports).
-?- consult(contains).
+?- consult(fb).
+?- consult("shapes").
+?- consult("onSameDiagram").
+?- consult("inside").
+?- consult("names").
+?- consult("ports").
+?- consult("contains").
 query_helper(ID,X,Y,Right,Bottom):-
 diagram_fact(x,ID,X),
 diagram_fact(y,ID,Y),
@@ -44,6 +44,6 @@ if (true) { console.log (`das_fact(bbL,${ID},${X}).
   
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
-rm -f ${temp}.pl
-rm -f ${temp}.js
+# rm -f ${temp}.pl
+# rm -f ${temp}.js
 
