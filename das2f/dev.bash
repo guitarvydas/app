@@ -75,8 +75,12 @@ das2fdir=`pwd`
 # echo '-- layerallcontains_query.bash generated --' 1>&2
 # cat layerallcontains_query.bash
 
-pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
-querydisplay3 preprocessed_layerkind --prefix="${das2fdir}/" >layerkind_query.bash
-chmod a+x layerkind_query.bash
-echo '-- layerkind_query.bash generated --' 1>&2
-${das2fdir}/layerkind ${das2fdir} 1>&2 # <<>>fb.pl
+
+# pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
+# querydisplay3 preprocessed_layerkind --prefix="${das2fdir}/" >layerkind_query.bash
+# chmod a+x layerkind_query.bash
+# echo '-- layerkind_query.bash generated --' 1>&2
+# ${das2fdir}/layerkind ${das2fdir} 1>&2 # <<>>fb.pl
+
+echo dev.bash deprecated, use run.bash, exiting
+exit 1
