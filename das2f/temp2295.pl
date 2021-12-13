@@ -1,10 +1,3 @@
-
-
-temp=temp${RANDOM}
-# layer kind
-
-
-cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ?- consult(fb).
 ?- consult("shapes").
@@ -20,20 +13,3 @@ true.
 query:-
 bagof([X,Kind],query_helper(X,Kind),Bag),
 json_write(user_output,Bag,[width(128)]).
-~~~
-cat >${temp}.js <<'~~~'
-const fs = require ('fs');
-var rawText = fs.readFileSync ('/dev/fd/0');
-var parameters = JSON.parse(rawText);
-parameters.forEach (p => {
-  var X = p [0];
-var Kind = p [1];
-  
-if (true) { console.log (`das_fact(kind,${X},${Kind}).`);};
-});
-  
-~~~
-swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
-# rm -f ${temp}.pl
-# rm -f ${temp}.js
-
