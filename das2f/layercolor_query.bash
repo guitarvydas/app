@@ -7,12 +7,12 @@ temp=temp${RANDOM}
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ?- consult(fb).
-?- consult(shapes).
-?- consult(onSameDiagram).
-?- consult(inside).
-?- consult(names).
-?- consult(ports).
-?- consult(contains).
+?- consult("/Users/tarvydas/app/das2f/shapes").
+?- consult("/Users/tarvydas/app/das2f/onSameDiagram").
+?- consult("/Users/tarvydas/app/das2f/inside").
+?- consult("/Users/tarvydas/app/das2f/names").
+?- consult("/Users/tarvydas/app/das2f/ports").
+?- consult("/Users/tarvydas/app/das2f/contains").
 query_helper(ID,Color):-
 diagram_fact(cell,ID,_),
 (diagram_fact(fillColor, ID, "#d5e8d4")  -> Color = "green";diagram_fact(fillColor, ID, "#fff2cc")  -> Color = "yellow";diagram_fact(fillColor, ID, "#f8cecc")  -> Color = "red";diagram_fact(fillColor, ID, "#9673A6")  -> Color = "purple"; Color = "-"),

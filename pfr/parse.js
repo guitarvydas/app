@@ -1,8 +1,10 @@
+#!/usr/bin/env node
 'use strict'
 
-var viewGeneratedCode = false;
-var tracing = false;
+var argv = require('yargs/yargs')(process.argv.slice(2)).argv;
+
 var traceDepth;
+var PREFIX = '';
 
 var ohm = require ('ohm-js');
 var support;
@@ -262,23 +264,19 @@ function traceSpaces () {
 }
 
 function _ruleEnter (ruleName) {
-    if (tracing) {
+    if (argv.tracing) {
 	traceDepth += 1;
 	traceSpaces ();
-	process.stderr.write("enter: ");
-	process.stderr.write (ruleName.toString ());
-	process.stderr.write ("\n");
+	console.error (`enter: ${ruleName.toString ()}`);
     }
     _scope.pushNew ();
 }
 
 function _ruleExit (ruleName) {
-    if (tracing) {
+    if (argv.tracing) {
 	traceSpaces ();
 	traceDepth -= 1;
-	process.stderr.write("exit: "); 
-	process.stderr.write (ruleName); 
-	process.stderr.write ("\n");
+	console.error (`exit: ${ruleName.toString ()}`);
     }
     _scope.pop ();
 }
@@ -291,7 +289,7 @@ function execTranspiler (source, grammar, semantics, errorMessage) {
 	let generatedSCNSemantics = transpiler (semantics, glueGrammar, "_glue", glueSemantics, "in action (glue) specification " + errorMessage);
     _ruleInit();
 	try {
-	    if (viewGeneratedCode) {
+	    if (argv.viewgeneratedcode) {
 		console.error ("[ execTranspiler");
 		console.error (generatedSCNSemantics);
 		console.error ("execTranspiler ]");
@@ -341,21 +339,16 @@ exports.ftranspile = ftranspile;
 
 
 function main () {
-    var args = process.argv;
-    var sourceFileName = args[2];
-    var grammarFileName = args[3];
-    var actionFileName = args[4];
-    if (args.length >= 6) {
-	var supportFileName = args[5];
-	support = require (supportFileName);
+    // normal usage: pfr source grammar glue [--support support.js]
+    // debug usage: pfr source grammar glue [--support support.js] [--tracing] [--viewgeneratedcode]
+    var sourceFileName = argv._[0];
+    var grammarFileName = argv._[1];
+    var actionFileName = argv._[2];
+    if (argv.support) {
+	support = require (argv.support);
+	globalThis.argv = argv;
     }
-    if (args.length >= 7) {
-	var traceFlag = args[6];
-	if (traceFlag === 't') {
-	    tracing = true;
-	    traceDepth = 0;
-	}
-    }
+    traceDepth = 0;
     var result = ftranspile (sourceFileName, grammarFileName, actionFileName, 'parse');
     console.log (result);
 }

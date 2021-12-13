@@ -3,7 +3,6 @@
   ID
   Color
 ## imports
-  fb
   shapes
   onSameDiagram
   inside

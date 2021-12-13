@@ -1,0 +1,5 @@
+#!/bin/bash
+das2jdir=${HOME}/app/das2j
+das2f $1 >fb.pl
+${das2jdir}/layerfinal_query.bash
+

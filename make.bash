@@ -1,20 +1,20 @@
 echo '** copying commands **'  1>&2
 app=${HOME}/app
 
+rm -rf ${HOME}/app/bin
+mkdir -p ${HOME}/app/bin
+
 # pfr and pf
-cp ${app}/pfr/pfr ${app}/bin
+cp ${app}/pfr/pfr.js ${app}/bin/pfr
 chmod a+x ${app}/bin/pfr
 
 cp ${app}/pfr/pf ${app}/bin
 chmod a+x ${app}/bin/pf
 
 
-# d2f (d2x for debugging)
+# d2f
 cp ${app}/d2f/d2f ${app}/bin
 chmod a+x ${app}/bin/d2f
-
-cp ${app}/d2f/d2x ${app}/bin
-chmod a+x ${app}/bin/d2x
 
 
 # querydisplay, querydisplay2, setquerydisplay
@@ -34,3 +34,9 @@ chmod a+x ${app}/bin/querydisplay3
 cp ${app}/pre/pre ${app}/bin
 chmod a+x ${app}/bin/pre
 
+# das2f
+cp ${app}/das2f/das2f ${app}/bin
+chmod a+x ${app}/bin/das2f
+# das2j
+cp ${app}/das2j/das2j ${app}/bin
+chmod a+x ${app}/bin/das2j

@@ -3,7 +3,6 @@
     ID
 	Name
 ## imports
-    fb
     shapes
     onSameDiagram
     inside

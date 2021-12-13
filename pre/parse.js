@@ -336,6 +336,8 @@ exports.ftranspile = ftranspile;
 
 
 function expand () {
+    var argv = require('yargs/yargs')(process.argv.slice(2)).argv;
+    console.error (argv);
     var args = process.argv;
     var grammarFileName = args[2];
     var actionFileName = args[3];

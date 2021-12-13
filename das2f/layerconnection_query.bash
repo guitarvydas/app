@@ -7,9 +7,9 @@ temp=temp${RANDOM}
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ?- consult(fb).
-?- consult(shapes).
-?- consult(names).
-?- consult(connection).
+?- consult("/Users/tarvydas/app/das2f/shapes").
+?- consult("/Users/tarvydas/app/das2f/names").
+?- consult("/Users/tarvydas/app/das2f/connection").
 query_helper(Parent,Edge,Source,Target):-
 das_fact(kind,Edge,edge),
 sourceof(Edge,Source),
@@ -30,7 +30,9 @@ var Edge = p [1];
 var Source = p [2];
 var Target = p [3];
   
-if (true) { console.log (`das_fact(connection, ${Parent}, ${Edge}).\ndas_fact(source, ${Edge}, [${Source}]).\ndas_fact(target, ${Edge}, [${Target}]).`);};
+if (true) { console.log (`das_fact(connection, ${Parent}, ${Edge}).
+das_fact(source, ${Edge}, source{component:${Source.component},port:${Source.port}}).
+das_fact(target, ${Edge}, target{component:${Target.component},port:${Target.port}}).`);};
 });
   
 ~~~

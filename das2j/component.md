@@ -2,8 +2,6 @@
 ## parameters
   Component
 ## imports
-  fb
-  shapes
   component_helper
   code
   connection

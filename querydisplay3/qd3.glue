@@ -5,6 +5,7 @@ ${Name}
 ${Parameters}
 cat >\${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
+?- consult(fb).
 ${Imports.trim ()}
 query_helper(${support.formatParameters ()}):-
 ${Query.trim ()}
@@ -50,7 +51,7 @@ Test [ident kis s] = [[${ident} === \"${s}\"]]
 
 predicate [line] = [[${line}]]
 parameter [line] = [[${support.pushParameter (line)}]]
-import [line] = [[?- consult(${line.trim()}).\n]]
+import [line] = [[?- consult(\"${support.prefix (argv)}${line.trim()}\").\n]]
 query [line] = [[${line.trim()},\n]]
 display [@lines] = [[${lines}]]
 message [@lines] = [[${lines}]]

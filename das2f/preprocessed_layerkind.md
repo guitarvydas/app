@@ -3,7 +3,6 @@
   X
   Kind
 ## imports
-  fb
   shapes
   onSameDiagram
   inside

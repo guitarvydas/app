@@ -8,4 +8,4 @@ fatal () {
 
 qddir=${HOME}/app/setquerydisplay
 echo ${target}
-pfr $1.md ${qddir}/sqd.ohm ${qddir}/sqd.glue ${qddir}/support.js
+pfr $1.md ${qddir}/sqd.ohm ${qddir}/sqd.glue --support=${qddir}/support.js $2

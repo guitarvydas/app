@@ -7,11 +7,11 @@ temp=temp${RANDOM}
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ?- consult(fb).
-?- consult(shapes).
-?- consult(onSameDiagram).
-?- consult(inside).
-?- consult(names).
-?- consult(ports).
+?- consult("/Users/tarvydas/app/das2f/shapes").
+?- consult("/Users/tarvydas/app/das2f/onSameDiagram").
+?- consult("/Users/tarvydas/app/das2f/inside").
+?- consult("/Users/tarvydas/app/das2f/names").
+?- consult("/Users/tarvydas/app/das2f/ports").
 query_helper(Parent,Edge):-
 das_fact(kind,Parent,rectangle),
 das_fact(kind,Edge,edge),

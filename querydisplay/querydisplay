@@ -8,4 +8,4 @@ fatal () {
 
 qddir=${HOME}/app/querydisplay
 echo ${target}
-pfr $1.md ${qddir}/qd.ohm ${qddir}/qd.glue ${qddir}/support.js
+pfr $1.md ${qddir}/qd.ohm ${qddir}/qd.glue --support=${qddir}/support.js
