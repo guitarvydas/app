@@ -7,9 +7,10 @@ temp=temp${RANDOM}
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ?- consult(fb).
-?- consult(component_helper).
-?- consult(code).
-?- consult(connection).
+?- consult("fb").
+?- consult("component_helper").
+?- consult("code").
+?- consult("connection").
 query_helper(Component):-
 das_fact(kind,RID,rectangle),
 das_fact(name,RID,Name),

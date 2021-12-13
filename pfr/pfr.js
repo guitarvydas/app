@@ -4,7 +4,6 @@
 var argv = require('yargs/yargs')(process.argv.slice(2)).argv;
 
 var traceDepth;
-var PREFIX = '';
 
 var ohm = require ('ohm-js');
 var support;

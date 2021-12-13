@@ -1,5 +1,15 @@
+#!/bin/bash
+# input from fb.pl
+# output augments fb.pl
+temp=_temp_${RANDOM}
+temp2=_temp_${RANDOM}
 
+### move result into fb.pl (without overwrite problems)
+temp=temp_${RANDOM}
 
+#$1/layerallcontains_query.bash >${temp}
+
+####### 
 temp=temp${RANDOM}
 # layer 3
 
@@ -7,12 +17,12 @@ temp=temp${RANDOM}
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ?- consult(fb).
-?- consult("/Users/tarvydas/app/das2f/shapes").
-?- consult("/Users/tarvydas/app/das2f/onSameDiagram").
-?- consult("/Users/tarvydas/app/das2f/inside").
-?- consult("/Users/tarvydas/app/das2f/names").
-?- consult("/Users/tarvydas/app/das2f/ports").
-?- consult("/Users/tarvydas/app/das2f/contains").
+?- consult("shapes").
+?- consult("onSameDiagram").
+?- consult("inside").
+?- consult("names").
+?- consult("ports").
+?- consult("contains").
 query_helper(Parent,Child):-
 contains(Parent,Child),
 true.
@@ -35,4 +45,13 @@ if (true) { console.log (`das_fact(contains,${Parent},${Child}).`);};
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
 rm -f ${temp}.pl
 rm -f ${temp}.js
+####### 
 
+
+
+$1/appendToFb ${temp}
+# cat $temp
+# cat fb.pl $temp >$temp2
+# mv $temp2 fb.pl
+
+rm -f ${temp}

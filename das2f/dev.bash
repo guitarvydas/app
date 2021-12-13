@@ -59,10 +59,24 @@ das2fdir=$cwd
 # echo '-- layerkind_query.bash generated --' 1>&2
 # ./layerkind $cwd
 
+clear
 ../make.bash
-# Layer 3. Rectangle Containment relationships.
-querydisplay3 layerallcontains --prefix=~/app/das2f >layerallcontains_query.bash
+# # Layer 3. Rectangle Containment relationships.
+# querydisplay3 layerallcontains --prefix=$das2fdir >layerallcontains_query.bash
+# # chmod a+x layerallcontains_query.bash
+# # echo '-- layerallcontains_query.bash generated --' 1>&2
+# # echo '** layer all contains **'  1>&2
+# # ${das2fdir}/layerallcontains ${das2fdir} 1>&2 #<<>>fb.pl
+
+das2fdir=`pwd`
+
+# querydisplay3 layerallcontains --prefix=${das2fdir} >layerallcontains_query.bash
 # chmod a+x layerallcontains_query.bash
 # echo '-- layerallcontains_query.bash generated --' 1>&2
-# echo '** layer all contains **'  1>&2
-# ${das2fdir}/layerallcontains ${das2fdir} 1>&2 #<<>>fb.pl
+# cat layerallcontains_query.bash
+
+pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
+querydisplay3 preprocessed_layerkind --prefix="${das2fdir}/" >layerkind_query.bash
+chmod a+x layerkind_query.bash
+echo '-- layerkind_query.bash generated --' 1>&2
+${das2fdir}/layerkind ${das2fdir} 1>&2 # <<>>fb.pl
