@@ -12,12 +12,9 @@ cp ${app}/pfr/pf ${app}/bin
 chmod a+x ${app}/bin/pf
 
 
-# d2f (d2x for debugging)
+# d2f
 cp ${app}/d2f/d2f ${app}/bin
 chmod a+x ${app}/bin/d2f
-
-cp ${app}/d2f/d2x ${app}/bin
-chmod a+x ${app}/bin/d2x
 
 
 # querydisplay, querydisplay2, setquerydisplay

@@ -2,7 +2,6 @@
 ## parameters
   Component
 ## imports
-  fb
   component_helper
   code
   connection
