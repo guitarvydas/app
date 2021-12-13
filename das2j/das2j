@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 das2f $1 >fb.pl
 ./layerfinal_query.bash
 

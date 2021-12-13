@@ -2,8 +2,6 @@
 # this is only an example
 # use das2j instead
 
-set -x
-
 ./build.bash
 
 # # Layer Final. Components - bring it all home

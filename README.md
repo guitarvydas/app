@@ -15,7 +15,8 @@ ${HOME}/app/das2j
 ${HOME}/app/rnot
 ${HOME}/app/makedocker
 
-
+- README.md
+- INSTALL.md
 
 - bin - is where all script roots are found ("bin" used to mean "binary", I use "bin" to mean a "bin" (container thing))
 
@@ -29,11 +30,21 @@ tools
 - querydisplay3
 - setquerydisplay
 - pre
+- d2f
 - das2j
-- das2j
+- examples
+	- rnot
+- intermediate forms
+	- querydisplay
+	- querydisplay2
+	- das2f
+- build
+	- makedocker
 
 
 usage:
 - put ${HOME}/bin/bin on your PATH
 - typically, I create a run.bash file in each app directory to show how to use the tool
 - use `./make.bash` to create a Docker image and `run.bash` to run a bash shell in the image (an environment in which all tools are available)
+
+---
