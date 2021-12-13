@@ -23,3 +23,10 @@ exports.formatJSParameters = function () {
     return result.join ('\n');
 }
 
+exports.prefix = function (argv) {
+   if (argv.prefix) {
+	return argv.prefix;
+    } else {
+	return '';
+    }
+}

@@ -5,12 +5,12 @@ temp=temp${RANDOM}
 
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
-:- consult(fb).
-?- consult(shapes).
-?- consult(onSameDiagram).
-?- consult(inside).
-?- consult(names).
-?- consult(ports).
+?- consult(fb).
+?- consult("/Users/tarvydas/app/das2f/shapes").
+?- consult("/Users/tarvydas/app/das2f/onSameDiagram").
+?- consult("/Users/tarvydas/app/das2f/inside").
+?- consult("/Users/tarvydas/app/das2f/names").
+?- consult("/Users/tarvydas/app/das2f/ports").
 query:-
 setof([A,B],das_fact(contains,A,B),All),
 setof([C,D],das_fact(indirect_contains,C,D),Indirect),

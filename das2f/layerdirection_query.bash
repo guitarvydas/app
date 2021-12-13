@@ -7,7 +7,6 @@ temp=temp${RANDOM}
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ?- consult(fb).
-?- consult("/Users/tarvydas/app/das2f/fb").
 ?- consult("/Users/tarvydas/app/das2f/shapes").
 ?- consult("/Users/tarvydas/app/das2f/onSameDiagram").
 ?- consult("/Users/tarvydas/app/das2f/inside").

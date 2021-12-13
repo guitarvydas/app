@@ -3,7 +3,6 @@
   ID
   Direction
 ## imports
-  fb
   shapes
   onSameDiagram
   inside

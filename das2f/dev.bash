@@ -82,5 +82,10 @@ das2fdir=`pwd`
 # echo '-- layerkind_query.bash generated --' 1>&2
 # ${das2fdir}/layerkind ${das2fdir} 1>&2 # <<>>fb.pl
 
-echo dev.bash deprecated, use run.bash, exiting
-exit 1
+setquerydisplay direct_contains  --prefix="${das2fdir}/" >layer6_query.bash
+chmod a+x layer6_query.bash
+echo '-- layer6_query.bash generated --' 1>&2
+cat layer6_query.bash
+
+# echo dev.bash deprecated, use run.bash, exiting
+# exit 1
