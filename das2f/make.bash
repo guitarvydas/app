@@ -44,25 +44,25 @@ setquerydisplay direct_contains >layer6_query.bash
 chmod a+x layer6_query.bash
 echo '-- layer6_query.bash generated --' 1>&2
 
-querydisplay3  --prefix="${das2fdir}/" contains_edge >layeredgecontainment_query.bash
+querydisplay3   contains_edge --prefix="${das2fdir}/" >layeredgecontainment_query.bash
 chmod a+x layeredgecontainment_query.bash
 echo '-- layeredgecontainment_query.bash generated --' 1>&2
 
-querydisplay3  --prefix="${das2fdir}/" synccode >layersynccode_query.bash
+querydisplay3  synccode --prefix="${das2fdir}/"  >layersynccode_query.bash
 chmod a+x layersynccode_query.bash
 echo '-- layersynccode_query.bash generated --' 1>&2
 
-querydisplay3  --prefix="${das2fdir}/" connection >layerconnection_query.bash
+querydisplay3  connection --prefix="${das2fdir}/"  >layerconnection_query.bash
 chmod a+x layerconnection_query.bash
 echo '-- layerconnection_query.bash generated --' 1>&2
 
 pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
-querydisplay3  --prefix="${das2fdir}/" preprocessed_layerkind >layerkind_query.bash
+querydisplay3  preprocessed_layerkind --prefix="${das2fdir}/"  >layerkind_query.bash
 chmod a+x layerkind_query.bash
 echo '-- layerkind_query.bash generated --' 1>&2
 
 pre  "#+ forall " "#+ " forall.ohm forall.glue <layercolor.md >preprocessed_layercolor.md
-querydisplay3  --prefix="${das2fdir}/" preprocessed_layercolor >layercolor_query.bash
+querydisplay3   preprocessed_layercolor --prefix="${das2fdir}/" >layercolor_query.bash
 chmod a+x layercolor_query.bash
 echo '-- layercolor_query.bash generated --' 1>&2
 
@@ -70,12 +70,12 @@ querydisplay3  --prefix="${das2fdir}/" layername >layername_query.bash
 chmod a+x layername_query.bash
 echo '-- layername_query.bash generated --' 1>&2
 
-querydisplay3  --prefix="${das2fdir}/" layerboundingbox >layerboundingbox_query.bash
+querydisplay3  layerboundingbox --prefix="${das2fdir}/"  >layerboundingbox_query.bash
 chmod a+x layerboundingbox_query.bash
 echo '-- layerboundingbox_query.bash generated --' 1>&2
 
 pre  "#+ forall " "#+ " forall.ohm forall.glue <layerdirection.md >preprocessed_layerdirection.md
-querydisplay3  --prefix="${das2fdir}/" preprocessed_layerdirection >layerdirection_query.bash
+querydisplay3   preprocessed_layerdirection --prefix="${das2fdir}/" >layerdirection_query.bash
 chmod a+x layerdirection_query.bash
 echo '-- layerdirection_query.bash generated --' 1>&2
 
