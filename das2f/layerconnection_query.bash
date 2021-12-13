@@ -37,6 +37,6 @@ das_fact(target, ${Edge}, target{component:${Target.component},port:${Target.por
   
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
-# rm -f ${temp}.pl
-# rm -f ${temp}.js
+rm -f ${temp}.pl
+rm -f ${temp}.js
 

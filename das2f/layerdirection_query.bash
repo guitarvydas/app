@@ -33,6 +33,6 @@ else if (true) { console.log (`das_fact(direction,${ID},${Direction}).`);};
   
 ~~~
 swipl -g "consult(${temp})." -g 'query.' -g 'halt.' | node ${temp}.js
-# rm -f ${temp}.pl
-# rm -f ${temp}.js
+rm -f ${temp}.pl
+rm -f ${temp}.js
 
