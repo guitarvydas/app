@@ -1,7 +1,8 @@
 echo '** copying commands **'  1>&2
 app=${HOME}/app
 
-rm -rf ${HOME}/bin
+rm -rf ${HOME}/app/bin
+mkdir - ${HOME}/app/bin
 
 # pfr and pf
 cp ${app}/pfr/pfr.js ${app}/bin/pfr
