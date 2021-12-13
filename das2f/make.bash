@@ -36,11 +36,11 @@ querydisplay3  contains_port  --prefix="${das2fdir}/" >layer4_query.bash
 chmod a+x layer4_query.bash
 echo '-- layer4_query.bash generated --' 1>&2
 
-querydisplay3  indirect_contains  --prefix="${das2fdir}/">layer5_query.bash
+querydisplay3  indirect_contains  --prefix="${das2fdir}/" >layer5_query.bash
 chmod a+x layer5_query.bash
 echo '-- layer5_query.bash generated --' 1>&2
 
-setquerydisplay direct_contains >layer6_query.bash
+setquerydisplay direct_contains  --prefix="${das2fdir}/" >layer6_query.bash
 chmod a+x layer6_query.bash
 echo '-- layer6_query.bash generated --' 1>&2
 
@@ -66,7 +66,7 @@ querydisplay3   preprocessed_layercolor --prefix="${das2fdir}/" >layercolor_quer
 chmod a+x layercolor_query.bash
 echo '-- layercolor_query.bash generated --' 1>&2
 
-querydisplay3  --prefix="${das2fdir}/" layername >layername_query.bash
+querydisplay3  layername --prefix="${das2fdir}/"  >layername_query.bash
 chmod a+x layername_query.bash
 echo '-- layername_query.bash generated --' 1>&2
 
