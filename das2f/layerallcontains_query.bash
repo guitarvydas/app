@@ -7,12 +7,12 @@ temp=temp${RANDOM}
 cat >${temp}.pl <<'~~~'
 :- use_module(library(http/json)).
 ?- consult(fb).
-?- consult("~/app/das2f/shapes.pl").
-?- consult("~/app/das2f/onSameDiagram.pl").
-?- consult("~/app/das2f/inside.pl").
-?- consult("~/app/das2f/names.pl").
-?- consult("~/app/das2f/ports.pl").
-?- consult("~/app/das2f/contains.pl").
+?- consult("~/app/das2fshapes").
+?- consult("~/app/das2fonSameDiagram").
+?- consult("~/app/das2finside").
+?- consult("~/app/das2fnames").
+?- consult("~/app/das2fports").
+?- consult("~/app/das2fcontains").
 query_helper(Parent,Child):-
 contains(Parent,Child),
 true.

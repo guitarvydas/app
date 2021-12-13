@@ -1,11 +1,11 @@
 echo '** copying commands **'  1>&2
 app=${HOME}/app
 
+rm -rf ${HOME}/bin
+
 # pfr and pf
-cp ${app}/pfr/pfr ${app}/bin
+cp ${app}/pfr/pfr.js ${app}/bin/pfr
 chmod a+x ${app}/bin/pfr
-cp ${app}/pfr/parse.js ${app}/bin/npfr
-chmod a+x ${app}/bin/npfr
 
 cp ${app}/pfr/pf ${app}/bin
 chmod a+x ${app}/bin/pf

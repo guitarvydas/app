@@ -346,6 +346,7 @@ function main () {
     var actionFileName = argv._[2];
     if (argv.support) {
 	support = require (argv.support);
+	globalThis.argv = argv;
     }
     traceDepth = 0;
     var result = ftranspile (sourceFileName, grammarFileName, actionFileName, 'parse');

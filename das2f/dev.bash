@@ -61,8 +61,8 @@ das2fdir=$cwd
 
 ../make.bash
 # Layer 3. Rectangle Containment relationships.
-querydisplay3 layerallcontains >layerallcontains_query.bash
-chmod a+x layerallcontains_query.bash
-echo '-- layerallcontains_query.bash generated --' 1>&2
-echo '** layer all contains **'  1>&2
-${das2fdir}/layerallcontains ${das2fdir} 1>&2 #<<>>fb.pl
+querydisplay3 layerallcontains --prefix=~/app/das2f >layerallcontains_query.bash
+# chmod a+x layerallcontains_query.bash
+# echo '-- layerallcontains_query.bash generated --' 1>&2
+# echo '** layer all contains **'  1>&2
+# ${das2fdir}/layerallcontains ${das2fdir} 1>&2 #<<>>fb.pl

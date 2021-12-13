@@ -60,3 +60,11 @@ exports.pushFinalDisplay = function (predicateString, thenString) {
 }
 
 
+
+exports.prefix = function (argv) {
+   if (argv.prefix) {
+	return argv.prefix;
+    } else {
+	return '';
+    }
+}

@@ -51,7 +51,7 @@ Test [ident kis s] = [[${ident} === \"${s}\"]]
 
 predicate [line] = [[${line}]]
 parameter [line] = [[${support.pushParameter (line)}]]
-import [line] = [[?- consult(\"${PREFIX}${line.trim()}\").\n]]
+import [line] = [[?- consult(\"${support.prefix (argv)}${line.trim()}\").\n]]
 query [line] = [[${line.trim()},\n]]
 display [@lines] = [[${lines}]]
 message [@lines] = [[${lines}]]
