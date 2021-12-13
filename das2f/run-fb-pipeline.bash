@@ -19,6 +19,7 @@ ${das2fdir}/layername ${das2fdir} 1>&2 # <<>>fb.pl
 ${das2fdir}/layercolor ${das2fdir} 1>&2 # <<>>fb.pl
 ${das2fdir}/layerboundingbox ${das2fdir} 1>&2 # <<>>fb.pl
 
+set -x
 # # Layer 2. Names, port directions
 echo '** layer 2 **' 1>&2
 ${das2fdir}/layerdirection ${das2fdir} 1>&2 # <<>>fb.pl
