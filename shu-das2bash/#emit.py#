@@ -43,6 +43,7 @@ def printContainerScript (component, outf):
     connection.append ("${" + name + "}")
     print (f'{name}={name}_$RANDOM')
     print (f'mkfifo {connection [i]}')
+    senders [
     i += 1
   for child in children:
     print (f'./{child} &')
