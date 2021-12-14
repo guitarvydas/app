@@ -1,7 +1,6 @@
 #!/bin/bash
 ../make.bash
-das2j helloworld >escaped-out.json
-python3 unescape.py
+das2j helloworld >out.json
 python3 emit.py
 echo
 cat hello.bash

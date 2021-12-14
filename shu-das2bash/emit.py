@@ -6,7 +6,14 @@ import re
 with open('out.json') as f:
   data = json.load(f)
 
-def printScript (component, outf):
+def isContainer (component):
+  if (0 < len (component["children"])):
+      return True
+  else:
+      return False
+       
+
+def printLeafScript (component, outf):
   code = html.unescape (component["synccode"])
   # note that <p .../> and <span .../> are not handled by the
   # code below (this probably needs a parser - e.g. Ohm-JS - to grok
@@ -23,6 +30,18 @@ def printScript (component, outf):
 
   codefinal = html.unescape (code7)
   print (codefinal, file=outf)
+
+def printContainerScript (component, outf):
+  connections = component ["connections"]
+  children = component ["children"]
+  nconnections = len (connections)
+  print (nconnections)
+  
+def printScript (component, outf):
+  if (isContainer (component)):
+    printContainerScript (component, outf)
+  else:
+    printLeafScript (component, outf)
 
 for componentArray in data:
   for component in componentArray:
