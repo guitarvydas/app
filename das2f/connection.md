@@ -2,19 +2,19 @@
 ## parameters
   Parent
   Edge
-  Source
-  Target
+  Sender
+  Receiver
 ## imports
   shapes
   names
   connection
 ## query
   das_fact(kind,Edge,edge)
-  sourceof(Edge,Source)
-  targetof(Edge,Target)
+  sourceof(Edge,Sender)
+  targetof(Edge,Receiver)
   das_fact(direct_contains,Parent,Edge)
 ## display
 das_fact(connection, ${Parent}, ${Edge}).
-das_fact(source, ${Edge}, source{component:${Source.component},port:${Source.port}}).
-das_fact(target, ${Edge}, target{component:${Target.component},port:${Target.port}}).
+das_fact(sender, ${Edge}, sender{component:${Sender.component},port:${Sender.port}}).
+das_fact(receiver, ${Edge}, receiver{component:${Receiver.component},port:${Receiver.port}}).
 

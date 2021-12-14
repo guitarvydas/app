@@ -10,14 +10,14 @@ cat >${temp}.pl <<'~~~'
 ?- consult("/Users/tarvydas/app/das2f/shapes").
 ?- consult("/Users/tarvydas/app/das2f/names").
 ?- consult("/Users/tarvydas/app/das2f/connection").
-query_helper(Parent,Edge,Source,Target):-
+query_helper(Parent,Edge,Sender,Receiver):-
 das_fact(kind,Edge,edge),
-sourceof(Edge,Source),
-targetof(Edge,Target),
+sourceof(Edge,Sender),
+targetof(Edge,Receiver),
 das_fact(direct_contains,Parent,Edge),
 true.
 query:-
-bagof([Parent,Edge,Source,Target],query_helper(Parent,Edge,Source,Target),Bag),
+bagof([Parent,Edge,Sender,Receiver],query_helper(Parent,Edge,Sender,Receiver),Bag),
 json_write(user_output,Bag,[width(128)]).
 ~~~
 cat >${temp}.js <<'~~~'
@@ -27,12 +27,12 @@ var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
   var Parent = p [0];
 var Edge = p [1];
-var Source = p [2];
-var Target = p [3];
+var Sender = p [2];
+var Receiver = p [3];
   
 if (true) { console.log (`das_fact(connection, ${Parent}, ${Edge}).
-das_fact(source, ${Edge}, source{component:${Source.component},port:${Source.port}}).
-das_fact(target, ${Edge}, target{component:${Target.component},port:${Target.port}}).`);};
+das_fact(sender, ${Edge}, sender{component:${Sender.component},port:${Sender.port}}).
+das_fact(receiver, ${Edge}, receiver{component:${Receiver.component},port:${Receiver.port}}).`);};
 });
   
 ~~~

@@ -1,4 +1,4 @@
-sourceof(Edge, source{component:SourceName,port:SourcePort}):-
+sourceof(Edge, sender{component:SourceName,port:SourcePort}):-
     sourceidof(Edge,PortID),
     das_fact(direct_contains,Parent,PortID),
     nameof(PortID,SourcePort),
@@ -13,7 +13,7 @@ sourceidof(Edge, Source):-
 % sourceidof(Edge,_):-format(user_error,"FATAL no source for connection ~w~n",[Edge]).
 
 
-targetof(Edge, target{component:TargetName,port:TargetPort}):-
+targetof(Edge, receiver{component:TargetName,port:TargetPort}):-
     targetidof(Edge,PortID),
     das_fact(direct_contains,Parent,PortID),
     nameof(PortID,TargetPort),
@@ -33,8 +33,8 @@ connectionsof(R,Connections):-
     !.
 connectionsof(_,[]).
 
-connection(R,connection{source:Source,target:Target},""):-
+connection(R,connection{sender:Source,receiver:Target},""):-
     das_fact(connection,R,ID),
-    das_fact(source,ID,Source),
-    das_fact(target,ID,Target).
+    das_fact(sender,ID,Source),
+    das_fact(receiver,ID,Target).
     
