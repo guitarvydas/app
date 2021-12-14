@@ -32,11 +32,21 @@ def printLeafScript (component, outf):
   print (codefinal, file=outf)
 
 def printContainerScript (component, outf):
-  connections = component ["connections"]
+  strconnections = component ["connections"]
   children = component ["children"]
-  nconnections = len (connections)
-  print (nconnections)
-  
+  connection = []
+  i = 0
+  for x in strconnections:
+    # good enough for example
+    # not good enough in general (must coalesce all connections that go to the same input)
+    name = "conn" + str (i)
+    connection.append ("${" + name + "}")
+    print (f'{name}={name}_$RANDOM')
+    print (f'mkfifo {connection [i]}')
+    i += 1
+
+    
+
 def printScript (component, outf):
   if (isContainer (component)):
     printContainerScript (component, outf)
