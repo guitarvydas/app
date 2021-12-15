@@ -13,7 +13,7 @@
   [
     {
       "children": ["world", "hello" ],
-      "connections": [ [ {"receiver": {"component":"world", "port":"in"}, "sender": {"component":"hello", "port":"out"}}, "" ] ],
+      "connections": [ {"receiver": {"component":"world", "port":"in"}, "sender": {"component":"hello", "port":"out"}} ],
       "id":"cell_6",
       "inputs": [],
       "name":"helloworld",

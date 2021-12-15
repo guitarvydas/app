@@ -32,20 +32,45 @@ def printLeafScript (component, outf):
   print (codefinal, file=outf)
 
 def printContainerScript (component, outf):
-  strconnections = component ["connections"]
+  connections = component ["connections"]
   children = component ["children"]
   connection = []
+  outputTable = {}
+  inputTable = {}
   i = 0
-  for x in strconnections:
+  for conn in connections:
     # good enough for example
     # not good enough in general (must coalesce all connections that go to the same input)
     name = "conn" + str (i)
     connection.append ("${" + name + "}")
-    print (f'{name}={name}_$RANDOM')
-    print (f'mkfifo {connection [i]}')
+    print (f'{name}={name}_$RANDOM', file=outf)
+    print (f'mkfifo {connection [i]}', file=outf)
+    print (conn, file=outf)
+    print (type (conn), file=outf)
+    senderComponentAndPort = conn ["sender"]
+    receiverComponentAndPort = conn ["receiver"]
+    sender = senderComponentAndPort ["component"]
+    receiver = receiverComponentAndPort ["component"]
+    print (sender, file=outf)
+    print (receiver, file=outf)
+    outputTable [sender] = connection [i]
+    inputTable [receiver] = connection [i]
+    # print (f'connection={connection [i]} sender={sender} receiver={receiver}')
     i += 1
+    print (f' sender=/{sender}/ type(sender)=/{type(sender)}/', file=outf)
+    print (outputTable, file=outf)
+    print (inputTable, file=outf)
   for child in children:
-    print (f'./{child} &')
+    print (f'./{child} ', file=outf, end="")
+    conn = outputTable.get (child)
+    # print (f' child=/{child}/ type(child)=/{type(child)}/ outputTable.get(child)=/{outputTable.get(child)}/ conn=/{conn}/', file=outf)
+    if (conn):
+      print (f'4>{conn} ', end="", file=outf)
+    inconn = inputTable.get (child)
+    if (inconn):
+      print (f'3<{inconn} ', end="", file=outf)
+    print(" &", file=outf)
+
 
     
 
@@ -59,6 +84,5 @@ for componentArray in data:
   for component in componentArray:
     fname = component["name"] + ".bash"
     with open (fname, "w") as script:
-      print ("# ", file=script, end="")
-      print (fname, file=script, end="\n")
+      print (f'# {fname}', file=script)
       printScript (component, script)

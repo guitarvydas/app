@@ -29,7 +29,7 @@ targetidof(Edge, Target):-
 
 
 connectionsof(R,Connections):-
-    bagof([Source,Target],connection(R,Source,Target),Connections),
+    bagof(Conn,connection(R,Conn,_),Connections),
     !.
 connectionsof(_,[]).
 

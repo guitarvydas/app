@@ -20,11 +20,9 @@ for componentArray in data:
     print (component["outputs"], end="\n")
     print ("children: ", end="")
     print (component["children"], end="\n")
-    print (component["connections"])
     if (0 == len(component["connections"])):
       print ("connections: []", end="\n")
     else:
-      print ("connections: ", end="\n")
       for conn in component["connections"]:
         print ("  ", end="")
         print (conn, end="\n")
