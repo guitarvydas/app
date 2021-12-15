@@ -42,7 +42,7 @@ def printContainerScript (component, outf):
     # good enough for example
     # not good enough in general (must coalesce all connections that go to the same input)
     name = "conn" + str (i)
-    connection.append ("${" + name + "}")
+    connection.append ("$" + name)
     print (f'{name}={name}_$RANDOM', file=outf)
     print (f'mkfifo {connection [i]}', file=outf)
     senderComponentAndPort = conn ["sender"]
@@ -65,7 +65,10 @@ def printContainerScript (component, outf):
     print (f'pid_{child}=$!', file=outf)
   for child in children:
     print (f'wait $pid_{child}', file=outf)
-    
+  i = 0
+  for conn in connections:
+    print (f'rm {connection [i]}', file=outf)
+    i += 1
 
 
     

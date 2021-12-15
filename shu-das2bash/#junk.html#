@@ -1,5 +1,0 @@
-<p class="p1" style="margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: "menlo"">
-  <span class="s1">
-    read </dev/fd/3
-	   </span></p><p class="p1" style="margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: "menlo""><span class="s1">echo world</span></p><p class="p1" style="margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: "menlo""><span class="s1"># no output</span></p><p class="p1" style="margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: "menlo""><br></p>
-$ 
