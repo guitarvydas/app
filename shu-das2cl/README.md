@@ -7,4 +7,4 @@ details:
 - (run.bash regenerates out.json every time, this might not be necessary during development)
 
 Documentation
-- 
+- see "Design View*.md" ...

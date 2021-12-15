@@ -1,8 +1,8 @@
   
 (defclass component ()
-  ((input-queue :accessor input-queue :initarg :input-queue :initform nil)
-   (output-queue :accessor output-queue :initarg :output-queue :initform nil)
-   (parent :accessor parent)))
+  ((input-fifo :accessor input-fifo :initarg :input-fifo :initform (make-instance 'message-fifo))
+   (output-fifo :accessor output-fifo :initarg :output-fifo :initform (make-instance 'message-fifo))
+   (parent :accessor parent :initarg :parent :initform nil)))
   
 (defclass leaf (component) ())
 (defclass container (component)
@@ -19,18 +19,18 @@
 (defgeneric get-receivers (self sender))
 
 (defmethod send ((self component) (m message))
-  (push (output-queue self) m))
+  (push (output-fifo self) m))
 
-(defmethod initialize ((self component) (in message-queue) (out message-queue) (dispatcher Dispatcher))
+(defmethod initialize ((self component) (in message-fifo) (out message-fifo) (dispatcher Dispatcher))
   (add-component dispatcher self))
 
 (defmethod ready-p ((self component))
-  (and (not (null (input-queue self)))
+  (and (not (null (input-fifo self)))
        (not (busy-p self))))
 
 (defmethod get-and-reset-outputs ((self component) )
-  (let ((outlist (reverse (output-queue self))))
-    (setf (output-queue self) nil)
+  (let ((outlist (reverse (output-fifo self))))
+    (setf (output-fifo self) nil)
     outlist))
 
 (defmethod react ((self container) (m message))
@@ -41,7 +41,7 @@
 (defmethod busy-p ((self container)) (notany #'busy-p (children self)))
 
 (defmethod enqueue-message ((self component) (m message))
-  (enqueue (input-queue self) m))
+  (enqueue (input-fifo self) m))
 
 (defmethod kickstart ((self component))
   (enqueue-message self t))

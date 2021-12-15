@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "View 1 Hello World.md",
-            "mode": "source"
+            "file": "Design View 2 - Classes.md",
+            "mode": "preview"
           }
         }
       }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "View 1 Hello World.md",
+                "file": "Design View 2 - Classes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,7 +88,11 @@
   },
   "active": "6d749613482c8a0f",
   "lastOpenFiles": [
-    "View 1 Hello World.md",
-    "README.md"
+    "Design View 2 - Classes.md",
+    "Design View 1 - Hello World Deployment.md",
+    "README.md",
+    "Design View 4 - Situations.md",
+    "Design View 5 - Access.md",
+    "Design View 3- Methods (Code).md"
   ]
 }
