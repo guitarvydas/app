@@ -23,7 +23,6 @@ for componentArray in data:
     if (0 == len(component["connections"])):
       print ("connections: []", end="\n")
     else:
-      print ("connections: ", end="\n")
       for conn in component["connections"]:
         print ("  ", end="")
         print (conn, end="\n")

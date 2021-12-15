@@ -3,6 +3,7 @@
 # use das2j instead
 
 ./build.bash
+cp ../das2f/fb.pl .
 
 # # Layer Final. Components - bring it all home
 # echo '** layer final **' 1>&2
