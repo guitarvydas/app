@@ -45,23 +45,17 @@ def printContainerScript (component, outf):
     connection.append ("${" + name + "}")
     print (f'{name}={name}_$RANDOM', file=outf)
     print (f'mkfifo {connection [i]}', file=outf)
-    print (conn, file=outf)
-    print (type (conn), file=outf)
     senderComponentAndPort = conn ["sender"]
     receiverComponentAndPort = conn ["receiver"]
     sender = senderComponentAndPort ["component"]
     receiver = receiverComponentAndPort ["component"]
-    print (sender, file=outf)
-    print (receiver, file=outf)
     outputTable [sender] = connection [i]
     inputTable [receiver] = connection [i]
     # print (f'connection={connection [i]} sender={sender} receiver={receiver}')
     i += 1
-    print (f' sender=/{sender}/ type(sender)=/{type(sender)}/', file=outf)
-    print (outputTable, file=outf)
-    print (inputTable, file=outf)
+
   for child in children:
-    print (f'./{child} ', file=outf, end="")
+    print (f'./{child}.bash ', file=outf, end="")
     conn = outputTable.get (child)
     # print (f' child=/{child}/ type(child)=/{type(child)}/ outputTable.get(child)=/{outputTable.get(child)}/ conn=/{conn}/', file=outf)
     if (conn):

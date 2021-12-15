@@ -1,5 +1,8 @@
 #!/bin/bash
 clear
+echo 'use run.bash instead ; dev.bash is deprecated'
+exit 1
+
 #../make.bash
 #das2j helloworld >out.json
 python3 emit.py
