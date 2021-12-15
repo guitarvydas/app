@@ -53,17 +53,19 @@ def printContainerScript (component, outf):
     inputTable [receiver] = connection [i]
     # print (f'connection={connection [i]} sender={sender} receiver={receiver}')
     i += 1
-
   for child in children:
     print (f'./{child}.bash ', file=outf, end="")
     conn = outputTable.get (child)
-    # print (f' child=/{child}/ type(child)=/{type(child)}/ outputTable.get(child)=/{outputTable.get(child)}/ conn=/{conn}/', file=outf)
     if (conn):
       print (f'4>{conn} ', end="", file=outf)
     inconn = inputTable.get (child)
     if (inconn):
       print (f'3<{inconn} ', end="", file=outf)
-    print(" &", file=outf)
+    print (" &", file=outf)
+    print (f'pid_{child}=$!', file=outf)
+  for child in children:
+    print (f'wait $pid_{child}', file=outf)
+    
 
 
     
