@@ -21,6 +21,8 @@
 (defmethod any-component-ready-p ((self Dispatcher))
   (some #'ready-p (run-queue self)))
 
+(defmethod dump-output-bucket ((self dispatcher))
+
 (defmethod distribute-outputs ((self Dispatcher) component)
   (let ((outputs (get-and-reset-outputs component)))
     (mapc #(lambda (message)

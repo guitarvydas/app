@@ -23,7 +23,7 @@
 ;;;;;;; Component helloworld
 
 (defclass helloworld (container) ())
-(defmethod initialize ((self helloworld) (in message-queue) (out message-queue) (dispatcher Dispatcher))    
+(defmethod initialize ((self helloworld) (dispatcher Dispatcher))    
   (let ((conn0 (make-instance 'connector))
     (let ((hello (make-instance 'hello :output-queue conn0 :parent self))
 	  (world (make-instance 'world :input-queue conn0 :parent self))

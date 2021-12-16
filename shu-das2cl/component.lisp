@@ -1,7 +1,7 @@
   
 (defclass component ()
   ((input-fifo :accessor input-fifo :initarg :input-fifo :initform (make-instance 'message-fifo))
-   (output-fifo :accessor output-fifo :initarg :output-fifo :initform (make-instance 'message-fifo))
+   (outputs :accessor outputs :initarg nil)
    (parent :accessor parent :initarg :parent :initform nil)))
   
 (defclass leaf (component) ())
@@ -19,7 +19,7 @@
 (defgeneric get-receivers (self sender))
 
 (defmethod send ((self component) (m message))
-  (push (output-fifo self) m))
+  (push (outputs self) m))
 
 (defmethod initialize ((self component) (in message-fifo) (out message-fifo) (dispatcher Dispatcher))
   (add-component dispatcher self))
@@ -28,14 +28,10 @@
   (and (not (null (input-fifo self)))
        (not (busy-p self))))
 
-(defmethod get-and-reset-outputs ((self component) )
-  (let ((outlist (reverse (output-fifo self))))
-    (setf (output-fifo self) nil)
-    outlist))
-
 (defmethod react ((self container) (m message))
   (loop for child in (children self)
-	do (enqueue-message child m)))
+	do (enqueue-message child m))
+  (outputs self)) ;; return outputs (if any) to Dispatcher
 
 (defmethod busy-p ((self leaf)) nil)
 (defmethod busy-p ((self container)) (notany #'busy-p (children self)))
@@ -45,8 +41,3 @@
 
 (defmethod kickstart ((self component))
   (enqueue-message self t))
-
-(defmethod get-receivers ((self container) (sender component))
-  ;; return list of components that are connected to sender's output
-  (for conn in (connections self)
-       collect (and (eq sender (sender conn)) (receiver conn))))
