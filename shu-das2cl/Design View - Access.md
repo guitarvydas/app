@@ -1,6 +1,6 @@
 Certain methods can only be called by certain objects (*timing* of such calls is described in the Situations section).
 
-![Classes](./design-5%20Access.svg)
+![Access](./design-Access.svg)
 
 This diagram is similar to the Situations diagram, except that the diagram does not show the time contraints on the method calls.
 

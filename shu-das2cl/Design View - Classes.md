@@ -1,4 +1,4 @@
-![Classes](./design-2%20Class%20inheritance.svg)
+![Classes](./design-Class%20inheritance.svg)
 
 The main classes in `helloworld` are:
 1. Component

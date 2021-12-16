@@ -1,4 +1,4 @@
-![Methods](./design-3%20Methods.svg)
+![Methods](./design-Methods.svg)
 
 The methods - code - of the various classes are outlined in this diagram.
 

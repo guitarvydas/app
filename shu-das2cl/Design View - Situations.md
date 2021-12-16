@@ -1,4 +1,4 @@
-![Situations](./design-4%20Situations.svg)
+![Situations](./design-Situations.svg)
 
 Certain methods should only be used at certain times in the life of the system.
 

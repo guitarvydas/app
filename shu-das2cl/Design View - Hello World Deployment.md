@@ -1,4 +1,4 @@
-![Hello World](./design-1%20Hello%20World.svg)
+![Hello World](./design-Hello%20World.svg)
 
 The Helloworld example consists of 5 entities:
 

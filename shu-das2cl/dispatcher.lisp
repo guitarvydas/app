@@ -1,36 +1,37 @@
 (defclass Dispatcher ()
-  ((run-queue :accessor run-queue :initform nil)))
+  ((registry :accessor registry :initform nil)
+   (output-bucket :accessor output-bucket :iniform nil)))
 
-(defmethod add-component ((self Dispatcher) component)
-  (setf (run-queue self) (cons component (run-queue self))))
+(defmethod dump-output-bucket ((self Dispatcher) (container Container))
+  ;; 1.
+  (loop for output-message in (output-bucket self)
+        do ;; output-message = take next output message from bucket
+  ;; 2.
+          (let ((receiver-list (get-receivers-based-on-output-message container output-message)))
+  ;; 3.
+            (loop for receiver in receiver-list
+              do ;; receiver = get-next-receiver
+  ;; 4
+                 (deliver-output-message-to-input-pin-of-receiver self output-message receiver)))))
+
+(defmethod invoke-component ((self Dispatcher) (component Component) (message Input-Message))
+  (clear-outputs component)
+  (setf output-bucket (funcall (react component) message)))
 
 (defmethod dispatch ((self Dispatcher))
   (loop while (any-component-ready-p self)
-	do (dispatch1 self (run-queue self))
-	do (mapc #'distribute-outputs (run-queue self))))
+        do (dispatch1 self)))
 
-(defmethod dispatch1 ((self Dispatcher) run-list)
-  (cond ((null run-list) nil)
-	(t (let ((component (first run-list))
-		 (others (rest run-list)))
-	     (when (ready-p component)
-	       (let ((message (pop (input-queue component))))
-		   (react component message)))
-	     (dispatch1 self others)))))
+(defmethod dispatch1 ((self Dispatcher))
+  (loop for component in (get-component-list (registry self))
+        do (when (ready-p component)
+             (let ((input-message (pop-first-input-message component)))
+               (invoke-component self component input-message)
+               (dump-output-bucket self (parent component))))))
 
-(defmethod any-component-ready-p ((self Dispatcher))
-  (some #'ready-p (run-queue self)))
+(defmethod deliver-output-message-to-input-pin-of-receiver ((self Dispatcher) (output-message Output-Message) (receiver Receiver))
+  (let ((input-message (make-instance 'input-message :component (component receiver) :pin (pin receiver) :data (data output-message))))
+    (enqueue-input receiver input-message)))
 
-(defmethod dump-output-bucket ((self dispatcher))
-
-(defmethod distribute-outputs ((self Dispatcher) component)
-  (let ((outputs (get-and-reset-outputs component)))
-    (mapc #(lambda (message)
-	    (distribute-output component message))
-	  outputs)))
-
-(defmethod distribute-output ((self component) (m message))
-  (let ((container (parent self)))
-    (let ((receiver-list (get-receivers container self)))
-      (loop for r in receiver-list
-            do (enqueue-message r m)))))
+(defmethod register-component ((self Dispatcher) (component Component))
+  (push component (registry self)))
