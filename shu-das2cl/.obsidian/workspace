@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "View 1 Hello World.md",
+            "file": "README.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "View 1 Hello World.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,7 +88,15 @@
   },
   "active": "6d749613482c8a0f",
   "lastOpenFiles": [
-    "View 1 Hello World.md",
-    "README.md"
+    "README.md",
+    "Design View - Situations.md",
+    "Design View - Sending.md",
+    "Design View - Methods (Code).md",
+    "Design View - Message.md",
+    "Design View - Invoke Component Reaction.md",
+    "Design View - Hello World Deployment.md",
+    "Design View - Dump Output.md",
+    "Design View - Connector.md",
+    "Design View - Classes.md"
   ]
 }

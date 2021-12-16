@@ -23,14 +23,12 @@
 ;;;;;;; Component helloworld
 
 (defclass helloworld (container) ())
-(defmethod initialize ((self helloworld) (in message-queue) (out message-queue) (dispatcher Dispatcher))    
-  (let ((conn0 (make-instance 'connection))
-        (
-    (let ((hello (make-instance 'hello :output-queue conn0))
-	  (world (make-instance 'world :input-queue conn0)))
-      (setf (children self) (list hello world))
-      
-      (setf (connections self) (list '(hello world)))
+(defmethod initialize ((self helloworld) (dispatcher Dispatcher))    
+  (let ((conn0 (make-instance 'connector))
+    (let ((hello (make-instance 'hello :output-queue conn0 :parent self))
+	  (world (make-instance 'world :input-queue conn0 :parent self))
+      (setf (children self) (make-instance 'dict :map '("hello" hello "world" world)))
+      (setf (both-ends conn0) "hello" "world")
       (call-next-method))))
 
 
