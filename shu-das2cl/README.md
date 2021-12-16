@@ -1,4 +1,4 @@
-convert diagram `helloworld.drawio` into a set of BASH scripts
+convert diagram `helloworld.drawio` into a CL (Common Lisp) program
 then, run the bash scripts
 
 details:
