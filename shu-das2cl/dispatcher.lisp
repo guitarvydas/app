@@ -1,6 +1,8 @@
+(in-package :mpos)
+
 (defclass Dispatcher ()
   ((registry :accessor registry :initform nil)
-   (output-bucket :accessor output-bucket :iniform nil)))
+   (output-bucket :accessor output-bucket :initform nil)))
 
 (defmethod dump-output-bucket ((self Dispatcher) (container Container))
   ;; 1.
@@ -16,7 +18,7 @@
 
 (defmethod invoke-component ((self Dispatcher) (component Component) (message Input-Message))
   (clear-outputs component)
-  (setf output-bucket (funcall (react component) message)))
+  (setf (output-bucket self) (react component message)))
 
 (defmethod dispatch ((self Dispatcher))
   (loop while (any-component-ready-p self)
@@ -35,3 +37,11 @@
 
 (defmethod register-component ((self Dispatcher) (component Component))
   (push component (registry self)))
+
+(defmethod any-component-ready-p ((self Dispatcher))
+  (some #'ready-p (registry self)))
+
+(defmethod get-component-list ((self Dispatcher))
+  ;; return a list of all components in the system
+  ;; implementation: ATM, registry is already a list
+  (registry self))
