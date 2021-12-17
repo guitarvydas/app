@@ -13,3 +13,6 @@
 
 (defun make-output-message (component pin value)
   (make-instance 'Output-Message :component component :pin pin :data value))
+
+(defmethod sender ((self Message))
+  (make-Sender (component self) (pin self)))

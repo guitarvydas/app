@@ -20,7 +20,10 @@
     (maphash #'(lambda (k v)
                  (declare (ignore k))
                  (push v result))
-             (dict self))))
+             (dict self))
+    result))
 
+(defmethod lookup-by-string ((self Dict) (key string))
+  (gethash key (dict self)))
 
           

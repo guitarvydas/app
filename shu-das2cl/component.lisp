@@ -20,7 +20,7 @@
 
 (defmethod busy-p ((self leaf)) nil)
 (defmethod busy-p ((self container)) 
-  (notany #'(lambda (child)
+  (some #'(lambda (child)
               (busy-p child))
           (list-children self)))
 
@@ -29,7 +29,8 @@
 
 (defmethod kickstart ((self Component))
   ;; trick the Dispatcher into running the top component (trick: enqueue a dummy message to the top component)
-  (enqueue-input self (make-input-message self "in" t)))
+  (enqueue-input self (make-input-message self "in" t))
+  nil)
 
 (defmethod pop-first-input-message ((self Component))
   (dequeue (input-fifo self)))
@@ -45,7 +46,8 @@
   (let ((connections (connections self)))
     (loop for conn in connections
           do (when (match-sender-p conn message)
-               (return-from find-connection-based-on-message conn)))))
+               (return-from find-connection-based-on-message conn)))
+    (assert nil)))
 
 (defmethod set-children ((self Component) (children Dict))
   (setf (children self) children))
@@ -53,7 +55,16 @@
 (defmethod list-children ((self Component))
   (dict-to-datum-list (children self)))
 
-(defun make-component (clss parent dispatcher)
-  (let ((c (make-instance clss :parent parent)))
+(defun make-component (clss parent dispatcher debug-id)
+  (let ((c (make-instance clss :parent parent :debug-id debug-id)))
     (initialize c dispatcher)
     c))
+
+(defmethod lookup-child ((self Container) (child-name string))
+  (let ((child (lookup-by-string (children self) child-name)))
+    child))
+
+(defmethod get-receivers-based-on-message ((self Component) (message Message))
+  (let ((conn (find-connection-based-on-message self message)))
+    (get-receivers-based-on-message conn message)))
+        

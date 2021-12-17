@@ -3,7 +3,8 @@
 (defclass component ()
   ((input-fifo :accessor input-fifo :initarg :input-fifo :initform (make-instance 'message-fifo))
    (outputs :accessor outputs :initarg nil)
-   (parent :accessor parent :initarg :parent :initform nil)))
+   (parent :accessor parent :initarg :parent :initform nil)
+   (debug-id :initform "" :initarg :debug-id)))
   
 (defclass leaf (component) ())
 (defclass container (component)
