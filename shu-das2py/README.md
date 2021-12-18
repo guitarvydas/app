@@ -1,5 +1,5 @@
-convert diagram `helloworld.drawio` into a CL (Common Lisp) program
-then, run the bash scripts
+convert diagram `helloworld.drawio` into a python program
+then, run the python program
 
 details:
 - use draw.io (diagrams.net) to edit helloworld.drawio

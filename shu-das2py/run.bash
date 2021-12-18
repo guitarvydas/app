@@ -4,11 +4,12 @@ clear
 das2j helloworld >out.json
 python3 emit.py
 echo
-cat hello.bash
+cat hello.py
 echo
-cat world.bash
+cat world.py
 echo
-cat helloworld.bash
+cat helloworld.py
 
-echo '** running helloworld.bash'
-./helloworld.bash
+echo '** running helloworld.'
+chmod a+x helloworld.py
+./helloworld.py
