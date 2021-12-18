@@ -13,7 +13,7 @@ class Dispatcher:
                 print (m) # top level has no container, just dump message to stdout
 
 
-    def registerComponent (self, component):
+    def register (self, component):
         self.registry.append (component)
 
     def anyComponentReadyP (self):

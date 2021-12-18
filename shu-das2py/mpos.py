@@ -1,4 +1,5 @@
 import dispatcher
+import queue
 
 from typing import NoReturn
 
@@ -41,21 +42,15 @@ class InputMessage (Message):
 class OutputMessage (Message):
     pass
 
-class MessageFifo:
-    def __init__ (self):
-        self.q = []
-
+class MessageFifo (queue.Queue):
     def enqueue (self, m):
-        self.q.appen (m)
+        self.put (m)
 
     def dequeue (self):
-        return self.q.pop (1)
+        return self.get ()
 
     def emptyP (self):
-        return (0 == len (self.q))
-
-    def length (self):
-        return len (self.q)
+        return self.empty ()
 
 class Connector:
     def __init__ (self, sender, receivers):
@@ -93,21 +88,21 @@ class Component:
             self.outputs = []
 
         def readyP (self):
-            return 0 < self.inputQueue.length ()
+            return 0 < self.inputQueue._qsize ()
 
         def enqueueInput (self, m):
             self.inputQueue.enqueue (m)
 
         def kickstart (self):
-            m = Message ("start", True)
+            m = Message (self, "start", True)
             self.enqueueInput (m)
 
 class Leaf (Component):
     pass
 
 class Container (Component):
-    def __init__ (self):
-        super ().__init__ ()
+    def __init__ (self, dispatcher, parent, debugID):
+        super ().__init__ (dispatcher, parent, debugID)
         self.children = []
         self.connections = []
 
