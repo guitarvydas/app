@@ -32,11 +32,14 @@ class Message:
         self.data = d
 
     def sender (self):
-        s = Sender (c, p)
+        s = Sender (self.component, self.pin)
         return s
 
 class InputMessage (Message):
+    pass
+
 class OutputMessage (Message):
+    pass
 
 class MessageFifo:
     def __init__ (self):
@@ -69,7 +72,7 @@ class Connector:
     def getReceiverBasedOnMessage (self, message):
         return self.getReceiversForSender (self, message.sender ())
 
-    class Component:
+class Component:
         def __init__ (self, dispatcher, container, debugID):
             self.inputs = []
             self.outputs = []
@@ -92,14 +95,15 @@ class Connector:
         def readyP (self):
             return 0 < self.inputQueue.length ()
 
-        def enqueueInput (m):
+        def enqueueInput (self, m):
             self.inputQueue.enqueue (m)
 
-        def kickstart:
+        def kickstart (self):
             m = Message ("start", True)
             self.enqueueInput (m)
 
 class Leaf (Component):
+    pass
 
 class Container (Component):
     def __init__ (self):

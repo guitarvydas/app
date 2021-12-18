@@ -9,14 +9,15 @@ class Dispatcher:
                     for receiver in self.getReceiversBasedOnMessage (container, outputMessage):
                         receiver.deliverOutputMessageToInputPinOfReceiver (outputMessage)
         else:
-            print (ouputMessage) # top level has no container, just dump message to stdout
+            for m in outputBucket:
+                print (m) # top level has no container, just dump message to stdout
 
 
     def registerComponent (self, component):
         self.registry.append (component)
 
     def anyComponentReadyP (self):
-        for c in registry:
+        for c in self.registry:
             if c.readyP ():
                 return True
         assert False, "internal error"
@@ -33,6 +34,6 @@ class Dispatcher:
         for c in self.registry:
             if c.readyP:
                 message = c.popFirstInput ()
-                outputs = self.invokeComponent (c, m)
+                outputs = self.invokeComponent (c, message)
                 self.dumpOutputBucket (c, outputs)
-                
+             
