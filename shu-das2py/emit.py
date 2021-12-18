@@ -1,4 +1,6 @@
+#!/usr/bin/env python3
 
+import sys
 import json
 import html
 import re
@@ -42,7 +44,7 @@ def printLeafScript (component, outf):
   print ("import mpos", file=outf)
   print ("import dispatcher", file=outf)
   print (file=outf)
-  print (f'class {component["name"]} (self, mpos.Leaf):', file=outf)
+  print (f'class {component["name"]} (mpos.Leaf):', file=outf)
   print (f'    def __init__ (self, dispatcher, parent, debugID):', file=outf)
   print (f'        super ().__init__ (dispatcher, parent, debugID)', file=outf)
   print (f'        self.inputs={component["inputs"]}', file=outf)
@@ -54,48 +56,42 @@ def printLeafScript (component, outf):
 def printContainerScript (component, outf):
   print ("import mpos", file=outf)
   print ("import dispatcher", file=outf)
+  for name in component ["children"]:
+    print (f'import {name}', file=outf)
   print (file=outf)
-  print (f'class HelloWorld (mpos.Container):', file=outf)
+  print (f'class {component["name"]} (mpos.Container):', file=outf)
   print (f'    def __init__ (self, dispatcher):', file=outf)
   print (f'      super ().__init__ (dispatcher, None, \'{component["name"]}\')', file=outf)
-  connections = component ["connections"]
-  children = component ["children"]
-  connection = []
-  outputTable = {}
-  inputTable = {}
-  i = 0
-  for conn in connections:
-    # good enough for example
-    # not good enough in general (must coalesce all connections that go to the same input)
-    name = "conn" + str (i)
-    connection.append ("$" + name)
-    print (f'{name}={name}_$RANDOM', file=outf)
-    print (f'mkfifo {connection [i]}', file=outf)
-    senderComponentAndPort = conn ["sender"]
-    receiverComponentAndPort = conn ["receiver"]
-    sender = senderComponentAndPort ["component"]
-    receiver = receiverComponentAndPort ["component"]
-    outputTable [sender] = connection [i]
-    inputTable [receiver] = connection [i]
-    # print (f'connection={connection [i]} sender={sender} receiver={receiver}')
-    i += 1
-  for child in children:
-    print (f'./{child}.py ', file=outf, end="")
-    conn = outputTable.get (child)
-    if (conn):
-      print (f'4>{conn} ', end="", file=outf)
-    inconn = inputTable.get (child)
-    if (inconn):
-      print (f'3<{inconn} ', end="", file=outf)
-    print (" &", file=outf)
-    print (f'pid_{child}=$!', file=outf)
-  for child in children:
-    print (f'wait $pid_{child}', file=outf)
-  i = 0
-  for conn in connections:
-    print (f'rm {connection [i]}', file=outf)
-    i += 1
 
+  # uncomment to see json structure
+  # print (file=outf)
+  # print (f'# {component}', file=outf)
+  # print (file=outf)
+  
+  for name in component ["children"]:
+    print (f'      child_{name} = {name} (dispatcher, self, \'{name}\')', file=outf)
+
+  i = 0
+  for conn in component ['connections']:    
+  #       sender = mpos.Sender (hello, "out")
+    sender = conn ['sender']
+    sendername = sender ['component']
+    portname = sender ['port']
+    print (f'      sender = mpos.Sender (child_{sendername}, "{portname}")', file=outf)
+  # reciever should be a list, but currently it is a single object
+  #       for receiver in conn
+    receiver = conn ['receiver']
+    receivername = receiver ['component']
+    receiverport = receiver ['port']
+  #       rworld = mpos.Receiver (world, "in")
+  #       receivers = [ rworld ]
+    print (f'      r_{receivername} = mpos.Receiver (child_{receivername}, "{receiverport}")', file=outf)
+  #       conn1 = mpos.Connector (sender, receivers)
+    print (f'      conn{i} = mpos.Connector (sender, [', end="", file=outf)
+    print (f' r_{receivername}', end="", file=outf)
+    print (f' ])', file=outf)
+
+    i += 1
 
     
 
@@ -109,6 +105,12 @@ for componentArray in data:
   for component in componentArray:
     fname = component["name"] + ".py"
     with open (fname, "w") as script:
-      print (f'#!/bin/local/env python3', file=script)
+      print (f'#!/usr/bin/env python3', file=script)
       print (f'# {fname}', file=script)
       printScript (component, script)
+
+print (f'disp = dispatcher.Dispatcher ()')
+print (f'top = {sys.argv [1]} (disp)')
+print (f'top.kickstart ()')
+print (f'disp.dispatch ()')
+

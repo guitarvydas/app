@@ -1,9 +1,9 @@
-#!/bin/local/env python3
+#!/usr/bin/env python3
 # hello.py
 import mpos
 import dispatcher
 
-class hello (self, mpos.Leaf):
+class hello (mpos.Leaf):
     def __init__ (self, dispatcher, parent, debugID):
         super ().__init__ (dispatcher, parent, debugID)
         self.inputs=[]

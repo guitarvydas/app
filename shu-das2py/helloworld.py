@@ -1,17 +1,15 @@
-#!/bin/local/env python3
+#!/usr/bin/env python3
 # helloworld.py
 import mpos
 import dispatcher
+import world
+import hello
 
-class HelloWorld (mpos.Container):
+class helloworld (mpos.Container):
     def __init__ (self, dispatcher):
       super ().__init__ (dispatcher, None, 'helloworld')
-conn0=conn0_$RANDOM
-mkfifo $conn0
-./world.py 3<$conn0  &
-pid_world=$!
-./hello.py 4>$conn0  &
-pid_hello=$!
-wait $pid_world
-wait $pid_hello
-rm $conn0
+      child_world = world (dispatcher, self, 'world')
+      child_hello = hello (dispatcher, self, 'hello')
+      sender = mpos.Sender (child_hello, "out")
+      r_world = mpos.Receiver (child_world, "in")
+      conn0 = mpos.Connector (sender, [ r_world ])
