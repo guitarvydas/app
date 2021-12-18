@@ -109,8 +109,12 @@ for componentArray in data:
       print (f'# {fname}', file=script)
       printScript (component, script)
 
-print (f'disp = dispatcher.Dispatcher ()')
-print (f'top = {sys.argv [1]} (disp)')
-print (f'top.kickstart ()')
-print (f'disp.dispatch ()')
+with open ('top.py', 'w') as top:
+  print (f'#!/usr/bin/env python3', file=top)
+  print (f'import {sys.argv [1]}', file=top)
+  print (f'import dispatcher', file=top)
+  print (f'disp = dispatcher.Dispatcher ()', file=top)
+  print (f'top = {sys.argv [1]} (disp)', file=top)
+  print (f'top.kickstart ()', file=top)
+  print (f'disp.dispatch ()', file=top)
 

@@ -10,6 +10,6 @@ clear
 # echo
 # cat helloworld.py
 
-echo '** running helloworld.'
-chmod a+x helloworld.py
-./helloworld.py
+echo '** running top.'
+chmod a+x top.py
+./top.py
