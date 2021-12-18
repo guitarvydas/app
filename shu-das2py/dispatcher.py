@@ -1,13 +1,15 @@
 class Dispatcher:
     registry = []
-    outputBucket = []
+    outputBucket = None
 
-    def dumpOutputBucket (self, container, outputBucket):
-        if container:
-            if 0 < len (self.outputBucket):
-                for outputMessage in outputBucket:
-                    for receiver in self.getReceiversBasedOnMessage (container, outputMessage):
-                        receiver.deliverOutputMessageToInputPinOfReceiver (outputMessage)
+    def dumpOutputBucket (self, component, outputBucket):
+        if 0 < len (component.outputBucket):
+            container = component.getContainer ()
+            for outputMessage in outputBucket:
+                connection = container.findConnectionBasedOnMessage (outputMessage)
+                receiversList = connection.getReceiversBasedOnMessage (outputMessage)
+                for receiver in receiversList:
+                    receiver.deliverOutputMessageToInputPinOfReceiver (outputMessage)
         else:
             for m in outputBucket:
                 print (m) # top level has no container, just dump message to stdout
@@ -20,11 +22,11 @@ class Dispatcher:
         for c in self.registry:
             if c.readyP ():
                 return True
-        assert False, "internal error"
+        return False
 
     def invokeComponent (self, component, message):
-        component.clearOutputs ()
-        self.outputBucket = component.react (message)
+        component.clearOutputBucket ()
+        return component.react (message)
 
     def dispatch (self):
         while self.anyComponentReadyP ():

@@ -5,16 +5,13 @@ from typing import NoReturn
 
 
 class Sender:
-    component = None
-    pin = ""
-
     def __init__ (self, c,p):
         self.component = c
         self.pin = p
 
     def __eq__ (self, other):
-        if self.component == other.component and self.pin == other.pin:
-            return True
+        if isinstance(other, Sender):
+            return self.component is other.component and self.pin == other.pin
         else:
             return False
 
@@ -26,6 +23,11 @@ class Receiver:
         self.component = c
         self.pin = p
 
+    def deliverOutputMessageToInputPinOfReceiver (self, outputMessage):
+        inputMessage = InputMessage (self.component, self.pin, outputMessage.data)
+        component = self.component
+        component.enqueueInput (inputMessage)
+
 class Message:
     def __init__ (self, c, p, d):
         self.component = c
@@ -35,6 +37,12 @@ class Message:
     def sender (self):
         s = Sender (self.component, self.pin)
         return s
+
+    def getPin (self):
+        return self.pin
+    
+    def getComponent (self):
+        return self.component
 
 class InputMessage (Message):
     pass
@@ -57,20 +65,23 @@ class Connector:
         self.sender = sender
         self.receivers = receivers
     
-    def getReceiversForSender (self, sender):
+    def getReceiversBasedOnSender (self, sender):
         assert (self.sender == sender)
         return self.receivers
     
     def matchSender (self, targetSender):
         return self.sender == targetSender
 
-    def getReceiverBasedOnMessage (self, message):
-        return self.getReceiversForSender (self, message.sender ())
+    def getReceiversBasedOnMessage (self, message):
+        s = message.sender ()
+        r = self.getReceiversBasedOnSender (message.sender ())
+        return r
 
 class Component:
         def __init__ (self, dispatcher, container, debugID):
             self.inputs = []
             self.outputs = []
+            self.outputBucket = []
             self.parent = container
             self.debugID = debugID
             self.inputQueue = MessageFifo ()
@@ -84,8 +95,8 @@ class Component:
                 message = self.inputQueue.dequeue ()
                 return message
         
-        def clearOutputs (self):
-            self.outputs = []
+        def clearOutputBucket (self):
+            self.outputBucket = []
 
         def readyP (self):
             return 0 < self.inputQueue._qsize ()
@@ -96,6 +107,17 @@ class Component:
         def kickstart (self):
             m = Message (self, "start", True)
             self.enqueueInput (m)
+
+        def send (self, pin, data):
+            message = Message (self, pin, data)
+            self.outputBucket.append (message)
+
+        def react (self, message):
+            return self.outputBucket
+
+        def getContainer (self):
+            return self.parent
+
 
 class Leaf (Component):
     pass
@@ -121,11 +143,12 @@ class Container (Component):
 
     def findConnectionBasedOnMessage (self, m):
         for conn in self.connections:
-            if conn.sender == m.sender:
+            if conn.sender == m.sender ():
                 return conn
-        assert False
+        assert False, "internal error"
 
     def react (self, message):
-        self.propagateMessageToChildren (message)
+        self.propagateInputToChildren (message)
+        return super ().react (message)
 
     

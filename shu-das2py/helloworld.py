@@ -8,7 +8,8 @@ class Hello (mpos.Leaf):
 
     def react (self, inputMessage):
         print ("hello")
-        mpos.send (self, "out", True)
+        self.send ("out", True)
+        return super ().react (inputMessage)
 
 class World (mpos.Leaf):
     def __init__ (self, dispatcher, parent, debugID):
@@ -17,6 +18,7 @@ class World (mpos.Leaf):
 
     def react (self, inputMessage):
         print ("world")
+        return super ().react (inputMessage)
 
 class HelloWorld (mpos.Container):
     def __init__ (self, dispatcher):
