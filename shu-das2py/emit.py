@@ -44,7 +44,7 @@ def printLeafScript (component, outf):
   print ("import mpos", file=outf)
   print ("import dispatcher", file=outf)
   print (file=outf)
-  print (f'class {component["name"]} (mpos.Leaf):', file=outf)
+  print (f'class _{component["name"]} (mpos.Leaf):', file=outf)
   print (f'    def __init__ (self, dispatcher, parent, debugID):', file=outf)
   print (f'        super ().__init__ (dispatcher, parent, debugID)', file=outf)
   print (f'        self.inputs={component["inputs"]}', file=outf)
@@ -60,7 +60,7 @@ def printContainerScript (component, outf):
   for name in component ["children"]:
     print (f'import {name}', file=outf)
   print (file=outf)
-  print (f'class {component["name"]} (mpos.Container):', file=outf)
+  print (f'class _{component["name"]} (mpos.Container):', file=outf)
   print (f'    def __init__ (self, dispatcher):', file=outf)
   print (f'      super ().__init__ (dispatcher, None, \'{component["name"]}\')', file=outf)
 
@@ -70,7 +70,7 @@ def printContainerScript (component, outf):
   # print (file=outf)
   
   for name in component ["children"]:
-    print (f'      child_{name} = {name} (dispatcher, self, \'{name}\')', file=outf)
+    print (f'      child_{name} = {name}._{name} (dispatcher, self, \'{name}\')', file=outf)
 
   i = 0
   for conn in component ['connections']:    
@@ -94,7 +94,7 @@ def printContainerScript (component, outf):
 
     i += 1
 
-  print (f'      self.children = [', end='', file=outf)
+  print ( '      self.children = {', end='', file=outf)
   n = len (component ['children']) - 1
   i = 0
   for name in component ["children"]:
@@ -102,7 +102,7 @@ def printContainerScript (component, outf):
     if i < n:
       print (f', ', end="", file=outf)
     i += 1
-  print (f']', file=outf)
+  print ( '}', file=outf)
 
   i = 0
   n = len (component ['connections']) - 1
@@ -132,8 +132,9 @@ with open ('top.py', 'w') as top:
   print (f'#!/usr/bin/env python3', file=top)
   print (f'import {sys.argv [1]}', file=top)
   print (f'import dispatcher', file=top)
+  print (f'import {sys.argv [1]}', file=top)
   print (f'disp = dispatcher.Dispatcher ()', file=top)
-  print (f'top = {sys.argv [1]} (disp)', file=top)
+  print (f'top = {sys.argv[1]}._{sys.argv [1]} (disp)', file=top)
   print (f'top.kickstart ()', file=top)
   print (f'disp.dispatch ()', file=top)
 

@@ -1,0 +1,34 @@
+Main [klb @Components krb] = [[${klb}${Components}${krb}]]
+Component [klb ComponentObject krb] = [[${klb}${ComponentObject}${krb}]]
+ComponentObject [klb @ComponentFields krb] = [[${klb}${ComponentFields}${krb}]]
+ComponentField [f] = [[${f}]]
+
+ChildrenField [dq1 k dq2 kcolon klb ChildrenNames krb] = [[${dq1}${k}${dq2}${kcolon}${klb}${ChildrenNames}${krb}]]
+
+ConnectionsField [dq1 k dq2 kcolon klb @Connections krb] = [[${dq1}${k}${dq2}${kcolon}${klb}${Connections}${krb}]]
+IDField [dq1 k dq2 kcolon s] = [[${dq1}${k}${dq2}${kcolon}${s}]]
+NameField [dq1 k dq2 kcolon s] = [[${dq1}${k}${dq2}${kcolon}${s}]]
+SyncCodeField [dq1 k dq2 kcolon s] = [[${dq1}${k}${dq2}${kcolon}${s}]]
+
+InputsField [dq1 k dq2 kcolon klb names krb] = [[${dq2}${k}${dq2}${kcolon}${klb}${names}${krb}]]
+OutputsField [dq1 k dq2 kcolon klb names krb] = [[${dq2}${k}${dq2}${kcolon}${klb}${names}${krb}]]
+
+
+Connection [klb @SendersOrReceivers krb] = [[${klb}${SendersOrReceivers}${krb}]]
+SenderOrReceiver [sr] = [[${sr}]]
+Receiver [dq1 kreceiver dq2 kcolon Pair] = [[${dq1}${kreceiver}${dq2}${kcolon}${Pair}]]
+Sender [dq1 ksender dq2 kcolon Pair] = [[${dq1}${ksender}${dq2}${kcolon}${Pair}]]
+
+Pair [klb dq1 kcomponent kdq2 kcolon s dq3 kport dq4 kcolon2 s2 krb]
+  = [[${klb}${dq1}${kcomponent}${kdq2}${kcolon}${s}${dq3}${kport}${dq4}${kcolon2}${s2}${krb}]]
+
+CommaSeparatedNames [@names] = [[${names}]]
+InputNames [names] = [[${names}]]
+OutputNames [names] = [[${names}]]
+ChildrenNames [names] = [[${names}]]
+
+Name [s] = [[${s}]]
+string [q1 @notDQ q2] = [[${q1}${notDQ}${q2}]]
+dq [c] = [[${c}]]
+notDQ [c] = [[${c}]]
+space [c] = [[{$c}]]

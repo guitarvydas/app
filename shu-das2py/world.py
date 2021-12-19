@@ -3,7 +3,7 @@
 import mpos
 import dispatcher
 
-class world (mpos.Leaf):
+class _world (mpos.Leaf):
     def __init__ (self, dispatcher, parent, debugID):
         super ().__init__ (dispatcher, parent, debugID)
         self.inputs=['in']
