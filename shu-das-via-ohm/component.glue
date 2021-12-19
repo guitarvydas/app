@@ -1,5 +1,8 @@
-Main [klb @Components krb] = [[${klb}${Components}${krb}]]
-Component [klb ComponentObject krb] = [[${klb}${ComponentObject}${krb}]]
+Main [klb @Components krb] = [[]]
+Component [klb ComponentObject krb]
+  = {{ support.resetRegisters (); }}
+    [[${support.writeComponent ()}]]
+
 ComponentObject [klb @ComponentFields krb] = [[${klb}${ComponentFields}${krb}]]
 ComponentField [f] = [[${f}]]
 
@@ -7,7 +10,7 @@ ChildrenField [dq1 k dq2 kcolon klb ChildrenNames krb] = [[${dq1}${k}${dq2}${kco
 
 ConnectionsField [dq1 k dq2 kcolon klb @Connections krb] = [[${dq1}${k}${dq2}${kcolon}${klb}${Connections}${krb}]]
 IDField [dq1 k dq2 kcolon s] = [[${dq1}${k}${dq2}${kcolon}${s}]]
-NameField [dq1 k dq2 kcolon s] = [[${dq1}${k}${dq2}${kcolon}${s}]]
+NameField [dq1 k dq2 kcolon s] = [[${support.fileNameSet (s)}${support.componentNameSet (s)}]]
 SyncCodeField [dq1 k dq2 kcolon s] = [[${dq1}${k}${dq2}${kcolon}${s}]]
 
 InputsField [dq1 k dq2 kcolon klb names krb] = [[${dq2}${k}${dq2}${kcolon}${klb}${names}${krb}]]
