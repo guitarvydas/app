@@ -9,7 +9,7 @@ ComponentField [f] = [[${f}]]
 ChildrenField [dq1 k dq2 kcolon klb ChildrenNames krb] = [[]]
 
 ConnectionsField [dq1 k dq2 kcolon klb @Connections krb] = [[${dq1}${k}${dq2}${kcolon}${klb}${Connections}${krb}]]
-IDField [dq1 k dq2 kcolon s] = [[${dq1}${k}${dq2}${kcolon}${s}]]
+IDField [dq1 k dq2 kcolon s] = [[${support.idNameSet (s)}]]
 NameField [dq1 k dq2 kcolon s] = [[${support.fileNameSet (s)}${support.componentNameSet (s)}]]
 SyncCodeField [dq1 k dq2 kcolon s] = [[${dq1}${k}${dq2}${kcolon}${s}]]
 

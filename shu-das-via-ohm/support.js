@@ -4,6 +4,7 @@ var componentName;
 var childrenNames;
 var inputNames;
 var outputNames;
+var idName;
 
 exports.resetRegisters = function () {
     fileName = "";
@@ -11,6 +12,7 @@ exports.resetRegisters = function () {
     childrenNames = "";
     inputNames = "";
     outputNames = "";
+    idName = "";
 }
 
 exports.fileNameSet = function (s) {
@@ -37,11 +39,16 @@ exports.outputNamesSet = function (s) {
     inputNames = deleteLeadingComma (s);
 }
 
+exports.idNameSet = function (s) {
+    idName = deleteLeadingComma (s);
+}
+
 exports.writeComponent = function () {
-    console.error (`filename = ${fileName}`);
+    console.error (`filename      = ${fileName}`);
     console.error (`componentName = ${componentName}`);
+    console.error (`id            = ${idName}`);
     console.error (`childrenNames = [${childrenNames}]`);
-    console.error (`inputNames = [${inputNames}]`);
-    console.error (`outputNames = [${outputNames}]`);
+    console.error (`inputNames    = [${inputNames}]`);
+    console.error (`outputNames   = [${outputNames}]`);
     console.error ();
 }
