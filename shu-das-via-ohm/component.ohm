@@ -16,11 +16,11 @@ components {
 
   ConnectionsField = dq "connections" dq ":" "[" Connection* "]"
   
-  IDField = dq "id" dq ":" string
+  IDField = dq "id" dq ":" name
   InputsField = dq "inputs" dq ":" "[" InputNames "]"
   OutputsField = dq "outputs" dq ":" "[" OutputNames "]"
-  NameField = dq "name" dq ":" string
-  SyncCodeField = dq "synccode" dq ":" string
+  NameField = dq "name" dq ":" name
+  SyncCodeField = dq "synccode" dq ":" name
 
   Connection = "{" SenderOrReceiver* "}"
   SenderOrReceiver = Sender | Receiver
@@ -29,12 +29,12 @@ components {
 
   Pair = "{" dq "component" dq ":" string dq "port" dq ":" string "}" 
   
-  CommaSeparatedNames = Name*
+  CommaSeparatedNames = name*
   InputNames = CommaSeparatedNames
   OutputNames = CommaSeparatedNames
   ChildrenNames = CommaSeparatedNames
   
-  Name = string
+  name = string
   string = dq notDQ* dq
   dq = "\""
   notDQ = ~dq any
