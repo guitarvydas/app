@@ -6,6 +6,11 @@ var inputNames;
 var outputNames;
 var idName;
 var syncCode;
+var sender;
+var receiver;
+var receiverList;
+var connection;
+var pair;
 
 var nameStack = [];
 
@@ -69,6 +74,44 @@ exports.syncCodeSet = function (s) {
     syncCode = popNames ();
 }
 
+exports.senderNew = function () {
+    sender = {};
+}
+
+exports.senderSet = function () {
+    sender = pair;
+}
+
+exports.receiverNew = function () {
+    receiver = {};
+}
+
+exports.receiverSet = function () {
+    receiver = pair;
+}
+
+exports.receiverListNew = function () {
+    receiverList = [];
+}
+
+exports.receiverListAdd = function () {
+    topReceiver = receiverList.pop ();
+    topReceiver.push (receiver);
+    receiverList.push (topReceiver);
+}
+
+exports.connectionNew = function () {
+    connection = [];
+}
+
+exports.pairNew = function () {
+    pair = [];
+}
+
+
+
+
+
 exports.writeComponent = function () {
     console.error (`filename      = ${fileName}`);
     console.error (`componentName = ${componentName}`);
@@ -79,3 +122,4 @@ exports.writeComponent = function () {
     console.error (`sync code     = ${syncCode}`);
     console.error ();
 }
+

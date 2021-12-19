@@ -17,10 +17,19 @@ InputsField [dq1 k dq2 kcolon klb names krb] = [[${dq2}${k}${dq2}${kcolon}${klb}
 OutputsField [dq1 k dq2 kcolon klb names krb] = [[${dq2}${k}${dq2}${kcolon}${klb}${names}${krb}]]
 
 
-Connection [klb @SendersOrReceivers krb] = [[${klb}${SendersOrReceivers}${krb}]]
-SenderOrReceiver [sr] = [[${sr}]]
-Receiver [dq1 kreceiver dq2 kcolon Pair] = [[${dq1}${kreceiver}${dq2}${kcolon}${Pair}]]
-Sender [dq1 ksender dq2 kcolon Pair] = [[${dq1}${ksender}${dq2}${kcolon}${Pair}]]
+Connection [klb @SendersOrReceivers krb] 
+  = {{ support.connectionNew (); support.receiverListNew (); }}
+    [[]]
+
+SenderOrReceiver [sr] = {{ support.pairNew (); }} [[${sr}]]
+
+Receiver [dq1 kreceiver dq2 kcolon Pair] 
+  = {{ support.receiverNew (); }}
+    [[${support.receiverSet ()}]]
+
+Sender [dq1 ksender dq2 kcolon Pair]
+  = {{support.senderNew (); }}
+    [[${support.senderSet ()}]]
 
 Pair [klb dq1 kcomponent kdq2 kcolon s dq3 kport dq4 kcolon2 s2 krb]
   = [[${klb}${dq1}${kcomponent}${kdq2}${kcolon}${s}${dq3}${kport}${dq4}${kcolon2}${s2}${krb}]]
