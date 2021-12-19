@@ -52,6 +52,7 @@ def printLeafScript (component, outf):
   print (file=outf)
   print (f'    def react (self, message):', file=outf)
   printLines (8, codefinal, file=outf)
+  print (f'        return super ().react (message)', file=outf)
 
 def printContainerScript (component, outf):
   print ("import mpos", file=outf)
@@ -93,7 +94,25 @@ def printContainerScript (component, outf):
 
     i += 1
 
-    
+  print (f'      self.children = [', end='', file=outf)
+  n = len (component ['children']) - 1
+  i = 0
+  for name in component ["children"]:
+    print (f'"{name}": child_{name}', end='', file=outf)
+    if i < n:
+      print (f', ', end="", file=outf)
+    i += 1
+  print (f']', file=outf)
+
+  i = 0
+  n = len (component ['connections']) - 1
+  print (f'      self.connections = [', end='', file=outf)
+  for conn in component ['connections']:
+    print (f'conn{i}', end="", file=outf)
+    if i < n:
+      print (f', ', end='', file=outf)
+    i += 1
+  print (f']', file=outf)
 
 def printScript (component, outf):
   if (isContainer (component)):

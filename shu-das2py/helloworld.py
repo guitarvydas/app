@@ -13,3 +13,5 @@ class helloworld (mpos.Container):
       sender = mpos.Sender (child_hello, "out")
       r_world = mpos.Receiver (child_world, "in")
       conn0 = mpos.Connector (sender, [ r_world ])
+      self.children = ["world": child_world, "hello": child_hello]
+      self.connections = [conn0]

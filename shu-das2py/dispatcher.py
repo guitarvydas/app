@@ -3,13 +3,14 @@ class Dispatcher:
     outputBucket = None
 
     def dumpOutputBucket (self, component, outputBucket):
-        if 0 < len (component.outputBucket):
-            container = component.getContainer ()
-            for outputMessage in outputBucket:
-                connection = container.findConnectionBasedOnMessage (outputMessage)
-                receiversList = connection.getReceiversBasedOnMessage (outputMessage)
-                for receiver in receiversList:
-                    receiver.deliverOutputMessageToInputPinOfReceiver (outputMessage)
+        if component:
+         if component.hasOutputsP ():
+                container = component.getContainer ()
+                for outputMessage in outputBucket:
+                    connection = container.findConnectionBasedOnMessage (outputMessage)
+                    receiversList = connection.getReceiversBasedOnMessage (outputMessage)
+                    for receiver in receiversList:
+                        receiver.deliverOutputMessageToInputPinOfReceiver (outputMessage)
         else:
             for m in outputBucket:
                 print (m) # top level has no container, just dump message to stdout
@@ -34,7 +35,7 @@ class Dispatcher:
 
     def dispatch1 (self):
         for c in self.registry:
-            if c.readyP:
+            if c.readyP ():
                 message = c.popFirstInput ()
                 outputs = self.invokeComponent (c, message)
                 self.dumpOutputBucket (c, outputs)

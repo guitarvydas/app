@@ -105,7 +105,7 @@ class Component:
             self.inputQueue.enqueue (m)
 
         def kickstart (self):
-            m = Message (self, "start", True)
+            m = Message (self, "_", True)
             self.enqueueInput (m)
 
         def send (self, pin, data):
@@ -117,6 +117,9 @@ class Component:
 
         def getContainer (self):
             return self.parent
+
+        def hasOutputsP (self):
+            return (0 < len (self.outputBucket))
 
 
 class Leaf (Component):

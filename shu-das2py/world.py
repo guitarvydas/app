@@ -12,3 +12,4 @@ class world (mpos.Leaf):
     def react (self, message):
         print ("world")
         
+        return super ().react (message)
