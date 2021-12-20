@@ -42,81 +42,121 @@ def unescapeCode (s):
   codefinal = html.unescape (code7)
   return codefinal
 
-def printLeafScript (component, outf):
-  code = unescapeCode (component["synccode"])
+def printCommonHeader (component, outf):
+
   name = component["name"]
+  idkey = component ["id"]
+  inputs = component ["inputs"]
+  outputs = component ["outputs"]
+  code = unescapeCode (component["synccode"])
+
+  print (f'#!/usr/bin/env python3', file=outf)
+  print (f'# {fname}', file=outf)
+  print (f'# {idkey}', file=outf)
+
+def printCommonImports (component, outf):
+
+  name = component["name"]
+  idkey = component ["id"]
+  inputs = component ["inputs"]
+  outputs = component ["outputs"]
+  code = unescapeCode (component["synccode"])
+
   print ("import mpos", file=outf)
   print ("import dispatcher", file=outf)
-  print (file=outf)
-  print (f'class _{component["name"]} (mpos.Leaf):', file=outf)
+
+def printCommonBody (component, outf):
+
+  name = component["name"]
+  idkey = component ["id"]
+  inputs = component ["inputs"]
+  outputs = component ["outputs"]
+  code = unescapeCode (component["synccode"])
+
+  print (f'class _{name} (mpos.Leaf):', file=outf)
   print (f'    def __init__ (self, dispatcher, parent, debugID):', file=outf)
   print (f'        super ().__init__ (dispatcher, parent, debugID)', file=outf)
-  print (f'        self.inputs={component["inputs"]}', file=outf)
-  print (f'        self.outputs={component["outputs"]}', file=outf)
+  print (f'        self.inputs={inputs}', file=outf)
+  print (f'        self.outputs={outputs}', file=outf)
   print (file=outf)
   print (f'    def react (self, message):', file=outf)
   printLines (8, code, file=outf)
   print (f'        return super ().react (message)', file=outf)
+  
+
+def printLeafScript (component, outf):
+  printCommonHeader (component, outf)
+  printCommonImports (component, outf)
+  printCommonBody (component, outf)
 
 def printContainerScript (component, outf):
-  print ("import mpos", file=outf)
-  print ("import dispatcher", file=outf)
-  for name in component ["children"]:
-    print (f'import {name}', file=outf)
-  print (file=outf)
-  print (f'class _{component["name"]} (mpos.Container):', file=outf)
-  print (f'    def __init__ (self, dispatcher):', file=outf)
-  print (f'      super ().__init__ (dispatcher, None, \'{component["name"]}\')', file=outf)
 
-  # uncomment to see json structure
-  # print (file=outf)
-  # print (f'# {component}', file=outf)
-  # print (file=outf)
+  printCommonHeader (component, outf)
+
+  name = component ["name"]
+  idkey = component ["id"]
+  inputs = component ["inputs"]
+  outputs = component ["outputs"]
+  code = ""  # no sync code for Containers
+
+  children = component ["children"]
+  connections = component ["connections"]
+
+  printCommonImports (component, outf)
+  for child in component ["children"]:
+    print (f'import {child}', file=outf)
+
+  printCommonBody (component, outf)
+
+  # # uncomment to see json structure
+  # # print (file=outf)
+  # # print (f'# {component}', file=outf)
+  # # print (file=outf)
   
-  for name in component ["children"]:
-    print (f'      child_{name} = {name}._{name} (dispatcher, self, \'{name}\')', file=outf)
+  for childname in children:
+    print (f'        child_{childname} = {childname}._{childname} (dispatcher, self, \'{childname}\')', file=outf)
 
-  i = 0
-  for conn in component ['connections']:    
-  #       sender = mpos.Sender (hello, "out")
-    sender = conn ['sender']
-    sendername = sender ['component']
-    portname = sender ['port']
-    print (f'      sender = mpos.Sender (child_{sendername}, "{portname}")', file=outf)
-  # reciever should be a list, but currently it is a single object
-  #       for receiver in conn
-    receiver = conn ['receiver']
-    receivername = receiver ['component']
-    receiverport = receiver ['port']
-  #       rworld = mpos.Receiver (world, "in")
-  #       receivers = [ rworld ]
-    print (f'      r_{receivername} = mpos.Receiver (child_{receivername}, "{receiverport}")', file=outf)
-  #       conn1 = mpos.Connector (sender, receivers)
-    print (f'      conn{i} = mpos.Connector (sender, [', end="", file=outf)
-    print (f' r_{receivername}', end="", file=outf)
-    print (f' ])', file=outf)
+  # i = 0
+  # for conn in connections:
+  # #       sender = mpos.Sender (hello, "out")
+  #   sender = conn ['sender']
+  #   sendername = sender ['component']
+  #   portname = sender ['port']
+  #   print (f'      sender = mpos.Sender (child_{sendername}, "{portname}")', file=outf)
+  # # reciever should be a list, but currently it is a single object
+  # #       for receiver in conn
+  #   receiver = conn ['receiver']
+  #   receivername = receiver ['component']
+  #   receiverport = receiver ['port']
+  # #       rworld = mpos.Receiver (world, "in")
+  # #       receivers = [ rworld ]
+  #   print (f'      r_{receivername} = mpos.Receiver (child_{receivername}, "{receiverport}")', file=outf)
+  # #       conn1 = mpos.Connector (sender, receivers)
+  #   print (f'      conn{i} = mpos.Connector (sender, [', end="", file=outf)
+  #   print (f' r_{receivername}', end="", file=outf)
+  #   print (f' ])', file=outf)
 
-    i += 1
+  #   i += 1
 
-  print ( '      self.children = {', end='', file=outf)
-  n = len (component ['children']) - 1
-  i = 0
-  for name in component ["children"]:
-    print (f'"{name}": child_{name}', end='', file=outf)
-    if i < n:
-      print (f', ', end="", file=outf)
-    i += 1
-  print ( '}', file=outf)
+  # print ( '      self.children = {', end='', file=outf)
+  # n = len (component ['children']) - 1
+  # i = 0
+  # for name in component ["children"]:
+  #   print (f'"{name}": child_{name}', end='', file=outf)
+  #   if i < n:
+  #     print (f', ', end="", file=outf)
+  #   i += 1
+  # print ( '}', file=outf)
 
-  i = 0
-  n = len (component ['connections']) - 1
-  print (f'      self.connections = [', end='', file=outf)
-  for conn in component ['connections']:
-    print (f'conn{i}', end="", file=outf)
-    if i < n:
-      print (f', ', end='', file=outf)
-    i += 1
-  print (f']', file=outf)
+  # i = 0
+  # n = len (component ['connections']) - 1
+  # print (f'      self.connections = [', end='', file=outf)
+  # for conn in component ['connections']:
+  #   print (f'conn{i}', end="", file=outf)
+  #   if i < n:
+  #     print (f', ', end='', file=outf)
+  #   i += 1
+  # print (f']', file=outf)
 
 def printScript (component, outf):
   if (isContainer (component)):
@@ -128,8 +168,6 @@ for componentArray in data:
   for component in componentArray:
     fname = component["name"] + ".py"
     with open (fname, "w") as script:
-      print (f'#!/usr/bin/env python3', file=script)
-      print (f'# {fname}', file=script)
       printScript (component, script)
 
 with open ('top.py', 'w') as top:

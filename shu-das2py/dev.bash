@@ -7,9 +7,9 @@ clear
 # cat hello.py
 # echo
 # cat world.py
-# echo
-# cat helloworld.py
+echo
+cat helloworld.py
 
-echo '** running top.'
-chmod a+x top.py
-./top.py
+# echo '** running top.'
+# chmod a+x top.py
+# ./top.py
