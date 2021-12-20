@@ -22,7 +22,7 @@ components {
   InputsField = dq "inputs" dq ":" "[" InputNames "]"
   OutputsField = dq "outputs" dq ":" "[" OutputNames "]"
   NameField = dq "name" dq ":" name
-  SyncCodeField = dq "synccode" dq ":" name
+  SyncCodeField = dq "synccode" dq ":" string
 
   ConnectionList = Connection*
   Connection = "[" ReceiverList SenderList "]"

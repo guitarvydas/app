@@ -29,6 +29,7 @@ ConnectionsField [dq1 k dq2 kcolon klb ConnectionList krb]
   
 IDField [dq1 k dq2 kcolon s] = {{ support.idField_newscope (); }} [[${support.idField_setfrom_name ()}  ]]
 NameField [dq1 k dq2 kcolon s] = {{ support.nameField_newscope (); }} [[${support.nameField_setfrom_name ()} ]]
+
 SyncCodeField [dq1 k dq2 kcolon s] = {{ support.syncCodeField_newscope (); }} [[${support.syncCodeField_setfrom_string ()} ]]
 
 InputsField [dq1 k dq2 kcolon klb names krb] = {{ support.inputsField_newscope (); }} [[${support.inputsField_setfrom_names ()} ]]

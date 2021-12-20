@@ -30,7 +30,9 @@ let childrenNamesStack = [];
 
 
 exports.writeComponentList = function () {
-    console.error (componentListStack);
+    componentListStack.forEach (c => {
+	console.error (c);
+    });
 }
 
 
@@ -367,7 +369,7 @@ exports.mainStack_setfrom_componentList = function () {
 }
 
 exports.inputNames_newscope = function () {
-    inputNamesStack.push ({});
+    inputNamesStack.push ([]);
 }
 exports.inputNames_delscope = function () {
     inputNamesStack.pop ();
@@ -379,7 +381,7 @@ exports.inputNames_setfrom_namesList = function () {
 }
 
 exports.outputNames_newscope = function () {
-    outputNamesStack.push ({});
+    outputNamesStack.push ([]);
 }
 exports.outputNames_delscope = function () {
     outputNamesStack.pop ();
