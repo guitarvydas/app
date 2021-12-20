@@ -36,25 +36,23 @@ OutputsField [dq1 k dq2 kcolon klb names krb] = {{ support.outputsField_newscope
 
 ConnectionList [@Connections] = {{ support.connectionList_newscope (); }} [[${support.connectionList_setfrom_connection ()}]]
 
-Connection [klb @SendersOrReceivers krb] 
+Connection [klb ReceiverList SenderList krb] 
   = {{ support.connection_newscope (); }}
-    [[${support.connection_setfrom_senderOrReceiver ()}]]
+    [[${support.connection_setfield_sender_from_senderList ()}
+      ${support.connection_setfield_receiver_from_receiverList ()}]]
 
-SenderOrReceiver [sr]
-  = {{ support.senderOrReceiver_newscope (); }}
-    [[${support.senderOrReceiver_setor (sr)}]]
-
-Receiver [dq1 kreceiver dq2 kcolon Pair] 
+ReceiverList [lb @Receiver rb] = {{ support.receiverList_newscope (); }} [[]]
+Receiver [lb dq1 kreceiver dq2 kcolon Pair rb] 
   = {{ support.receiver_newscope (); }}
-    [[${support.receiver_setfrom_pair ()}>>Receiver]]
-
-Sender [dq1 ksender dq2 kcolon Pair]
+    [[${support.receiver_setfrom_pair ()}]]
+SenderList [lb @Sender rb] = {{ support.senderList_newscope (); }} [[]]
+Sender [lb dq1 ksender dq2 kcolon Pair rb]
   = {{support.sender_newscope (); }}
-    [[${support.sender_setfrom_pair ()}>>Sender]]
+    [[${support.sender_setfrom_pair ()}]]
 
 Pair [klb dq1 kcomponent kdq2 kcolon name1 dq3 kport dq4 kcolon2 name2 krb]
   = {{ support.pair_newscope (); }}
-    [[${support.debug()}${support.pair_setfield_port_from_name ()}${support.pair_setfield_component_from_name ()}>>Pair]]
+    [[${support.pair_setfield_port_from_name ()}${support.pair_setfield_component_from_name ()}>>Pair]]
 
 NamesList [@names] = {{ support.namesList_newscope (); }} [[${support.namesList_appendfrom_name ()}]]
 

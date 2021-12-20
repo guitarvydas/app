@@ -1,5 +1,6 @@
 // stacks
-let senderOrReceiverStack = [];
+let senderListStack = [];
+let receiverListStack = [];
 let senderStack = [];
 let receiverStack = [];
 let pairStack = [];
@@ -63,11 +64,13 @@ exports.pair_delscope = function () {
 exports.pair_setfield_port_from_name = function () {
     let topPair = pairStack.pop ();
     topPair.port = nameStack.pop ();
+    pairStack.push (topPair);
     return "";
 }
 exports.pair_setfield_component_from_name = function () {
     let topPair = pairStack.pop ();
     topPair.component = nameStack.pop ();
+    pairStack.push (topPair);
     return "";
 }
 
@@ -83,6 +86,36 @@ exports.sender_setfrom_pair = function () {
     return "";
 }
 
+exports.senderList_newscope = function () {
+    senderListStack.push ({});
+}
+exports.senderList_delscope = function () {
+    senderListStack.pop ();
+}
+exports.senderList_setfrom_pair = function () {
+    var top = senderListStack.pop ();
+    while (senderStack.length > 0) {
+	top.push (senderStack.pop ());
+    }
+    senderListStack.push (top);
+    return "";
+}
+
+exports.receiverList_newscope = function () {
+    receiverListStack.push ({});
+}
+exports.receiverList_delscope = function () {
+    receiverListStack.pop ();
+}
+exports.receiverList_setfrom_pair = function () {
+    var top = receiverListStack.pop ();
+    while (receiverStack.length > 0) {
+	top.push (receiverStack.pop ());
+    }
+    receiverListStack.push (top);
+    return "";
+}
+
 exports.receiver_newscope = function () {
     receiverStack.push ({});
 }
@@ -93,26 +126,6 @@ exports.receiver_setfrom_pair = function () {
     receiverStack.pop ();
     receiverStack.push (pairStack.pop ());
     return "";
-}
-
-exports.senderOrReceiver_newscope = function () {
-    senderOrReceiverStack.push ({});
-}
-exports.senderOrReceiver_delscope = function () {
-    senderOrReceiverStack.pop ();
-}
-exports.senderOrReceiver_setor = function (choice) {
-    if (choice === ">>Sender") {
-	senderOrReceiverStack.pop ();
-	senderOrReceiverStack.push (senderStack.pop ());
-    return "";
-    } else if (choice === ">>Receiver") {
-	senderOrReceiverStack.pop ();
-	senderOrReceiverStack.push (receiverStack.pop ());
-    return "";
-    } else {
-	throw "internal error 1";
-    }
 }
 
 exports.namesList_newscope = function () {
@@ -143,9 +156,14 @@ exports.connection_newscope = function () {
 exports.connection_delscope = function () {
     connectionStack.pop ();
 }
-exports.connection_setfrom_senderOrReceiver = function () {
+exports.connection_setfield_sender_from_senderList = function () {
     connectionStack.pop ();
-    connectionStack.push (senderOrReceiver.pop ());
+    connectionStack.push (senderListStack.pop ());
+    return "";
+}
+exports.connection_setfield_receiver_from_receiverList = function () {
+    connectionStack.pop ();
+    connectionStack.push (receiverListStack.pop ());
     return "";
 }
 exports.connectionList_newscope = function () {
@@ -200,7 +218,6 @@ exports.string_delscope = function () {
     stringStack.pop ();
 }
 exports.string_set = function (s) {
-    console.error ('string set'); console.error (s); console.error ('');
     stringStack.pop ();
     stringStack.push (s);
     return "";
@@ -217,7 +234,7 @@ exports.syncCodeField_setfrom_string = function () {
     syncCodeFieldStack.push (stringStack.pop ());
     return "";
 }
-    
+
 exports.nameField_newscope = function () {
     nameFieldStack.push ("");
 }
@@ -256,15 +273,12 @@ exports.connectionsField_setfrom_connectionList = function () {
 
 
 exports.childrenField_newscope = function () {
-    console.error ("children field newscope");
     childrenFieldStack.push ([]);
 }
 exports.childrenField_delscope = function () {
-    console.error ("children field delscope");
     childrenFieldStack.pop ();
 }
 exports.childrenField_setfrom_namesList = function () {
-    console.error ("children field setfrom");
     childrenFieldStack.pop ();
     childrenFieldStack.push (namesListStack.pop ());
     return "";
@@ -277,35 +291,34 @@ exports.componentField_delscope = function () {
     componentFieldStack.pop ();
 }
 exports.componentField_setor = function (choice) {
-    console.error(choice);
     if (choice === ">>Children") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (childrenFieldStack.pop ());
-    return "";
+	return "";
     } else if (choice == ">>Connections") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (connectionsFieldStack.pop ());
-    return "";
+	return "";
     } else if (choice == ">>ID") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (idFieldStack.pop ());
-    return "";
+	return "";
     } else if (choice == ">>Name") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (nameFieldStack.pop ());
-    return "";
+	return "";
     } else if (choice == ">>SyncCode") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (syncCodeFieldStack.pop ());
-    return "";
+	return "";
     } else if (choice == ">>Inputs") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (inputsFieldStack.pop ());
-    return "";
+	return "";
     } else if (choice == ">>Outputs") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (outputsFieldStack.pop ());
-    return "";
+	return "";
     } else {
 	throw "internal error 2";
     }
@@ -414,7 +427,7 @@ exports.childrenNames_setfrom_namesList = function () {
 }
 
 
-exports.debug = function () {
-    console.error (nameStack);
-    return "";
-}
+// exports.debug = function () {
+//     console.error (nameStack);
+//     return "";
+// }

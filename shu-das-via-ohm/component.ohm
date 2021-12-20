@@ -25,11 +25,11 @@ components {
   SyncCodeField = dq "synccode" dq ":" name
 
   ConnectionList = Connection*
-  Connection = "{" SenderOrReceiver* "}"
-  SenderOrReceiver = Sender | ReceiverList
-  ReceiverList = Receiver+
-  Receiver = dq "receiver" dq ":" Pair
-  Sender = dq "sender" dq ":" Pair
+  Connection = "[" ReceiverList SenderList "]"
+  SenderList = "[" Sender+ "]"
+  Sender = "{" dq "sender" dq ":" Pair "}"
+  ReceiverList = "[" Receiver+ "]"
+  Receiver = "{" dq "receiver" dq ":" Pair "}"
 
   Pair = "{" dq "component" dq ":" name dq "port" dq ":" name "}" 
   
