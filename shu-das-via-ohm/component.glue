@@ -43,11 +43,11 @@ Connection [klb ReceiverList SenderList krb]
     [[${support.connection_setfield_sender_from_senderList ()}
       ${support.connection_setfield_receiver_from_receiverList ()}]]
 
-ReceiverList [lb @Receiver rb] = {{ support.receiverList_newscope (); }} [[]]
+ReceiverList [lb @Receiver rb] = {{ support.receiverList_newscope (); }} [[${support.receiverList_setfrom_receiver ()}]]
 Receiver [lb dq1 kreceiver dq2 kcolon Pair rb] 
   = {{ support.receiver_newscope (); }}
     [[${support.receiver_setfrom_pair ()}]]
-SenderList [lb @Sender rb] = {{ support.senderList_newscope (); }} [[]]
+SenderList [lb @Sender rb] = {{ support.senderList_newscope (); }} [[${support.senderList_setfrom_sender ()}]]
 Sender [lb dq1 ksender dq2 kcolon Pair rb]
   = {{support.sender_newscope (); }}
     [[${support.sender_setfrom_pair ()}]]

@@ -80,17 +80,14 @@ exports.sender_setfrom_pair = function () {
 }
 
 exports.senderList_newscope = function () {
+    console.error ('sender list newscope');
     senderListStack.push ({});
 }
 exports.senderList_delscope = function () {
     senderListStack.pop ();
 }
-exports.senderList_setfrom_pair = function () {
-    var top = senderListStack.pop ();
-    while (senderStack.length > 0) {
-	top.push (senderStack.pop ());
-    }
-    senderListStack.push (top);
+exports.senderList_setfrom_sender = function () {
+    senderListStack.push (senderStack.pop ());
     return "";
 }
 
@@ -100,12 +97,8 @@ exports.receiverList_newscope = function () {
 exports.receiverList_delscope = function () {
     receiverListStack.pop ();
 }
-exports.receiverList_setfrom_pair = function () {
-    var top = receiverListStack.pop ();
-    while (receiverStack.length > 0) {
-	top.push (receiverStack.pop ());
-    }
-    receiverListStack.push (top);
+exports.receiverList_setfrom_receiver = function () {
+    receiverListStack.push (receiverStack.pop ());
     return "";
 }
 
@@ -144,19 +137,21 @@ exports.name_delscope = function () {
 }
 
 exports.connection_newscope = function () {
-    connectionStack.push ({});
+    connectionStack.push ({senders:{}, receivers:{}});
 }
 exports.connection_delscope = function () {
     connectionStack.pop ();
 }
 exports.connection_setfield_sender_from_senderList = function () {
-    connectionStack.pop ();
-    connectionStack.push (senderListStack.pop ());
+    let top = connectionStack.pop ();
+    top.senders = senderListStack.pop ();
+    connectionStack.push (top);
     return "";
 }
 exports.connection_setfield_receiver_from_receiverList = function () {
-    connectionStack.pop ();
-    connectionStack.push (receiverListStack.pop ());
+    let top = connectionStack.pop ();
+    top.receivers = receiverListStack.pop ();
+    connectionStack.push (top);
     return "";
 }
 exports.connectionList_newscope = function () {
@@ -171,6 +166,7 @@ exports.connectionList_setfrom_connection = function () {
 	top.push (connectionStack.pop ());
     }
     connectionListStack.push (top);
+    console.error (connectionListStack);
     return "";
 }
 
