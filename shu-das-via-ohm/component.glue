@@ -10,7 +10,8 @@ Component [klb ComponentObject krb]
 
 ComponentObject [klb ComponentFieldList krb]
   = {{ support.componentObject_newscope (); }}
-    [[${support.componentObject_setfrom_componentFieldList ()}]]
+    [[${support.componentObject_setfrom_componentFieldList ()}
+      ${support.writeComponentObject ()}]]
 
 ComponentFieldList [@ComponentFields] 
   = {{ support.componentFieldList_newscope (); }}

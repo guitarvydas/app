@@ -29,17 +29,8 @@ let childrenNamesStack = [];
 
 
 
-exports.writeComponent = function () {
-    console.error (`filename      = ${fileName}`);
-    console.error (`componentName = ${componentName}`);
-    console.error (`id            = ${idName}`);
-    console.error (`childrenNames = [${childrenNames}]`);
-    console.error (`inputNames    = [${inputNames}]`);
-    console.error (`outputNames   = [${outputNames}]`);
-    console.error (`connections   = [${connectionList}]`);
-    console.error (`sync code     = ${syncCode}`);
-    console.error ();
-}
+exports.writeComponentObject = function () {
+
 
 
 
