@@ -1,7 +1,9 @@
 components {
-  Main = "[" Component+ "]"
+  Main = "[" ComponentList "]"
+  ComponentList = Component+
   Component = "[" ComponentObject "]"
-  ComponentObject = "{" ComponentField+ "}"
+  ComponentObject = "{" ComponentFieldList "}"
+  ComponentFieldList = ComponentField+
   ComponentField
     = ChildrenField
     | ConnectionsField
@@ -14,7 +16,7 @@ components {
   ChildrenField
     = dq "children" dq ":" "[" ChildrenNames "]"
 
-  ConnectionsField = dq "connections" dq ":" "[" Connection* "]"
+  ConnectionsField = dq "connections" dq ":" "[" ConnectionList "]"
   
   IDField = dq "id" dq ":" name
   InputsField = dq "inputs" dq ":" "[" InputNames "]"
@@ -22,14 +24,16 @@ components {
   NameField = dq "name" dq ":" name
   SyncCodeField = dq "synccode" dq ":" name
 
+  ConnectionList = Connection*
   Connection = "{" SenderOrReceiver* "}"
-  SenderOrReceiver = Sender | Receiver
+  SenderOrReceiver = Sender | ReceiverList
+  ReceiverList = Receiver+
   Receiver = dq "receiver" dq ":" Pair
   Sender = dq "sender" dq ":" Pair
 
-  Pair = "{" dq "component" dq ":" string dq "port" dq ":" string "}" 
+  Pair = "{" dq "component" dq ":" name dq "port" dq ":" name "}" 
   
-  CommaSeparatedNames = name*
+  NamesList = name*
   InputNames = CommaSeparatedNames
   OutputNames = CommaSeparatedNames
   ChildrenNames = CommaSeparatedNames
