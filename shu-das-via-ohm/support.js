@@ -51,6 +51,7 @@ exports.name_delscope = function () {
 exports.name_setfrom_nameStack = function (s) {
     nameStack.pop ();
     nameStack.push (s);
+    return "";
 }
 
 exports.pair_newscope = function () {
@@ -62,10 +63,12 @@ exports.pair_delscope = function () {
 exports.pair_setfield_port_from_name = function () {
     let topPair = pairStack.pop ();
     topPair.port = nameStack.pop ();
+    return "";
 }
 exports.pair_setfield_component_from_name = function () {
     let topPair = pairStack.pop ();
     topPair.component = nameStack.pop ();
+    return "";
 }
 
 exports.sender_newscope = function () {
@@ -77,6 +80,7 @@ exports.sender_delscope = function () {
 exports.sender_setfrom_pair = function () {
     senderStack.pop ();
     senderStack.push (pairStack.pop ());
+    return "";
 }
 
 exports.receiver_newscope = function () {
@@ -88,6 +92,7 @@ exports.receiver_delscope = function () {
 exports.receiver_setfrom_pair = function () {
     receiverStack.pop ();
     receiverStack.push (pairStack.pop ());
+    return "";
 }
 
 exports.senderOrReceiver_newscope = function () {
@@ -100,11 +105,13 @@ exports.senderOrReceiver_setor = function (choice) {
     if (choice === ">>Sender") {
 	senderOrReceiverStack.pop ();
 	senderOrReceiverStack.push (senderStack.pop ());
+    return "";
     } else if (choice === ">>Receiver") {
 	senderOrReceiverStack.pop ();
 	senderOrReceiverStack.push (receiverStack.pop ());
+    return "";
     } else {
-	throw "internal error";
+	throw "internal error 1";
     }
 }
 
@@ -120,6 +127,7 @@ exports.namesList_appendfrom_name = function () {
 	top.push (nameStack.pop ());
     }
     namesListStack.push (top);
+    return "";
 }
 
 exports.name_newscope = function () {
@@ -138,6 +146,7 @@ exports.connection_delscope = function () {
 exports.connection_setfrom_senderOrReceiver = function () {
     connectionStack.pop ();
     connectionStack.push (senderOrReceiver.pop ());
+    return "";
 }
 exports.connectionList_newscope = function () {
     connectionListStack.push ({});
@@ -151,6 +160,7 @@ exports.connectionList_setfrom_connection = function () {
 	top.push (connectionStack.pop ());
     }
     connectionListStack.push (top);
+    return "";
 }
 
 exports.inputsField_newscope = function () {
@@ -165,6 +175,7 @@ exports.inputsField_setfrom_names = function () {
 	top.push (nameStack.pop ());
     }
     inputsFieldStack.push (top);
+    return "";
 }
 
 exports.outputsField_newscope = function () {
@@ -179,6 +190,7 @@ exports.outputsField_setfrom_names = function () {
 	top.push (nameStack.pop ());
     }
     outputsFieldStack.push (top);
+    return "";
 }
 
 exports.string_newscope = function () {
@@ -190,6 +202,7 @@ exports.string_delscope = function () {
 exports.string_set = function (s) {
     stringStack.pop ();
     stringStack.push (s);
+    return "";
 }
 
 exports.syncCodeField_newscope = function () {
@@ -201,6 +214,7 @@ exports.syncCodeField_delscope = function () {
 exports.syncCodeField_setfrom_string = function () {
     syncCodeFieldStack.pop ();
     syncCodeFieldStack.pushd (stringStack.pop ());
+    return "";
 }
     
 exports.nameField_newscope = function () {
@@ -212,6 +226,7 @@ exports.nameField_delscope  = function () {
 exports.nameField_setfrom_name  = function () {
     nameFieldStack.pop ();
     nameFieldStack.push (nameStack.pop ());
+    return "";
 }
 
 exports.idField_newscope = function () {
@@ -223,29 +238,35 @@ exports.idField_delscope  = function() {
 exports.idField_setfrom_id  = function() {
     idFieldStack.pop ();
     idFieldStack.push (nameStack.pop ());
+    return "";
 }
 
 exports.connectionsField_newscope = function () {
-    connectionFieldStack.push ({});
+    connectionsFieldStack.push ({});
 }
 exports.connectionsField_delscope = function () {
-    connectionFieldStack.pop ();
+    connectionsFieldStack.pop ();
 }
 exports.connectionsField_setfrom_connectionList = function () {
-    connectionFieldStack.pop ();
-    connectionFieldStack.push (connectionListStack.pop ());
+    connectionsFieldStack.pop ();
+    connectionsFieldStack.push (connectionListStack.pop ());
+    return "";
 }
 
 
 exports.childrenField_newscope = function () {
+    console.error ("children field newscope");
     childrenFieldStack.push ([]);
 }
 exports.childrenField_delscope = function () {
+    console.error ("children field delscope");
     childrenFieldStack.pop ();
 }
 exports.childrenField_setfrom_namesList = function () {
+    console.error ("children field setfrom");
     childrenFieldStack.pop ();
     childrenFieldStack.push (namesListStack.pop ());
+    return "";
 }
 
 exports.componentField_newscope = function () {
@@ -255,29 +276,37 @@ exports.componentField_delscope = function () {
     componentFieldStack.pop ();
 }
 exports.componentField_setor = function (choice) {
+    console.error(choice);
     if (choice === ">>Children") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (childrenFieldStack.pop ());
+    return "";
     } else if (choice == ">>Connections") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (connectionsFieldStack.pop ());
+    return "";
     } else if (choice == ">>ID") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (idFieldStack.pop ());
+    return "";
     } else if (choice == ">>Name") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (nameFieldStack.pop ());
+    return "";
     } else if (choice == ">>SyncCode") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (syncCodeFieldStack.pop ());
+    return "";
     } else if (choice == ">>Inputs") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (inputsFieldStack.pop ());
+    return "";
     } else if (choice == ">>Outputs") {
 	componentFieldStack.pop ();
 	componentFieldStack.push (outputsFieldStack.pop ());
+    return "";
     } else {
-	throw "internal error";
+	throw "internal error 2";
     }
 }
 
@@ -293,6 +322,7 @@ exports.componentFieldList_setfrom_componentFieldList = function () {
 	top.push (componentFieldStack.pop ());
     }
     componentFieldList.push (top);
+    return "";
 }
 
 exports.componentObject_newscope = function () {
@@ -304,6 +334,7 @@ exports.componentObject_delscope = function () {
 exports.componentObject_setfrom_componentFieldList = function () {
     componentObjectStack.pop ();
     componentObjectStack.push (componentFieldListStack.pop ());
+    return "";
 }
 
 exports.component_newscope = function () {
@@ -315,6 +346,7 @@ exports.component_delscope = function () {
 exports.component_setfrom_componentObject = function () {
     componentStack.pop ();
     componentStack.push (componentObjectStack.pop ());
+    return "";
 }
 
 exports.componentList_newscope = function () {
@@ -329,6 +361,7 @@ exports.componentList_setfrom_component = function () {
 	top.push (componentStack.pop ());
     }
     componentListStack.push (top);
+    return "";
 }
 
 exports.mainStack_newscope = function () {
@@ -340,6 +373,7 @@ exports.mainStack_delscope = function () {
 exports.mainStack_setfrom_componentList = function () {
     mainStack.pop ();
     mainStack.push (componentList.pop ());
+    return "";
 }
 
 exports.inputNames_newscope = function () {
@@ -351,6 +385,7 @@ exports.inputNames_delscope = function () {
 exports.inputNames_setfrom_namesList = function () {
     inputNamesStack.pop ();
     inputNamesStack.push (namesListStack.pop ());
+    return "";
 }
 
 exports.outputNames_newscope = function () {
@@ -362,6 +397,7 @@ exports.outputNames_delscope = function () {
 exports.outputNames_setfrom_namesList = function () {
     outputNamesStack.pop ();
     outputNamesStack.push (namesListStack.pop ());
+    return "";
 }
 
 exports.childrenNames_newscope = function () {
@@ -373,5 +409,6 @@ exports.childrenNames_delscope = function () {
 exports.childrenNames_setfrom_namesList = function () {
     childrenNamesStack.pop ();
     childrenNamesStack.push (namesListStack.pop ());
+    return "";
 }
 
