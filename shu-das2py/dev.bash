@@ -2,7 +2,7 @@
 clear
 ../make.bash
 #das2j helloworld >out.json
-./emit.py out.json helloworld
+./emit.py sample.json helloworld
 # echo
 # cat hello.py
 # echo
