@@ -48,9 +48,9 @@ exports.name_newscope = function () {
 exports.name_delscope = function () {
     nameStack.pop ();
 }
-exports.name_setfrom_nameStack = function (s) {
+exports.name_setfrom_string = function () {
     nameStack.pop ();
-    nameStack.push (s);
+    nameStack.push (stringStack.pop ());
     return "";
 }
 
@@ -149,7 +149,7 @@ exports.connection_setfrom_senderOrReceiver = function () {
     return "";
 }
 exports.connectionList_newscope = function () {
-    connectionListStack.push ({});
+    connectionListStack.push ([]);
 }
 exports.connectionList_delscope = function () {
     connectionListStack.pop ();
@@ -200,6 +200,7 @@ exports.string_delscope = function () {
     stringStack.pop ();
 }
 exports.string_set = function (s) {
+    console.error ('string set'); console.error (s); console.error ('');
     stringStack.pop ();
     stringStack.push (s);
     return "";
@@ -213,7 +214,7 @@ exports.syncCodeField_delscope = function () {
 }
 exports.syncCodeField_setfrom_string = function () {
     syncCodeFieldStack.pop ();
-    syncCodeFieldStack.pushd (stringStack.pop ());
+    syncCodeFieldStack.push (stringStack.pop ());
     return "";
 }
     
@@ -235,7 +236,7 @@ exports.idField_newscope = function () {
 exports.idField_delscope  = function() {
     idFieldStack.pop ();
 }
-exports.idField_setfrom_id  = function() {
+exports.idField_setfrom_name  = function() {
     idFieldStack.pop ();
     idFieldStack.push (nameStack.pop ());
     return "";
@@ -311,17 +312,17 @@ exports.componentField_setor = function (choice) {
 }
 
 exports.componentFieldList_newscope = function () {
-    componentFieldListStack.push ({});
+    componentFieldListStack.push ([]);
 }
 exports.componentFieldList_delscope = function () {
     componentFieldListStack.pop ();
 }
-exports.componentFieldList_setfrom_componentFieldList = function () {
-    var top = componentFieldList.pop ();
+exports.componentFieldList_setfrom_componentField = function () {
+    var top = componentFieldListStack.pop ();
     while (componentFieldStack.length > 0) {
 	top.push (componentFieldStack.pop ());
     }
-    componentFieldList.push (top);
+    componentFieldListStack.push (top);
     return "";
 }
 
@@ -350,7 +351,7 @@ exports.component_setfrom_componentObject = function () {
 }
 
 exports.componentList_newscope = function () {
-    componentListStack.push ({});
+    componentListStack.push ([]);
 }
 exports.componentList_delscope = function () {
     componentListStack.pop ();
@@ -412,3 +413,8 @@ exports.childrenNames_setfrom_namesList = function () {
     return "";
 }
 
+
+exports.debug = function () {
+    console.error (nameStack);
+    return "";
+}
