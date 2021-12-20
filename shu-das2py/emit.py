@@ -5,7 +5,7 @@ import json
 import html
 import re
 
-with open('out.json') as f:
+with open(sys.argv[1]) as f:
   data = json.load(f)
 
 def isContainer (component):
@@ -24,14 +24,14 @@ def printLines (indent, str, file=""):
     printIndent (indent, file=file);
     print (line, file=file)
 
-def printLeafScript (component, outf):
-  code = html.unescape (component["synccode"])
+def unescapeCode (s):
+  code = html.unescape (s)
   # note that <p .../> and <span .../> are not handled by the
   # code below (this probably needs a parser - e.g. Ohm-JS - to grok
   # It looks like we can get away, though, with the simplification below, because
   # draw.io creates paras and spans in only very specific ways, if
   # we find a counter-example, it might be necessary to cut over to a
-  # proper parse (e.g. using pfr and .ohm/.glue files)
+  # proper parse (e.g. using pfr and .ohm/.glue files))
   code2 = re.sub (r'<div>([^<]*)</div>', r'\1\n', code)
   code3 = re.sub (r'<p ([^>]*)>', r'', code2)
   code4 = re.sub (r'</p>', "", code3)
@@ -40,7 +40,11 @@ def printLeafScript (component, outf):
   code7 = re.sub (r'<br>', "\n", code6)
 
   codefinal = html.unescape (code7)
+  return codefinal
 
+def printLeafScript (component, outf):
+  code = unescapeCode (component["synccode"])
+  name = component["name"]
   print ("import mpos", file=outf)
   print ("import dispatcher", file=outf)
   print (file=outf)
@@ -51,7 +55,7 @@ def printLeafScript (component, outf):
   print (f'        self.outputs={component["outputs"]}', file=outf)
   print (file=outf)
   print (f'    def react (self, message):', file=outf)
-  printLines (8, codefinal, file=outf)
+  printLines (8, code, file=outf)
   print (f'        return super ().react (message)', file=outf)
 
 def printContainerScript (component, outf):
@@ -130,11 +134,11 @@ for componentArray in data:
 
 with open ('top.py', 'w') as top:
   print (f'#!/usr/bin/env python3', file=top)
-  print (f'import {sys.argv [1]}', file=top)
+  print (f'import {sys.argv [2]}', file=top)
   print (f'import dispatcher', file=top)
-  print (f'import {sys.argv [1]}', file=top)
+  print (f'import {sys.argv [2]}', file=top)
   print (f'disp = dispatcher.Dispatcher ()', file=top)
-  print (f'top = {sys.argv[1]}._{sys.argv [1]} (disp)', file=top)
+  print (f'top = {sys.argv[2]}._{sys.argv [2]} (disp)', file=top)
   print (f'top.kickstart ()', file=top)
   print (f'disp.dispatch ()', file=top)
 
