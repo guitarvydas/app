@@ -22,131 +22,6 @@ let componentStack = [];
 let componentListStack = [];
 let mainStack = [];
 
-// registers
-var fileName;
-var componentName;
-var childrenNames;
-var inputNames;
-var outputNames;
-var idName;
-var syncCode;
-var sender;
-var receiver;
-var receiverList;
-var connection;
-var pair;
-var connectionList;
-
-var nameStack = [];
-
-exports.resetRegisters = function () {
-    fileName = "";
-    componentName = "";
-    childrenNames = "";
-    inputNames = "";
-    outputNames = "";
-    idName = "";
-    syncCode = "";
-    nameStack = [];
-}
-
-exports.namesPushNew = function () {
-    nameStack.push ([]);
-}
-
-exports.namesDup = function () {
-    let topList = nameStack.pop ();
-    nameStack.push (topList);
-    nameStack.push (topList);
-}
-
-exports.namesAdd = function (s) {
-    let topList = nameStack.pop ();
-    topList.push (s);
-    nameStack.push (topList);
-}
-
-function popNames () {
-    return nameStack.pop ();
-}
-
-
-exports.fileNameSet = function (s) {
-    fileName = popNames ();
-}
-
-exports.componentNameSet = function (s) {
-    componentName = popNames ();
-}
-
-exports.childrenNamesSet = function (s) {
-    childrenNames = popNames ();
-}
-
-exports.inputNamesSet = function (s) {
-    inputNames = popNames ();
-}
-
-exports.outputNamesSet = function (s) {
-    inputNames = popNames ();
-}
-
-exports.idNameSet = function (s) {
-    idName = popNames ();
-}
-
-exports.syncCodeSet = function (s) {
-    syncCode = popNames ();
-}
-
-exports.senderNew = function () {
-    sender = {};
-}
-
-exports.senderSet = function () {
-    sender = pair;
-}
-
-exports.receiverNew = function () {
-    receiver = {};
-}
-
-exports.receiverSet = function () {
-    receiver = pair;
-}
-
-exports.receiverListNew = function () {
-    receiverList = [];
-}
-
-exports.receiverListAdd = function () {
-    topReceiver = receiverList;
-    topReceiver.push (receiver);
-    receiverList.push (topReceiver);
-}
-
-exports.pairNew = function () {
-    pair = [];
-}
-
-exports.connectionNew = function () {
-    connection = [];
-}
-
-function connectionSet () {
-    connection = {sender: sender, receivers: receiverList};
-}
-
-exports.connectionListNew = function () {
-    connectionList = [];
-}
-exports.connectionListAdd = function () {
-    console.error ("connectionListAdd");
-    connectionSet ();
-    connectionList.push (connection);
-}
-
-
 
 
 exports.writeComponent = function () {
@@ -169,7 +44,7 @@ exports.name_newscope = function () {
 exports.name_delscope = function () {
     nameStack.pop ();
 }
-exports name_assign = function (s) {
+exports.name_setfrom_nameStack = function (s) {
     nameStack.pop ();
     nameStack.push (s);
 }
@@ -303,7 +178,7 @@ exports.outputsField_setfrom_names = function () {
 }
 
 exports.string_newscope = function () {
-    stringStack.push "";
+    stringStack.push ("");
 }
 exports.string_delscope = function () {
     stringStack.pop ();
