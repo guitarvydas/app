@@ -133,7 +133,6 @@ exports.namesList_appendfrom_name = function () {
 	top.push (nameStack.pop ());
     }
     namesListStack.push (top);
-    process.stderr.write('namesListStack: ');console.error(namesListStack);
     return "";
 }
 
@@ -182,11 +181,7 @@ exports.inputsField_delscope = function () {
     inputsFieldStack.pop ();
 }
 exports.inputsField_setfrom_inputNames = function () {
-    console.error ('>> inputsField set from inputNames');
-    console.error(inputNamesStack);
     inputsFieldStack.push (inputNamesStack.pop ());
-    console.error (inputsFieldStack);
-    console.error ('<< inputsField set from inputNames');
     return "";
 }
 
