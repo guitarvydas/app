@@ -34,9 +34,9 @@ components {
   Pair = "{" dq "component" dq ":" name dq "port" dq ":" name "}" 
   
   NamesList = name*
-  InputNames = CommaSeparatedNames
-  OutputNames = CommaSeparatedNames
-  ChildrenNames = CommaSeparatedNames
+  InputNames = NamesList
+  OutputNames = NamesList
+  ChildrenNames = NamesList
   
   name = string
   string = dq notDQ* dq

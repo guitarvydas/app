@@ -22,6 +22,10 @@ let componentStack = [];
 let componentListStack = [];
 let mainStack = [];
 
+let inputNamesStack = [];
+let outputNamesStack = [];
+let childrenNamesStack = [];
+
 
 
 exports.writeComponent = function () {
@@ -111,7 +115,7 @@ exports.namesList_delscope = function () {
     namesListStack.pop ();
 }
 exports.namesList_appendfrom_name = function () {
-    let top = namesList.pop ();
+    let top = namesListStack.pop ();
     while (0 < nameStack.length) {
 	top.push (nameStack.pop ());
     }
@@ -233,15 +237,15 @@ exports.connectionsField_setfrom_connectionList = function () {
 }
 
 
-exports.childrenField_newScope = function () {
+exports.childrenField_newscope = function () {
     childrenFieldStack.push ([]);
 }
-exports.childrenField_delScope = function () {
+exports.childrenField_delscope = function () {
     childrenFieldStack.pop ();
 }
-exports.childrenField_setfrom_nameList = function () {
+exports.childrenField_setfrom_namesList = function () {
     childrenFieldStack.pop ();
-    childrenFieldStack.push (nameListStack.pop ());
+    childrenFieldStack.push (namesListStack.pop ());
 }
 
 exports.componentField_newscope = function () {
@@ -336,5 +340,38 @@ exports.mainStack_delscope = function () {
 exports.mainStack_setfrom_componentList = function () {
     mainStack.pop ();
     mainStack.push (componentList.pop ());
+}
+
+exports.inputNames_newscope = function () {
+    inputNamesStack.push ({});
+}
+exports.inputNames_delscope = function () {
+    inputNamesStack.pop ();
+}
+exports.inputNames_setfrom_namesList = function () {
+    inputNamesStack.pop ();
+    inputNamesStack.push (namesListStack.pop ());
+}
+
+exports.outputNames_newscope = function () {
+    outputNamesStack.push ({});
+}
+exports.outputNames_delscope = function () {
+    outputNamesStack.pop ();
+}
+exports.outputNames_setfrom_namesList = function () {
+    outputNamesStack.pop ();
+    outputNamesStack.push (namesListStack.pop ());
+}
+
+exports.childrenNames_newscope = function () {
+    childrenNamesStack.push ({});
+}
+exports.childrenNames_delscope = function () {
+    childrenNamesStack.pop ();
+}
+exports.childrenNames_setfrom_namesList = function () {
+    childrenNamesStack.pop ();
+    childrenNamesStack.push (namesListStack.pop ());
 }
 
