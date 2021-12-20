@@ -29,8 +29,8 @@ let childrenNamesStack = [];
 
 
 
-exports.writeComponent = function () {
-    console.error (componentStack);
+exports.writeComponentList = function () {
+    console.error (componentListStack);
 }
 
 
@@ -269,9 +269,9 @@ exports.childrenField_newscope = function () {
 exports.childrenField_delscope = function () {
     childrenFieldStack.pop ();
 }
-exports.childrenField_setfrom_namesList = function () {
+exports.childrenField_setfrom_childrenNames = function () {
     childrenFieldStack.pop ();
-    childrenFieldStack.push (namesListStack.pop ());
+    childrenFieldStack.push (childrenNamesStack.pop ());
     return "";
 }
 
