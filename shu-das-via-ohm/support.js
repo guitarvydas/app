@@ -133,6 +133,7 @@ exports.namesList_appendfrom_name = function () {
 	top.push (nameStack.pop ());
     }
     namesListStack.push (top);
+    process.stderr.write('namesListStack: ');console.error(namesListStack);
     return "";
 }
 
@@ -175,32 +176,28 @@ exports.connectionList_setfrom_connection = function () {
 }
 
 exports.inputsField_newscope = function () {
-    inputsFieldStack.push ({});
+    inputsFieldStack.push ([]);
 }
 exports.inputsField_delscope = function () {
     inputsFieldStack.pop ();
 }
-exports.inputsField_setfrom_names = function () {
-    let top = inputsFieldStack.pop ();
-    while (nameStack.length > 0) {
-	top.push (nameStack.pop ());
-    }
-    inputsFieldStack.push (top);
+exports.inputsField_setfrom_inputNames = function () {
+    console.error ('>> inputsField set from inputNames');
+    console.error(inputNamesStack);
+    inputsFieldStack.push (inputNamesStack.pop ());
+    console.error (inputsFieldStack);
+    console.error ('<< inputsField set from inputNames');
     return "";
 }
 
 exports.outputsField_newscope = function () {
-    outputsFieldStack.push ({});
+    outputsFieldStack.push ([]);
 }
 exports.outputsField_delscope = function () {
     outputsFieldStack.pop ();
 }
-exports.outputsField_setfrom_names = function () {
-    let top = outputsFieldStack.pop ();
-    while (nameStack.length > 0) {
-	top.push (nameStack.pop ());
-    }
-    outputsFieldStack.push (top);
+exports.outputsField_setfrom_outputNames = function () {
+    outputsFieldStack.push (outputNamesStack.pop ());
     return "";
 }
 

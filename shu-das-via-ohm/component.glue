@@ -32,8 +32,8 @@ NameField [dq1 k dq2 kcolon s] = {{ support.nameField_newscope (); }} [[${suppor
 
 SyncCodeField [dq1 k dq2 kcolon s] = {{ support.syncCodeField_newscope (); }} [[${support.syncCodeField_setfrom_string ()} ]]
 
-InputsField [dq1 k dq2 kcolon klb names krb] = {{ support.inputsField_newscope (); }} [[${support.inputsField_setfrom_names ()} ]]
-OutputsField [dq1 k dq2 kcolon klb names krb] = {{ support.outputsField_newscope (); }} [[${support.outputsField_setfrom_names ()} ]]
+InputsField [dq1 k dq2 kcolon klb names krb] = {{ support.inputsField_newscope (); }} [[${support.inputsField_setfrom_inputNames ()} ]]
+OutputsField [dq1 k dq2 kcolon klb names krb] = {{ support.outputsField_newscope (); }} [[${support.outputsField_setfrom_outputNames ()} ]]
 
 
 ConnectionList [@Connections] = {{ support.connectionList_newscope (); }} [[${support.connectionList_setfrom_connection ()}]]
@@ -66,7 +66,7 @@ ChildrenNames [names]
   = {{ support.childrenNames_newscope (); }} [[${support.childrenNames_setfrom_namesList ()}]]
 
 name [s] = {{ support.name_newscope (); }} [[${support.name_setfrom_string ()}]]
-string [q1 @notDQ q2] = {{ support.string_newscope ()}} [[${support.string_set (q1 + notDQ + q2)}]]
+string [q1 @notDQ q2] = {{ support.string_newscope ()}} [[${support.string_set (notDQ)}]]
 dq [c] = [[${c}]]
 notDQ [c] = [[${c}]]
 space [c] = [[{$c}]]
