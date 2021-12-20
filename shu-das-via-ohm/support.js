@@ -29,9 +29,9 @@ let childrenNamesStack = [];
 
 
 
-exports.writeComponentObject = function () {
-
-
+exports.writeComponent = function () {
+    console.error (componentStack);
+}
 
 
 exports.name_newscope = function () {
@@ -275,60 +275,6 @@ exports.childrenField_setfrom_namesList = function () {
     return "";
 }
 
-exports.componentField_newscope = function () {
-    componentFieldStack.push ({});
-}
-exports.componentField_delscope = function () {
-    componentFieldStack.pop ();
-}
-exports.componentField_setor = function (choice) {
-    if (choice === ">>Children") {
-	componentFieldStack.pop ();
-	componentFieldStack.push (childrenFieldStack.pop ());
-	return "";
-    } else if (choice == ">>Connections") {
-	componentFieldStack.pop ();
-	componentFieldStack.push (connectionsFieldStack.pop ());
-	return "";
-    } else if (choice == ">>ID") {
-	componentFieldStack.pop ();
-	componentFieldStack.push (idFieldStack.pop ());
-	return "";
-    } else if (choice == ">>Name") {
-	componentFieldStack.pop ();
-	componentFieldStack.push (nameFieldStack.pop ());
-	return "";
-    } else if (choice == ">>SyncCode") {
-	componentFieldStack.pop ();
-	componentFieldStack.push (syncCodeFieldStack.pop ());
-	return "";
-    } else if (choice == ">>Inputs") {
-	componentFieldStack.pop ();
-	componentFieldStack.push (inputsFieldStack.pop ());
-	return "";
-    } else if (choice == ">>Outputs") {
-	componentFieldStack.pop ();
-	componentFieldStack.push (outputsFieldStack.pop ());
-	return "";
-    } else {
-	throw "internal error 2";
-    }
-}
-
-exports.componentFieldList_newscope = function () {
-    componentFieldListStack.push ([]);
-}
-exports.componentFieldList_delscope = function () {
-    componentFieldListStack.pop ();
-}
-exports.componentFieldList_setfrom_componentField = function () {
-    var top = componentFieldListStack.pop ();
-    while (componentFieldStack.length > 0) {
-	top.push (componentFieldStack.pop ());
-    }
-    componentFieldListStack.push (top);
-    return "";
-}
 
 exports.componentObject_newscope = function () {
     componentObjectStack.push ({});
@@ -336,11 +282,50 @@ exports.componentObject_newscope = function () {
 exports.componentObject_delscope = function () {
     componentObjectStack.pop ();
 }
-exports.componentObject_setfrom_componentFieldList = function () {
-    componentObjectStack.pop ();
-    componentObjectStack.push (componentFieldListStack.pop ());
+exports.componentObject_setfield_children_from_childrenField = function () {
+    var top = componentObjectStack.pop ();
+    top.children = childrenFieldStack.pop ();
+    componentObjectStack.push (top);
     return "";
 }
+exports.componentObject_setfield_connections_from_connectionsField = function () {
+    var top = componentObjectStack.pop ();
+    top.connections = connectionsFieldStack.pop ();
+    componentObjectStack.push (top);
+    return "";
+}
+exports.componentObject_setfield_id_from_idField = function () {
+    var top = componentObjectStack.pop ();
+    top.id = idFieldStack.pop ();
+    componentObjectStack.push (top);
+    return "";
+}
+exports.componentObject_setfield_inputs_from_inputsField = function () {
+    var top = componentObjectStack.pop ();
+    top.inputs = inputsFieldStack.pop ();
+    componentObjectStack.push (top);
+    return "";
+}
+exports.componentObject_setfield_outputs_from_outputsField = function () {
+    var top = componentObjectStack.pop ();
+    top.outputs = outputsFieldStack.pop ();
+    componentObjectStack.push (top);
+    return "";
+}
+exports.componentObject_setfield_name_from_nameField = function () {
+    var top = componentObjectStack.pop ();
+    top.name = nameFieldStack.pop ();
+    componentObjectStack.push (top);
+    return "";
+}
+exports.componentObject_setfield_syncCode_from_syncCodeField = function () {
+    var top = componentObjectStack.pop ();
+    top.syncCode = syncCodeFieldStack.pop ();
+    componentObjectStack.push (top);
+    return "";
+}
+
+
 
 exports.component_newscope = function () {
     componentStack.push ({});

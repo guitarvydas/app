@@ -2,16 +2,16 @@ components {
   Main = "[" ComponentList "]"
   ComponentList = Component+
   Component = "[" ComponentObject "]"
-  ComponentObject = "{" ComponentFieldList "}"
-  ComponentFieldList = ComponentField+
-  ComponentField
-    = ChildrenField
-    | ConnectionsField
-    | IDField
-    | InputsField
-    | OutputsField
-    | NameField
-    | SyncCodeField
+  ComponentObject =
+    "{"
+      ChildrenField
+      ConnectionsField
+      IDField
+      InputsField
+      NameField
+      OutputsField
+      SyncCodeField
+    "}"
     
   ChildrenField
     = dq "children" dq ":" "[" ChildrenNames "]"
