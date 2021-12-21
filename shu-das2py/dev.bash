@@ -15,3 +15,7 @@ clear
 # # echo '** running top.'
 # # chmod a+x top.py
 # # ./top.py
+
+./emit.py sample.json hellworld
+diff -w top.py sampletop.py
+

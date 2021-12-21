@@ -1,0 +1,10 @@
+2d1
+< import hellworld
+4c3
+< import hellworld
+---
+> import samplehelloworld
+6c5
+< top = hellworld._hellworld (disp)
+---
+> top = samplehelloworld._helloworld (disp, None, '')

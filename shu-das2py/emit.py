@@ -188,9 +188,8 @@ with open ('top.py', 'w') as top:
   print (f'#!/usr/bin/env python3', file=top)
   print (f'import {sys.argv [2]}', file=top)
   print (f'import dispatcher', file=top)
-  print (f'import {sys.argv [2]}', file=top)
   print (f'disp = dispatcher.Dispatcher ()', file=top)
-  print (f'top = {sys.argv[2]}._{sys.argv [2]} (disp)', file=top)
+  print (f"top = {sys.argv[2]}._{sys.argv [2]} (disp, None, '')", file=top)
   print (f'top.kickstart ()', file=top)
   print (f'disp.dispatch ()', file=top)
 
