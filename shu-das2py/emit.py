@@ -89,9 +89,9 @@ def printCommonBody (component, outf):
   outputs = component ["outputs"]
   code = unescapeCode (component["synccode"])
 
-  print (f'    def react (self, message):', file=outf)
+  print (f'    def react (self, inputMessage):', file=outf)
   printLines (8, code, file=outf)
-  print (f'        return super ().react (message)', file=outf)
+  print (f'        return super ().react (inputMessage)', file=outf)
   
 
 def printLeafScript (component, outf):
@@ -186,8 +186,8 @@ for componentArray in data:
 
 with open ('top.py', 'w') as top:
   print (f'#!/usr/bin/env python3', file=top)
-  print (f'import {sys.argv [2]}', file=top)
   print (f'import dispatcher', file=top)
+  print (f'import {sys.argv [2]}', file=top)
   print (f'disp = dispatcher.Dispatcher ()', file=top)
   print (f"top = {sys.argv[2]}._{sys.argv [2]} (disp, None, '')", file=top)
   print (f'top.kickstart ()', file=top)

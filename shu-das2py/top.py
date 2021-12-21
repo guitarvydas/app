@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-import hellworld
 import dispatcher
+import helloworld
 disp = dispatcher.Dispatcher ()
-top = hellworld._hellworld (disp, None, '')
+top = helloworld._helloworld (disp, None, '')
 top.kickstart ()
 disp.dispatch ()

@@ -13,8 +13,8 @@ class _helloworld (mpos.Leaf):
         self.inputs=[]
         self.outputs=[]
 
-    def react (self, message):
-        return super ().react (message)
+    def react (self, inputMessage):
+        return super ().react (inputMessage)
         child_world = world._world (dispatcher, self, 'world')
         child_hello = hello._hello (dispatcher, self, 'hello')
         conn0 = mpos.Connector ([{ 'component': '', 'port': '_'}], [{ 'component': '', 'port': '_'}])

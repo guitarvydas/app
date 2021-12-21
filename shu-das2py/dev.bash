@@ -16,6 +16,11 @@ clear
 # # chmod a+x top.py
 # # ./top.py
 
-./emit.py sample.json hellworld
-diff -w top.py sampletop.py
+./emit.py sample.json helloworld
+
+sed -E -e 's/sample//g' <sampletop.py >temp.py
+diff -w top.py temp.py
+
+sed -E -e 's/sample//g' <samplehello.py >temp.py
+diff -w hello.py temp.py
 
