@@ -158,10 +158,11 @@ class Container (Component):
 
     def propagateInputToChildren (self, m):
         conn = self.findConnectionBasedOnMessage (m)
-        receivers = conn.getReceivers (m)
+        receivers = conn.getReceivers ()
         for r in receivers:
             msg = InputMessage (r.component, r.tag, m.data)
-            r.component.enqueueInput (msg)
+            instance = self.mapSenderToInstance (r.component)
+            instance.enqueueInput (msg)
 
     def findConnectionBasedOnMessage (self, m):
         for conn in self.connections:
