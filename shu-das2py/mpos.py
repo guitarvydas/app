@@ -70,7 +70,7 @@ class Connector:
         return self.receivers
     
     def matchSender (self, targetSender):
-        return any(self.sender == targetSender)
+        return any (self.sender == targetSender)
 
     def getReceiversBasedOnMessage (self, message):
         s = message.sender ()

@@ -29,6 +29,16 @@
 		{ 
 		    "receivers":
 		    [
+			{"receiver": {"component":"hello", "port":"_"}}
+		    ],
+		    "senders":
+		    [
+			{"sender": {"component":"", "port":"_"}}
+		    ]
+		},
+		{ 
+		    "receivers":
+		    [
 			{"receiver": {"component":"world", "port":"in"}}
 		    ],
 		    "senders":

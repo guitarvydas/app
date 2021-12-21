@@ -11,13 +11,19 @@ class _helloworld (mpos.Container):
       child_world = world._world (dispatcher, self, 'world')
       child_hello = hello._hello (dispatcher, self, 'hello')
 
-      sender = mpos.Sender (child_hello, "out")
-      r_world = mpos.Receiver (child_world, "in")
-      conn1 = mpos.Connector (sender, [ r_world ])
+      conn1 = mpos.Connector (
+          # array of senders
+          [
+              { 'component' : 'hello', 'port' : 'out' }
+          ],
+          # array of receivers
+          [
+              { 'component' : 'world', 'port' : 'in' }
+          ])
 
-      sender = mpos.Sender (self, "_")
-      r_hello = mpos.Receiver (child_hello, "_")
-      conn0 = mpos.Connector (sender, [ r_hello ])
+      conn0 = mpos.Connector (
+          [ {'component' : '', 'port' : '_'} ],
+          [ {'component' : 'hello', 'port' : '_'} ])
 
       self.connections = [ conn0, conn1 ]
       self.children = { 'hello': child_hello, 'world': child_world }

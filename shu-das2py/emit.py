@@ -164,10 +164,12 @@ def printContainerScript (component, outf):
     print (f'        {cstr}', file=outf)
     
     connectornames.append (f'conn{i}')
+    i += 1
+    
   mchildren = formatMap (children)
   
   print (f'        self.children = [{", ".join(mchildren)}]', file=outf)
-  print (f'        self.connections = [ {",".join (connectornames)} ]', file=outf)
+  print (f'        self.connections = [ {", ".join (connectornames)} ]', file=outf)
 
 
 def printScript (component, outf):
