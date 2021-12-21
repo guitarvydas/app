@@ -1,3 +1,5 @@
+import mpos
+
 class Dispatcher:
     # the Dispatcher deals with Component instances, but everything else (e.g. Messages) uses string ids
     registry = []  # in this examples, registry is a flat list actual part instances (not names)
@@ -40,8 +42,14 @@ class Dispatcher:
                     receiversList = connection.getReceivers ()
                     for receiver in receiversList:
                         instance = container.mapNameToInstance (receiver.component)
-                        instance.enqueueInput (outputMessage)
+                        inputMessage = self.mapOutputMessageToInputMessage (outputMessage, receiver)
+                        instance.enqueueInput (inputMessage)
         else:
             for m in outputBucket:
                 print (m) # top level has no container, just dump message to stdout
+
+
+    def mapOutputMessageToInputMessage (self, outputMessage, receiver):
+        m = mpos.InputMessage (receiver.component, receiver.tag, outputMessage.data)
+        return m
 
