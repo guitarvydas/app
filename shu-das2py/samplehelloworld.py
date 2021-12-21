@@ -2,28 +2,27 @@
 # helloworld.py
 import mpos
 import dispatcher
-import world
-import hello
+import sampleworld
+import samplehello
 
 class _helloworld (mpos.Container):
-    def __init__ (self, dispatcher):
-      super ().__init__ (dispatcher, None, 'helloworld')
-      child_world = world._world (dispatcher, self, 'world')
-      child_hello = hello._hello (dispatcher, self, 'hello')
+    def __init__ (self, dispatcher, parent, idInParent):
+      super ().__init__ (dispatcher, parent, idInParent)
+      child0 = samplehello._hello (dispatcher, self, 'hello')
+      child1 = sampleworld._world (dispatcher, self, 'world')
 
       conn1 = mpos.Connector (
           # array of senders
+          # names must correspond to self.children map
           [
-              { 'component' : 'hello', 'port' : 'out' }
+              mpos.Sender ('hello', 'out' )
           ],
           # array of receivers
           [
-              { 'component' : 'world', 'port' : 'in' }
+              mpos.Receiver ('world', 'in' )
           ])
 
-      conn0 = mpos.Connector (
-          [ {'component' : '', 'port' : '_'} ],
-          [ {'component' : 'hello', 'port' : '_'} ])
+      conn0 = mpos.Connector ( [ mpos.Sender ('', '_') ], [ mpos.Receiver ('hello', '_') ])
 
       self.connections = [ conn0, conn1 ]
-      self.children = { 'hello': child_hello, 'world': child_world }
+      self.children = { 'hello': child0, 'world': child1 }
