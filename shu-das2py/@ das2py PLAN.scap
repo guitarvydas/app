@@ -1,54 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ScappleDocument Version="1.2" ID="A4E9373F-F5EE-4A24-9174-B696BEFC0356">
     <Notes>
-        <Note ID="0" FontSize="12.0" Position="125.964661,172.286438" Width="195.0">
+        <Note ID="0" FontSize="12.0" Position="218.082153,172.286438" Width="195.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.894547 0.707772 0.715904</Border>
                 <Fill>0.993942 0.786413 0.795449</Fill>
             </Appearance>
             <String>pl to return senders and receivers</String>
-            <ConnectedNoteIDs>2</ConnectedNoteIDs>
+            <ConnectedNoteIDs>3</ConnectedNoteIDs>
         </Note>
-        <Note ID="1" FontSize="12.0" Position="98.30954,226.856018" Width="200.0">
+        <Note ID="1" FontSize="12.0" Position="190.427032,226.856018" Width="200.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.894547 0.707772 0.715904</Border>
                 <Fill>0.993942 0.786413 0.795449</Fill>
             </Appearance>
             <String>mpos.py matchSender returns True if any of senders matches target</String>
-            <ConnectedNoteIDs>2</ConnectedNoteIDs>
+            <ConnectedNoteIDs>2, 8</ConnectedNoteIDs>
         </Note>
-        <Note ID="2" FontSize="12.0" Position="361.092224,246.238403" Width="81.0">
+        <Note ID="2" FontSize="12.0" Position="453.209717,246.238403" Width="81.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1"></Border>
                 <Fill>0.751286 0.937851 0.984426</Fill>
             </Appearance>
             <String>sample.json</String>
-            <ConnectedNoteIDs>0-1, 3, 6</ConnectedNoteIDs>
+            <ConnectedNoteIDs>1, 3, 6</ConnectedNoteIDs>
         </Note>
-        <Note ID="3" FontSize="12.0" Position="474.069153,247.640808" Width="59.0">
+        <Note ID="3" FontSize="12.0" Position="566.186646,247.640808" Width="59.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.669404 0.885265 0.567007</Border>
                 <Fill>0.743783 0.983628 0.630008</Fill>
             </Appearance>
             <String>out.json</String>
-            <ConnectedNoteIDs>2</ConnectedNoteIDs>
+            <ConnectedNoteIDs>0, 2</ConnectedNoteIDs>
         </Note>
-        <Note ID="6" FontSize="12.0" Position="129.627182,311.727844" Width="55.0">
+        <Note ID="6" FontSize="12.0" Position="287.954224,323.575928" Width="55.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.894547 0.707772 0.715904</Border>
                 <Fill>0.989115 0.814114 0.999483</Fill>
             </Appearance>
             <String>emit.py</String>
-            <ConnectedNoteIDs>2</ConnectedNoteIDs>
+            <ConnectedNoteIDs>2, 9</ConnectedNoteIDs>
+        </Note>
+        <Note ID="8" FontSize="12.0" Position="20.0,240.789703" Width="144.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.894547 0.707772 0.715904</Border>
+                <Fill>0.993942 0.786413 0.795449</Fill>
+            </Appearance>
+            <String>mpos Connector rewrite</String>
+            <ConnectedNoteIDs>1</ConnectedNoteIDs>
+        </Note>
+        <Note ID="9" FontSize="12.0" Position="113.198639,359.637085" Width="221.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.669404 0.885265 0.567007</Border>
+                <Fill>0.743783 0.983628 0.630008</Fill>
+            </Appearance>
+            <String>every sender/receiver is {c:”x”,p:”y”}</String>
+            <ConnectedNoteIDs>6</ConnectedNoteIDs>
         </Note>
     </Notes>
     <BackgroundShapes></BackgroundShapes>
-    <AutoFit>0, 2-3, 6</AutoFit>
+    <AutoFit>0, 2-3, 6, 8</AutoFit>
     <NoteStyles>
         <Style Name="Bubble (Blue)" ID="09F894B5-449E-432E-9B2E-AF7E010FDC8B" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
             <BorderThickness>1</BorderThickness>
