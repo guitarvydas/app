@@ -61,8 +61,8 @@ class MessageFifo (queue.Queue):
         return self.empty ()
 
 class Connector:
-    def __init__ (self, sender, receivers):
-        self.sender = sender
+    def __init__ (self, senders, receivers):
+        self.senders = sender
         self.receivers = receivers
     
     def getReceiversBasedOnSender (self, sender):
@@ -70,7 +70,7 @@ class Connector:
         return self.receivers
     
     def matchSender (self, targetSender):
-        return self.sender == targetSender
+        return any(self.sender == targetSender)
 
     def getReceiversBasedOnMessage (self, message):
         s = message.sender ()

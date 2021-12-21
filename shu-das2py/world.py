@@ -8,7 +8,6 @@ class _world (mpos.Leaf):
         super ().__init__ (dispatcher, parent, debugID)
         self.inputs=['in']
         self.outputs=[]
-
     def react (self, message):
         print ("world")
         

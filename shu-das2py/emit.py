@@ -65,7 +65,7 @@ def printCommonImports (component, outf):
   print ("import mpos", file=outf)
   print ("import dispatcher", file=outf)
 
-def printCommonBody (component, outf):
+def printCommonInit (component, outf):
 
   name = component["name"]
   idkey = component ["id"]
@@ -78,7 +78,15 @@ def printCommonBody (component, outf):
   print (f'        super ().__init__ (dispatcher, parent, debugID)', file=outf)
   print (f'        self.inputs={inputs}', file=outf)
   print (f'        self.outputs={outputs}', file=outf)
-  print (file=outf)
+
+def printCommonBody (component, outf):
+
+  name = component["name"]
+  idkey = component ["id"]
+  inputs = component ["inputs"]
+  outputs = component ["outputs"]
+  code = unescapeCode (component["synccode"])
+
   print (f'    def react (self, message):', file=outf)
   printLines (8, code, file=outf)
   print (f'        return super ().react (message)', file=outf)
@@ -87,7 +95,38 @@ def printCommonBody (component, outf):
 def printLeafScript (component, outf):
   printCommonHeader (component, outf)
   printCommonImports (component, outf)
+  printCommonInit (component, outf)
   printCommonBody (component, outf)
+
+def formatMap (children):
+  # print children surrounded by dq's (is there a better way to do this in Python?)
+  mchildren = []
+  for childname in children:
+    mchildren.append ('"' + str (childname) + '"' + ":" + str (childname)) 
+  return mchildren
+
+def formatConnection (i, senderList, receiverList):
+  senders = []
+  for sender in senderList:
+    # {"sender": {"component":"hello", "port":"out"}}
+    # print (sender)
+    # print (sender ['sender'])
+    # print (sender ['sender'] ['component'])
+    # print ([ sender ['sender'] ['component'], sender ['sender'] ['port'] ])
+    # print (str ([ sender ['sender'] ['component'], sender ['sender'] ['port'] ]))
+    senders.append (str ([ sender ['sender'] ['component'], sender ['sender'] ['port'] ]))
+  receivers = []
+  for receiver in receiverList:
+    receivers.append (str ([ receiver ['receiver'] ['component'], receiver ['receiver'] ['port'] ]))
+  sstr = ", ".join(senders)
+  rstr = ", ".join(receivers)
+  print (sstr)
+  print (rstr)
+  retstr = f'senders:[{sstr}] receivers:[{rstr}]'
+  return retstr
+      # sender = mpos.Sender (child_hello, "out")
+      # receiver = mpos.Receiver (child_world, "in")
+      # conn1 = mpos.Connector ([sender], [receiver])
 
 def printContainerScript (component, outf):
 
@@ -106,18 +145,39 @@ def printContainerScript (component, outf):
   for child in component ["children"]:
     print (f'import {child}', file=outf)
 
-  printCommonBody (component, outf)
+  printCommonInit (component, outf)
 
   # # uncomment to see json structure
   # # print (file=outf)
   # # print (f'# {component}', file=outf)
   # # print (file=outf)
   
+  printCommonBody (component, outf)
+
   for childname in children:
     print (f'        child_{childname} = {childname}._{childname} (dispatcher, self, \'{childname}\')', file=outf)
 
-  # i = 0
-  # for conn in connections:
+
+  i = 0
+  for conn in connections:
+    print (f'# connection {conn}', file=outf)
+    receiverList = conn ["receivers"]
+    print (f'# receivers {receiverList}', file=outf)
+    senderList = conn ["senders"]
+    print (f'# senders {senderList}', file=outf)
+
+    cstr = formatConnection (i, senderList, receiverList)
+    print (f'        {cstr}', file=outf)
+      # sender = mpos.Sender (child_hello, "out")
+      # receiver = mpos.Receiver (child_world, "in")
+      # conn1 = mpos.Connector ([sender], [receiver])
+
+  mchildren = formatMap (children)
+  print (f'        self.children = [{", ".join(mchildren)}]', file=outf)
+
+
+
+
   # #       sender = mpos.Sender (hello, "out")
   #   sender = conn ['sender']
   #   sendername = sender ['component']

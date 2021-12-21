@@ -26,21 +26,21 @@
 	    "children": ["world", "hello" ],
 	    "connections":
 	    [
-		{ "receivers":
-		  [
-		      {"receiver": {"component":"world", "port":"in"}}
-		  ]
-		},
-		{ "senders":
-		  [
-		      {"sender": {"component":"hello", "port":"out"}}
-		  ]
+		{ 
+		    "receivers":
+		    [
+			{"receiver": {"component":"world", "port":"in"}}
+		    ],
+		    "senders":
+		    [
+			{"sender": {"component":"hello", "port":"out"}}
+		    ]
 		}
 	    ],
 	    "id":"cell_6",
 	    "inputs": [],
 	    "name":"helloworld",
-	    "outputs": ["_" ],
+	    "outputs": [],
 	    "synccode":""
 	}
     ]
