@@ -24,3 +24,6 @@ diff -w top.py temp.py
 sed -E -e 's/sample//g' <samplehello.py >temp.py
 diff -w hello.py temp.py
 
+sed -E -e 's/sample//g' <sampleworld.py >temp.py
+diff -w world.py temp.py
+
