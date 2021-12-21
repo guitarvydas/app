@@ -122,7 +122,8 @@ def formatConnection (i, senderList, receiverList):
   rstr = ", ".join(receivers)
   print (sstr)
   print (rstr)
-  retstr = f'senders:[{sstr}] receivers:[{rstr}]'
+#  retstr = f'senders:[{sstr}] receivers:[{rstr}]'
+  retstr = f'mpos.Connector ([{sstr}], [{rstr}])'
   return retstr
       # sender = mpos.Sender (child_hello, "out")
       # receiver = mpos.Receiver (child_world, "in")

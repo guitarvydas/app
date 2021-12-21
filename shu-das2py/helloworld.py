@@ -17,5 +17,5 @@ class _helloworld (mpos.Leaf):
 # connection {'receivers': [{'receiver': {'component': 'world', 'port': 'in'}}], 'senders': [{'sender': {'component': 'hello', 'port': 'out'}}]}
 # receivers [{'receiver': {'component': 'world', 'port': 'in'}}]
 # senders [{'sender': {'component': 'hello', 'port': 'out'}}]
-        senders:[['hello', 'out']] receivers:[['world', 'in']]
+        mpos.Connector ([['hello', 'out']], [['world', 'in']])
         self.children = ["world":world, "hello":hello]
