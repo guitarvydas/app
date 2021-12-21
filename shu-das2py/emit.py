@@ -73,7 +73,9 @@ def printCommonInit (component, outf):
   outputs = component ["outputs"]
   code = unescapeCode (component["synccode"])
 
+  print (file=outf)
   print (f'class _{name} (mpos.Leaf):', file=outf)
+  print (file=outf)
   print (f'    def __init__ (self, dispatcher, parent, debugID):', file=outf)
   print (f'        super ().__init__ (dispatcher, parent, debugID)', file=outf)
   print (f'        self.inputs={inputs}', file=outf)
@@ -108,26 +110,18 @@ def formatMap (children):
 def formatConnection (i, senderList, receiverList):
   senders = []
   for sender in senderList:
-    # {"sender": {"component":"hello", "port":"out"}}
-    # print (sender)
-    # print (sender ['sender'])
-    # print (sender ['sender'] ['component'])
-    # print ([ sender ['sender'] ['component'], sender ['sender'] ['port'] ])
-    # print (str ([ sender ['sender'] ['component'], sender ['sender'] ['port'] ]))
-    senders.append (str ([ sender ['sender'] ['component'], sender ['sender'] ['port'] ]))
+    component = f"{sender ['sender'] ['component']}"
+    port = sender ['sender'] ['port']
+    senders.append ("{ 'component': '" +  component + "', 'port': '" + port +  "'}")
   receivers = []
   for receiver in receiverList:
-    receivers.append (str ([ receiver ['receiver'] ['component'], receiver ['receiver'] ['port'] ]))
+    component = f"{sender ['sender'] ['component']}"
+    port = sender ['sender'] ['port']
+    receivers.append ("{ 'component': '" +  component + "', 'port': '" + port +  "'}")
   sstr = ", ".join(senders)
   rstr = ", ".join(receivers)
-  print (sstr)
-  print (rstr)
-#  retstr = f'senders:[{sstr}] receivers:[{rstr}]'
-  retstr = f'mpos.Connector ([{sstr}], [{rstr}])'
+  retstr = f'conn{i} = mpos.Connector ([{sstr}], [{rstr}])'
   return retstr
-      # sender = mpos.Sender (child_hello, "out")
-      # receiver = mpos.Receiver (child_world, "in")
-      # conn1 = mpos.Connector ([sender], [receiver])
 
 def printContainerScript (component, outf):
 
@@ -153,6 +147,7 @@ def printContainerScript (component, outf):
   # # print (f'# {component}', file=outf)
   # # print (file=outf)
   
+  print (file=outf)
   printCommonBody (component, outf)
 
   for childname in children:
@@ -160,64 +155,20 @@ def printContainerScript (component, outf):
 
 
   i = 0
+  connectornames = []
   for conn in connections:
-    print (f'# connection {conn}', file=outf)
     receiverList = conn ["receivers"]
-    print (f'# receivers {receiverList}', file=outf)
     senderList = conn ["senders"]
-    print (f'# senders {senderList}', file=outf)
 
     cstr = formatConnection (i, senderList, receiverList)
     print (f'        {cstr}', file=outf)
-      # sender = mpos.Sender (child_hello, "out")
-      # receiver = mpos.Receiver (child_world, "in")
-      # conn1 = mpos.Connector ([sender], [receiver])
-
+    
+    connectornames.append (f'conn{i}')
   mchildren = formatMap (children)
+  
   print (f'        self.children = [{", ".join(mchildren)}]', file=outf)
+  print (f'        self.connections = [ {",".join (connectornames)} ]', file=outf)
 
-
-
-
-  # #       sender = mpos.Sender (hello, "out")
-  #   sender = conn ['sender']
-  #   sendername = sender ['component']
-  #   portname = sender ['port']
-  #   print (f'      sender = mpos.Sender (child_{sendername}, "{portname}")', file=outf)
-  # # reciever should be a list, but currently it is a single object
-  # #       for receiver in conn
-  #   receiver = conn ['receiver']
-  #   receivername = receiver ['component']
-  #   receiverport = receiver ['port']
-  # #       rworld = mpos.Receiver (world, "in")
-  # #       receivers = [ rworld ]
-  #   print (f'      r_{receivername} = mpos.Receiver (child_{receivername}, "{receiverport}")', file=outf)
-  # #       conn1 = mpos.Connector (sender, receivers)
-  #   print (f'      conn{i} = mpos.Connector (sender, [', end="", file=outf)
-  #   print (f' r_{receivername}', end="", file=outf)
-  #   print (f' ])', file=outf)
-
-  #   i += 1
-
-  # print ( '      self.children = {', end='', file=outf)
-  # n = len (component ['children']) - 1
-  # i = 0
-  # for name in component ["children"]:
-  #   print (f'"{name}": child_{name}', end='', file=outf)
-  #   if i < n:
-  #     print (f', ', end="", file=outf)
-  #   i += 1
-  # print ( '}', file=outf)
-
-  # i = 0
-  # n = len (component ['connections']) - 1
-  # print (f'      self.connections = [', end='', file=outf)
-  # for conn in component ['connections']:
-  #   print (f'conn{i}', end="", file=outf)
-  #   if i < n:
-  #     print (f', ', end='', file=outf)
-  #   i += 1
-  # print (f']', file=outf)
 
 def printScript (component, outf):
   if (isContainer (component)):
