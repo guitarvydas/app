@@ -39,7 +39,8 @@ class Dispatcher:
                     connection = container.findConnectionBasedOnMessage (outputMessage) # <<< search is based on instance id within Container
                     receiversList = connection.getReceivers ()
                     for receiver in receiversList:
-                        receiver.deliverOutputMessageToInputPinOfReceiver (outputMessage)
+                        instance = container.mapNameToInstance (receiver.component)
+                        instance.enqueueInput (outputMessage)
         else:
             for m in outputBucket:
                 print (m) # top level has no container, just dump message to stdout

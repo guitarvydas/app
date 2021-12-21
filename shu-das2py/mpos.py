@@ -161,7 +161,7 @@ class Container (Component):
         receivers = conn.getReceivers ()
         for r in receivers:
             msg = InputMessage (r.component, r.tag, m.data)
-            instance = self.mapSenderToInstance (r.component)
+            instance = self.mapNameToInstance (r.component)
             instance.enqueueInput (msg)
 
     def findConnectionBasedOnMessage (self, m):
@@ -170,7 +170,7 @@ class Container (Component):
                 return conn
         assert False, "internal error"
 
-    def mapSenderToInstance (self, localName):
+    def mapNameToInstance (self, localName):
         if (localName == ''):
             return self
         else:
