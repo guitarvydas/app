@@ -6,18 +6,16 @@ import dispatcher
 import world
 import hello
 
-class _helloworld (mpos.Leaf):
+class _helloworld (mpos.Container):
 
-    def __init__ (self, dispatcher, parent, debugID):
-        super ().__init__ (dispatcher, parent, debugID)
+    def __init__ (self, dispatcher, parent, idInParent):
+        super ().__init__ (dispatcher, parent, idInParent)
         self.inputs=[]
         self.outputs=[]
 
-    def react (self, inputMessage):
-        return super ().react (inputMessage)
-        child_world = world._world (dispatcher, self, 'world')
-        child_hello = hello._hello (dispatcher, self, 'hello')
-        conn0 = mpos.Connector ([{ 'component': '', 'port': '_'}], [{ 'component': '', 'port': '_'}])
-        conn1 = mpos.Connector ([{ 'component': 'hello', 'port': 'out'}], [{ 'component': 'hello', 'port': 'out'}])
-        self.children = ["world":world, "hello":hello]
+        child0 = world._world (dispatcher, self, 'world')
+        child1 = hello._hello (dispatcher, self, 'hello')
+        conn0 = mpos.Connector ([mpos.Sender ('', '_')], [mpos.Receiver ('hello', '_')])
+        conn1 = mpos.Connector ([mpos.Sender ('hello', 'out')], [mpos.Receiver ('world', 'in')])
         self.connections = [ conn0, conn1 ]
+        self.children = {'world':child0, 'hello':child1}

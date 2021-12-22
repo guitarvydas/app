@@ -6,23 +6,15 @@ import sampleworld
 import samplehello
 
 class _helloworld (mpos.Container):
+    
     def __init__ (self, dispatcher, parent, idInParent):
-      super ().__init__ (dispatcher, parent, idInParent)
-      child0 = samplehello._hello (dispatcher, self, 'hello')
-      child1 = sampleworld._world (dispatcher, self, 'world')
+        super ().__init__ (dispatcher, parent, idInParent)
+        self.inputs=[]
+        self.outputs=[]
 
-      conn1 = mpos.Connector (
-          # array of senders
-          # names must correspond to self.children map
-          [
-              mpos.Sender ('hello', 'out' )
-          ],
-          # array of receivers
-          [
-              mpos.Receiver ('world', 'in' )
-          ])
-
-      conn0 = mpos.Connector ( [ mpos.Sender ('', '_') ], [ mpos.Receiver ('hello', '_') ])
-
-      self.connections = [ conn0, conn1 ]
-      self.children = { 'hello': child0, 'world': child1 }
+        child0 = sampleworld._world (dispatcher, self, 'world')
+        child1 = samplehello._hello (dispatcher, self, 'hello')
+        conn0 = mpos.Connector ([mpos.Sender ('', '_')], [mpos.Receiver ('hello', '_')])
+        conn1 = mpos.Connector ([mpos.Sender ('hello', 'out')], [mpos.Receiver ('world', 'in')])
+        self.connections = [ conn0, conn1 ]
+        self.children = {'world':child0, 'hello':child1}

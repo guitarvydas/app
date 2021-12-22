@@ -65,7 +65,7 @@ def printCommonImports (component, outf):
   print ("import mpos", file=outf)
   print ("import dispatcher", file=outf)
 
-def printCommonInit (component, outf):
+def printCommonInit (component, outf, cls):
 
   name = component["name"]
   idkey = component ["id"]
@@ -74,14 +74,14 @@ def printCommonInit (component, outf):
   code = unescapeCode (component["synccode"])
 
   print (file=outf)
-  print (f'class _{name} (mpos.Leaf):', file=outf)
+  print (f'class _{name} (mpos.{cls}):', file=outf)
   print (file=outf)
-  print (f'    def __init__ (self, dispatcher, parent, debugID):', file=outf)
-  print (f'        super ().__init__ (dispatcher, parent, debugID)', file=outf)
+  print (f'    def __init__ (self, dispatcher, parent, idInParent):', file=outf)
+  print (f'        super ().__init__ (dispatcher, parent, idInParent)', file=outf)
   print (f'        self.inputs={inputs}', file=outf)
   print (f'        self.outputs={outputs}', file=outf)
 
-def printCommonBody (component, outf):
+def printCommonBodyHead (component, outf):
 
   name = component["name"]
   idkey = component ["id"]
@@ -91,20 +91,32 @@ def printCommonBody (component, outf):
 
   print (f'    def react (self, inputMessage):', file=outf)
   printLines (8, code, file=outf)
+
+def printCommonBodyTail (component, outf):
+
+  name = component["name"]
+  idkey = component ["id"]
+  inputs = component ["inputs"]
+  outputs = component ["outputs"]
+  code = unescapeCode (component["synccode"])
+
   print (f'        return super ().react (inputMessage)', file=outf)
   
 
 def printLeafScript (component, outf):
   printCommonHeader (component, outf)
   printCommonImports (component, outf)
-  printCommonInit (component, outf)
-  printCommonBody (component, outf)
+  printCommonInit (component, outf, "Leaf")
+  printCommonBodyHead (component, outf)
+  printCommonBodyTail (component, outf)
 
 def formatMap (children):
   # print children surrounded by dq's (is there a better way to do this in Python?)
   mchildren = []
+  i = 0
   for childname in children:
-    mchildren.append ('"' + str (childname) + '"' + ":" + str (childname)) 
+    mchildren.append ("'" + str (childname) + "'" + ":child" + str (i))
+    i += 1
   return mchildren
 
 def formatConnection (i, senderList, receiverList):
@@ -112,12 +124,12 @@ def formatConnection (i, senderList, receiverList):
   for sender in senderList:
     component = f"{sender ['sender'] ['component']}"
     port = sender ['sender'] ['port']
-    senders.append ("{ 'component': '" +  component + "', 'port': '" + port +  "'}")
+    senders.append ("mpos.Sender ('" +  component + "', '" + port +  "')")
   receivers = []
   for receiver in receiverList:
-    component = f"{sender ['sender'] ['component']}"
-    port = sender ['sender'] ['port']
-    receivers.append ("{ 'component': '" +  component + "', 'port': '" + port +  "'}")
+    component = f"{receiver ['receiver'] ['component']}"
+    port = receiver ['receiver'] ['port']
+    receivers.append ("mpos.Receiver ('" +  component + "', '" + port +  "')")
   sstr = ", ".join(senders)
   rstr = ", ".join(receivers)
   retstr = f'conn{i} = mpos.Connector ([{sstr}], [{rstr}])'
@@ -140,7 +152,7 @@ def printContainerScript (component, outf):
   for child in component ["children"]:
     print (f'import {child}', file=outf)
 
-  printCommonInit (component, outf)
+  printCommonInit (component, outf, "Container")
 
   # # uncomment to see json structure
   # # print (file=outf)
@@ -148,11 +160,11 @@ def printContainerScript (component, outf):
   # # print (file=outf)
   
   print (file=outf)
-  printCommonBody (component, outf)
 
+  j = 0
   for childname in children:
-    print (f'        child_{childname} = {childname}._{childname} (dispatcher, self, \'{childname}\')', file=outf)
-
+    print (f'        child{j} = {childname}._{childname} (dispatcher, self, \'{childname}\')', file=outf)
+    j += 1
 
   i = 0
   connectornames = []
@@ -168,9 +180,10 @@ def printContainerScript (component, outf):
     
   mchildren = formatMap (children)
   
-  print (f'        self.children = [{", ".join(mchildren)}]', file=outf)
   print (f'        self.connections = [ {", ".join (connectornames)} ]', file=outf)
+  print ('        self.children = {' + f'{", ".join(mchildren)}' + '}', file=outf)
 
+  
 
 def printScript (component, outf):
   if (isContainer (component)):

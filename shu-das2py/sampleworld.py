@@ -6,8 +6,8 @@ import dispatcher
 
 class _world (mpos.Leaf):
 
-    def __init__ (self, dispatcher, parent, debugID):
-        super ().__init__ (dispatcher, parent, debugID)
+    def __init__ (self, dispatcher, parent, idInParent):
+        super ().__init__ (dispatcher, parent, idInParent)
         self.inputs=['in']
         self.outputs=[]
     def react (self, inputMessage):
