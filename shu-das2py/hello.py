@@ -8,8 +8,8 @@ class _hello (mpos.Leaf):
 
     def __init__ (self, dispatcher, parent, idInParent):
         super ().__init__ (dispatcher, parent, idInParent)
-        self.inputs=[]
-        self.outputs=['out', '_']
+        self.inputs=['_']
+        self.outputs=['out']
     def react (self, inputMessage):
         print ("hello")
         self.send ("out", True)

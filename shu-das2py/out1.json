@@ -5,22 +5,22 @@
       "connections": [],
       "id":"cell_11",
       "inputs": ["in" ],
-      "name":"xworld",
+      "name":"world",
       "outputs": [],
-      "synccode":"xprint (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;"
+      "synccode":"print (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;"
     }
   ],
   [
     {
-      "children": ["xworld", "xhello" ],
+      "children": ["world", "hello" ],
       "connections": [
 	{
-	  "receivers": [ {"receiver": {"component":"xworld", "port":"in"}} ],
-	  "senders": [ {"sender": {"component":"xhello", "port":"out"}} ]
+	  "receivers": [ {"receiver": {"component":"world", "port":"in"}} ],
+	  "senders": [ {"sender": {"component":"hello", "port":"out"}} ]
 	}
       ],
       "id":"cell_6",
-      "inputs": ["_a" ],
+      "inputs": ["_" ],
       "name":"helloworld",
       "outputs": [],
       "synccode":""
@@ -31,10 +31,10 @@
       "children": [],
       "connections": [],
       "id":"cell_7",
-      "inputs": ["_b" ],
-      "name":"xhello",
+      "inputs": ["_" ],
+      "name":"hello",
       "outputs": ["out" ],
-      "synccode":"xprint (&quot;hello&quot;)&lt;br&gt;xself.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;"
+      "synccode":"print (&quot;hello&quot;)&lt;br&gt;self.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;"
     }
   ]
 ]

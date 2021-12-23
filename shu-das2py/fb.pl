@@ -133,14 +133,14 @@ diagram_fact(synonym, cell_9, i5jZ3dy8F4nkPbaXPHF6__4).
 diagram_fact(target, cell_14, id_Eg2JflB1LH7_nM4HlBUV__2).
 diagram_fact(target, cell_9, i5jZ3dy8F4nkPbaXPHF6__9).
 diagram_fact(value, cell_10, "out").
-diagram_fact(value, cell_11, "xworld").
+diagram_fact(value, cell_11, "world").
 diagram_fact(value, cell_12, "in").
-diagram_fact(value, cell_13, "xprint (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
-diagram_fact(value, cell_15, "_a").
-diagram_fact(value, cell_16, "_b").
+diagram_fact(value, cell_13, "print (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
+diagram_fact(value, cell_15, "_").
+diagram_fact(value, cell_16, "_").
 diagram_fact(value, cell_6, "helloworld").
-diagram_fact(value, cell_7, "xhello").
-diagram_fact(value, cell_8, "xprint (&quot;hello&quot;)&lt;br&gt;xself.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
+diagram_fact(value, cell_7, "hello").
+diagram_fact(value, cell_8, "print (&quot;hello&quot;)&lt;br&gt;self.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
 diagram_fact(vertex, cell_10, 1).
 diagram_fact(vertex, cell_11, 1).
 diagram_fact(vertex, cell_12, 1).
@@ -203,14 +203,14 @@ das_fact(kind,cell_7,rectangle).
 das_fact(kind,cell_8,rectangle).
 das_fact(kind,cell_9,edge).
 das_fact(name, cell_10, "out").
-das_fact(name, cell_11, "xworld").
+das_fact(name, cell_11, "world").
 das_fact(name, cell_12, "in").
-das_fact(name, cell_13, "xprint (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
-das_fact(name, cell_15, "_a").
-das_fact(name, cell_16, "_b").
+das_fact(name, cell_13, "print (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
+das_fact(name, cell_15, "_").
+das_fact(name, cell_16, "_").
 das_fact(name, cell_6, "helloworld").
-das_fact(name, cell_7, "xhello").
-das_fact(name, cell_8, "xprint (&quot;hello&quot;)&lt;br&gt;xself.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
+das_fact(name, cell_7, "hello").
+das_fact(name, cell_8, "print (&quot;hello&quot;)&lt;br&gt;self.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
 das_fact(color,cell_10,"yellow").
 das_fact(color,cell_11,"-").
 das_fact(color,cell_12,"green").
@@ -291,8 +291,8 @@ das_fact(direct_contains,cell_7,cell_10).
 das_fact(direct_contains,cell_7,cell_16).
 das_fact(direct_contains,cell_7,cell_8).
 das_fact(direct_contains,cell_6,cell_9).
-das_fact(codebox,cell_13,"xprint (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
-das_fact(codebox,cell_8,"xprint (&quot;hello&quot;)&lt;br&gt;xself.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
+das_fact(codebox,cell_13,"print (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
+das_fact(codebox,cell_8,"print (&quot;hello&quot;)&lt;br&gt;self.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
 das_fact(connection, cell_6, cell_9).
-das_fact(sender, cell_9, sender{component:xhello,port:out}).
-das_fact(receiver, cell_9, receiver{component:xworld,port:in}).
+das_fact(sender, cell_9, sender{component:hello,port:out}).
+das_fact(receiver, cell_9, receiver{component:world,port:in}).

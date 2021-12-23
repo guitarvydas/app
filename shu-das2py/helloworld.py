@@ -3,18 +3,18 @@
 # cell_6
 import mpos
 import dispatcher
-import xworld
-import xhello
+import world
+import hello
 
 class _helloworld (mpos.Container):
 
     def __init__ (self, dispatcher, parent, idInParent):
         super ().__init__ (dispatcher, parent, idInParent)
-        self.inputs=['_a']
+        self.inputs=['_']
         self.outputs=[]
 
-        child0 = xworld._xworld (dispatcher, self, 'xworld')
-        child1 = xhello._xhello (dispatcher, self, 'xhello')
-        conn0 = mpos.Connector ([mpos.Sender ('xhello', 'out')], [mpos.Receiver ('xworld', 'in')])
+        child0 = world._world (dispatcher, self, 'world')
+        child1 = hello._hello (dispatcher, self, 'hello')
+        conn0 = mpos.Connector ([mpos.Sender ('hello', 'out')], [mpos.Receiver ('world', 'in')])
         self.connections = [ conn0 ]
-        self.children = {'xworld':child0, 'xhello':child1}
+        self.children = {'world':child0, 'hello':child1}
