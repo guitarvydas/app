@@ -6,8 +6,8 @@ cp ../das2f/connection.pl .
 cp ../das2f/component_helper.pl .
 
 
-querydisplay3 component --prefix="${cwd}/" >layerfinal_query.bash
-chmod a+x layerfinal_query.bash
-echo '-- layerfinal_query.bash generated --' 1>&2
+querydisplay3 component --prefix="${cwd}/" >layercomponent_query.bash
+chmod a+x layercomponent_query.bash
+echo '-- layercomponent_query.bash generated --' 1>&2
 
 
