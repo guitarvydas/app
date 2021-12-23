@@ -9,6 +9,6 @@
 # ./layerfinal_query.bash >out.json
 das2j helloworld >out.json
 
-# python3 test.py
+python3 test.py
 
 
