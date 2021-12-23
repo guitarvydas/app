@@ -33,7 +33,7 @@ connectionsof(R,Connections):-
     !.
 connectionsof(_,[]).
 
-directconnection(R,dconnection{sender:Source,receiver:Target},""):-
+directconnection(R,dconnection{senders:[s{sender:Source}],receivers:[r{receiver:Target}]},""):-
     das_fact(connection,R,ID),
     das_fact(sender,ID,Source),
     das_fact(receiver,ID,Target).

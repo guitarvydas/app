@@ -13,5 +13,6 @@
   children(RID,Children)
   codeof(RID,Code)
   connectionsof(RID,Connections)
+  format(user_error,"query: ~w~n",[Connections])
   Component = component{id:RID, name:Name, inputs:Inputs, outputs:Outputs, children:Children, connections:Connections, synccode:Code}
 ## json
