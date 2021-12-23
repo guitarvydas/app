@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
-# hello.py
-# cell_7
+# xworld.py
+# cell_11
 import mpos
 import dispatcher
 
-class _hello (mpos.Leaf):
+class _xworld (mpos.Leaf):
 
     def __init__ (self, dispatcher, parent, idInParent):
         super ().__init__ (dispatcher, parent, idInParent)
-        self.inputs=[]
-        self.outputs=['out', '_']
+        self.inputs=['in']
+        self.outputs=[]
     def react (self, inputMessage):
-        print ("hello")
-        self.send ("out", True)
+        xprint ("world")
         
         return super ().react (inputMessage)

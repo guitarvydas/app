@@ -1,0 +1,40 @@
+[
+  [
+    {
+      "children": [],
+      "connections": [],
+      "id":"cell_11",
+      "inputs": ["in" ],
+      "name":"xworld",
+      "outputs": [],
+      "synccode":"xprint (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;"
+    }
+  ],
+  [
+    {
+      "children": ["xworld", "xhello" ],
+      "connections": [
+	{
+	  "receivers": [ {"receiver": {"component":"xworld", "port":"in"}} ],
+	  "senders": [ {"sender": {"component":"xhello", "port":"out"}} ]
+	}
+      ],
+      "id":"cell_6",
+      "inputs": ["_a" ],
+      "name":"helloworld",
+      "outputs": [],
+      "synccode":""
+    }
+  ],
+  [
+    {
+      "children": [],
+      "connections": [],
+      "id":"cell_7",
+      "inputs": ["_b" ],
+      "name":"xhello",
+      "outputs": ["out" ],
+      "synccode":"xprint (&quot;hello&quot;)&lt;br&gt;xself.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;"
+    }
+  ]
+]

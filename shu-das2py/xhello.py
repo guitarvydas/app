@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-# hello.py
+# xhello.py
 # cell_7
 import mpos
 import dispatcher
 
-class _hello (mpos.Leaf):
+class _xhello (mpos.Leaf):
 
     def __init__ (self, dispatcher, parent, idInParent):
         super ().__init__ (dispatcher, parent, idInParent)
-        self.inputs=[]
-        self.outputs=['out', '_']
+        self.inputs=['_b']
+        self.outputs=['out']
     def react (self, inputMessage):
-        print ("hello")
-        self.send ("out", True)
+        xprint ("hello")
+        xself.send ("out", True)
         
         return super ().react (inputMessage)

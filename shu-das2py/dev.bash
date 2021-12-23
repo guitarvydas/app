@@ -16,16 +16,17 @@ clear
 # # chmod a+x top.py
 # # ./top.py
 
-./emit.py sample.json helloworld
+das2j helloworld >out1.json
+./emit.py out1.json helloworld
 
 sed -E -e 's/sample//g' <sampletop.py >temp.py
 diff -w top.py temp.py
 
 sed -E -e 's/sample//g' <samplehello.py >temp.py
-diff -w hello.py temp.py
+diff -w xhello.py temp.py
 
 sed -E -e 's/sample//g' <sampleworld.py >temp.py
-diff -w world.py temp.py
+diff -w xworld.py temp.py
 
 sed -E -e 's/sample//g' <samplehelloworld.py >temp.py
 diff -w helloworld.py temp.py
