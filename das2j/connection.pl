@@ -29,11 +29,11 @@ targetidof(Edge, Target):-
 
 
 connectionsof(R,Connections):-
-    bagof(Conn,connection(R,Conn,_),Connections),
+    bagof(Conn,directconnection(R,Conn,_),Connections),
     !.
 connectionsof(_,[]).
 
-connection(R,connection{sender:Source,receiver:Target},""):-
+directconnection(R,dconnection{senders:[s{sender:Source}],receivers:[r{receiver:Target}]},""):-
     das_fact(connection,R,ID),
     das_fact(sender,ID,Source),
     das_fact(receiver,ID,Target).

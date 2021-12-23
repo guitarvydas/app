@@ -13,9 +13,14 @@
   [
     {
       "children": ["world", "hello" ],
-      "connections": [ {"receiver": {"component":"world", "port":"in"}, "sender": {"component":"hello", "port":"out"}} ],
+      "connections": [
+	{
+	  "receivers": [ {"receiver": {"component":"world", "port":"in"}} ],
+	  "senders": [ {"sender": {"component":"hello", "port":"out"}} ]
+	}
+      ],
       "id":"cell_6",
-      "inputs": [],
+      "inputs": ["x" ],
       "name":"helloworld",
       "outputs": [],
       "synccode":""
@@ -26,7 +31,7 @@
       "children": [],
       "connections": [],
       "id":"cell_7",
-      "inputs": [],
+      "inputs": ["y" ],
       "name":"hello",
       "outputs": ["out" ],
       "synccode":"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4"

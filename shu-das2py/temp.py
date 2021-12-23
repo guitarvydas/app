@@ -9,7 +9,7 @@ class _helloworld (mpos.Container):
     
     def __init__ (self, dispatcher, parent, idInParent):
         super ().__init__ (dispatcher, parent, idInParent)
-        self.inputs=[]
+        self.inputs=['_']
         self.outputs=[]
 
         child0 = world._world (dispatcher, self, 'world')

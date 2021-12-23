@@ -49,8 +49,8 @@ diagram_fact(fillColor, cell_10, "#fff2cc").
 diagram_fact(fillColor, cell_11, "#dae8fc").
 diagram_fact(fillColor, cell_12, "#d5e8d4").
 diagram_fact(fillColor, cell_13, "#f8cecc").
-diagram_fact(fillColor, cell_15, "#fff2cc").
-diagram_fact(fillColor, cell_16, "#fff2cc").
+diagram_fact(fillColor, cell_15, "#d5e8d4").
+diagram_fact(fillColor, cell_16, "#d5e8d4").
 diagram_fact(fillColor, cell_7, "#dae8fc").
 diagram_fact(fillColor, cell_8, "#f8cecc").
 diagram_fact(gradientColor, cell_11, "#7ea6e0").
@@ -113,8 +113,8 @@ diagram_fact(strokeColor, cell_10, "#d6b656").
 diagram_fact(strokeColor, cell_11, "#6c8ebf").
 diagram_fact(strokeColor, cell_12, "#82b366").
 diagram_fact(strokeColor, cell_13, "#b85450").
-diagram_fact(strokeColor, cell_15, "#d6b656").
-diagram_fact(strokeColor, cell_16, "#d6b656").
+diagram_fact(strokeColor, cell_15, "#82b366").
+diagram_fact(strokeColor, cell_16, "#82b366").
 diagram_fact(strokeColor, cell_7, "#6c8ebf").
 diagram_fact(strokeColor, cell_8, "#b85450").
 diagram_fact(synonym, cell_10, i5jZ3dy8F4nkPbaXPHF6__5).
@@ -216,8 +216,8 @@ das_fact(color,cell_11,"-").
 das_fact(color,cell_12,"green").
 das_fact(color,cell_13,"red").
 das_fact(color,cell_14,"-").
-das_fact(color,cell_15,"yellow").
-das_fact(color,cell_16,"yellow").
+das_fact(color,cell_15,"green").
+das_fact(color,cell_16,"green").
 das_fact(color,cell_4,"-").
 das_fact(color,cell_5,"-").
 das_fact(color,cell_6,"-").
@@ -262,8 +262,8 @@ das_fact(bbL,cell_8,260).
   das_fact(bbB,cell_8,310).
 das_fact(direction,cell_10,output).
 das_fact(direction,cell_12,input).
-das_fact(direction,cell_15,output).
-das_fact(direction,cell_16,output).
+das_fact(direction,cell_15,input).
+das_fact(direction,cell_16,input).
 das_fact(contains,cell_6,cell_10).
 das_fact(contains,cell_6,cell_11).
 das_fact(contains,cell_6,cell_12).
