@@ -64,25 +64,30 @@ chmod a+x layerconnection_query.bash
 echo '-- layerconnection_query.bash generated --' 1>&2
 
 pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
-querydisplay3  preprocessed_layerkind --prefix="${das2fdir}/"  >layerkind_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <preprocessed_layerkind.md >preprocessed2_layerkind.md
+querydisplay3  preprocessed2_layerkind --prefix="${das2fdir}/"  >layerkind_query.bash
 chmod a+x layerkind_query.bash
 echo '-- layerkind_query.bash generated --' 1>&2
 
 pre  "#+ forall " "#+ " forall.ohm forall.glue <layercolor.md >preprocessed_layercolor.md
-querydisplay3   preprocessed_layercolor --prefix="${das2fdir}/" >layercolor_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <preprocessed_layercolor.md >preprocessed2_layercolor.md
+querydisplay3   preprocessed2_layercolor --prefix="${das2fdir}/" >layercolor_query.bash
 chmod a+x layercolor_query.bash
 echo '-- layercolor_query.bash generated --' 1>&2
 
-querydisplay3  layername --prefix="${das2fdir}/"  >layername_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <layername.md >preprocessed_layername.md
+querydisplay3  preprocessed_layername --prefix="${das2fdir}/"  >layername_query.bash
 chmod a+x layername_query.bash
 echo '-- layername_query.bash generated --' 1>&2
 
-querydisplay3  layerboundingbox --prefix="${das2fdir}/"  >layerboundingbox_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <layerboundingbox.md >preprocessed_layerboundingbox.md
+querydisplay3  preprocessed_layerboundingbox --prefix="${das2fdir}/"  >layerboundingbox_query.bash
 chmod a+x layerboundingbox_query.bash
 echo '-- layerboundingbox_query.bash generated --' 1>&2
 
 pre  "#+ forall " "#+ " forall.ohm forall.glue <layerdirection.md >preprocessed_layerdirection.md
-querydisplay3   preprocessed_layerdirection --prefix="${das2fdir}/" >layerdirection_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <preprocessed_layerdirection.md >preprocessed2_layerdirection.md
+querydisplay3   preprocessed2_layerdirection --prefix="${das2fdir}/" >layerdirection_query.bash
 chmod a+x layerdirection_query.bash
 echo '-- layerdirection_query.bash generated --' 1>&2
 
