@@ -1,8 +1,8 @@
 implicitforall {
-  Main = sharp+ "query" Match Ensure+
+  main = sharp+ ws+ "query" ws+ nl+ match ensure+
 
-  Match = line
-  Ensure = line
+  match = line
+  ensure = line
 
   line = ~sharp notNL* nl
 
