@@ -28,7 +28,8 @@ echo '-- view3.bash generated --' 1>&2
 
 das2fdir=`pwd`
 
-querydisplay3 layerallcontains --prefix="${das2fdir}/" >layerallcontains_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <layerallcontains.md >preprocessed_layerallcontains.md
+querydisplay3 preprocessed_layerallcontains --prefix="${das2fdir}/" >layerallcontains_query.bash
 chmod a+x layerallcontains_query.bash
 echo '-- layerallcontains_query.bash generated --' 1>&2
 

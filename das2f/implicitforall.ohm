@@ -1,0 +1,19 @@
+implicitforall {
+  Main = sharp+ "query" Match Ensure+
+
+  Match = line
+  Ensure = line
+
+  line = ~sharp notNL* nl
+
+  notPAREN = ~"(" ~")" any
+
+    ident = firstChar restChar*
+    firstChar = "A" .. "Z" | "a" .. "z" | "_"
+    restChar = "0" .. "9" | firstChar
+    nl = "\n"
+    sharp = "#"
+    notNL = ~nl any
+    ws = " " | "\t"
+}
+
