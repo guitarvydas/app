@@ -33,7 +33,8 @@ querydisplay3 preprocessed_layerallcontains --prefix="${das2fdir}/" >layerallcon
 chmod a+x layerallcontains_query.bash
 echo '-- layerallcontains_query.bash generated --' 1>&2
 
-querydisplay3  contains_port  --prefix="${das2fdir}/" >layer4_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <contains_port.md >preprocessed_contains_port.md
+querydisplay3  preprocessed_contains_port  --prefix="${das2fdir}/" >layer4_query.bash
 chmod a+x layer4_query.bash
 echo '-- layer4_query.bash generated --' 1>&2
 
