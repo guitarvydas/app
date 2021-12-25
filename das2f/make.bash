@@ -38,15 +38,18 @@ querydisplay3  preprocessed_contains_port  --prefix="${das2fdir}/" >layer4_query
 chmod a+x layer4_query.bash
 echo '-- layer4_query.bash generated --' 1>&2
 
-querydisplay3  indirect_contains  --prefix="${das2fdir}/" >layer5_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <indirect_contains.md >preprocessed_indirect_contains.md
+querydisplay3  preprocessed_indirect_contains  --prefix="${das2fdir}/" >layer5_query.bash
 chmod a+x layer5_query.bash
 echo '-- layer5_query.bash generated --' 1>&2
 
-setquerydisplay direct_contains  --prefix="${das2fdir}/" >layer6_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <direct_contains.md >preprocessed_direct_contains.md
+setquerydisplay preprocessed_direct_contains  --prefix="${das2fdir}/" >layer6_query.bash
 chmod a+x layer6_query.bash
 echo '-- layer6_query.bash generated --' 1>&2
 
-querydisplay3   contains_edge --prefix="${das2fdir}/" >layeredgecontainment_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <contains_edge.md >preprocessed_contains_edge.md
+querydisplay3   preprocessed_contains_edge --prefix="${das2fdir}/" >layeredgecontainment_query.bash
 chmod a+x layeredgecontainment_query.bash
 echo '-- layeredgecontainment_query.bash generated --' 1>&2
 
