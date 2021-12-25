@@ -53,11 +53,13 @@ querydisplay3   preprocessed_contains_edge --prefix="${das2fdir}/" >layeredgecon
 chmod a+x layeredgecontainment_query.bash
 echo '-- layeredgecontainment_query.bash generated --' 1>&2
 
-querydisplay3  synccode --prefix="${das2fdir}/"  >layersynccode_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <synccode.md >preprocessed_synccode.md
+querydisplay3  preprocessed_synccode --prefix="${das2fdir}/"  >layersynccode_query.bash
 chmod a+x layersynccode_query.bash
 echo '-- layersynccode_query.bash generated --' 1>&2
 
-querydisplay3  connection --prefix="${das2fdir}/"  >layerconnection_query.bash
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <connection.md >preprocessed_connection.md
+querydisplay3  preprocessed_connection --prefix="${das2fdir}/"  >layerconnection_query.bash
 chmod a+x layerconnection_query.bash
 echo '-- layerconnection_query.bash generated --' 1>&2
 
