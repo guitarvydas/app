@@ -3,6 +3,7 @@
 
 
 const fs = require ('fs');
+var argv;
 
 var reTrigger;
 var reEnd;
@@ -396,18 +397,16 @@ function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message)
 }
 
 function pre (allchars) {
-    var args = process.argv;
-    var reTrigger = new RegExp (args[2]);
-    var reEnd = new RegExp (args[3]);
-    var grammarFileName = args[4];
-    var glueFileName = args[5];
-    var supportFileName = args[6];
+    var reTrigger = new RegExp (argv._[0]);
+    var reEnd = new RegExp (argv._[1]);
+    var grammarFileName = argv._[2];
+    var glueFileName = argv._[3];
 
-    if (supportFileName) {
-	support = require (supportFileName);
+    if (argv.support) {
+	support = require (argv.support);
     }
-    if (args.length >= 8) {
-	var traceFlag = args[7];
+    if (argv.trace) {
+	var traceFlag = true;
 	if (traceFlag === 't') {
 	    tracing = true;
 	    traceDepth = 0;
@@ -418,136 +417,20 @@ function pre (allchars) {
 }
 
 function main () {
-    var allchars = fs.readFileSync ('/dev/fd/0', 'utf-8');
+    argv = require('yargs/yargs')(process.argv.slice(2)).argv;
+    var fname;
+    if (argv.input) {
+	fname = argv.input;
+    } else {
+	fname = '/dev/fd/0';
+    }
+    var allchars = fs.readFileSync (fname, 'utf-8');
     var result = pre (allchars);
     emit (result);
 }
-
-function debug_forall () {
-    var allchars = String.raw`
-# layer kind
-## parameters
-  X
-  Kind
-## imports
-  shapes
-  onSameDiagram
-  inside
-  names
-  ports
-  contains
-## forall X as diagram_fact(cell,X,_)
-    Kind = cond
-      diagram_fact(kind,X,"ellipse") "ellipse"
-      diagram_fact(edge,X,1)         "edge"
-      diagram_fact(root,X,1)         "root"
-     else                            "rectangle"
-## display
-  das_fact(kind,\${X},\${Kind}).
-`;
-    var result = pre (allchars);
-    emit (result);
-}
-
-function debug_forall () {
-    var allchars = String.raw`
-# layer kind
-## parameters
-  X
-  Kind
-## imports
-  shapes
-  onSameDiagram
-  inside
-  names
-  ports
-  contains
-## forall X as diagram_fact(cell,X,_)
-    Kind = cond
-      diagram_fact(kind,X,"ellipse") "ellipse"
-      diagram_fact(edge,X,1)         "edge"
-      diagram_fact(root,X,1)         "root"
-     else                            "rectangle"
-## display
-  das_fact(kind,\${X},\${Kind}).
-`;
-    var result = pre (allchars);
-    emit (result);
-}
-function debug_implicitforall0 () {
-    var allchars = String.raw`
-    # stuff
-....## query
-QUERY STUFF
-QQQQ## display
-1234~
-    
-`;
-    var result = pre (allchars);
-    emit (result);
-}
-
-function debug_implicitforall () {
-    var allchars = String.raw`
-# layer kind
-## parameters
-  X
-  Kind
-## imports
-  shapes
-  onSameDiagram
-  inside
-  names
-  ports
-  contains
-## query
-diagram_fact(cell,X,_) 
-(diagram_fact(kind,X,"ellipse")  -> Kind = "ellipse";diagram_fact(edge,X,1)  -> Kind = "edge";diagram_fact(root,X,1)  -> Kind = "root"; Kind = "rectangle")
-## display
-  das_fact(kind,\${X},\${Kind}).
-
-`;
-    var result = pre (allchars);
-    emit (result);
-}
-
-function debug_implicitforall () {
-    var allchars = String.raw`
-# layer kind
-## parameters
-  X
-  Kind
-## imports
-  shapes
-  onSameDiagram
-  inside
-  names
-  ports
-  contains
-## query
-diagram_fact(cell,X,_) 
-(diagram_fact(kind,X,"ellipse")  -> Kind = "ellipse";diagram_fact(edge,X,1)  -> Kind = "edge";diagram_fact(root,X,1)  -> Kind = "root"; Kind = "rectangle")
-## display
-  das_fact(kind,\${X},\${Kind}).
-
-`;
-    var result = pre (allchars);
-    emit (result);
-}
-
-function debug_test1 () {
-    var allchars = String.raw`ac`;
-    var result = pre (allchars);
-    emit (result);
-}
-
 function emit (s) {
     console.log (s);
 }
 
-debug_test1 ();
-// debug_forall ();
-//debug_implicitforall0 ();
-//debug_implicitforall ();
-// main ();
+main ();
 

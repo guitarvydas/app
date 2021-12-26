@@ -7,32 +7,12 @@
         {
             "type": "pwa-node",
             "request": "launch",
-            "name": "debug test1",
+            "name": "debug test",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${file}",
-            "args": ["a", "c", "test1.ohm", "test1.glue", "/Users/tarvydas/app/pre/support.js"]
+            "args": ["ab", "c", "test2.ohm", "test2.glue", "--input=test3", "--support=/Users/tarvydas/app/pre/support.js"],
         },
-        {
-            "type": "pwa-node",
-            "request": "launch",
-            "name": "debug implicit forall",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${file}",
-            "args": ["#+ query", "#+ ", "implicitforall.ohm", "implicitforall.glue", "/Users/tarvydas/app/pre/support.js"]
-        },
-        {
-            "type": "pwa-node",
-            "request": "launch",
-            "name": "debug forall",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${file}",
-            "args": ["#+ forall ", "#+ ", "forall.ohm", "forall.glue", "/Users/tarvydas/app/pre/support.js"]
-        }
     ]
 }
