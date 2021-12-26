@@ -7,6 +7,7 @@ var argv;
 
 var reTrigger;
 var reEnd;
+var stop;
 
 
 var viewGeneratedCode = false;
@@ -336,7 +337,12 @@ function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message)
 	    return front;
 	} else {
 	    var expandedText = expand (middle, grammarFileName, glueFileName, message);
-	    return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
+	    if (stop & (cycles >= stop)) {
+		return front + expandedText;
+	    } else {
+		cycles += 1;
+		return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
+	    }
 	}
     }
 }
@@ -368,6 +374,12 @@ function main () {
 	fname = argv.input;
     } else {
 	fname = '/dev/fd/0';
+    }
+    cycles = 0;
+    if (argv.stop) {
+	stop = argv.stop;
+    } else {
+	stop = undefined;
     }
     var allchars = fs.readFileSync (fname, 'utf-8');
     var result = pre (allchars);

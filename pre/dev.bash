@@ -11,8 +11,10 @@ echo running test3 '(should be *c*c)'
 pre 'ab' 'c' test2.ohm test2.glue --input=test3
 echo running test4 '(should be ***c)'
 pre 'ab' 'ab|c' test2.ohm test2.glue --input=test4
-echo running test5 forall
+echo running test5 '(should be ***c)'
+pre '.' '$' test5.ohm test5.glue --stop=1 --input=test5
+echo running test forall
 pre '#+ forall' '#+ ' forall.ohm forall.glue --input=testforall --support=${cdir}/support.js
-echo running test6 implicit forall
+echo running test implicit forall
 pre '#+ query' '#+ ' implicitforall.ohm implicitforall.glue --input=testimplicitforall --support=${cdir}/support.js >temp
 sed -E -e 's/~/query\n/g' <temp
