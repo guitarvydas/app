@@ -338,20 +338,47 @@ function splitOnSeparators (triggerSep, endSep, s) {
 
     var frontMatch = s.match (triggerSep);
     if (frontMatch) {
-        // s contains a begin separator : front + beginSep + middle + endSep + rest
-        var matchLength = frontMatch [0].length;
+	console.error (frontMatch);
+
     	var indexEndFront = frontMatch.index;   
-	var front = s.substring (0, indexEndFront);
+	var frontText = s.substring (0, indexEndFront);
 
-	var matchedString = s.substring (indexEndFront, indexEndFront + matchLength);
-	var combined = s.substring (indexEndFront + matchLength);
-	// combined = middle + endSep + rest
-	var middleMatch = combined.match (endSep);
+	var beginSepText = frontMatch [0];
+        // s contains a begin separator : front + beginSep + middle + endSep + rest
+	var middleEndSepRestText = s.substring (indexEndFront + beginSepText.length);
+        // middleEndSepRestText is : middle + endSep + rest
 
-	var middle = matchedString + combined.substring (0, middleMatch.index);
-	var rest = combined.substring (middleMatch.index);
+	console.error ();
+	console.error ('...beginSepText');
+	console.error (beginSepText);
+	console.error ('...middleEndSepRestText');
+	console.error (middleEndSepRestText);
+
+	var endMatch = middleEndSepRestText.match (endSep);
+	if (endMatch) {
+	    ;
+	} else {
+	    emsg = `cannot find end separator ${endSep}`;
+	    throw emsg;
+	}
+
+	var indexEndEnd = endMatch.index;
+	var endSepText = endMatch [0];
 	
-	return { front, middle, rest };
+	var middleText = beginSepText + middleEndSepRestText.substring (0, indexEndEnd);
+	var restText = endSepText + middleEndSepRestText.substring (indexEndEnd + endSepText.length);
+
+	console.error ('...endSepText');
+	console.error (endSepText);
+	console.error ('...frontText');
+	console.error (frontText);
+	console.error ('...middleText');
+	console.error (middleText);
+	console.error ('...restText');
+	console.error (restText);
+	console.error ();
+
+	return { frontText, middleText, restText };
     } else {
 	// there is no middle nor rest (no beginSep)
 	front = s;
@@ -365,7 +392,7 @@ function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message)
     
     var {front, middle, rest} = splitOnSeparators (triggerRE, endRE, s);
 
-    if (middle === '') {
+    if (middle === undefined || middle === '') {
 	return front;
     } else {
 	var expandedText = expand (middle, grammarFileName, glueFileName, message);

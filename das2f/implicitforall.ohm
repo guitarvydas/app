@@ -1,5 +1,5 @@
 implicitforall {
-  main = sharp+ ws+ "query" ws+ nl+ match ensure+
+  main = sharp+ ws+ "query" ws* nl+ match ensure+
 
   match = line
   ensure = line
