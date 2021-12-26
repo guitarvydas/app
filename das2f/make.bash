@@ -28,27 +28,27 @@ echo '-- view3.bash generated --' 1>&2
 
 das2fdir=`pwd`
 
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <layerallcontains.md >preprocessed_layerallcontains.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue --support=${das2fdir}/implicitforall.support.js <layerallcontains.md >preprocessed_layerallcontains.md
 querydisplay3 preprocessed_layerallcontains --prefix="${das2fdir}/" >layerallcontains_query.bash
 chmod a+x layerallcontains_query.bash
 echo '-- layerallcontains_query.bash generated --' 1>&2
 
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <contains_port.md >preprocessed_contains_port.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <contains_port.md >preprocessed_contains_port.md
 querydisplay3  preprocessed_contains_port  --prefix="${das2fdir}/" >layer4_query.bash
 chmod a+x layer4_query.bash
 echo '-- layer4_query.bash generated --' 1>&2
 
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <indirect_contains.md >preprocessed_indirect_contains.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <indirect_contains.md >preprocessed_indirect_contains.md
 querydisplay3  preprocessed_indirect_contains  --prefix="${das2fdir}/" >layer5_query.bash
 chmod a+x layer5_query.bash
 echo '-- layer5_query.bash generated --' 1>&2
 
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <direct_contains.md >preprocessed_direct_contains.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <direct_contains.md >preprocessed_direct_contains.md
 setquerydisplay preprocessed_direct_contains  --prefix="${das2fdir}/" >layer6_query.bash
 chmod a+x layer6_query.bash
 echo '-- layer6_query.bash generated --' 1>&2
 
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <contains_edge.md >preprocessed_contains_edge.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <contains_edge.md >preprocessed_contains_edge.md
 querydisplay3   preprocessed_contains_edge --prefix="${das2fdir}/" >layeredgecontainment_query.bash
 chmod a+x layeredgecontainment_query.bash
 echo '-- layeredgecontainment_query.bash generated --' 1>&2
@@ -58,35 +58,35 @@ querydisplay3  preprocessed_synccode --prefix="${das2fdir}/"  >layersynccode_que
 chmod a+x layersynccode_query.bash
 echo '-- layersynccode_query.bash generated --' 1>&2
 
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <connection.md >preprocessed_connection.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <connection.md >preprocessed_connection.md
 querydisplay3  preprocessed_connection --prefix="${das2fdir}/"  >layerconnection_query.bash
 chmod a+x layerconnection_query.bash
 echo '-- layerconnection_query.bash generated --' 1>&2
 
-pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <preprocessed_layerkind.md >preprocessed2_layerkind.md
+pre '#+ forall ' '#+ ' forall.ohm forall.glue --support=${das2fdir}/forall.support.js <layerkind.md >preprocessed_layerkind.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <preprocessed_layerkind.md >preprocessed2_layerkind.md
 querydisplay3  preprocessed2_layerkind --prefix="${das2fdir}/"  >layerkind_query.bash
 chmod a+x layerkind_query.bash
 echo '-- layerkind_query.bash generated --' 1>&2
 
-pre  "#+ forall " "#+ " forall.ohm forall.glue <layercolor.md >preprocessed_layercolor.md
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <preprocessed_layercolor.md >preprocessed2_layercolor.md
+pre  "#+ forall " "#+ " forall.ohm forall.glue  --support=${das2fdir}/forall.support.js <layercolor.md >preprocessed_layercolor.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <preprocessed_layercolor.md >preprocessed2_layercolor.md
 querydisplay3   preprocessed2_layercolor --prefix="${das2fdir}/" >layercolor_query.bash
 chmod a+x layercolor_query.bash
 echo '-- layercolor_query.bash generated --' 1>&2
 
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <layername.md >preprocessed_layername.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <layername.md >preprocessed_layername.md
 querydisplay3  preprocessed_layername --prefix="${das2fdir}/"  >layername_query.bash
 chmod a+x layername_query.bash
 echo '-- layername_query.bash generated --' 1>&2
 
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <layerboundingbox.md >preprocessed_layerboundingbox.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <layerboundingbox.md >preprocessed_layerboundingbox.md
 querydisplay3  preprocessed_layerboundingbox --prefix="${das2fdir}/"  >layerboundingbox_query.bash
 chmod a+x layerboundingbox_query.bash
 echo '-- layerboundingbox_query.bash generated --' 1>&2
 
-pre  "#+ forall " "#+ " forall.ohm forall.glue <layerdirection.md >preprocessed_layerdirection.md
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <preprocessed_layerdirection.md >preprocessed2_layerdirection.md
+pre  "#+ forall " "#+ " forall.ohm forall.glue  --support=${das2fdir}/forall.support.js <layerdirection.md >preprocessed_layerdirection.md
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js  <preprocessed_layerdirection.md >preprocessed2_layerdirection.md
 querydisplay3   preprocessed2_layerdirection --prefix="${das2fdir}/" >layerdirection_query.bash
 chmod a+x layerdirection_query.bash
 echo '-- layerdirection_query.bash generated --' 1>&2

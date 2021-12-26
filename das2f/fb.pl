@@ -185,6 +185,19 @@ diagram_fact(y, cell_16, 285).
 diagram_fact(y, cell_6, 170).
 diagram_fact(y, cell_7, 220).
 diagram_fact(y, cell_8, 265).
+das_fact(kind,cell_10,ellipse).
+das_fact(kind,cell_11,rectangle).
+das_fact(kind,cell_12,ellipse).
+das_fact(kind,cell_13,rectangle).
+das_fact(kind,cell_14,edge).
+das_fact(kind,cell_15,ellipse).
+das_fact(kind,cell_16,ellipse).
+das_fact(kind,cell_4,rectangle).
+das_fact(kind,cell_5,rectangle).
+das_fact(kind,cell_6,rectangle).
+das_fact(kind,cell_7,rectangle).
+das_fact(kind,cell_8,rectangle).
+das_fact(kind,cell_9,edge).
 das_fact(name, cell_10, "out").
 das_fact(name, cell_11, "world").
 das_fact(name, cell_12, "in").
@@ -194,6 +207,19 @@ das_fact(name, cell_16, "b").
 das_fact(name, cell_6, "helloworld").
 das_fact(name, cell_7, "hello").
 das_fact(name, cell_8, "&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
+das_fact(color,cell_10,"yellow").
+das_fact(color,cell_11,"-").
+das_fact(color,cell_12,"green").
+das_fact(color,cell_13,"red").
+das_fact(color,cell_14,"-").
+das_fact(color,cell_15,"green").
+das_fact(color,cell_16,"green").
+das_fact(color,cell_4,"-").
+das_fact(color,cell_5,"-").
+das_fact(color,cell_6,"-").
+das_fact(color,cell_7,"-").
+das_fact(color,cell_8,"red").
+das_fact(color,cell_9,"-").
 das_fact(bbL,cell_10,470).
   das_fact(bbT,cell_10,290).
   das_fact(bbR,cell_10,510).
@@ -230,6 +256,10 @@ das_fact(bbL,cell_8,285).
   das_fact(bbT,cell_8,265).
   das_fact(bbR,cell_8,450).
   das_fact(bbB,cell_8,345).
+das_fact(direction,cell_10,output).
+das_fact(direction,cell_12,input).
+das_fact(direction,cell_15,input).
+das_fact(direction,cell_16,input).
 das_fact(contains,cell_6,cell_10).
 das_fact(contains,cell_6,cell_11).
 das_fact(contains,cell_6,cell_12).
@@ -239,12 +269,26 @@ das_fact(contains,cell_6,cell_16).
 das_fact(contains,cell_6,cell_7).
 das_fact(contains,cell_6,cell_8).
 das_fact(contains,cell_7,cell_8).
+das_fact(contains,cell_11,cell_12).
+das_fact(contains,cell_6,cell_15).
+das_fact(contains,cell_7,cell_10).
+das_fact(contains,cell_7,cell_16).
 das_fact(indirect_contains,cell_6,cell_13).
+das_fact(indirect_contains,cell_6,cell_12).
 das_fact(indirect_contains,cell_6,cell_8).
+das_fact(indirect_contains,cell_6,cell_10).
+das_fact(indirect_contains,cell_6,cell_16).
+das_fact(direct_contains,cell_11,cell_12).
 das_fact(direct_contains,cell_11,cell_13).
-das_fact(direct_contains,cell_6,cell_10).
 das_fact(direct_contains,cell_6,cell_11).
-das_fact(direct_contains,cell_6,cell_12).
-das_fact(direct_contains,cell_6,cell_16).
+das_fact(direct_contains,cell_6,cell_15).
 das_fact(direct_contains,cell_6,cell_7).
+das_fact(direct_contains,cell_7,cell_10).
+das_fact(direct_contains,cell_7,cell_16).
 das_fact(direct_contains,cell_7,cell_8).
+das_fact(direct_contains,cell_6,cell_9).
+das_fact(codebox,cell_13,"&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;read &amp;lt;/dev/fd/3&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;echo world&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;# no output&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;br&gt;&lt;/p&gt;").
+das_fact(codebox,cell_8,"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
+das_fact(connection, cell_6, cell_9).
+das_fact(sender, cell_9, sender{component:hello,port:out}).
+das_fact(receiver, cell_9, receiver{component:world,port:in}).
