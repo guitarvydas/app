@@ -1,19 +1,17 @@
 # layer kind
 ## parameters
-  ID
-  Direction
+  X
+  Kind
 ## imports
-  fb
   shapes
   onSameDiagram
   inside
-## query
-diagram_fact(kind,ID,"ellipse") 
-(diagram_fact(color, ID, "green")  -> Direction = input;diagram_fact(color, ID, "yellow")  -> Direction = output;diagram_fact(color, ID, "red")  -> Direction = pervasiveinput;diagram_fact(color, ID, "purple")  -> Direction = pervasiveoutput; Direction = "?")
-## cond design rule
-  ${Direction} === "?"
-  all ports must have a direction ; port ${ID} has no direction
+  names
+  ports
+  contains
+## ~diagram_fact(cell,X,_) 
+((diagram_fact(kind,X,"ellipse")  -> Kind = "ellipse";diagram_fact(edge,X,1)  -> Kind = "edge";diagram_fact(root,X,1)  -> Kind = "root"; Kind = "rectangle")->true ; format(user_error,"querythen failed /(diagram_fact(kind,X,"ellipse")  -> Kind = "ellipse";diagram_fact(edge,X,1)  -> Kind = "edge";diagram_fact(root,X,1)  -> Kind = "root"; Kind = "rectangle")/~n",[]),abort),
 ## display
-  das_fact(direction,${ID},${Direction}).
+  das_fact(kind,${X},${Kind}).
 
 
