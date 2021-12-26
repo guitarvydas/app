@@ -7,6 +7,16 @@
         {
             "type": "pwa-node",
             "request": "launch",
+            "name": "debug test1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${file}",
+            "args": ["a", "c", "test1.ohm", "test1.glue", "/Users/tarvydas/app/pre/support.js"]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
             "name": "debug implicit forall",
             "skipFiles": [
                 "<node_internals>/**"

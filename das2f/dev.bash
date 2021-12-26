@@ -5,8 +5,8 @@
 #echo '-- layerkind_query.bash generated --' 1>&2
 
 ../make.bash
-pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
 cwd=`pwd`
+pre '#+ forall ' '#+ ' forall.ohm forall.glue ${cwd}/forall.support.js <layerkind.md >preprocessed_layerkind.md
 pre '#+ query' '#+ ' implicitforall.ohm implicitforall.glue ${cwd}/implicitforall.support.js <preprocessed_layerkind.md
 
 # echo dev.bash obsolete, use run.bash, exiting
