@@ -1,7 +1,7 @@
 main [ @sharps @ws kquery @ws2 @nl Match @Ensures] = [[\n${sharps}${ws}${kquery}${ws2}${Match}\n${Ensures}]]
 
 match [line] = [[${line}]]
-ensure [line] = [[(${support.replnl (line)}->true ; format(user_error,"querythen failed /${support.replnl (line)}/~n",[]),abort),\n]]
+ensure [line] = [[(${line.trim ()}->true ; format(user_error,"querythen failed /${line.trim ()}/~n",[]),abort),\n]]
 
 line [@notNL nl] = [[${notNL}${nl}]]
 

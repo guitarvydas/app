@@ -338,7 +338,6 @@ function splitOnSeparators (triggerSep, endSep, s) {
 
     var frontMatch = s.match (triggerSep);
     if (frontMatch) {
-	console.error (frontMatch);
 
     	var indexEndFront = frontMatch.index;   
 	var frontText = s.substring (0, indexEndFront);
@@ -348,11 +347,6 @@ function splitOnSeparators (triggerSep, endSep, s) {
 	var middleEndSepRestText = s.substring (indexEndFront + beginSepText.length);
         // middleEndSepRestText is : middle + endSep + rest
 
-	console.error ();
-	console.error ('...beginSepText');
-	console.error (beginSepText);
-	console.error ('...middleEndSepRestText');
-	console.error (middleEndSepRestText);
 
 	var endMatch = middleEndSepRestText.match (endSep);
 	if (endMatch) {
@@ -368,35 +362,28 @@ function splitOnSeparators (triggerSep, endSep, s) {
 	var middleText = beginSepText + middleEndSepRestText.substring (0, indexEndEnd);
 	var restText = endSepText + middleEndSepRestText.substring (indexEndEnd + endSepText.length);
 
-	console.error ('...endSepText');
-	console.error (endSepText);
-	console.error ('...frontText');
-	console.error (frontText);
-	console.error ('...middleText');
-	console.error (middleText);
-	console.error ('...restText');
-	console.error (restText);
-	console.error ();
 
-	return { frontText, middleText, restText };
+	return { front: frontText, middle: middleText, rest: restText };
     } else {
 	// there is no middle nor rest (no beginSep)
-	front = s;
-	middle = '';
-	rest = ''
-	return { front, middle, rest }; // should be { s, '', '' }, but node.js balks
+	return { front: s, middle: '', rest: '' };
     }
 }
 
 function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message) {
     
-    var {front, middle, rest} = splitOnSeparators (triggerRE, endRE, s);
-
-    if (middle === undefined || middle === '') {
-	return front;
+    if (s === undefined) {
+	return s;
     } else {
-	var expandedText = expand (middle, grammarFileName, glueFileName, message);
-	return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
+	let _retObj = splitOnSeparators (triggerRE, endRE, s);
+    let {front: front, middle: middle, rest: rest} = _retObj;
+	
+	if (middle === undefined || middle === '') {
+	    return front;
+	} else {
+	    var expandedText = expand (middle, grammarFileName, glueFileName, message);
+	    return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
+	}
     }
 }
 
@@ -408,6 +395,8 @@ function pre (allchars) {
     var glueFileName = args[5];
     var supportFileName = args[6];
 
+    console.error (supportFileName);
+    
     support = require (supportFileName);
     if (args.length >= 8) {
 	var traceFlag = args[7];
@@ -426,14 +415,13 @@ function main () {
     emit (result);
 }
 
-function debug () {
-    var allchars = `
+function debug_forall () {
+    var allchars = String.raw`
 # layer kind
 ## parameters
-  Parent
-  Child
+  X
+  Kind
 ## imports
-  fb
   shapes
   onSameDiagram
   inside
@@ -441,14 +429,75 @@ function debug () {
   ports
   contains
 ## forall X as diagram_fact(cell,X,_)
-  Kind = cond
+    Kind = cond
       diagram_fact(kind,X,"ellipse") "ellipse"
       diagram_fact(edge,X,1)         "edge"
       diagram_fact(root,X,1)         "root"
      else                            "rectangle"
-
 ## display
-  das_fact(kind,\${Vertex},\${Kind}).
+  das_fact(kind,\${X},\${Kind}).
+`;
+    var result = pre (allchars);
+    emit (result);
+}
+
+function debug_forall () {
+    var allchars = String.raw`
+# layer kind
+## parameters
+  X
+  Kind
+## imports
+  shapes
+  onSameDiagram
+  inside
+  names
+  ports
+  contains
+## forall X as diagram_fact(cell,X,_)
+    Kind = cond
+      diagram_fact(kind,X,"ellipse") "ellipse"
+      diagram_fact(edge,X,1)         "edge"
+      diagram_fact(root,X,1)         "root"
+     else                            "rectangle"
+## display
+  das_fact(kind,\${X},\${Kind}).
+`;
+    var result = pre (allchars);
+    emit (result);
+}
+function debug_implicitforall0 () {
+    var allchars = String.raw`
+    # stuff
+....## query
+QUERY STUFF
+QQQQ## display
+1234~
+    
+`;
+    var result = pre (allchars);
+    emit (result);
+}
+
+function debug_implicitforall () {
+    var allchars = String.raw`
+# layer kind
+## parameters
+  X
+  Kind
+## imports
+  shapes
+  onSameDiagram
+  inside
+  names
+  ports
+  contains
+## query
+diagram_fact(cell,X,_) 
+(diagram_fact(kind,X,"ellipse")  -> Kind = "ellipse";diagram_fact(edge,X,1)  -> Kind = "edge";diagram_fact(root,X,1)  -> Kind = "root"; Kind = "rectangle")
+## display
+  das_fact(kind,\${X},\${Kind}).
+
 `;
     var result = pre (allchars);
     emit (result);
@@ -458,5 +507,7 @@ function emit (s) {
     console.log (s);
 }
 
+// debug_forall ();
+//debug_implicitforall0 ();
+//debug_implicitforall ();
 main ();
-

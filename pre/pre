@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 predir=${HOME}/app/pre
 node ${predir}/pre.js "$1" "$2" "$3" "$4" ${predir}/support.js
 
