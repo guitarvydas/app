@@ -11,8 +11,8 @@ Imports [@sharp kimports anythingToEOL @identifier] = [[${sharp} ${kimports} ${a
 DesignRuleQuery [@sharp krule anythingToEOL Forall] = [[${sharp} ${krule} ${anythingToEOL} ${Forall}]]
 OnFailure [@sharp kon kfailure @printLine] = [[${sharp} ${kon} ${kfailure} ${printLine}]]
 
-Forall [kforall ForAllClause @QueryClause kend kforall] = [[${kforall}\n${ForAllClause} ${QueryClause} ${kend} ${kforall}\n]]
-QueryClause_cond [kcond @QueryClause kend kcond] = [[${kcond} ${QueryClause} ${kend} ${kcond}\n]] 
+Forall [kforall ForAllClause @QueryClause kend kforall] = [[${kforall} ${ForAllClause} ${QueryClause} ${kend} ${kforall}\n]]
+QueryClause_cond [kcond @QueryClause kend kcond] = [[${kcond}\n${QueryClause} ${kend} ${kcond}\n]] 
 QueryClause_other [PrologClause] = [[${PrologClause}]]
 printLine [@notNL nl] = [[${notNL}${nl}]]
 
@@ -30,6 +30,7 @@ printLine [@notNL nl] = [[${notNL}${nl}]]
     anythingToEOL [@notNL nl] = [[${notNL}${nl}]]
     nl [c] = [[${c}]]
     notNL [any] = [[${any}]]
+    importid [identifier] = [[${identifier}\n]]
     identifier [firstChar @restChar] = [[${firstChar}${restChar}]]
     firstChar [c] = [[${c}]]
     restChar [c] = [[${c}]]

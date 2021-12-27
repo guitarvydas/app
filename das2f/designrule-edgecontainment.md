@@ -25,7 +25,7 @@
       das_fact(direct_contains,SourceContainer,TargetContainer)
       das_fact(direct_contains,TargetContainer,SourceContainer)
     end cond
-  end forall
+end forall
 ## on failure
 Edge Containment edge=${Edge}
 
