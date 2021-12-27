@@ -1,0 +1,36 @@
+designrule {
+Main = Title Parameters Imports DesignRuleQuery OnFailure
+Title = sharp+ "design" "rule" #(anythingToEOL)
+Parameters = sharp+ "parameters" #(anythingToEOL) identifier+
+Imports = sharp+ "imports" #(anythingToEOL) identifier+
+DesignRuleQuery = sharp+ "rule" #(anythingToEOL) Forall
+OnFailure = sharp+ "on" "failure" #(printLine+)
+
+Forall = "forall" ForAllClause QueryClause+ "end" "forall"
+QueryClause
+  = "cond" QueryClause+ "end" "cond" -- cond
+  | PrologClause                     -- other
+printLine = ~sharp notNL* nl
+
+  ForAllClause = PrologClause
+
+  PrologClause 
+    = identifier "(" prologArgs+ ")" -- clauseWithArgs
+    | identifier "=" identifier     -- assignment
+    | identifier                    -- clauseWithoutArgs
+
+  prologArgs
+    = "(" prologArgs+ ")"            -- nested
+    | ~")" ~"(" any                  -- other
+
+    keyword = "end" | "cond" | "forall"
+    sharp = "#"
+    anythingToEOL = notNL* nl
+    nl = "\n"
+    notNL = ~nl any
+    identifier = ~keyword firstChar restChar*
+    firstChar = "A" .. "Z"  | "a" .. "z" | "_"
+    restChar = "0" .. "9" | firstChar
+    comment = "%%" anythingToEOL
+    space += comment
+}
