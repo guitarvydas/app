@@ -381,6 +381,11 @@ function main () {
     } else {
 	stop = undefined;
     }
+    if (argv.view) {
+	viewGeneratedCode = true;
+    } else {
+	viewGeneratedCode = false;
+    }
     var allchars = fs.readFileSync (fname, 'utf-8');
     var result = pre (allchars);
     emit (result);
