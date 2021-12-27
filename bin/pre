@@ -337,10 +337,10 @@ function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message)
 	    return front;
 	} else {
 	    var expandedText = expand (middle, grammarFileName, glueFileName, message);
+	    cycles += 1;
 	    if (stop & (cycles >= stop)) {
 		return front + expandedText;
 	    } else {
-		cycles += 1;
 		return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
 	    }
 	}
