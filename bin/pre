@@ -410,5 +410,14 @@ function emit (s) {
     console.log (s);
 }
 
+function getargv (s) {
+    let r = argv[s];
+    if (r) {
+	return r;
+    } else {
+	return "";
+    }
+}
+
 main ();
 
