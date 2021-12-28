@@ -268,15 +268,31 @@ function internal_stranspile (sourceString, grammarFileName, glueFileName, error
     return returnString;
 }
 
-function expand (s, grammarFileName, glueFileName, message) {
-    var result = internal_stranspile (s, grammarFileName, glueFileName, message);
-    return result;
+
+
+
+function dump (announce, s) {
+    if (argv.split) {
+	console.error ();
+	console.error (announce);
+	console.error (s);
+	console.error (announce);
+	console.error ();
+    }
 }
 
-
-
-
-
+function expand (s, grammarFileName, glueFileName, message) {
+    dump ("********* block *********", s);
+    var result = internal_stranspile (s, grammarFileName, glueFileName, message);
+    dump ("********* Expanded ******", result);
+    if (result === s) {
+	console.error ('expand made no changes');
+	console.error (s.substring (0,30));
+	console.error (result.substring (0,30));
+	throw 'expand made no changes';
+    }
+    return result;
+}
 
 function splitOnSeparators (triggerSep, endSep, s) {
     // s = front + beginSep + middle + endSep + rest
@@ -339,7 +355,7 @@ function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message)
 	    var expandedText = expand (middle, grammarFileName, glueFileName, message);
 	    cycles += 1;
 	    if (stop & (cycles >= stop)) {
-		return front + expandedText;
+		return front + expandedText + rest;
 	    } else {
 		return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
 	    }
