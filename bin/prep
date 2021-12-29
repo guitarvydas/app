@@ -285,12 +285,6 @@ function expand (s, grammarFileName, glueFileName, message) {
     dump ("********* block *********", s);
     var result = internal_stranspile (s, grammarFileName, glueFileName, message);
     dump ("********* Expanded ******", result);
-    if (result === s) {
-	console.error ('expand made no changes');
-	console.error (s.substring (0,30));
-	console.error (result.substring (0,30));
-	throw 'expand made no changes';
-    }
     return result;
 }
 
@@ -357,6 +351,12 @@ function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message)
 	    if (stop & (cycles >= stop)) {
 		return front + expandedText + rest;
 	    } else {
+		if (expandedText === middle) {
+		    console.error ('expand made no changes');
+		    console.error (middle.substring (0,30));
+		    console.error (expandedText.substring (0,30));
+		    throw 'expand made no changes';
+		}
 		return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
 	    }
 	}
@@ -379,6 +379,9 @@ function pre (allchars) {
 	    traceDepth = 0;
 	}
     }
+
+    support.setArgv (argv);
+
     var expanded = expandAll (allchars, reTrigger, reEnd, grammarFileName, glueFileName, 'parsing input');
     return expanded;
 }
