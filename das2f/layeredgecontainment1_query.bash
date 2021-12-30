@@ -21,8 +21,11 @@ das_fact(direct_contains,Rect,Source),
 das_fact(direct_contains,Parent,Rect),
 true.
 query:-
-bagof([Parent,Edge],query_helper(Parent,Edge),Bag),
-json_write(user_output,Bag,[width(128)]).
+(bagof([Parent,Edge],query_helper(Parent,Edge),Bag),
+json_write(user_output,Bag,[width(128)])
+)
+;
+json_write(user_output,[],[width(123)]).
 ~~~
 cat >${temp}.js <<'~~~'
 const fs = require ('fs');

@@ -22,3 +22,4 @@
 ## display
 das_fact(direct_contains,${Parent},${Edge}).
   
+

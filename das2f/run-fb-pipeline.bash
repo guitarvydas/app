@@ -43,9 +43,29 @@ ${das2fdir}/layer5 ${das2fdir} 1>&2 #<<>>fb.pl
 echo '** layer 6 - direct containment **' 1>&2
 ${das2fdir}/layer6 ${das2fdir} 1>&2 #<<>>fb.pl
 
-# Layer edge containment
+# Layer edge containment 1
 echo '** layer edge containment 1 **' 1>&2
 ${das2fdir}/layeredgecontainment1 ${das2fdir} 1>&2 #<<>>fb.pl
+
+# Layer edge containment 2
+echo '** layer edge containment 2 **' 1>&2
+${das2fdir}/layeredgecontainment2 ${das2fdir} 1>&2 #<<>>fb.pl
+# Layer edge containment 3
+echo '** layer edge containment 3 **' 1>&2
+${das2fdir}/layeredgecontainment3 ${das2fdir} 1>&2 #<<>>fb.pl
+
+
+
+# Layer Synccode.
+echo '** layer synccode **' 1>&2
+${das2fdir}/layersynccode ${das2fdir} 1>&2 #<<>>fb.pl
+
+# Layer Connections.
+echo '** layer connections **' 1>&2
+${das2fdir}/layerconnection ${das2fdir} 1>&2 #<<>>fb.pl
+
+
+
 
 
 
@@ -71,11 +91,3 @@ then
 fi
 rm $temp
 
-
-# Layer Synccode.
-echo '** layer synccode **' 1>&2
-${das2fdir}/layersynccode ${das2fdir} 1>&2 #<<>>fb.pl
-
-# Layer Connections.
-echo '** layer connections **' 1>&2
-${das2fdir}/layerconnection ${das2fdir} 1>&2 #<<>>fb.pl

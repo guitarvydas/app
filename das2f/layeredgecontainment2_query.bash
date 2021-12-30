@@ -1,7 +1,7 @@
 
 
 temp=temp${RANDOM}
-# layer names
+# contains edge
 
 
 cat >${temp}.pl <<'~~~'
@@ -12,13 +12,20 @@ cat >${temp}.pl <<'~~~'
 ?- consult("/Users/tarvydas/app/das2f/inside").
 ?- consult("/Users/tarvydas/app/das2f/names").
 ?- consult("/Users/tarvydas/app/das2f/ports").
-?- consult("/Users/tarvydas/app/das2f/contains").
-query_helper(ID,Name):-
-diagram_fact(vertex,ID,_),
-diagram_fact(value,ID,Name),
+query_helper(Parent,Edge):-
+das_fact(kind,Edge,edge),
+diagram_fact(source,Edge,SourceLongID),
+diagram_fact(synonym,Source,SourceLongID),
+diagram_fact(target,Edge,TargetLongID),
+diagram_fact(synonym,Target,TargetLongID),
+(das_fact(direction,Source,input) ; das_fact(direction,Source,pervasiveinput)),
+(das_fact(direction,Target,input) ; das_fact(direction,Target,pervasiveinput)),
+das_fact(kind,Parent,rectangle),
+das_fact(direct_contains,Rect,Source),
+das_fact(direct_contains,Parent,Rect),
 true.
 query:-
-(bagof([ID,Name],query_helper(ID,Name),Bag),
+(bagof([Parent,Edge],query_helper(Parent,Edge),Bag),
 json_write(user_output,Bag,[width(128)])
 )
 ;
@@ -29,10 +36,10 @@ const fs = require ('fs');
 var rawText = fs.readFileSync ('/dev/fd/0');
 var parameters = JSON.parse(rawText);
 parameters.forEach (p => {
-  var ID = p [0];
-var Name = p [1];
+  var Parent = p [0];
+var Edge = p [1];
   
-if (true) { console.log (`das_fact(name, ${ID}, \"${Name}\").`);};
+if (true) { console.log (`das_fact(direct_contains,${Parent},${Edge}).`);};
 });
   
 ~~~
