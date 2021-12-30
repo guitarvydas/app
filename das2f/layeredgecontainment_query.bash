@@ -13,8 +13,7 @@ cat >${temp}.pl <<'~~~'
 ?- consult("/Users/tarvydas/app/das2f/names").
 ?- consult("/Users/tarvydas/app/das2f/ports").
 query_helper(Parent,Edge):-
-das_fact(kind,Parent,rectangle),
-das_fact(kind,Edge,edge),
+das_fact(kind,Parent,rectangle),das_fact(kind,Edge,edge),
 diagram_fact(source,Edge,SourceLongID),
 diagram_fact(synonym,Source,SourceLongID),
 das_fact(direct_contains,Rect,Source),

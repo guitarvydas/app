@@ -9,8 +9,7 @@
     names
     ports
 ## query
-    das_fact(kind,Parent,rectangle)
-    das_fact(kind,Edge,edge)
+    das_fact(kind,Parent,rectangle),das_fact(kind,Edge,edge)
     diagram_fact(source,Edge,SourceLongID)
 	diagram_fact(synonym,Source,SourceLongID)
 	das_fact(direct_contains,Rect,Source)
