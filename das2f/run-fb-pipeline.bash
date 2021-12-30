@@ -28,6 +28,8 @@ ${das2fdir}/layerdirection ${das2fdir} 1>&2 # <<>>fb.pl
 # echo '** design rule for layer 2 **'
 # ./design_rule_layer2  1>&2
 
+./a-designrule-edgecontainment
+./b-designrule-edgecontainment
 
 #./check-errors.bash
 grep FATAL <fb.pl
@@ -36,6 +38,9 @@ then
     echo quitting
     exit 1
 fi
+
+echo early exit
+exit 1
 
 # Layer 3. Rectangle Containment relationships.
 echo '** layer all contains **'  1>&2

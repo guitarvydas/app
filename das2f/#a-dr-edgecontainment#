@@ -1,0 +1,39 @@
+#!/usr/bin/env swipl
+:-initialization(designrule,main).
+:- use_module(library(http/json)).
+?- consult(fb).
+?- consult("./shapes.pl").
+?- consult("./onSameDiagram.pl").
+?- consult("./inside.pl").
+?- consult("./names.pl").
+?- consult("./ports.pl").
+?- consult("./contains.pl").
+
+
+
+designrule:-
+    (
+	(
+	    das_fact(kind,Edge,edge),
+	    bagof([Passed,Edge],cond0(Passed,Edge),Bag)
+	)
+    ->true
+    ; (Bag = [[true,true]]
+      )
+    ),
+    json_write(user_output,Bag,[width(128)]).
+
+cond0(Passed,Edge):-
+    ((diagram_fact(source,Edge,SourceLongID),
+      diagram_fact(synonym,SourceID,SourceLongID),
+      diagram_fact(target,Edge,TargetLongID),
+      diagram_fact(synonym,TargetID,TargetLongID),
+      diagram_fact(direct_contains,SourceParent,SourceID),
+      diagram_fact(direct_contains,TargetParent,TargetID),
+      diagram_fact(direct_contains,SourceContainer,SourceParent),
+      diagram_fact(direct_contains,TargetContainer,TargetParent),
+      (SourceContainer=TargetContainer;das_fact( direct_contains,SourceContainer,TargetContainer );das_fact( direct_contains,TargetContainer,SourceContainer );fail)
+      ,
+      true)->Passed=true ; Passed=false).
+
+

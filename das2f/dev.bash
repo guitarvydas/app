@@ -1,14 +1,29 @@
-# pre '#+ forall ' '#+ ' forall.ohm forall.glue <layerkind.md >preprocessed_layerkind.md
-#pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <preprocessed_layerkind.md >preprocessed2_layerkind.md
-#querydisplay3  preprocessed2_layerkind --prefix="${das2fdir}/"  >layerkind_query.bash
-#chmod a+x layerkind_query.bash
-#echo '-- layerkind_query.bash generated --' 1>&2
+#echo use run.bash instead
+#exit 1
 
 ../make.bash
 cwd=`pwd`
-pre '#+ forall ' '#+ ' forall.ohm forall.glue ${cwd}/forall.support.js --support=${cwd}/forall.support.js <layerkind.md >preprocessed_layerkind.md
-pre '#+ query' '#+ ' implicitforall.ohm implicitforall.glue --support=${cwd}/implicitforall.support.js --input=preprocessed_layerkind.md >temp
-sed -E -e 's/~/query\n/g' <temp
+das2fdir=`pwd`
+temp=temp_${RANDOM}
 
-# echo dev.bash obsolete, use run.bash, exiting
-# exit 1
+plpath=./
+dr=~/projects/dr
+mdfile=${dr}/dr-edgecontainment.md
+fname=`basename -s '.md' $mdfile`
+prep "cond\n" "endcond\n" ${dr}/cond.ohm ${dr}/cond.glue --inclusive --stop=1 --support=${dr}/drsupport.js <$mdfile >$temp
+prep "." "$" ${dr}/designrule.ohm ${dr}/designrulea.glue --stop=1 --support=${dr}/drsupport.js --PLPATH=$plpath<$temp >a-$fname
+prep "." "$" ${dr}/designrule.ohm ${dr}/designruleb.glue --stop=1 --support=${dr}/drsupport.js <$mdfile >b-$fname
+chmod a+x a-$fname
+chmod a+x b-$fname
+echo '-- ' "design rules a-${fname} and b-${fname} generated" ' --' 1>&2
+
+./a-${fname} | ./b-${fname}
+#./a-${fname}
+
+#./check-errors.bash
+grep FATAL <fb.pl
+if grep -q FATAL <fb.pl
+then
+    echo quitting
+    exit 1
+fi

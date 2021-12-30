@@ -309,8 +309,9 @@ function splitOnSeparators (triggerSep, endSep, s) {
 	if (endMatch) {
 	    ;
 	} else {
-	    emsg = `cannot find end separator ${endSep}`;
-	    throw emsg;
+	    dump ("thus far:",middleEndSepRestText);
+	    errormsg = `cannot find end separator ${endSep}`;
+	    throw errormsg;
 	}
 
 	var indexEndEnd = endMatch.index;
@@ -343,7 +344,7 @@ function pdebug (s) {
 }
 
 function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message) {
-    
+    dump ("*** expandAll ***", s);
     if (s === undefined) {
 	return s;
     } else {
@@ -353,6 +354,7 @@ function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message)
 	if (middle === undefined || middle === '') {
 	    return front;
 	} else {
+	    dump ("*** expansion ***", middle);
 	    var expandedText = expand (middle, grammarFileName, glueFileName, message);
 	    cycles += 1;
 	    if (stop & (cycles >= stop)) {
@@ -378,6 +380,9 @@ function pre (allchars) {
 
     if (argv.support) {
 	support = require (argv.support);
+	if (support.setArgv) {
+	    support.setArgv (argv);
+	}
     }
     if (argv.trace) {
 	var traceFlag = true;
@@ -387,7 +392,6 @@ function pre (allchars) {
 	}
     }
 
-    support.setArgv (argv);
 
     var expanded = expandAll (allchars, reTrigger, reEnd, grammarFileName, glueFileName, 'parsing input');
     return expanded;

@@ -260,35 +260,3 @@ das_fact(direction,cell_10,output).
 das_fact(direction,cell_12,input).
 das_fact(direction,cell_15,input).
 das_fact(direction,cell_16,input).
-das_fact(contains,cell_6,cell_10).
-das_fact(contains,cell_6,cell_11).
-das_fact(contains,cell_6,cell_12).
-das_fact(contains,cell_11,cell_13).
-das_fact(contains,cell_6,cell_13).
-das_fact(contains,cell_6,cell_16).
-das_fact(contains,cell_6,cell_7).
-das_fact(contains,cell_6,cell_8).
-das_fact(contains,cell_7,cell_8).
-das_fact(contains,cell_11,cell_12).
-das_fact(contains,cell_6,cell_15).
-das_fact(contains,cell_7,cell_10).
-das_fact(contains,cell_7,cell_16).
-das_fact(indirect_contains,cell_6,cell_13).
-das_fact(indirect_contains,cell_6,cell_12).
-das_fact(indirect_contains,cell_6,cell_8).
-das_fact(indirect_contains,cell_6,cell_10).
-das_fact(indirect_contains,cell_6,cell_16).
-das_fact(direct_contains,cell_11,cell_12).
-das_fact(direct_contains,cell_11,cell_13).
-das_fact(direct_contains,cell_6,cell_11).
-das_fact(direct_contains,cell_6,cell_15).
-das_fact(direct_contains,cell_6,cell_7).
-das_fact(direct_contains,cell_7,cell_10).
-das_fact(direct_contains,cell_7,cell_16).
-das_fact(direct_contains,cell_7,cell_8).
-das_fact(direct_contains,cell_6,cell_9).
-das_fact(codebox,cell_13,"&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;read &amp;lt;/dev/fd/3&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;echo world&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;span class=&quot;s1&quot;&gt;# no output&lt;/span&gt;&lt;/p&gt;&lt;p class=&quot;p1&quot; style=&quot;margin: 0px ; font-stretch: normal ; font-size: 11px ; line-height: normal ; font-family: &amp;#34;menlo&amp;#34;&quot;&gt;&lt;br&gt;&lt;/p&gt;").
-das_fact(codebox,cell_8,"&lt;div&gt;echo hello&lt;/div&gt;&lt;div&gt;&lt;/div&gt;echo done &amp;gt;/dev/fd/4").
-das_fact(connection, cell_6, cell_9).
-das_fact(sender, cell_9, sender{component:hello,port:out}).
-das_fact(receiver, cell_9, receiver{component:world,port:in}).

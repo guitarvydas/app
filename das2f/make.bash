@@ -27,6 +27,7 @@ echo '-- view3.bash generated --' 1>&2
 # queries
 
 das2fdir=`pwd`
+temp=temp_${RANDOM}
 
 pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue --support=${das2fdir}/implicitforall.support.js <layerallcontains.md >preprocessed_layerallcontains.md
 querydisplay3 preprocessed_layerallcontains --prefix="${das2fdir}/" >layerallcontains_query.bash
@@ -91,6 +92,17 @@ querydisplay3   preprocessed2_layerdirection --prefix="${das2fdir}/" >layerdirec
 chmod a+x layerdirection_query.bash
 echo '-- layerdirection_query.bash generated --' 1>&2
 
+mdfile=designrule-edgecontainment.md
+fname=`basename -s '.md' $mdfile`
+plpath=./
+prep "cond\n" "endcond\n" cond.ohm cond.glue --inclusive --stop=1 --support=${das2fdir}/drsupport.js <$mdfile >$temp
+prep "." "$" designrule.ohm designrulea.glue --stop=1 --support=${das2fdir}/drsupport.js --PLPATH=$plpath<$temp >a-$fname
+prep "." "$" designrule.ohm designruleb.glue --stop=1 --support=${das2fdir}/drsupport.js <$mdfile >b-$fname
+chmod a+x a-$fname
+chmod a+x b-$fname
+echo '-- ' "design rules a-${fname} and b-${fname} generated" ' --' 1>&2
+
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}
+rm -r $temp
 
