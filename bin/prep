@@ -315,11 +315,18 @@ function splitOnSeparators (triggerSep, endSep, s) {
 
 	var indexEndEnd = endMatch.index;
 	var endSepText = endMatch [0];
-	
-	var middleText = beginSepText + middleEndSepRestText.substring (0, indexEndEnd);
-	var restText = endSepText + middleEndSepRestText.substring (indexEndEnd + endSepText.length);
 
-
+	let  middleText;
+	let restText;
+	if (argv.inclusive ) {
+	    // include endSepText in block
+	    middleText = beginSepText + middleEndSepRestText.substring (0, indexEndEnd) + endSepText;
+	    restText = middleEndSepRestText.substring (indexEndEnd + endSepText.length);
+	} else {
+	    // endSepText is not part of block
+	    middleText = beginSepText + middleEndSepRestText.substring (0, indexEndEnd);
+	    restText = endSepText + middleEndSepRestText.substring (indexEndEnd + endSepText.length);
+	}
 	return { front: frontText, middle: middleText, rest: restText };
     } else {
 	// there is no middle nor rest (no beginSep)
