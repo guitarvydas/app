@@ -49,10 +49,10 @@ setquerydisplay preprocessed_direct_contains  --prefix="${das2fdir}/" >layer6_qu
 chmod a+x layer6_query.bash
 echo '-- layer6_query.bash generated --' 1>&2
 
-pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <contains_edge.md >preprocessed_contains_edge.md
-querydisplay3   preprocessed_contains_edge --prefix="${das2fdir}/" >layeredgecontainment_query.bash
-chmod a+x layeredgecontainment_query.bash
-echo '-- layeredgecontainment_query.bash generated --' 1>&2
+pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue  --support=${das2fdir}/implicitforall.support.js <contains_edge1.md >preprocessed_contains_edge1.md
+querydisplay3   preprocessed_contains_edge1 --prefix="${das2fdir}/" >layeredgecontainment1_query.bash
+chmod a+x layeredgecontainment1_query.bash
+echo '-- layeredgecontainment1_query.bash generated --' 1>&2
 
 pre '#+ query ' '#+ ' implicitforall.ohm implicitforall.glue <synccode.md >preprocessed_synccode.md
 querydisplay3  preprocessed_synccode --prefix="${das2fdir}/"  >layersynccode_query.bash
