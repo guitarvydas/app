@@ -1,5 +1,5 @@
-#echo use run.bash instead
-#exit 1
+echo use run.bash instead
+exit 1
 
 ../make.bash
 cwd=`pwd`
@@ -17,13 +17,16 @@ chmod a+x a-$fname
 chmod a+x b-$fname
 echo '-- ' "design rules a-${fname} and b-${fname} generated" ' --' 1>&2
 
-./a-${fname} | ./b-${fname}
+./a-${fname} | ./b-${fname} 2> $temp
 #./a-${fname}
 
 #./check-errors.bash
-grep FATAL <fb.pl
-if grep -q FATAL <fb.pl
+if grep -q failure <$temp
 then
-    echo quitting
+    echo
+    cat $temp 1>&2
+    echo quitting 1>&2
+    rm $temp
     exit 1
 fi
+rm $temp

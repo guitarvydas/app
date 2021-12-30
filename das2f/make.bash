@@ -92,15 +92,21 @@ querydisplay3   preprocessed2_layerdirection --prefix="${das2fdir}/" >layerdirec
 chmod a+x layerdirection_query.bash
 echo '-- layerdirection_query.bash generated --' 1>&2
 
-mdfile=designrule-edgecontainment.md
-fname=`basename -s '.md' $mdfile`
+temp=temp_${RANDOM}
+
 plpath=./
-prep "cond\n" "endcond\n" cond.ohm cond.glue --inclusive --stop=1 --support=${das2fdir}/drsupport.js <$mdfile >$temp
-prep "." "$" designrule.ohm designrulea.glue --stop=1 --support=${das2fdir}/drsupport.js --PLPATH=$plpath<$temp >a-$fname
-prep "." "$" designrule.ohm designruleb.glue --stop=1 --support=${das2fdir}/drsupport.js <$mdfile >b-$fname
+dr=~/projects/dr
+mdfile=${dr}/dr-edgecontainment.md
+fname=`basename -s '.md' $mdfile`
+prep "cond\n" "endcond\n" ${dr}/cond.ohm ${dr}/cond.glue --inclusive --stop=1 --support=${dr}/drsupport.js <$mdfile >$temp
+prep "." "$" ${dr}/designrule.ohm ${dr}/designrulea.glue --stop=1 --support=${dr}/drsupport.js --PLPATH=$plpath<$temp >a-$fname
+prep "." "$" ${dr}/designrule.ohm ${dr}/designruleb.glue --stop=1 --support=${dr}/drsupport.js <$mdfile >b-$fname
 chmod a+x a-$fname
 chmod a+x b-$fname
 echo '-- ' "design rules a-${fname} and b-${fname} generated" ' --' 1>&2
+
+
+
 
 baton1=baton
 rm -f ${baton1} && mkfifo ${baton1}

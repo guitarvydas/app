@@ -24,23 +24,32 @@ echo '** layer 2 **' 1>&2
 ${das2fdir}/layerdirection ${das2fdir} 1>&2 # <<>>fb.pl
 #${das2fdir}/layer2  1>&2 #<<>>fb.pl
 
+
+
 # # Design Rule - all ports (ellipses) must have a direction
 # echo '** design rule for layer 2 **'
 # ./design_rule_layer2  1>&2
 
-./a-designrule-edgecontainment
-./b-designrule-edgecontainment
+dr=~/projects/dr
+mdfile=${dr}/dr-edgecontainment.md
+fname=`basename -s '.md' $mdfile`
+temp=temp_${RANDOM}
+
+./a-${fname} | ./b-${fname} 2> $temp
 
 #./check-errors.bash
-grep FATAL <fb.pl
-if grep -q FATAL <fb.pl
+if grep -q failure <$temp
 then
-    echo quitting
+    echo
+    cat $temp 1>&2
+    echo quitting 1>&2
+    rm $temp
     exit 1
 fi
+rm $temp
 
-echo early exit
-exit 1
+
+
 
 # Layer 3. Rectangle Containment relationships.
 echo '** layer all contains **'  1>&2
