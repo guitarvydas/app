@@ -8,7 +8,7 @@ var Edge = p [1];
 if (!p.Passed) {
   console.error ('design rule failure');
 console.error(``);
-console.error(`Edge Containment edge=${Edge} is not contained by any Component (inferencing rules did not catch this case)`);
+console.error(`Edge Containment edge=${Edge} is not contained by any Component (internal error: inferencing rules did not catch this case)`);
 console.error(``);
 console.error(``);
 console.error(`	`);

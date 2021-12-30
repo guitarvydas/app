@@ -26,6 +26,29 @@ ${das2fdir}/layerdirection ${das2fdir} 1>&2 # <<>>fb.pl
 
 
 
+# Layer 3. Rectangle Containment relationships.
+echo '** layer all contains **'  1>&2
+${das2fdir}/layerallcontains ${das2fdir} 1>&2 #<<>>fb.pl
+
+
+# Layer 4. Rectangle contains Port.
+echo '** layer 4 **' 1>&2
+${das2fdir}/layer4 ${das2fdir} 1>&2 #<<>>fb.pl
+
+# Layer 5. indirect containment
+echo '** layer 5 - indirect containment **' 1>&2
+${das2fdir}/layer5 ${das2fdir} 1>&2 #<<>>fb.pl
+
+# Layer 6. direct containment
+echo '** layer 6 - direct containment **' 1>&2
+${das2fdir}/layer6 ${das2fdir} 1>&2 #<<>>fb.pl
+
+# Layer edge containment
+echo '** layer edge containment **' 1>&2
+${das2fdir}/layeredgecontainment ${das2fdir} 1>&2 #<<>>fb.pl
+
+
+
 # # Design Rule - all ports (ellipses) must have a direction
 # echo '** design rule for layer 2 **'
 # ./design_rule_layer2  1>&2
@@ -48,29 +71,6 @@ then
 fi
 rm $temp
 
-
-
-
-# Layer 3. Rectangle Containment relationships.
-echo '** layer all contains **'  1>&2
-${das2fdir}/layerallcontains ${das2fdir} 1>&2 #<<>>fb.pl
-
-
-# Layer 4. Rectangle contains Port.
-echo '** layer 4 **' 1>&2
-${das2fdir}/layer4 ${das2fdir} 1>&2 #<<>>fb.pl
-
-# Layer 5. indirect containment
-echo '** layer 5 - indirect containment **' 1>&2
-${das2fdir}/layer5 ${das2fdir} 1>&2 #<<>>fb.pl
-
-# Layer 6. direct containment
-echo '** layer 6 - direct containment **' 1>&2
-${das2fdir}/layer6 ${das2fdir} 1>&2 #<<>>fb.pl
-
-# Layer edge containment
-echo '** layer edge containment **' 1>&2
-${das2fdir}/layeredgecontainment ${das2fdir} 1>&2 #<<>>fb.pl
 
 # Layer Synccode.
 echo '** layer synccode **' 1>&2
