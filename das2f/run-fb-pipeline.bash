@@ -67,6 +67,7 @@ ${das2fdir}/layerconnection ${das2fdir} 1>&2 #<<>>fb.pl
 
 
 
+echo '** checking design rule **' 1>&2
 
 
 # # Design Rule - all ports (ellipses) must have a direction
@@ -90,4 +91,6 @@ then
     exit 1
 fi
 rm $temp
+
+echo '** finished checking design rule **' 1>&2
 
