@@ -19,8 +19,11 @@ das_fact(kind,E,ellipse),
 containsport(R,E),
 true.
 query:-
-bagof([R,E],query_helper(R,E),Bag),
-json_write(user_output,Bag,[width(128)]).
+(bagof([R,E],query_helper(R,E),Bag),
+json_write(user_output,Bag,[width(128)])
+)
+;
+json_write(user_output,[],[width(123)]).
 ~~~
 cat >${temp}.js <<'~~~'
 const fs = require ('fs');

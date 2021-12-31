@@ -17,8 +17,11 @@ query_helper(Parent,Child):-
 contains(Parent,Child),
 true.
 query:-
-bagof([Parent,Child],query_helper(Parent,Child),Bag),
-json_write(user_output,Bag,[width(128)]).
+(bagof([Parent,Child],query_helper(Parent,Child),Bag),
+json_write(user_output,Bag,[width(128)])
+)
+;
+json_write(user_output,[],[width(123)]).
 ~~~
 cat >${temp}.js <<'~~~'
 const fs = require ('fs');

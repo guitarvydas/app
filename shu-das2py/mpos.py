@@ -3,15 +3,16 @@ import queue
 
 from typing import NoReturn
 
+# for now, component is a name (string) local to Container
 
 class Sender:
     def __init__ (self, c,p):
         self.component = c
-        self.pin = p
+        self.tag = p
 
     def __eq__ (self, other):
         if isinstance(other, Sender):
-            return self.component is other.component and self.pin == other.pin
+            return self.component == other.component and self.tag == other.tag
         else:
             return False
 
@@ -21,33 +22,54 @@ class Sender:
 class Receiver:
     def __init__ (self, c, p):
         self.component = c
-        self.pin = p
+        self.tag = p
 
-    def deliverOutputMessageToInputPinOfReceiver (self, outputMessage):
-        inputMessage = InputMessage (self.component, self.pin, outputMessage.data)
+    def deliverOutputMessageToInputTagOfReceiver (self, outputMessage):
+        inputMessage = InputMessage (self.component, self.tag, outputMessage.data)
         component = self.component
         component.enqueueInput (inputMessage)
 
-class Message:
+class MessageCommon: # this class should not be instantiated directly (use InputMessage or OutputMessage)
+    # a message is identified by {component X tag}
+    # .component is "" for "self"
+    # an OutputMessage has (normally) a different "component" and "tag" than an InputMessage
+    # OutputMessage is relative to the Sender
+    # InputMessage is relative to the Receiver
+    # an OutputMessage is created by Send ()
+    # an InputMessage is (normally) created by the Dispatcher during dumping of the output bucket of a Component after it has performed a reaction
+    # the mapping from OutputMessage to InputMessage is defined in the Connections of the parent Container
+    # [Connections is a routing table contained in the parent Container]
+    # a container can:
+    #  (1) route messages between its children, 
+    #  (2) route its input to its children, 
+    #  (3) route a child's output to its own output, 
+    #  (4) route its own input to its own output
+    #  (5) route a child's output to NOWHERE (N/C - no connection)
+    #  (6) route its own input to NOWHERE (N/C)
+    # IOW - a message is { id, data } where id is { component X tag }
+    # the fact that "component" is always included in the id ensures that the message has relative addressing (relative to Sender or Receiver as appropriate)
+    # Aside: "tag" is called "pin" in electronics, "tag" is called "topic" in pubsb (e.g. ROS)
+    # Aside: N/C has no parallel in Functional notation, Natural Numbers vs. Whole Numbers (Naturals do not contain 0, Whole Numbers contain 0)
+
     def __init__ (self, c, p, d):
         self.component = c
-        self.pin = p
+        self.tag = p
         self.data = d
 
     def sender (self):
-        s = Sender (self.component, self.pin)
+        s = Sender (self.component, self.tag)
         return s
 
-    def getPin (self):
-        return self.pin
+    def getTag (self):
+        return self.tag
     
     def getComponent (self):
         return self.component
 
-class InputMessage (Message):
+class InputMessage (MessageCommon):
     pass
 
-class OutputMessage (Message):
+class OutputMessage (MessageCommon):
     pass
 
 class MessageFifo (queue.Queue):
@@ -61,29 +83,26 @@ class MessageFifo (queue.Queue):
         return self.empty ()
 
 class Connector:
-    def __init__ (self, sender, receivers):
-        self.sender = sender
+    def __init__ (self, senders, receivers):
+        self.senders = senders
         self.receivers = receivers
     
-    def getReceiversBasedOnSender (self, sender):
-        assert (self.sender == sender)
+    def getReceivers (self):
         return self.receivers
+
+    def containsSenderP (self, sender):
+        for s in self.senders:
+            if (s == sender):
+                return True
+        return False
     
-    def matchSender (self, targetSender):
-        return self.sender == targetSender
-
-    def getReceiversBasedOnMessage (self, message):
-        s = message.sender ()
-        r = self.getReceiversBasedOnSender (message.sender ())
-        return r
-
 class Component:
-        def __init__ (self, dispatcher, container, debugID):
+        def __init__ (self, dispatcher, container, id):
             self.inputs = []
             self.outputs = []
             self.outputBucket = []
             self.parent = container
-            self.debugID = debugID
+            self.idInParent = id
             self.inputQueue = MessageFifo ()
             self.reaction = None
             dispatcher.register (self)
@@ -105,11 +124,11 @@ class Component:
             self.inputQueue.enqueue (m)
 
         def kickstart (self):
-            m = Message (self, "start", True)
+            m = InputMessage (self.idInParent, "p_", True)
             self.enqueueInput (m)
 
-        def send (self, pin, data):
-            message = Message (self, pin, data)
+        def send (self, tag, data):
+            message = OutputMessage (self.idInParent, tag, data)
             self.outputBucket.append (message)
 
         def react (self, message):
@@ -117,6 +136,9 @@ class Component:
 
         def getContainer (self):
             return self.parent
+
+        def hasOutputsP (self):
+            return (0 < len (self.outputBucket))
 
 
 class Leaf (Component):
@@ -136,16 +158,30 @@ class Container (Component):
 
     def propagateInputToChildren (self, m):
         conn = self.findConnectionBasedOnMessage (m)
-        receivers = conn.getReceiversBasedOnMessage (m)
+        receivers = conn.getReceivers ()
         for r in receivers:
-            msg = Message (r.component, r.pin, m.data)
-            r.component.enqueueInput (msg)
+            msg = InputMessage (r.component, r.tag, m.data)
+            instance = self.mapNameToInstance (r.component)
+            instance.enqueueInput (msg)
 
     def findConnectionBasedOnMessage (self, m):
         for conn in self.connections:
-            if conn.sender == m.sender ():
+            if (conn.containsSenderP (m.sender ())):
                 return conn
         assert False, "internal error"
+
+    def mapNameToInstance (self, localName):
+        if (localName == ''):
+            return self
+        else:
+            mapped = self.findNameInChildrenMap (localName)
+            if mapped:
+                return mapped
+            else:
+                assert "internal error 21"
+
+    def findNameInChildrenMap (self, name):
+        return self.children [name]
 
     def react (self, message):
         self.propagateInputToChildren (message)

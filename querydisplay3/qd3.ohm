@@ -10,6 +10,7 @@ qd3 {
    = sharp sharp condKW predicate display -- conditional
    | sharp sharp displayKW display -- unconditional
    | sharp sharp jsonKW            -- json
+   | sharp sharp rawKW code        -- raw
 
  Test = ident "is" string
 
@@ -18,6 +19,7 @@ qd3 {
    query = line
    predicate = line
    display = line+
+   code = line+
    message = line+
 
    line = ~sharp notNL* nl
@@ -28,6 +30,8 @@ qd3 {
              | "display" nl               -- nocomment
    jsonKW = "json"    ws+ commentToEOL    -- withcomment
           | "json" nl                     -- nocomment
+   rawKW = "raw"    ws+ commentToEOL    -- withcomment
+          | "raw" nl                     -- nocomment
 
 
    commentToEOL = ~sharp notNL* nl

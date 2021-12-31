@@ -15,8 +15,11 @@ diagram_fact(kind,ID,"ellipse"),
 (das_fact(color, ID, "green")  -> Direction = input;das_fact(color, ID, "yellow")  -> Direction = output;das_fact(color, ID, "red")  -> Direction = pervasiveinput;das_fact(color, ID, "purple")  -> Direction = pervasiveoutput; Direction = "?"),
 true.
 query:-
-bagof([ID,Direction],query_helper(ID,Direction),Bag),
-json_write(user_output,Bag,[width(128)]).
+(bagof([ID,Direction],query_helper(ID,Direction),Bag),
+json_write(user_output,Bag,[width(128)])
+)
+;
+json_write(user_output,[],[width(123)]).
 ~~~
 cat >${temp}.js <<'~~~'
 const fs = require ('fs');

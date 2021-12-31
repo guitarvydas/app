@@ -1,46 +1,21 @@
+#!/usr/bin/env python3
+# helloworld.py
+# cell_6
 import mpos
 import dispatcher
+import world
+import hello
 
-class Hello (mpos.Leaf):
-    def __init__ (self, dispatcher, parent, debugID):
-        super ().__init__ (dispatcher, parent, debugID)
-        self.outputs = ["out"]
+class _helloworld (mpos.Container):
 
-    def react (self, inputMessage):
-        print ("hello")
-        self.send ("out", True)
-        return super ().react (inputMessage)
+    def __init__ (self, dispatcher, parent, idInParent):
+        super ().__init__ (dispatcher, parent, idInParent)
+        self.inputs=['p_']
+        self.outputs=[]
 
-class World (mpos.Leaf):
-    def __init__ (self, dispatcher, parent, debugID):
-        super ().__init__ (dispatcher, parent, debugID)
-        self.inputs = ["in"]
-
-    def react (self, inputMessage):
-        print ("world")
-        return super ().react (inputMessage)
-
-class HelloWorld (mpos.Container):
-    def __init__ (self, dispatcher):
-        super ().__init__ (dispatcher, None, "helloworld")
-        hello = Hello (dispatcher, self, "hello")
-        world = World (dispatcher, self, "world")
-    
-        sender = mpos.Sender (self, "start")
-        rchild = mpos.Receiver (hello, "start")
-        receivers = [ rchild ]
-        conn0 = mpos.Connector (sender, receivers)
-    
-        sender = mpos.Sender (hello, "out")
-        rworld = mpos.Receiver (world, "in")
-        receivers = [ rworld ]
-        conn1 = mpos.Connector (sender, receivers)
-
-        self.children = { "hello": hello, "world": world }
+        child0 = world._world (dispatcher, self, 'world')
+        child1 = hello._hello (dispatcher, self, 'hello')
+        conn0 = mpos.Connector ([mpos.Sender ('helloworld', 'p_')], [mpos.Receiver ('hello', 'p_')])
+        conn1 = mpos.Connector ([mpos.Sender ('hello', 'out')], [mpos.Receiver ('world', 'in')])
         self.connections = [ conn0, conn1 ]
-
-
-disp = dispatcher.Dispatcher ()
-hw = HelloWorld (disp)
-hw.kickstart ()
-disp.dispatch ()
+        self.children = {'world':child0, 'hello':child1}

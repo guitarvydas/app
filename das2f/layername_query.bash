@@ -18,8 +18,11 @@ diagram_fact(vertex,ID,_),
 diagram_fact(value,ID,Name),
 true.
 query:-
-bagof([ID,Name],query_helper(ID,Name),Bag),
-json_write(user_output,Bag,[width(128)]).
+(bagof([ID,Name],query_helper(ID,Name),Bag),
+json_write(user_output,Bag,[width(128)])
+)
+;
+json_write(user_output,[],[width(123)]).
 ~~~
 cat >${temp}.js <<'~~~'
 const fs = require ('fs');

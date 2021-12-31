@@ -24,18 +24,7 @@ echo '** layer 2 **' 1>&2
 ${das2fdir}/layerdirection ${das2fdir} 1>&2 # <<>>fb.pl
 #${das2fdir}/layer2  1>&2 #<<>>fb.pl
 
-# # Design Rule - all ports (ellipses) must have a direction
-# echo '** design rule for layer 2 **'
-# ./design_rule_layer2  1>&2
 
-
-#./check-errors.bash
-grep FATAL <fb.pl
-if grep -q FATAL <fb.pl
-then
-    echo quitting
-    exit 1
-fi
 
 # Layer 3. Rectangle Containment relationships.
 echo '** layer all contains **'  1>&2
@@ -54,9 +43,18 @@ ${das2fdir}/layer5 ${das2fdir} 1>&2 #<<>>fb.pl
 echo '** layer 6 - direct containment **' 1>&2
 ${das2fdir}/layer6 ${das2fdir} 1>&2 #<<>>fb.pl
 
-# Layer edge containment
-echo '** layer edge containment **' 1>&2
-${das2fdir}/layeredgecontainment ${das2fdir} 1>&2 #<<>>fb.pl
+# Layer edge containment 1
+echo '** layer edge containment 1 **' 1>&2
+${das2fdir}/layeredgecontainment1 ${das2fdir} 1>&2 #<<>>fb.pl
+
+# Layer edge containment 2
+echo '** layer edge containment 2 **' 1>&2
+${das2fdir}/layeredgecontainment2 ${das2fdir} 1>&2 #<<>>fb.pl
+# Layer edge containment 3
+echo '** layer edge containment 3 **' 1>&2
+${das2fdir}/layeredgecontainment3 ${das2fdir} 1>&2 #<<>>fb.pl
+
+
 
 # Layer Synccode.
 echo '** layer synccode **' 1>&2
@@ -65,3 +63,34 @@ ${das2fdir}/layersynccode ${das2fdir} 1>&2 #<<>>fb.pl
 # Layer Connections.
 echo '** layer connections **' 1>&2
 ${das2fdir}/layerconnection ${das2fdir} 1>&2 #<<>>fb.pl
+
+
+
+
+echo '** checking design rule **' 1>&2
+
+
+# # Design Rule - all ports (ellipses) must have a direction
+# echo '** design rule for layer 2 **'
+# ./design_rule_layer2  1>&2
+
+dr=~/projects/dr
+mdfile=${dr}/dr-edgecontainment.md
+fname=`basename -s '.md' $mdfile`
+temp=temp_${RANDOM}
+
+${das2fdir}/a-${fname} | ${das2fdir}/b-${fname} 2> $temp
+
+#./check-errors.bash
+if grep -q failure <$temp
+then
+    echo
+    cat $temp 1>&2
+    echo quitting 1>&2
+    rm $temp
+    exit 1
+fi
+rm $temp
+
+echo '** finished checking design rule **' 1>&2
+

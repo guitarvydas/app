@@ -17,3 +17,4 @@
      else                            "rectangle"
 ## display
   das_fact(kind,${X},${Kind}).
+  
