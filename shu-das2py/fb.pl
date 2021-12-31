@@ -136,8 +136,8 @@ diagram_fact(value, cell_10, "out").
 diagram_fact(value, cell_11, "world").
 diagram_fact(value, cell_12, "in").
 diagram_fact(value, cell_13, "print (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
-diagram_fact(value, cell_15, "_").
-diagram_fact(value, cell_16, "_").
+diagram_fact(value, cell_15, "p_").
+diagram_fact(value, cell_16, "p_").
 diagram_fact(value, cell_6, "helloworld").
 diagram_fact(value, cell_7, "hello").
 diagram_fact(value, cell_8, "print (&quot;hello&quot;)&lt;br&gt;self.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
@@ -206,8 +206,8 @@ das_fact(name, cell_10, "out").
 das_fact(name, cell_11, "world").
 das_fact(name, cell_12, "in").
 das_fact(name, cell_13, "print (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
-das_fact(name, cell_15, "_").
-das_fact(name, cell_16, "_").
+das_fact(name, cell_15, "p_").
+das_fact(name, cell_16, "p_").
 das_fact(name, cell_6, "helloworld").
 das_fact(name, cell_7, "hello").
 das_fact(name, cell_8, "print (&quot;hello&quot;)&lt;br&gt;self.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
@@ -295,8 +295,8 @@ das_fact(direct_contains,cell_6,cell_14).
 das_fact(codebox,cell_13,"print (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
 das_fact(codebox,cell_8,"print (&quot;hello&quot;)&lt;br&gt;self.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
 das_fact(connection, cell_6, cell_14).
-das_fact(sender, cell_14, sender{component:helloworld,port:_}).
-das_fact(receiver, cell_14, receiver{component:hello,port:_}).
+das_fact(sender, cell_14, sender{component:helloworld,port:p_}).
+das_fact(receiver, cell_14, receiver{component:hello,port:p_}).
 das_fact(connection, cell_6, cell_9).
 das_fact(sender, cell_9, sender{component:hello,port:out}).
 das_fact(receiver, cell_9, receiver{component:world,port:in}).
