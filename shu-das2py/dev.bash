@@ -30,5 +30,6 @@ sed -E -e 's/sample//g' <sampleworld.py >temp.py
 diff -w world.py temp.py
 
 sed -E -e 's/sample//g' <samplehelloworld.py >temp.py
+echo compare generated with golden
 diff -w helloworld.py temp.py
 
