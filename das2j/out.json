@@ -15,6 +15,10 @@
       "children": ["world", "hello" ],
       "connections": [
 	{
+	  "receivers": [ {"receiver": {"component":"hello", "port":"y"}} ],
+	  "senders": [ {"sender": {"component":"helloworld", "port":"x"}} ]
+	},
+	{
 	  "receivers": [ {"receiver": {"component":"world", "port":"in"}} ],
 	  "senders": [ {"sender": {"component":"hello", "port":"out"}} ]
 	}

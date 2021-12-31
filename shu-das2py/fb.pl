@@ -291,8 +291,12 @@ das_fact(direct_contains,cell_7,cell_10).
 das_fact(direct_contains,cell_7,cell_16).
 das_fact(direct_contains,cell_7,cell_8).
 das_fact(direct_contains,cell_6,cell_9).
+das_fact(direct_contains,cell_6,cell_14).
 das_fact(codebox,cell_13,"print (&quot;world&quot;)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
 das_fact(codebox,cell_8,"print (&quot;hello&quot;)&lt;br&gt;self.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;").
+das_fact(connection, cell_6, cell_14).
+das_fact(sender, cell_14, sender{component:helloworld,port:_}).
+das_fact(receiver, cell_14, receiver{component:hello,port:_}).
 das_fact(connection, cell_6, cell_9).
 das_fact(sender, cell_9, sender{component:hello,port:out}).
 das_fact(receiver, cell_9, receiver{component:world,port:in}).
