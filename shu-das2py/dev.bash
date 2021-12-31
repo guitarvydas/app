@@ -1,3 +1,6 @@
+echo use run.bash instead
+exit 1
+
 #!/bin/bash
 clear
 ../make.bash
@@ -32,4 +35,6 @@ diff -w world.py temp.py
 sed -E -e 's/sample//g' <samplehelloworld.py >temp.py
 echo compare generated with golden
 diff -w helloworld.py temp.py
+
+./top.py
 

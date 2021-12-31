@@ -119,15 +119,23 @@ def formatMap (children):
     i += 1
   return mchildren
 
-def formatConnection (i, senderList, receiverList):
+def remapName (component, selfname):
+  # current version of mpos expects self to be ''
+  if (component == selfname):
+    component = '';
+  return component
+
+def formatConnection (i, senderList, receiverList, selfname):
   senders = []
   for sender in senderList:
     component = f"{sender ['sender'] ['component']}"
+    component = remapName (component, selfname)
     port = sender ['sender'] ['port']
     senders.append ("mpos.Sender ('" +  component + "', '" + port +  "')")
   receivers = []
   for receiver in receiverList:
     component = f"{receiver ['receiver'] ['component']}"
+    component = remapName (component, selfname)
     port = receiver ['receiver'] ['port']
     receivers.append ("mpos.Receiver ('" +  component + "', '" + port +  "')")
   sstr = ", ".join(senders)
@@ -172,7 +180,7 @@ def printContainerScript (component, outf):
     receiverList = conn ["receivers"]
     senderList = conn ["senders"]
 
-    cstr = formatConnection (i, senderList, receiverList)
+    cstr = formatConnection (i, senderList, receiverList, component["name"])
     print (f'        {cstr}', file=outf)
     
     connectornames.append (f'conn{i}')
