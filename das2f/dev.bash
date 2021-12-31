@@ -1,5 +1,5 @@
-#echo use run.bash instead
-#exit 1
+echo use run.bash instead
+exit 1
 
 # this is only an example
 # use das2f instead

@@ -17,8 +17,7 @@
 	(das_fact(direction,Source,input) ; das_fact(direction,Source,pervasiveinput))
 	(das_fact(direction,Target,input) ; das_fact(direction,Target,pervasiveinput))
     das_fact(kind,Parent,rectangle)
-	das_fact(direct_contains,Rect,Source)
-	das_fact(direct_contains,Parent,Rect)
+	das_fact(direct_contains,Parent,Source)
 ## display
 das_fact(direct_contains,${Parent},${Edge}).
   
