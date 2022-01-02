@@ -7,11 +7,9 @@
         "id": "7f5ea46bbb9117bb",
         "type": "leaf",
         "state": {
-          "type": "markdown",
+          "type": "image",
           "state": {
-            "file": "Design Rules.md",
-            "mode": "source",
-            "source": false
+            "file": "Mock-up Screen Shot 2021-12-27 at 10.28.01 AM.png"
           }
         }
       }
@@ -69,7 +67,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Design Rules.md",
+                "file": "Mock-up Screen Shot 2021-12-27 at 10.28.01 AM.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,6 +87,7 @@
   },
   "active": "7f5ea46bbb9117bb",
   "lastOpenFiles": [
+    "Mock-up Screen Shot 2021-12-27 at 10.28.01 AM.png",
     "Design Rules.md",
     "designrules-Edge-Containment-2.svg).md"
   ]
