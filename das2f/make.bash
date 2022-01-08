@@ -1,3 +1,5 @@
+export PATH="~/app/bin":$PATH
+
 # views
 querydisplay view0 >view0.bash
 chmod a+x view0.bash

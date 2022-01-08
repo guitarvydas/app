@@ -1,3 +1,6 @@
+export PATH="~/app/bin":$PATH
+
+
 echo '** copying commands **'  1>&2
 app=${HOME}/app
 
