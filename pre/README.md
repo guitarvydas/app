@@ -10,9 +10,13 @@ pre 're-begin' 're-terminate' ohm-spec glue-spec --input=in
 
 pre 're-begin' 're-terminate' ohm-spec glue-spec --support=fname [...]
 
-pre 're-begin' 're-terminate' ohm-spec glue-spec --cycles=1 [...]
+pre 're-begin' 're-terminate' ohm-spec glue-spec --stop=1 [...]
 
-Expansion is recursive except when --cycles is specified. When --cycles is specified, an internal counter is initialized to 0 and counts upward +1 for every expansion cycle. Expansion terminates when (counter >= stop). 
+pre 're-begin' 're-terminate' ohm-spec glue-spec --grammarname=<name of grammar> [...]
+
+Expansion is recursive except when --stop is specified. When --stop is specified, an internal counter is initialized to 0 and counts upward +1 for every expansion cycle. Expansion terminates when (counter >= stop). 
+
+When using multiple grammars and inheritance, use --grammarname= to specify the name of the grammar to be used.
 
 See `run.bash` 
 
