@@ -268,8 +268,8 @@ function execTranspiler (source, grammar, semantics, errorMessage) {
 	    throw err;
 	}
     } catch (err) {
-	console.error ('source:');
-	console.error (source.replace (/[\n\t ]/g,'.'));
+	// console.error ('source:');
+	// console.error (source.replace (/[\n\t ]/g,'.'));
 	throw err;
     }
 }
